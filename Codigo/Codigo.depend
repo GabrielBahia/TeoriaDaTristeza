@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1635406715 source:c:\users\cascata\desktop\coisasparaguardar\teoriadosgrafos\codigo\edge.cpp
+	"Edge.h"
+	<iostream>
+
+1635406694 c:\users\cascata\desktop\coisasparaguardar\teoriadosgrafos\codigo\edge.h
+
+1635406587 source:c:\users\cascata\desktop\coisasparaguardar\teoriadosgrafos\codigo\node.cpp
+	"Node.h"
+	"Edge.h"
+	<iostream>
+
+1635406550 c:\users\cascata\desktop\coisasparaguardar\teoriadosgrafos\codigo\node.h
+	"Edge.h"
+
+1635406655 source:c:\users\cascata\desktop\coisasparaguardar\teoriadosgrafos\codigo\graph.cpp
+	"Graph.h"
+	"Node.h"
+	"Edge.h"
+	<iostream>
+	<fstream>
+	<stack>
+	<queue>
+	<list>
+	<math.h>
+	<cstdlib>
+	<ctime>
+	<float.h>
+	<iomanip>
+
+1635744566 c:\users\cascata\desktop\coisasparaguardar\teoriadosgrafos\codigo\graph.h
+	"Node.h"
+	<fstream>
+	<stack>
+	<list>
+
+1635406469 source:c:\users\cascata\desktop\coisasparaguardar\teoriadosgrafos\codigo\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<math.h>
+	<utility>
+	<tuple>
+	<iomanip>
+	<stdlib.h>
+	<chrono>
+	"Graph.h"
+	"Node.h"
+
