@@ -11,7 +11,7 @@
 #include <ctime>
 #include <float.h>
 #include <iomanip>
-
+#include <algorithm> /// função find
 using namespace std;
 
 /**************************************************************************************************
@@ -22,12 +22,12 @@ using namespace std;
 Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
 {
 
-    this->order = order;
-    this->directed = directed;
-    this->weighted_edge = weighted_edge;
-    this->weighted_node = weighted_node;
-    this->first_node = this->last_node = nullptr;
-    this->number_edges = 0;
+    this->order = order; // numbers of nodes
+    this->number_edges = 0; // number of edges
+    this->directed = directed; // if it's directed;
+    this->weighted_edge = weighted_edge; // if it has weight on its edges
+    this->weighted_node = weighted_node; // if it has weight on its nodes
+    this->first_node = this->last_node = nullptr; // first and last node starts as null cause theres is nothing in the start
 }
 
 // Destructor
@@ -38,7 +38,6 @@ Graph::~Graph()
 
     while (next_node != nullptr)
     {
-
         next_node->removeAllEdges();
         Node *aux_node = next_node->getNextNode();
         delete next_node;
@@ -92,23 +91,28 @@ Node *Graph::getLastNode() // return the last node of the graph!;
 */
 void Graph::insertNode(int id)
 {
-    Node node = new Node(id);
+    Node *node = new Node(id);
+    Node->setNumber(order+1);
     if(order == 0) // if there are no nodes in the graph
     {
         this->first_node = this->last_node = node; // both of them receive the new node;
-        order++; // increase the order of the graph
     }
     else { // if there are more than 0 nodes in the graph
         last_node->setNextNode(node); // set the next node to the new node;
         last_node = node; // set the last node as the new node;
     }
+        order++; // increase the order of the graph
 }
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
-    if(order == 0) // if there are no nodes in the graph;
+    if(searchNode(id) && searchNode(target_id)) // search if the two nodes are in the graph
     {
-        this->first_node // i don´t know already where the int id in the function goes;
+        Node *node = getNode(id); // search the actual node that's being called;
+        if(!node->hasEdgeBetween(target_id)) // return if theres is no edge between the node id and the node target_id
+        {
+            node->insertEdge(target_id,weight);  // inserts the edge between the two nodes
+        }
     }
 }
 
@@ -119,8 +123,9 @@ void Graph::removeNode(int id)
     {
         Node *node = getNode(id); // new id receiving the target node;
         Node *previous = this->first_node; // setting new node as first node;
-        if(previous;previous->getNextNode()!=node;previous = previous->getNextNode()) // just looking for the node;
+        for(previous;previous->getNextNode()!=node;previous = previous->getNextNode()) // just looking for the node;
         {
+            cout << "";
         }
         if(node == previous ) // if the node i want is equals previous so it is the first node;
         {
@@ -128,26 +133,24 @@ void Graph::removeNode(int id)
             {
                 delete previous;
                 first_node = last_node = nullptr;
-                order--;
             }
             else
             {
                 previous = previous->getNextNode();
                 first_node = previous;
                 delete previous;
-                order--;
             }
         }
         else // the first node is not the node that we found
         {
-            previous->setNextNode(node->getNextNode())
+            previous->setNextNode(node->getNextNode());
             if(last_node == node) // verifying if the node that we found is not the last node;
             {
                 last_node = nullptr;
             }
             delete node;
-            order--;
         }
+        order--;
     }
 
 }
@@ -184,7 +187,37 @@ Node *Graph::getNode(int id)
 
 //Function that prints a set of edges belongs breadth tree
 
-void Graph::breadthFirstSearch(ofstream &output_file){
+void Graph::breadthFirstSearch(ofstream &output_file, int id_inicial){ /// No parametro dessa função, não deveria ser o id?
+    if(searchNode(id_inicial))
+    {
+        Node *node = getNode(id_inicial);
+        int total = this->order - node->getNumber(); /// total of nodes in the graph;
+        bool visitado = new bool[total];
+        for(int i = 0;i<total ;i++)
+        {
+            node->set_Cor(i);
+            visitado[x] = 0;
+            node = node->getNextNode();
+        }
+        node = getNode(id_inicial);
+        while(total > 0)
+        {
+            Node *aux_node = node;
+            int total_edge = node->total_edge;
+            if(visitado[node->get_Cor()] == 0)
+            {
+                cout << node->getId();
+                visitado[node->get_Cor()] = 1;
+            }
+            Edge *edge = node->getFirstEdge();
+            while(edge;edge!= nullptr;edge = node->getNextEdge()){
+                cout << edge->getTargetId();
+                visitado[aux_node->get_Cor] = 1;
+            }
+            node =
+            total--;
+        }
+    }
 
 }
 

@@ -15,6 +15,7 @@ class Edge{
         int target_id; // id of the edge;
         Edge* next_edge; // set the next edge to the actual edge;
         float weight; // set the weight of the edge;
+        int total_edges;
 
     public:
         // Constructor
@@ -28,6 +29,7 @@ class Edge{
         // Setters
         void setNextEdge(Edge* edge); // set the next edge to the actual edge;
         void setWeight(float weight); // set the weight of the actual edge;
+        int total_edge();
 
 };
 

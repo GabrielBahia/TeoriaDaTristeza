@@ -11,6 +11,7 @@ using namespace std;
 // Constructor
 Node::Node(int id){
 
+    this->total_edge = 0;
     this->id = id; // id of the node!;
     this->in_degree = 0; //
     this->out_degree = 0; //
@@ -18,7 +19,8 @@ Node::Node(int id){
     this->first_edge = nullptr; // set the first edge as null!;
     this->last_edge = nullptr; // set the last edge as null!;
     this->next_node = nullptr; // set the next node as null!;
-
+    int cor;
+    int number;
 };
 
 // Destructor
@@ -111,7 +113,7 @@ void Node::insertEdge(int target_id, float weight){
         this->last_edge = this->first_edge;
 
     }
-
+    total_edge++;
 }
 
 void Node::removeAllEdges(){
@@ -131,7 +133,7 @@ void Node::removeAllEdges(){
     }
 
     this->first_edge = this->last_edge = nullptr;
-
+    total_edge = 0;
 }
 
 int Node::removeEdge(int id, bool directed, Node* target_node){
@@ -162,7 +164,7 @@ int Node::removeEdge(int id, bool directed, Node* target_node){
 
         delete aux; // deleting the node that we want!;
         // Verifies whether the graph is directed
-        if(directed) // verifies if the graph if directed!;
+        if(directed) // verifies if the graph if directed!; if it is
             this->decrementOutDegree();
 
         else{
@@ -171,7 +173,7 @@ int Node::removeEdge(int id, bool directed, Node* target_node){
             target_node->decrementInDegree();
 
         }
-
+        total_edge--;
         return 1;
 
     }
@@ -227,4 +229,23 @@ Edge* Node::hasEdgeBetween(int target_id)
             return auxEdge;
     }
     return nullptr;
+}
+
+void Node::setNumber(int number) {
+    this->number = number;
+
+}
+
+void Node::getNumber() {
+    return this->number;
+}
+
+void Node::set_Cor(int i)
+{
+    cor = i;
+}
+
+int Node::get_Cor()
+{
+    return cor;
 }

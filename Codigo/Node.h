@@ -15,12 +15,14 @@ class Node{
     private:
         Edge* first_edge;
         Edge* last_edge;
+        int total_edge;
         int id;
         unsigned int in_degree;
         unsigned int out_degree;
         float weight;
         Node* next_node;
-
+        int number;
+        int cor;
     public:
         // Constructor
         Node(int id);
@@ -48,7 +50,10 @@ class Node{
         void decrementInDegree();
         Edge* hasEdgeBetween(int target_id);
         // Auxiliar methods
-
+        void set_Cor(int i);
+        int get_Cor();
+        void setNumber(int number);
+        void getNumber();
 };
 
 #endif // NODE_H_INCLUDED

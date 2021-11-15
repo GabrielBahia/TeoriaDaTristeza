@@ -56,8 +56,6 @@ class Graph{
         float greed(); // don´t know yet;
         float greedRandom(); // don´t know yet;
         float greedRactiveRandom(); // don´t know yet;
-    private:
-        //Auxiliar methods
 
 };
 
