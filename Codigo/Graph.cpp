@@ -223,6 +223,185 @@ void Graph::breadthFirstSearch(ofstream &output_file, int id_inicial){ /// No pa
 
 
 
+
+ /*   void GRAPHbfs( Graph G, vertex s)
+{
+   int cnt = 0;
+   for (vertex v = 0; v < G->V; ++v)
+      num[v] = -1;
+   QUEUEinit( G->V);
+   num[s] = cnt++;
+   QUEUEput( s);
+
+   while (!QUEUEempty( )) {
+      vertex v = QUEUEget( );
+      for (link a = G->adj[v]; a != NULL; a = a->next)
+         if (num[a->w] == -1) {
+            num[a->w] = cnt++;
+            QUEUEput( a->w);
+         }
+   }
+   QUEUEfree( );
+}
+
+
+void GRAPHbfs(int target)
+{
+    if(searchNode(target))
+    {
+       int cont = 0;
+     //  Node *visitados = new Node[getOrder()];
+       Node *node = getNode(target);
+       Node *first_Node = this->first_node();
+       Edge *vizinhos = new Edge[getOrder()];
+       vizinhos[0] = node;
+
+       Node *node = getNode(target);
+       Graph *visitados = new Graph(getOrder());
+       Graph *graph = new Graph();
+       Graph[0] = node;
+       visitados[node->getId] = 0;
+
+
+
+
+
+
+       for(int aux = 0; aux < getOrder(); aux++)
+       {
+           visitados[aux] = first_Node->getId();
+           visitados[aux]->setVisitado(-1);
+           first_Node = first_Node->getNextNode();
+       }
+       while(vizinhos[0]!= nullptr)
+        {
+
+
+
+
+       }
+    }
+}
+
+
+
+
+
+}*/
+
+
+/*
+void GRAPHbfs(int target){
+
+int ini, fim;
+int fila[];
+int dist[];
+
+   for(int i=0; i<; i++)
+     dist[i] = INF;
+     dist[orig] = 0;
+
+    ini = fim = 0;
+    fila[fim++] = orig;
+
+   while(ini != fim) {
+    int no = fila[ini++];
+
+     for(int i=0; i<grau[no]; i++) {
+     int viz = G[no][i];
+     if(dist[viz] == INF) {
+        fila[fim++] = viz;
+       dist[viz] = dist[no] + 1;
+    }
+  }
+}
+
+*/
+
+
+/// ATUAL
+
+void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
+{
+
+    //com o id do vértice acha o vertice que deve ser analisado
+    int idParametro = id;/// - 1;
+    //cria um vetor que marca quais vértices ja foram analisados
+    bool visitados[this->order];
+    //cria o vetor fecho transitivo direto
+   /// bool FTD[this->order];
+    //cria uma fila que diz quais vertices ainda precisam ser analisados
+    list<int> fila;
+    //adiciona o vertice inicial nele
+    fila.push_front(id);
+    ordem.push_front(id);
+
+    for (int i = 0; i < this->order; i++)
+    {
+        visitados[i] = false;
+      ///  FTD[i] = false;
+    }
+
+    //começa iteração (enquanto a fila não estiver vazia repita)
+    while (!(fila.empty()))
+    {
+        //pega um vértice a ser analisado da fila
+        int aux = fila.front();
+        int IdAnalisado;/// = aux - 1;
+        Node *V;
+        V = getNode(fila.front());
+        //exclui ele da fila
+        fila.pop_front();
+        //verifica se o vértice a ser analisado ja foi analisado. (se ele ja foi acaba essa iteração)
+        if (visitados[IdAnalisado] == false)
+        {
+            //marca o vértice como visitado;
+            visitados[IdAnalisado] = true;
+            //adiciona ele no vetor fecho transitivo direto
+            ///FTD[IdAnalisado] = true;
+            //adiciona todos os vértices adjacentes a ele na fila
+            for (Edge *it = V->getFirstEdge(); it != NULL; it = it->getNextEdge())
+            {
+                int verticeAdjacente = it->getTargetId();
+                fila.push_front(verticeAdjacente);
+
+            }
+        }
+    }
+
+    //imprimir o FTD
+    output_file << "O conjunto FTD do vértice " << id << " é: {";
+    int contador = 0;
+    for (int i = 0; i < this->order; i++)
+    {
+        if (FTD[i] == true)
+        {
+            contador++;
+        }
+    }
+    for (int i = 0; i < this->order; i++)
+    {
+        if (FTD[i] == true)
+        {
+            if (contador - 1 > 0)
+            {
+                output_file << i + 1 << ", ";
+                contador--;
+            }
+            else if (contador - 1 == 0)
+            {
+                output_file << i + 1;
+            }
+        }
+    }
+    output_file << "}" << endl;
+}
+
+
+
+
+
+
 float Graph::floydMarshall(int idSource, int idTarget){
 
 }
