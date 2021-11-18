@@ -138,7 +138,7 @@ void Node::removeAllEdges(){
 
 int Node::removeEdge(int id, bool directed, Node* target_node){
     // Verifies whether the edge to remove is in the node
-    if(this->searchEdge(id)){ // if the edge is in the node do
+    if(this->searchEdge(id)){ // searching if there is a edge between the target_node and the id; the target_node is calling this function
 
         Edge* aux = this->first_edge;
         Edge* previous = nullptr;
@@ -150,7 +150,7 @@ int Node::removeEdge(int id, bool directed, Node* target_node){
 
         }
         // Keeping the integrity of the edge list
-        if(previous != nullptr) // what means that the while occurred at least one
+        if(previous != nullptr) // what means that the while occurred at least once
             previous->setNextEdge(aux->getNextEdge());
 
         else
@@ -165,13 +165,13 @@ int Node::removeEdge(int id, bool directed, Node* target_node){
         delete aux; // deleting the node that we want!;
         // Verifies whether the graph is directed
         if(directed) // verifies if the graph if directed!; if it is
-            this->decrementOutDegree();
+            this->decrementOutDegree(); // se ele é orientado então decrementa somente o grau de saida do que está chamando está função
 
         else{
 
-            this->decrementInDegree();
-            target_node->decrementInDegree();
-
+            this->decrementInDegree(); // se ele não é orientado então decrementa o grau de entrada de cada um
+            target_node->decrementInDegree(); // se ele não é orientado então decrementa o grau de entrada de cada um
+            target_node->total_edge--;
         }
         total_edge--;
         return 1;

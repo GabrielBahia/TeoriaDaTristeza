@@ -106,51 +106,77 @@ void Graph::insertNode(int id)
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
+
     if(searchNode(id) && searchNode(target_id)) // search if the two nodes are in the graph
     {
-        Node *node = getNode(id); // search the actual node that's being called;
-        if(!node->hasEdgeBetween(target_id)) // return if theres is no edge between the node id and the node target_id
+        if(this->directed)
         {
-            node->insertEdge(target_id,weight);  // inserts the edge between the two nodes
+            Node *node = getNode(id); // search the actual node that's being called;
+            if(!node->hasEdgeBetween(target_id)) // return if theres is no edge between the node id and the node target_id
+            {
+                node->insertEdge(target_id,weight);  // inserts the edge between the node we are to the node targeted
+            }
+        }
+        else
+        {
+            Node *node = getNode(id); // search the actual node that's being called;
+            if(!node->hasEdgeBetween(target_id)) // return if theres is no edge between the node id and the node target_id
+            {
+                node->insertEdge(target_id,weight);  // inserts the edge between the two nodes
+                Node *aux = getNode(target_id);
+                aux->insertEdge(node->getId(),node->getWeight()); // inserts the edge between the two nodes;
+            }
         }
     }
 }
 
 void Graph::removeNode(int id)
 {
-
-    if(searchNode(id)) // searching if the node is in the graph;
+    if(this->first_node != NULL) // graph not empty
     {
-        Node *node = getNode(id); // new id receiving the target node;
-        Node *previous = this->first_node; // setting new node as first node;
-        for(previous;previous->getNextNode()!=node;previous = previous->getNextNode()) // just looking for the node;
+        if(searchNode(id)) // node is in the graph
         {
-            cout << "";
-        }
-        if(node == previous ) // if the node i want is equals previous so it is the first node;
-        {
-            if(node == this->last_node) // if the graph only have one node so the first node and the last node are the same
+            if(this->first_node == this->last_node) // theres only one node in the graph and the node we want do delete is in the graph
             {
-                delete previous;
-                first_node = last_node = nullptr;
+                this->first_node = NULL;
+                this->last_node = NULL;
+                order--;
             }
-            else
+            else // theres more than only one node and the node we want to delete is in the graph
             {
-                previous = previous->getNextNode();
-                first_node = previous;
-                delete previous;
+                Node *node = getNode(id); // new id receiving the target node;
+                Node *previous = this->first_node; // setting new node as first node;
+                for(previous;(previous->getNextNode()!=node || previous == node);previous = previous->getNextNode()) // just looking for the node before the targetedNode;
+                {
+                    cout << "";
+                }
+                if(node == previous ) // if the node i want is equals previous so it is the first node;
+                {
+                    previous = previous->getNextNode();
+                    first_node = previous;
+                    delete previous;
+                }
+                else // the first node is not the node that we found
+                {
+                    previous->setNextNode(node->getNextNode());
+                    if(last_node == node) // verifying if the node that we found is not the last node;
+                    {
+                        last_node = nullptr;
+                    }
+                    delete node;
+                }
+                previous = this->first_node; // passando o primeiro vertice para o previous
+                while(previous != nullptr) // enquanto previous não chegar no ultimo vertice
+                {
+                    previous->removeEdge(id,this->directed,previous); // vai chamando todos os vertices e verificando se eles tem aresta com o id(vertice que a gente quer excluir)
+                    previous = previous->getNextNode(); // passa o previous para o prox vertice
+                }
+                node->removeAllEdges(); // remove todas as arestas do vertice que a gente vai deletar, não sei se é necessario já que a gente já vai deletar ele mesmo, mas fica ai
+                delete node; // deleta o node que a gente quer
+                delete previous; // deleta o previous que usamos na função
+                order--; // diminui a ordem do grafo ou seja o número de vértices presente nele, já que excluimos um vértice;
             }
         }
-        else // the first node is not the node that we found
-        {
-            previous->setNextNode(node->getNextNode());
-            if(last_node == node) // verifying if the node that we found is not the last node;
-            {
-                last_node = nullptr;
-            }
-            delete node;
-        }
-        order--;
     }
 
 }
@@ -188,7 +214,7 @@ Node *Graph::getNode(int id)
 //Function that prints a set of edges belongs breadth tree
 
 void Graph::breadthFirstSearch(ofstream &output_file, int id_inicial){ /// No parametro dessa função, não deveria ser o id?
-    if(searchNode(id_inicial))
+   /* if(searchNode(id_inicial))
     {
         Node *node = getNode(id_inicial);
         int total = this->order - node->getNumber(); /// total of nodes in the graph;
@@ -217,107 +243,9 @@ void Graph::breadthFirstSearch(ofstream &output_file, int id_inicial){ /// No pa
             node =
             total--;
         }
-    }
+   } */
 
 }
-
-
-
-
- /*   void GRAPHbfs( Graph G, vertex s)
-{
-   int cnt = 0;
-   for (vertex v = 0; v < G->V; ++v)
-      num[v] = -1;
-   QUEUEinit( G->V);
-   num[s] = cnt++;
-   QUEUEput( s);
-
-   while (!QUEUEempty( )) {
-      vertex v = QUEUEget( );
-      for (link a = G->adj[v]; a != NULL; a = a->next)
-         if (num[a->w] == -1) {
-            num[a->w] = cnt++;
-            QUEUEput( a->w);
-         }
-   }
-   QUEUEfree( );
-}
-
-
-void GRAPHbfs(int target)
-{
-    if(searchNode(target))
-    {
-       int cont = 0;
-     //  Node *visitados = new Node[getOrder()];
-       Node *node = getNode(target);
-       Node *first_Node = this->first_node();
-       Edge *vizinhos = new Edge[getOrder()];
-       vizinhos[0] = node;
-
-       Node *node = getNode(target);
-       Graph *visitados = new Graph(getOrder());
-       Graph *graph = new Graph();
-       Graph[0] = node;
-       visitados[node->getId] = 0;
-
-
-
-
-
-
-       for(int aux = 0; aux < getOrder(); aux++)
-       {
-           visitados[aux] = first_Node->getId();
-           visitados[aux]->setVisitado(-1);
-           first_Node = first_Node->getNextNode();
-       }
-       while(vizinhos[0]!= nullptr)
-        {
-
-
-
-
-       }
-    }
-}
-
-
-
-
-
-}*/
-
-
-/*
-void GRAPHbfs(int target){
-
-int ini, fim;
-int fila[];
-int dist[];
-
-   for(int i=0; i<; i++)
-     dist[i] = INF;
-     dist[orig] = 0;
-
-    ini = fim = 0;
-    fila[fim++] = orig;
-
-   while(ini != fim) {
-    int no = fila[ini++];
-
-     for(int i=0; i<grau[no]; i++) {
-     int viz = G[no][i];
-     if(dist[viz] == INF) {
-        fila[fim++] = viz;
-       dist[viz] = dist[no] + 1;
-    }
-  }
-}
-
-*/
-
 
 /// ATUAL
 
@@ -325,13 +253,13 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
 {
 
     //com o id do vértice acha o vertice que deve ser analisado
-    int idParametro = id;/// - 1;
+    int idParametro = id - 1; // vai pegar a posição exata em um vetor, pois os vetores começam do 0 e possivelmente os vertices do ed1
     //cria um vetor que marca quais vértices ja foram analisados
     bool visitados[this->order];
     //cria o vetor fecho transitivo direto
    /// bool FTD[this->order];
     //cria uma fila que diz quais vertices ainda precisam ser analisados
-    list<int> fila;
+    queue<int> fila;
     //adiciona o vertice inicial nele
     fila.push_front(id);
     ordem.push_front(id);
@@ -347,9 +275,9 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
     {
         //pega um vértice a ser analisado da fila
         int aux = fila.front();
-        int IdAnalisado;/// = aux - 1;
-        Node *V;
-        V = getNode(fila.front());
+        int IdAnalisado = aux - 1; // já que os vetores começam da posição 0, isso possivelmente equivale a passar a posição equivalente do id do vertice no vetor
+        Node *V = getNode(fila.front());
+        ///V = getNode(fila.front());
         //exclui ele da fila
         fila.pop_front();
         //verifica se o vértice a ser analisado ja foi analisado. (se ele ja foi acaba essa iteração)
@@ -362,7 +290,7 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
             //adiciona todos os vértices adjacentes a ele na fila
             for (Edge *it = V->getFirstEdge(); it != NULL; it = it->getNextEdge())
             {
-                int verticeAdjacente = it->getTargetId();
+                int verticeAdjacente = it->getTargetId(); // aqui ele possivelmente tá passando o id do vertice com o qual it(ou seja V) está ligado pela aresta e que tem como id o vértice alvo
                 fila.push_front(verticeAdjacente);
 
             }
