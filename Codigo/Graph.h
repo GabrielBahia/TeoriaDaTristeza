@@ -46,11 +46,17 @@ class Graph{
         //methods phase1
         void topologicalSorting(); // don´t know yet
         void breadthFirstSearch(ofstream& output_file); // busca em largura;
+        bool deephFirstSearch1(int id, int start) // busca em profundidade;
+        void fechoTransitivoDireto(ofstream &output_file, int id); // fecho transitivo direto;
+        void fechoTransitivoIndireto(ofstream &output_file, int id);
         Graph* getVertexInduced(int* listIdNodes); // don´t know yet;
         Graph* agmKuskal(); // don´t know yet;
         Graph* agmPrim(); // don´t know yet;
         float floydMarshall(int idSource, int idTarget); // don´t know yet;
         float dijkstra(int idSource, int idTarget); // don´t know yet;
+
+        //função auxiliar
+        void auxDeepthFirstSearch1(bool verify[], Node *v);
 
         //methods phase1
         float greed(); // don´t know yet;
