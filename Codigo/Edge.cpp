@@ -8,12 +8,12 @@ using namespace std;
 **************************************************************************************************/
 
 // Constructor
-Edge::Edge(int target_id){
+Edge::Edge(int target_id, int idNode){
 
     this->target_id = target_id; // setting the id in the edge
     this->next_edge = nullptr; // setting the next edge as null;
     this->weight = 0; // setting the weight as 0;
-
+    this->idNode = idNode;
 }
 
 // Destructor
@@ -32,6 +32,11 @@ int Edge::getTargetId(){
     return this->target_id; // return the id of the edge;
 
 }
+
+int Edge::getTargetIdNode() {
+    return this->idNode; // posição equivalente no vetor
+}
+
 
 Edge* Edge::getNextEdge(){
 

@@ -42,11 +42,12 @@ class Graph{
         void removeNode(int id); // removing a node of the graph;
         bool searchNode(int id); // searching for a node in the graph(boolean);
         Node* getNode(int id); // getting a node of the graph(node);
+        Node* getNodeId(int id);
 
         //methods phase1
         void topologicalSorting(); // don´t know yet
         void breadthFirstSearch(ofstream& output_file); // busca em largura;
-        bool deephFirstSearch1(int id, int start) // busca em profundidade;
+        bool deephFirstSearch1(int id, int start) // busca em profundidade; é chamada pela fecho transitivo indireta
         void fechoTransitivoDireto(ofstream &output_file, int id); // fecho transitivo direto;
         void fechoTransitivoIndireto(ofstream &output_file, int id);
         Graph* getVertexInduced(int* listIdNodes); // don´t know yet;

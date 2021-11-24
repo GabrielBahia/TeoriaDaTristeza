@@ -91,7 +91,7 @@ Node *Graph::getLastNode() // return the last node of the graph!;
 */
 void Graph::insertNode(int id)
 {
-    Node *node = new Node(id);
+    Node *node = new Node(id,order);
     Node->setNumber(order+1);
     if(order == 0) // if there are no nodes in the graph
     {
@@ -114,7 +114,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
             Node *node = getNode(id); // search the actual node that's being called;
             if(!node->hasEdgeBetween(target_id)) // return if theres is no edge between the node id and the node target_id
             {
-                node->insertEdge(target_id,weight);  // inserts the edge between the node we are to the node targeted
+                node->insertEdge(target_id,weight,getNode(target_id())->getIdNode());  // inserts the edge between the node we are to the node targeted
             }
         }
         else
@@ -207,6 +207,19 @@ Node *Graph::getNode(int id)
     return nullptr; // else it returns nullptr;
 }
 
+Node *Graph::getNodeId(int id)
+{
+    Node *node = this->first_node; // first node to the actual node
+    for( node; node!= nullptr; node = node->getNextNode() )  // searching for the node
+    {
+        if(node->getIdNode() == id) // if it finds it returns the node
+        {
+            return node;
+        }
+    }
+    return nullptr; // else it returns nullptr;
+}
+
 
 
 /// ALL THIS FUNCTIONS HERE WE DONT KNOW ALREADY
@@ -224,11 +237,11 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
 {
 
     //com o id do vértice acha o vertice que deve ser analisado
-    int idParametro = id - 1; // vai pegar a posição exata em um vetor, pois os vetores começam do 0 e possivelmente os vertices do ed1
+    int idParametro = getNode(id)->getIdNode(); // vai pegar a posição exata em um vetor;
     //cria um vetor que marca quais vértices ja foram analisados
     bool visitados[this->order];
     //cria o vetor fecho transitivo direto
-    bool FTD[this->order];
+    bool vet_ftd[this->order];
     //cria uma fila que diz quais vertices ainda precisam ser analisados
     queue<int> fila;
     //adiciona o vertice inicial nele
@@ -238,26 +251,26 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
     for (int i = 0; i < this->order; i++)
     {
         visitados[i] = false;
-        FTD[i] = false;
+        vet_ftd[i] = false;
     }
 
     //começa iteração (enquanto a fila não estiver vazia repita)
     while (!(fila.empty()))
     {
         //pega um vértice a ser analisado da fila
-        int aux = fila.front();
-        int IdAnalisado = aux - 1; // já que os vetores começam da posição 0, isso possivelmente equivale a passar a posição equivalente do id do vertice no vetor
+        ///int aux = fila.front();
+        int IdVet = getNode(fila.front())->getIdNode(); // já que os vetores começam da posição 0, isso possivelmente equivale a passar a posição equivalente do id do vertice no vetor
         Node *V = getNode(fila.front());
         ///V = getNode(fila.front());
         //exclui ele da fila
         fila.pop_front();
         //verifica se o vértice a ser analisado ja foi analisado. (se ele ja foi acaba essa iteração)
-        if (visitados[IdAnalisado] == false)
+        if (visitados[IdVet] == false)
         {
             //marca o vértice como visitado;
-            visitados[IdAnalisado] = true;
+            visitados[IdVet] = true;
             //adiciona ele no vetor fecho transitivo direto
-            FTD[IdAnalisado] = true;
+            vet_ftd[IdVet] = true;
             //adiciona todos os vértices adjacentes a ele na fila
             for (Edge *it = V->getFirstEdge(); it != NULL; it = it->getNextEdge())
             {
@@ -270,24 +283,24 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
 
     //imprimir o FTD
     output_file << "O conjunto FTD do vértice " << id << " é: {";
-    int contador = 0;
+    int cont = 0;
     for (int i = 0; i < this->order; i++)
     {
-        if (FTD[i] == true)
+        if (vet_ftd[i] == true)
         {
-            contador++;
+            cont++;
         }
     }
     for (int i = 0; i < this->order; i++)
     {
-        if (FTD[i] == true)
+        if (vet_ftd[i] == true)
         {
-            if (contador - 1 > 0)
+            if (cont - 1 > 0)
             {
                 output_file << i + 1 << ", ";
-                contador--;
+                cont--;
             }
-            else if (contador - 1 == 0)
+            else if (cont - 1 == 0)
             {
                 output_file << i + 1;
             }
@@ -298,23 +311,23 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
 
 void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 {
-    bool *fti = new bool[this->order];
-    bool node = new bool[this->order];
-    for(int i =0;i<this->order;i++)
+    bool *fti = new bool[this->order]; // vetor para verificar o fecho transitivo indireto
+    bool *node = new bool[this->order]; // vetor para verificar os vizinhos
+    for(int i =0;i<this->order;i++) // passando false para tudo antes de começar
     {
         fti[i] = false;
         verify[i] = false;
     }
 
-    int conta = 0;
+    int conta = 0; // auxilia a descobrir qual o ultimo vertice para quando a gente for printar não colocar uma "," depois do ultimo
 
-    for(Node *p = this->first_node; p!= nullptr; p = p->getNextNode())
+    for(Node *p = this->first_node; p!= nullptr; p = p->getNextNode()) /// percorre todos os vertices
     {
-        if(!verify[p->getId() - 1])
+        if(!verify[p->getIdNode()]) // se a posição do vetor que equivale ao indice do vertice-1 já que a posição do vetor começa do 0, se ela for false o código ocorre, pois ainda não passamos por esse vertice
         {
-            verify[p->getId() - 1] = true;
-            fti[p->getId() - 1 ] = deepthFirstSearch1(id, p->getId());
-            if(fti[p->getId() - 1])
+            verify[p->getIdNode()] = true; // passa true para a posição atual
+            fti[p->getIdNode()] = deepthFirstSearch1(id, p->getId()); // chama a busca em profundidade passando o id que queremos e o id equivalente ao no que estamos no for
+            if(fti[p->getIdNode()]) // se true, ou seja se é possivel desse vertice p chegar ao vertice "id" que é parametro da função então conta++ para auxiliar com a impressão, assim como está escrito ali em cima;
             {
                 conta++;
             }
@@ -331,12 +344,12 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
         {
             if(aux == conta - 1)
             {
-                output_file << (j+1);
+                output_file << (getNode(i)->getId());
                 aux++;
             }
             else
             {
-                output_file << (j+1) << ",";
+                output_file << (getNode(i)->getId()) << ",";
                 aux++;
             }
         }
@@ -347,34 +360,35 @@ bool Graph::deephFirstSearch1(int id, int start)
 {
 
     //Criando vetor para verificar e também vetor predecessor de profundidade
-    bool *verify = new bool[this->order];
+    bool *verify = new bool[this->order]; // vetor do tamanho do grafo
     int conta = 0;
-    int idParametro;
+    int idParametro; // equivale a posição do id do vertice no vetor;
     for(int i = 0;i < this->order; i++)
     {
-        verify[i] = false;
+        verify[i] = false; // passa false para todas as posições
     }
     // cria vetor para auxiliar
     Node *p;
 
     //Para todo v em G;
-    p = getNode(start);
-    idParametro = p->getId() - 1;
+    p = getNode(start); // passa o primeiro vértice do grafo para o Node p;
+    idParametro = p->getIdNode(); /// passa a posição equivalente do id de p em relação ao vetor
     //Se v não visitado então
 
-    if(id != p->getId())
-    {
+    if(id != p->getId()) // se o vértice que foi passado como parametro nessa função que é chamada pela fecho transitivo indireta
+    {                    // não for igual ao id, ele faz isso, caso contrario obviamente é pois já estamos no vértice que queremos buscar
         //Aux-BuscaEmProfundida(G,v);
-        auxDeephFirstSearch1(verify, p);
-    }
+        auxDeephFirstSearch1(verify, p); // passa o vetor e o node que estamos começando, pode ser 0,1,2 ... depende de onde o for
+    }                                    // da fecho transitivo indireto está chamando
     else
     {
-        return true;
+        return true; // retorna true caso o vértice em que estamos é o vertice que queremos
     }
 
     //Se encontrou
-    if(verify[id - 1])
-    {
+    if(verify[getNode(id)->getIdNode()]) // dps de passar pela aux ele verifica se foi mudado por parametro a posição equivalente
+    {                  // ao id que queremos no vetor, caso a gente queira o vertice 3 e passamos o vertice 8 que está ligado
+                        // aos vértices 9 e 10, somente as posições 7,8,9 receberiam true, ou seja 8 não chega ao vértice 3, ou seja não entre nesse if
         delete[] verify;
         return true;
     }
@@ -382,20 +396,20 @@ bool Graph::deephFirstSearch1(int id, int start)
     return false;
 }
 
-void Graph::auxDeepthFirstSearch1(bool verify[], Node *v, bool verify2[])
+void Graph::auxDeepthFirstSearch1(bool verify[], Node *v)
 {
     //Protocolo inicial
-    int idParametro = v->getId() - 1;
+    int idParametro = v->getIdNode(); /// pega a posição equivalente do id desse vértice no vetor;
 
     Node *aux;
-    //Marca v como visitado;
 
-    verify[idParametro] = true;
+    //Marca v como visitado;
+    verify[idParametro] = true; /// marca o vértice que estamos como visitado;
 
     //Para todo w em Adj(v)
     for(Edge *p = v->getFirstEdge(); p != NULL; p = p->getNextEdge())
     {
-        id Parametro = p->getTargetId() - 1;
+        id Parametro = p->getTargetIdNode(); /// pega a posição no vetor dos vizinhos que a gente quer verificar
         //Se w não visitado então
 
         if(!verify[idParametro])
@@ -406,7 +420,15 @@ void Graph::auxDeepthFirstSearch1(bool verify[], Node *v, bool verify2[])
             auxDeephFirstSearch1(verify, aux);
         }
     }
+    /*
+        Explicando essa função acima: se por exemplo nós chamamos atraves da deepthFirstSearch o vértice 8
+        que é ligado aos vértices 9 e 10, porém estamos buscando o vértice 3, ele retornara para a fecho
+        transitivo indireto falso, pois na linha 355 nós passamos para todos os vértices falso, na chamada
+        da função na qual o vértice 8 foi chamado, logo após nós chamamos essa função aq passando o vetor com
+        tudo falso e o vértice 8, como ele está ligado ao 9 e 10, somente esses 3 irão receber true, oq acabara
+        fazendo com que a posição 2 ou seja (3-1) que equivale a posição do vetor, continue false
 
+    */
 }
 
 float Graph::floydMarshall(int idSource, int idTarget){

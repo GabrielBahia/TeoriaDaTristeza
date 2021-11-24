@@ -9,7 +9,7 @@ using namespace std;
 **************************************************************************************************/
 
 // Constructor
-Node::Node(int id){
+Node::Node(int id,int order){
 
     this->total_edge = 0;
     this->id = id; // id of the node!;
@@ -19,8 +19,8 @@ Node::Node(int id){
     this->first_edge = nullptr; // set the first edge as null!;
     this->last_edge = nullptr; // set the last edge as null!;
     this->next_node = nullptr; // set the next node as null!;
-    int cor;
-    int number;
+    this->idNode = order;
+
 };
 
 // Destructor
@@ -81,6 +81,11 @@ Node* Node::getNextNode(){
 
 }
 
+int Node::getIdNode() {
+    return this->idNode; // retorna o ID que eu quero, ou seja não há erro na hora de passar esses valores para um vetor de verificação de visitado
+}
+
+
 // Setters
 
 void Node::setNextNode(Node* next_node){
@@ -96,11 +101,11 @@ void Node::setWeight(float weight){
 }
 
 // Other methods
-void Node::insertEdge(int target_id, float weight){
+void Node::insertEdge(int target_id, float weight, int idNode){
     // Verifies whether there are at least one edge in the node
     if(this->first_edge != nullptr){ // if the first edge isn't null or in other words if the graph is not empty do
         // Allocating the new edge and keeping the integrity of the edge list
-        Edge* edge = new Edge(target_id); //
+        Edge* edge = new Edge(target_id, idNode); //
         edge->setWeight(weight);
         this->last_edge->setNextEdge(edge);
         this->last_edge = edge;
@@ -229,23 +234,4 @@ Edge* Node::hasEdgeBetween(int target_id)
             return auxEdge;
     }
     return nullptr;
-}
-
-void Node::setNumber(int number) {
-    this->number = number;
-
-}
-
-void Node::getNumber() {
-    return this->number;
-}
-
-void Node::set_Cor(int i)
-{
-    cor = i;
-}
-
-int Node::get_Cor()
-{
-    return cor;
 }

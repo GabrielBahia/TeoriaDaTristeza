@@ -16,6 +16,7 @@ class Edge{
         Edge* next_edge; // set the next edge to the actual edge;
         float weight; // set the weight of the edge;
         int total_edges;
+        int idNode; /// posição equivalente no vetor;
 
     public:
         // Constructor

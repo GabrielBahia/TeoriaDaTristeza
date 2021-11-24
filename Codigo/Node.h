@@ -21,11 +21,10 @@ class Node{
         unsigned int out_degree;
         float weight;
         Node* next_node;
-        int number;
-        int cor;
+        int idNode;
     public:
         // Constructor
-        Node(int id);
+        Node(int id, int order);
         // Destructor
         ~Node();
         // Getters
@@ -36,12 +35,13 @@ class Node{
         int getOutDegree();
         float getWeight();
         Node* getNextNode();
+        int getIdNode();
         // Setters
         void setNextNode(Node* node);
         void setWeight(float weight);
         // Other methods
         bool searchEdge(int target_id);
-        void insertEdge(int target_id, float weight);
+        void insertEdge(int target_id, float weight, int idNode);
         void removeAllEdges();
         int removeEdge(int id, bool directed, Node* target_node);
         void incrementOutDegree();
@@ -50,10 +50,6 @@ class Node{
         void decrementInDegree();
         Edge* hasEdgeBetween(int target_id);
         // Auxiliar methods
-        void set_Cor(int i);
-        int get_Cor();
-        void setNumber(int number);
-        void getNumber();
 };
 
 #endif // NODE_H_INCLUDED
