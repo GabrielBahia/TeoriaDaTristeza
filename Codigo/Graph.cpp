@@ -22,7 +22,7 @@ using namespace std;
 Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
 {
 
-    this->order = order; // numbers of nodes
+    this->order = 0; // numbers of nodes
     this->number_edges = 0; // number of edges
     this->directed = directed; // if it's directed;
     this->weighted_edge = weighted_edge; // if it has weight on its edges
@@ -180,6 +180,17 @@ void Graph::removeNode(int id)
                 delete node; // deleta o node que a gente quer
                 delete previous; // deleta o previous que usamos na função
                 order--; // diminui a ordem do grafo ou seja o número de vértices presente nele, já que excluimos um vértice;
+                if(order > 0)
+                {
+                    for(Node *aux = this->first_node; aux != NULL; aux = aux->getNextNode())
+                  {
+                      if(aux->idNode == 0) {
+
+                      } else {
+                          aux->idNode--;
+                      }
+                   }
+                }
             }
         }
     }
@@ -438,6 +449,14 @@ void Graph::auxDeepthFirstSearch1(bool verify[], Node *v)
 
 float Graph::floydMarshall(int idSource, int idTarget){
 
+
+
+
+
+
+
+
+
 }
 
 
@@ -510,7 +529,6 @@ float Graph::dijkstra(int orig, int dest){
     }
 
 }
-
 //function that prints a topological sorting
 void topologicalSorting(){
 
