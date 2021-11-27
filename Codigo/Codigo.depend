@@ -51,7 +51,7 @@
 	"Edge.h"
 	<iostream>
 
-1636990275 e:\desktop\trab_grafos\teoriadatristeza\codigo\edge.h
+1637772029 e:\desktop\trab_grafos\teoriadatristeza\codigo\edge.h
 
 1636990275 source:e:\desktop\trab_grafos\teoriadatristeza\codigo\graph.cpp
 	"Graph.h"
@@ -69,13 +69,13 @@
 	<iomanip>
 	<algorithm>
 
-1636990275 e:\desktop\trab_grafos\teoriadatristeza\codigo\graph.h
+1637772029 e:\desktop\trab_grafos\teoriadatristeza\codigo\graph.h
 	"Node.h"
 	<fstream>
 	<stack>
 	<list>
 
-1636990275 e:\desktop\trab_grafos\teoriadatristeza\codigo\node.h
+1637772029 e:\desktop\trab_grafos\teoriadatristeza\codigo\node.h
 	"Edge.h"
 
 1636990275 source:e:\desktop\trab_grafos\teoriadatristeza\codigo\main.cpp

@@ -28,6 +28,7 @@ Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
     this->weighted_edge = weighted_edge; // if it has weight on its edges
     this->weighted_node = weighted_node; // if it has weight on its nodes
     this->first_node = this->last_node = nullptr; // first and last node starts as null cause theres is nothing in the start
+    this->negative_edge = false;
 }
 
 // Destructor
@@ -109,6 +110,9 @@ void Graph::insertEdge(int id, int target_id, float weight)
 
     if(searchNode(id) && searchNode(target_id)) // search if the two nodes are in the graph
     {
+        if(weight < 0)
+            this->negative_edge = true; // verifica se o peso da aresta é negativa
+
         if(this->directed)
         {
             Node *node = getNode(id); // search the actual node that's being called;
@@ -125,6 +129,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
                 node->insertEdge(target_id,weight);  // inserts the edge between the two nodes
                 Node *aux = getNode(target_id);
                 aux->insertEdge(node->getId(),node->getWeight()); // inserts the edge between the two nodes;
+
             }
         }
     }
@@ -437,7 +442,72 @@ float Graph::floydMarshall(int idSource, int idTarget){
 
 
 
-float Graph::dijkstra(int idSource, int idTarget){
+float Graph::dijkstra(int orig, int dest){
+
+
+       if(testNegativos == true)
+       {
+
+		int dist[this->getOrder()];  // vetor de distâncias
+		bool visitados[this->getOrder()]; // vetor de visitados para não repetir vertices já expandido
+		// fila de prioridades de pair (distancia, vértice)
+		priority_queue < pair<int, int>,
+                    vector<pair<int, int> >, greater<pair<int, int> > > pq;
+
+		// inicia o vetor de distâncias e visitados
+		for(int i = 0; i < this->getOrder(); i++)
+		{
+			dist[i] = INFINITO;
+			visitados[i] = false;
+		}
+
+		// a distância de orig para orig é 0
+		dist[orig] = 0;
+
+		// insere na fila
+		pq.push(make_pair(dist[orig], orig));
+
+		// loop do algoritmo
+		while(!pq.empty())
+		{
+			pair<int, int> p = pq.top(); // extrai o pair do topo
+			//int u = p.second; // obtém o vértice do pair
+			Node *u = getNode(p.second);
+			pq.pop(); // remove da fila
+
+			// verifica se o vértice não foi expandido
+			if(visitados[u->getId()] == false)
+			{
+				// marca como visitado
+				visitados[u->getId()] = true;
+
+				//list<pair<int, int> >::iterator it;
+
+				// percorre os vértices "v" adjacentes de "u"
+				//Edge *p = v->getFirstEdge(); p != NULL; p = p->getNextEdge()
+				for(Edge *aux = u->getFirstEdge(); aux != NULL; aux = aux->getNextEdge())
+				{
+					// obtém o vértice adjacente e o custo da aresta
+					Node *v = getNode(p->getTargetId());
+					int custo_aresta = aux->getWeight();
+
+					// relaxamento (u, v)
+					if(dist[v] > (dist[u] + custo_aresta))
+					{
+					    idInteiro = v->getId();
+						// atualiza a distância de "v" e insere na fila
+						dist[v] = dist[u] + custo_aresta;
+						pq.push(make_pair(dist[v], idInteiro));
+					}
+				}
+			}
+		}
+
+		// retorna a distância mínima até o destino
+		return dist[dest];
+
+       }
+    }
 
 }
 
