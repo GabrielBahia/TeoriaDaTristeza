@@ -34,7 +34,7 @@ int Edge::getTargetId(){
 }
 
 int Edge::getTargetIdNode() {
-    return this->idNode; // posição equivalente no vetor
+    return this->idNode; // posiï¿½ï¿½o equivalente no vetor
 }
 
 

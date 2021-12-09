@@ -14,7 +14,7 @@ using namespace std;
 
 Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weightedNode){
 
-    //Variáveis para auxiliar na criação dos nós no Grafo
+    //Variï¿½veis para auxiliar na criaï¿½ï¿½o dos nï¿½s no Grafo
     int idNodeSource;
     int idNodeTarget;
     int order;
@@ -76,7 +76,7 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
 
 Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, int weightedNode){
 
-    //Variáveis para auxiliar na criação dos nós no Grafo
+    //Variï¿½veis para auxiliar na criaï¿½ï¿½o dos nï¿½s no Grafo
     int idNodeSource;
     int idNodeTarget;
     int order;
@@ -104,13 +104,13 @@ int menu(){
 
     cout << "MENU" << endl;
     cout << "----" << endl;
-    cout << "[1] Subgrafo induzido por conjunto de vértices" << endl;
-    cout << "[2] Caminho Mínimo entre dois vértices - Dijkstra" << endl;
-    cout << "[3] Caminho Mínimo entre dois vértices - Floyd" << endl;
-    cout << "[4] Árvore Geradora Mínima de Prim" << endl;
-    cout << "[5] Árvore Geradora Mínima de Kruskal" << endl;
+    cout << "[1] Subgrafo induzido por conjunto de vï¿½rtices" << endl;
+    cout << "[2] Caminho Mï¿½nimo entre dois vï¿½rtices - Dijkstra" << endl;
+    cout << "[3] Caminho Mï¿½nimo entre dois vï¿½rtices - Floyd" << endl;
+    cout << "[4] ï¿½rvore Geradora Mï¿½nima de Prim" << endl;
+    cout << "[5] ï¿½rvore Geradora Mï¿½nima de Kruskal" << endl;
     cout << "[6] Imprimir caminhamento em largura" << endl;
-    cout << "[7] Imprimir ordenacao topológica" << endl;
+    cout << "[7] Imprimir ordenacao topolï¿½gica" << endl;
     cout << "[8] Algoritmo Guloso" << endl;
     cout << "[9] Algoritmo Guloso Randomizado " << endl;
     cout << "[10] Algoritmo Guloso Randomizado Reativo" << endl;
@@ -126,18 +126,18 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
     switch (selecao) {
 
-        //Subgrafo induzido por um conjunto de vértices X;
+        //Subgrafo induzido por um conjunto de vï¿½rtices X;
         case 1:{
 
             break;
         }
-            //Caminho mínimo entre dois vértices usando Dijkstra;
+            //Caminho mï¿½nimo entre dois vï¿½rtices usando Dijkstra;
         case 2:{
 
             break;
         }
 
-            //Caminho mínimo entre dois vértices usando Floyd;
+            //Caminho mï¿½nimo entre dois vï¿½rtices usando Floyd;
         case 3:{
 
             break;
@@ -162,7 +162,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
             break;
         }
-            //Ordenação Topologica;
+            //Ordenaï¿½ï¿½o Topologica;
         case 7:{
 
 
@@ -201,7 +201,7 @@ int mainMenu(ofstream& output_file, Graph* graph){
 
 int main(int argc, char const *argv[]) {
 
-    //Verificação se todos os parâmetros do programa foram entrados
+    //Verificaï¿½ï¿½o se todos os parï¿½metros do programa foram entrados
     if (argc != 6) {
 
         cout << "ERROR: Expecting: ./<program_name> <input_file> <output_file> <directed> <weighted_edge> <weighted_node> " << endl;
@@ -243,7 +243,7 @@ int main(int argc, char const *argv[]) {
     //Fechando arquivo de entrada
     input_file.close();
 
-    //Fechando arquivo de saída
+    //Fechando arquivo de saï¿½da
     output_file.close();
 
     return 0;
