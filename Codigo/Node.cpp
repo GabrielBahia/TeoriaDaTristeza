@@ -82,7 +82,7 @@ Node* Node::getNextNode(){
 }
 
 int Node::getIdNode() {
-    return this->idNode; // retorna o ID que eu quero, ou seja não há erro na hora de passar esses valores para um vetor de verificação de visitado
+    return this->idNode; // retorna o ID que eu quero, ou seja nï¿½o hï¿½ erro na hora de passar esses valores para um vetor de verificaï¿½ï¿½o de visitado
 }
 
 
@@ -113,7 +113,7 @@ void Node::insertEdge(int target_id, float weight, int idNode){
     }
     else{
          // Allocating the new edge and keeping the integrity of the edge list
-        this->first_edge = new Edge(target_id);
+        this->first_edge = new Edge(target_id, idNode);
         this->first_edge->setWeight(weight);
         this->last_edge = this->first_edge;
 
@@ -170,12 +170,12 @@ int Node::removeEdge(int id, bool directed, Node* target_node){
         delete aux; // deleting the node that we want!;
         // Verifies whether the graph is directed
         if(directed) // verifies if the graph if directed!; if it is
-            this->decrementOutDegree(); // se ele é orientado então decrementa somente o grau de saida do que está chamando está função
+            this->decrementOutDegree(); // se ele ï¿½ orientado entï¿½o decrementa somente o grau de saida do que estï¿½ chamando estï¿½ funï¿½ï¿½o
 
         else{
 
-            this->decrementInDegree(); // se ele não é orientado então decrementa o grau de entrada de cada um
-            target_node->decrementInDegree(); // se ele não é orientado então decrementa o grau de entrada de cada um
+            this->decrementInDegree(); // se ele nï¿½o ï¿½ orientado entï¿½o decrementa o grau de entrada de cada um
+            target_node->decrementInDegree(); // se ele nï¿½o ï¿½ orientado entï¿½o decrementa o grau de entrada de cada um
             target_node->total_edge--;
         }
         total_edge--;

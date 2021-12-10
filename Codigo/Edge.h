@@ -16,17 +16,18 @@ class Edge{
         Edge* next_edge; // set the next edge to the actual edge;
         float weight; // set the weight of the edge;
         int total_edges;
-        int idNode; /// posição equivalente no vetor;
+        int idNode; /// posiï¿½ï¿½o equivalente no vetor;
 
     public:
         // Constructor
-        Edge(int target_id); // set the id of the edge in the class;
+        Edge(int target_id, int idNode); // set the id of the edge in the class;
         // Destructor
         ~Edge();
         // Getters
         int getTargetId(); // return the id of the edge;
         Edge* getNextEdge(); // return the next edge of the actual edge;
         float getWeight(); // return the weight of the actual edge;
+        int getTargetIdNode();
         // Setters
         void setNextEdge(Edge* edge); // set the next edge to the actual edge;
         void setWeight(float weight); // set the weight of the actual edge;

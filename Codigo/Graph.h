@@ -22,6 +22,7 @@ class Graph{
         bool weighted_node; // weighted node?;
         Node* first_node; // first node of the graph;
         Node* last_node; // last node of the graph;
+        bool negative_edge;
 
     public:
         //Constructor
@@ -45,24 +46,24 @@ class Graph{
         Node* getNodeId(int id);
 
         //methods phase1
-        void topologicalSorting(); // don´t know yet
+        void topologicalSorting(); // donï¿½t know yet
         void breadthFirstSearch(ofstream& output_file); // busca em largura;
-        bool deephFirstSearch1(int id, int start) // busca em profundidade; é chamada pela fecho transitivo indireta
+        bool deephFirstSearch1(int id, int start); // busca em profundidade; ï¿½ chamada pela fecho transitivo indireta
         void fechoTransitivoDireto(ofstream &output_file, int id); // fecho transitivo direto;
         void fechoTransitivoIndireto(ofstream &output_file, int id);
-        Graph* getVertexInduced(int* listIdNodes); // don´t know yet;
-        Graph* agmKuskal(); // don´t know yet;
-        Graph* agmPrim(); // don´t know yet;
-        float floydMarshall(int idSource, int idTarget); // don´t know yet;
-        float dijkstra(int idSource, int idTarget); // don´t know yet;
+        Graph* getVertexInduced(int* listIdNodes); // donï¿½t know yet;
+        Graph* agmKuskal(); // donï¿½t know yet;
+        Graph* agmPrim(); // donï¿½t know yet;
+        float floydMarshall(int idSource, int idTarget); // donï¿½t know yet;
+        float dijkstra(int idSource, int idTarget); // donï¿½t know yet;
 
-        //função auxiliar
+        //funï¿½ï¿½o auxiliar
         void auxDeepthFirstSearch1(bool verify[], Node *v);
 
         //methods phase1
-        float greed(); // don´t know yet;
-        float greedRandom(); // don´t know yet;
-        float greedRactiveRandom(); // don´t know yet;
+        float greed(); // donï¿½t know yet;
+        float greedRandom(); // donï¿½t know yet;
+        float greedRactiveRandom(); // donï¿½t know yet;
 
 };
 
