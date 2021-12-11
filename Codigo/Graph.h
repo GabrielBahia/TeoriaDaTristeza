@@ -27,6 +27,7 @@ class Graph{
     public:
         //Constructor
         Graph(int order, bool directed, bool weighted_edge, bool weighted_node);
+        Graph(bool directed, bool weighted_edge, bool weighted_node);
         //Destructor
         ~Graph();
         //Getters
@@ -56,10 +57,14 @@ class Graph{
         Graph* agmPrim(); // don�t know yet;
         float floydMarshall(int idSource, int idTarget); // don�t know yet;
         float dijkstra(int idSource, int idTarget); // don�t know yet;
-
+        int **floyd(int tam, int **dist);
         //fun��o auxiliar
         void auxDeepthFirstSearch1(bool verify[], Node *v);
-
+        bool graphCiclo();
+        Graph *getVertexInduced(int *listIdNodes, int tam);
+        void getWeithlessEdge(int *nohAresta);
+        bool verificaSubarvore(int v1, int v2, Graph *subGrafo);
+        int getWeightFromEdgeNodeCombo(int idNoh, int idAresta, Graph *subGrafo);
         //methods phase1
         float greed(); // don�t know yet;
         float greedRandom(); // don�t know yet;

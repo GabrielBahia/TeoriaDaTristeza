@@ -39,6 +39,7 @@ class Node{
         // Setters
         void setNextNode(Node* node);
         void setWeight(float weight);
+        void setIdNode(int idNode);
         // Other methods
         bool searchEdge(int target_id);
         void insertEdge(int target_id, float weight, int idNode);

@@ -235,3 +235,7 @@ Edge* Node::hasEdgeBetween(int target_id)
     }
     return nullptr;
 }
+
+void Node::setIdNode(int idNode) {
+    this->idNode--;
+}
