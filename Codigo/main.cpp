@@ -128,7 +128,6 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
         //Subgrafo induzido por um conjunto de v�rtices X;
         case 1:{
-
             break;
         }
             //Caminho m�nimo entre dois v�rtices usando Dijkstra;
@@ -159,7 +158,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
             //Busca em largura;
         case 6:{
-
+            graph->fechoTransitivoIndireto(output_file, 1);
             break;
         }
             //Ordena��o Topologica;

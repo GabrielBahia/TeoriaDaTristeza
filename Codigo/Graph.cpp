@@ -23,7 +23,7 @@ using namespace std;
 Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
 {
 
-    this->order = 0;                              // numbers of nodes
+    this->order = order;                              // numbers of nodes
     this->number_edges = 0;                       // number of edges
     this->directed = directed;                    // if it's directed;
     this->weighted_edge = weighted_edge;          // if it has weight on its edges
@@ -352,7 +352,7 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 
     output_file << "O fecho transitivo indireto de " << id << "�: ";
     output_file << "{";
-
+    output_file << this->order;
     int aux = 0;
     for (int i = 0; i < this->order; i++)
     {
@@ -612,6 +612,7 @@ int Graph::dijkstra(int orig, int dest)
         // retorna a dist�ncia m�nima at� o destino
         return dist[dest];
     }
+    return 0;
 }
 
 //function that prints a topological sorting
