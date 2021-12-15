@@ -55,8 +55,8 @@ class Graph{
         Graph* getVertexInduced(int* listIdNodes); // don�t know yet;
         Graph* agmKuskal(ofstream &output_file); // don�t know yet;
         Graph* agmPrim(ofstream &output_file); // don�t know yet;
-        float floydMarshall(ofstream &output_file, int idSource, int idTarget); // don�t know yet;
-        float dijkstra(int idSource, int idTarget); // don�t know yet;
+        void floydMarshall(ofstream &output_file, int idSource, int idTarget); // don�t know yet;
+        int dijkstra(int idSource, int idTarget); // don�t know yet;
         int **floyd(int tam, int **dist);
         //fun��o auxiliar
         void auxDeepthFirstSearch1(bool verify[], Node *v);

@@ -447,7 +447,7 @@ void Graph::auxDeepthFirstSearch1(bool verify[], Node *v)
     */
 }
 
-float Graph::floydMarshall(ofstream &output_file, int idSource, int idTarget)
+void Graph::floydMarshall(ofstream &output_file, int idSource, int idTarget)
 {
     int tam = this->order;               // recebe ordem do grafo
     Node *auxNode = this->first_node;    // recebe primeiro no
@@ -545,7 +545,7 @@ int **Graph::floyd(int tam, int **dist)
     return dist;
 }
 
-float Graph::dijkstra(int orig, int dest)
+int Graph::dijkstra(int orig, int dest)
 {
 
     if (negative_edge != true)
