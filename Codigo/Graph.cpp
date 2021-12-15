@@ -594,7 +594,7 @@ float Graph::dijkstra(int orig, int dest)
                 for (Edge *aux = u->getFirstEdge(); aux != NULL; aux = aux->getNextEdge())
                 {
                     // obt�m o v�rtice adjacente e o custo da aresta
-                    Node *v1 = getNode(p->getTargetId());
+                    Node *v = aux;
                     int custo_aresta = aux->getWeight();
 
                     // relaxamento (u, v)
