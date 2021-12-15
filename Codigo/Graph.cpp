@@ -447,7 +447,7 @@ void Graph::auxDeepthFirstSearch1(bool verify[], Node *v)
     */
 }
 
-float Graph::floydMarshall(int idSource, int idTarget)
+float Graph::floydMarshall(ofstream &output_file, int idSource, int idTarget)
 {
     int tam = this->order;               // recebe ordem do grafo
     Node *auxNode = this->first_node;    // recebe primeiro no
@@ -594,16 +594,16 @@ float Graph::dijkstra(int orig, int dest)
                 for (Edge *aux = u->getFirstEdge(); aux != NULL; aux = aux->getNextEdge())
                 {
                     // obt�m o v�rtice adjacente e o custo da aresta
-                    Node *v = aux;
+
+                    int v = aux->getTargetId();
                     int custo_aresta = aux->getWeight();
 
                     // relaxamento (u, v)
-                    if (dist[v->getId()] > (dist[u->getId()] + custo_aresta))
+                    if (dist[v] > (dist[u->getId()] + custo_aresta))
                     {
-                        int idInteiro = v->getId();
                         // atualiza a dist�ncia de "v" e insere na fila
-                        dist[v->getId()] = dist[u->getId()] + custo_aresta;
-                        pq.push(make_pair(dist[v->getId()], idInteiro));
+                        dist[v] = dist[u->getId()] + custo_aresta;
+                        pq.push(make_pair(dist[v], v));
                     }
                 }
             }
@@ -615,7 +615,7 @@ float Graph::dijkstra(int orig, int dest)
 }
 
 //function that prints a topological sorting
-void Graph::topologicalSorting()
+void Graph::topologicalSorting(ofstream &output_file)
 {
     list<Node*> listaNos;
     list<int> listaTopologica;
@@ -686,7 +686,7 @@ void breadthFirstSearch(ofstream &output_file)
 {
 }
 
-Graph *Graph::agmPrim()
+Graph *Graph::agmPrim(ofstream &output_file)
 {
     int tamanho, x;
     cout << "Digite o numero de vértices de 1 a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
@@ -702,7 +702,7 @@ Graph *Graph::agmPrim()
     Graph *grafoVI;
     grafoVI = this->getVertexInduced(listaNos, tamanho);
 
-    Graph *grafoX = new Graph(this->directed, this->weighted_edge, this->weighted_node);
+    Graph *grafoX = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
     Node *p;
     //para todo noh da lista faça
     for (p = grafoVI->getFirstNode(); p != NULL; p = p->getNextNode())
@@ -783,7 +783,7 @@ Graph *Graph::agmPrim()
 Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
 {
 
-    Graph *subGrafo = new Graph(this->directed, this->weighted_edge, this->weighted_node);
+    Graph *subGrafo = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
     //para todo noh da lista faça
 
     for (int i = 0; i < tam; i++)
@@ -822,7 +822,7 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
     return subGrafo;
 }
 
-Graph *Graph::agmKuskal()
+Graph *Graph::agmKuskal(ofstream &output_file)
 {
     //transformar o abaixo em codigo e usar o vetor listaNos como parametro
     int tamanho, x;
@@ -843,7 +843,7 @@ Graph *Graph::agmKuskal()
     Graph *grafoVI;
     grafoVI = this->getVertexInduced(listaNos, tamanho);
 
-    Graph *grafoAux = new Graph(this->directed, this->weighted_edge, this->weighted_node); //vai vira o grafoVI
+    Graph *grafoAux = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node); //vai vira o grafoVI
 
     int *nohArestas = new int[3];
     int totalArestas;
@@ -892,7 +892,7 @@ Graph *Graph::agmKuskal()
 
     //Criar |V| subárvores contendo cada uma um nó
     //isolado.
-    Graph *arvoreGerMin = new Graph(this->directed, this->weighted_edge, this->weighted_node);
+    Graph *arvoreGerMin = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
     for (sup = grafoAux->getFirstNode(); sup != NULL; sup = sup->getNextNode())
     {
         arvoreGerMin->insertNode(sup->getId());

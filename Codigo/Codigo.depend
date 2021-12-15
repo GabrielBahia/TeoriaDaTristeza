@@ -53,7 +53,7 @@
 
 1639529329 e:\desktop\trab_grafos\teoriadatristeza\codigo\edge.h
 
-1636990275 source:e:\desktop\trab_grafos\teoriadatristeza\codigo\graph.cpp
+1639589514 source:e:\desktop\trab_grafos\teoriadatristeza\codigo\graph.cpp
 	"Graph.h"
 	"Node.h"
 	"Edge.h"
@@ -68,8 +68,9 @@
 	<float.h>
 	<iomanip>
 	<algorithm>
+	<limits.h>
 
-1639529329 e:\desktop\trab_grafos\teoriadatristeza\codigo\graph.h
+1639588720 e:\desktop\trab_grafos\teoriadatristeza\codigo\graph.h
 	"Node.h"
 	<fstream>
 	<stack>
