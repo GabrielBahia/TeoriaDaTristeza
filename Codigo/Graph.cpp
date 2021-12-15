@@ -594,16 +594,16 @@ float Graph::dijkstra(int orig, int dest)
                 for (Edge *aux = u->getFirstEdge(); aux != NULL; aux = aux->getNextEdge())
                 {
                     // obt�m o v�rtice adjacente e o custo da aresta
-                    Node *v = getNode(p->getTargetId());
+                    Node *v1 = getNode(p->getTargetId());
                     int custo_aresta = aux->getWeight();
 
                     // relaxamento (u, v)
-                    if (dist[v] > (dist[u] + custo_aresta))
+                    if (dist[v->getId()] > (dist[u->getId()] + custo_aresta))
                     {
-                        idInteiro = v->getId();
+                        int idInteiro = v->getId();
                         // atualiza a dist�ncia de "v" e insere na fila
-                        dist[v] = dist[u] + custo_aresta;
-                        pq.push(make_pair(dist[v], idInteiro));
+                        dist[v->getId()] = dist[u->getId()] + custo_aresta;
+                        pq.push(make_pair(dist[v->getId()], idInteiro));
                     }
                 }
             }
@@ -617,7 +617,7 @@ float Graph::dijkstra(int orig, int dest)
 //function that prints a topological sorting
 void Graph::topologicalSorting()
 {
-    list<Node*> listaNos; 
+    list<Node*> listaNos;
     list<int> listaTopologica;
     if (this->graphCiclo())// verifica se o grafo e aciclico ou nao
     {
@@ -633,7 +633,7 @@ void Graph::topologicalSorting()
                     listaNos.push_back(auxNo); //coloca os nos corretos na fila
                 }
             }
-            while (!listaNos.empty())// enquanto lista e vazia 
+            while (!listaNos.empty())// enquanto lista e vazia
             {
                 Node *aux = listaNos.front();
                 listaNos.pop_front(); //remove da lista
@@ -643,20 +643,20 @@ void Graph::topologicalSorting()
                     auxNo = this->getNode(auxAres->getTargetId()); //pega o no vizinho
                     auxNo->decrementInDegree(); //decrementa o grau de entrada
                     if (auxNo->getInDegree()==0) //se a entrada = 0
-                    {    
+                    {
                         listaNos.push_back(auxNo);
                     }
-                    
+
                 }
             }
-            //imprimindo ordenaçao a classificação topologica 
+            //imprimindo ordenaçao a classificação topologica
             output_file << "Ordenação Topologica :" << endl;
             for(list<int>::iterator i = listaTopologica.begin(); i != listaTopologica.end(); i++)
             {
                     if(listaTopologica.size() == this->getOrder())
                     output_file << (*i) << endl;
             }
-           
+
         }
 }
 
@@ -897,7 +897,7 @@ Graph *Graph::agmKuskal()
     {
         arvoreGerMin->insertNode(sup->getId());
     }
-    
+
     //F ¬ Æ
     //Cria lista vazia
     list<pair<int, int>> listaAux;
