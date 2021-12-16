@@ -23,7 +23,7 @@ using namespace std;
 Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
 {
 
-    this->order = order;                              // numbers of nodes
+    this->order = 0;                              // numbers of nodes
     this->number_edges = 0;                       // number of edges
     this->directed = directed;                    // if it's directed;
     this->weighted_edge = weighted_edge;          // if it has weight on its edges
@@ -92,7 +92,7 @@ Node *Graph::getLastNode() // return the last node of the graph!;
     The outdegree attribute of nodes is used as a counter for the number of edges in the graph.
     This allows the correct updating of the numbers of edges in the graph being directed or not.
 */
-void Graph::insertNode(int id)
+void Graph::insertNode(int id, ofstream &output_file)
 {
     Node *node = new Node(id, order);
     ///node->setNumber(order + 1);
@@ -106,11 +106,16 @@ void Graph::insertNode(int id)
         last_node = node;             // set the last node as the new node;
     }
     order++; // increase the order of the graph
+    output_file << endl;
+    output_file << "entrou";
+    output_file << endl;
+    output_file << node->getId();
 }
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
-    if (!searchNode(id)) 
+    
+    /*if (!searchNode(id)) 
     {
        insertNode(id); 
     }
@@ -118,7 +123,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
     if (!searchNode(target_id)) 
     {
        insertNode(target_id); 
-    }
+    }*/
  
 
     if (searchNode(id) && searchNode(target_id)) // search if the two nodes are in the graph
@@ -723,7 +728,7 @@ Graph *Graph::agmPrim(ofstream &output_file)
     //para todo noh da lista faça
     for (p = grafoVI->getFirstNode(); p != NULL; p = p->getNextNode())
     {
-        grafoX->insertNode(p->getId());
+        //grafoX->insertNode(p->getId());
     }
 
     //bool adicionados[this->order]; //marca quais vértices ja possuem um caminho
@@ -808,7 +813,7 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
         //incluir noh no subgrafo
         if (this->searchNode(listIdNodes[i]))
         {
-            subGrafo->insertNode(listIdNodes[i]);
+            //subGrafo->insertNode(listIdNodes[i]);
         }
     }
     Node *p;
@@ -874,7 +879,7 @@ Graph *Graph::agmKuskal(ofstream &output_file)
 
     for (sup = grafoVI->getFirstNode(); sup != NULL; sup = sup->getNextNode())
     {
-        grafoAux->insertNode(sup->getId());
+        //grafoAux->insertNode(sup->getId());
     }
 
     //Criar uma lista L com as arestas ordenadas em
@@ -911,7 +916,7 @@ Graph *Graph::agmKuskal(ofstream &output_file)
     Graph *arvoreGerMin = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
     for (sup = grafoAux->getFirstNode(); sup != NULL; sup = sup->getNextNode())
     {
-        arvoreGerMin->insertNode(sup->getId());
+        //arvoreGerMin->insertNode(sup->getId());
     }
 
     //F ¬ Æ
@@ -1031,7 +1036,6 @@ int Graph::getWeightFromEdgeNodeCombo(int idNoh, int idAresta, Graph *subGrafo)
 
 void Graph::printGraph(ofstream &output_file)
 {
-    output_file << "entrou aqui dentro";
     output_file << endl;
     Node *p = this->first_node;
     if(p == NULL) {

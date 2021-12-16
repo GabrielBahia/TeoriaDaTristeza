@@ -39,7 +39,7 @@ class Graph{
         Node* getFirstNode(); // return the first node of the graph(node);
         Node* getLastNode(); // return the last node of the graph(node);
         //Other methods
-        void insertNode(int id); // incrementing a node in the graph;
+        void insertNode(int id, ofstream &output_file); // incrementing a node in the graph;
         void insertEdge(int id, int target_id, float weight); // incrementing an edge in the graph;
         void removeNode(int id); // removing a node of the graph;
         bool searchNode(int id); // searching for a node in the graph(boolean);

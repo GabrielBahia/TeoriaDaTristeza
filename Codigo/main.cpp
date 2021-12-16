@@ -74,7 +74,7 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
     return graph;
 }
 
-Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, int weightedNode){
+Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, int weightedNode, ofstream &output_file){
 
     //Vari�veis para auxiliar na cria��o dos n�s no Grafo
     int idNodeSource;
@@ -87,13 +87,17 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
-
+    output_file << "Entrou antes do while";
     //Leitura de arquivo
     while(input_file >> idNodeSource >> idNodeTarget) {
-
-       // graph->insertNode(idNodeSource);
+        output_file << "Entrou no while";
+        // graph->insertNode(idNodeSource);
         graph->insertEdge(idNodeSource, idNodeTarget, 0);
-        
+        graph->insertNode(idNodeSource, output_file);
+        graph->insertNode(idNodeTarget, output_file);
+        output_file << endl;
+        output_file << "entrou aqui";
+        output_file << endl;
     }
 
     return graph;
@@ -134,8 +138,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
            /* Subgrafo induzido pelo fecho transitivo direto */
         case 1:{
-
-           graph->printGraph(output_file);
+           //graph->printGraph(output_file);
            /* int x;
             cout << "Digite o id o noh a ser pesquisado: ";
             cin >> x;
@@ -269,8 +272,8 @@ int main(int argc, char const *argv[]) {
     Graph* graph;
 
     if(input_file.is_open()){
-
-        graph = leituraInstancia(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
+        output_file << "entrou is open";
+        graph = leituraInstancia(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), output_file);
 
     }else
         cout << "Unable to open " << argv[1];
