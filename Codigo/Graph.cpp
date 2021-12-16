@@ -110,6 +110,16 @@ void Graph::insertNode(int id)
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
+    if (!searchNode(id)) 
+    {
+       insertNode(id); 
+    }
+
+    if (!searchNode(target_id)) 
+    {
+       insertNode(target_id); 
+    }
+ 
 
     if (searchNode(id) && searchNode(target_id)) // search if the two nodes are in the graph
     {

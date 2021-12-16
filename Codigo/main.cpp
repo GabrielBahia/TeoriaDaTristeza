@@ -91,8 +91,9 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
     //Leitura de arquivo
     while(input_file >> idNodeSource >> idNodeTarget) {
 
+       // graph->insertNode(idNodeSource);
         graph->insertEdge(idNodeSource, idNodeTarget, 0);
-
+        
     }
 
     return graph;
@@ -134,11 +135,12 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
            /* Subgrafo induzido pelo fecho transitivo direto */
         case 1:{
 
-            int x;
+           graph->printGraph(output_file);
+           /* int x;
             cout << "Digite o id o noh a ser pesquisado: ";
             cin >> x;
             graph->fechoTransitivoDireto(output_file, x);
-            break;
+            break;*/
         }
 
 
