@@ -106,10 +106,8 @@ void Graph::insertNode(int id, ofstream &output_file)
         last_node = node;             // set the last node as the new node;
     }
     order++; // increase the order of the graph
-    output_file << endl;
-    output_file << "entrou";
-    output_file << endl;
     output_file << node->getId();
+    output_file << endl;
 }
 
 void Graph::insertEdge(int id, int target_id, float weight)
@@ -302,7 +300,7 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
         //exclui ele da fila
         fila.pop();
         //verifica se o v�rtice a ser analisado ja foi analisado. (se ele ja foi acaba essa itera��o)
-        /*if (visitados[IdVet] == false)
+        if (visitados[IdVet] == false)
         {
             //marca o v�rtice como visitado;
             visitados[IdVet] = true;
@@ -314,9 +312,9 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
                 int verticeAdjacente = it->getTargetId(); // aqui ele possivelmente t� passando o id do vertice com o qual it(ou seja V) est� ligado pela aresta e que tem como id o v�rtice alvo
                 fila.push(verticeAdjacente);
             }
-        }*/
+        }
     }
-    /*
+    
     //imprimir o FTD
     output_file << "O conjunto FTD do v�rtice " << id << " �: {";
     int cont = 0;
@@ -342,11 +340,12 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
             }
         }
     }
-    output_file << "}" << endl;*/
+    output_file << "}" << endl;
 }
 
 void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 {
+    cout << this->order;
     bool *fti = new bool[this->order];    // vetor para verificar o fecho transitivo indireto
     bool *node = new bool[this->order];   // vetor para verificar os vizinhos
     for (int i = 0; i < this->order; i++) // passando false para tudo antes de come�ar
@@ -359,6 +358,8 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 
     for (Node *p = this->first_node; p != nullptr; p = p->getNextNode()) /// percorre todos os vertices
     {
+        cout << "Posição no vetor: " << p->getIdNode() << endl;
+        cout << "Id do node: " << p->getId() << endl; 
         if (!node[p->getIdNode()]) // se a posi��o do vetor que equivale ao indice do vertice-1 j� que a posi��o do vetor come�a do 0, se ela for false o c�digo ocorre, pois ainda n�o passamos por esse vertice
         {
             node[p->getIdNode()] = true;                            // passa true para a posi��o atual
@@ -371,7 +372,7 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
     }
 
     output_file << "O fecho transitivo indireto de " << id << "�: ";
-    output_file << "{";
+    output_file << "{ ";
     output_file << this->order;
     int aux = 0;
     for (int i = 0; i < this->order; i++)
@@ -394,7 +395,7 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 
 bool Graph::deephFirstSearch1(int id, int start)
 {
-
+    cout << start << endl;
     //Criando vetor para verificar e tamb�m vetor predecessor de profundidade
     bool *verify = new bool[this->order]; // vetor do tamanho do grafo
     int conta = 0;
@@ -1037,12 +1038,37 @@ int Graph::getWeightFromEdgeNodeCombo(int idNoh, int idAresta, Graph *subGrafo)
 void Graph::printGraph(ofstream &output_file)
 {
     output_file << endl;
+    output_file << endl;
+    output_file << endl;
     Node *p = this->first_node;
     if(p == NULL) {
         output_file << "C++ fdp";
     }
     //output_file << p->getId();
     while(p != NULL) {
+        output_file << p->getId();
+        output_file << endl;
+        p = p->getNextNode(); 
+    }
+}
+
+void Graph::printEdge(ofstream &output_file)
+{
+    output_file << endl;
+    output_file << endl;
+    output_file << endl;
+    Node *p = this->first_node;
+    if(p == NULL) {
+        output_file << "C++ fdp";
+    }
+    //output_file << p->getId();
+    while(p != NULL) {
+        Edge *edge = p->getFirstEdge();
+        while(edge != nullptr) {
+            output_file << "Arestas do: " << p->getId() << ": " << edge->getTargetId() << endl;
+            edge = edge->getNextEdge();
+            //stdout pra imprime na tela;
+        }
         output_file << p->getId();
         output_file << endl;
         p = p->getNextNode(); 

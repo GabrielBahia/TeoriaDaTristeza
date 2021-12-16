@@ -51,9 +51,9 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
 
         while(input_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight) {
 
-            graph->insertEdge(idNodeSource, idNodeTarget, 0);
             graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
             graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);
+            graph->insertEdge(idNodeSource, idNodeTarget, 0);
 
         }
 
@@ -83,20 +83,19 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
     int numEdges;
 
     //Pegando a ordem do grafo
-    input_file >> order >> numEdges;
+    
+    input_file >> order;
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
-    output_file << "Entrou antes do while";
     //Leitura de arquivo
     while(input_file >> idNodeSource >> idNodeTarget) {
-        output_file << "Entrou no while";
         // graph->insertNode(idNodeSource);
-        graph->insertEdge(idNodeSource, idNodeTarget, 0);
+        //cout << "IdNodeSource: " << idNodeSource << endl;
+        //cout << "IdNodeTarget: " << idNodeTarget << endl;
         graph->insertNode(idNodeSource, output_file);
         graph->insertNode(idNodeTarget, output_file);
-        output_file << endl;
-        output_file << "entrou aqui";
+        graph->insertEdge(idNodeSource, idNodeTarget, 0);
         output_file << endl;
     }
 
@@ -142,8 +141,10 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
            /* int x;
             cout << "Digite o id o noh a ser pesquisado: ";
             cin >> x;
-            graph->fechoTransitivoDireto(output_file, x);
-            break;*/
+            graph->fechoTransitivoDireto(output_file, x);*/
+            graph->printGraph(output_file); 
+            graph->printEdge(output_file);
+            break;
         }
 
 
@@ -272,7 +273,6 @@ int main(int argc, char const *argv[]) {
     Graph* graph;
 
     if(input_file.is_open()){
-        output_file << "entrou is open";
         graph = leituraInstancia(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), output_file);
 
     }else

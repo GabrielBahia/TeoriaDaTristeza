@@ -70,6 +70,7 @@ class Graph{
         float greedRandom(); // don�t know yet;
         float greedRactiveRandom(); // don�t know yet;
         void printGraph(ofstream &output_file);
+        void printEdge(ofstream &output_file);
 };
 
 #endif // GRAPH_H_INCLUDED
