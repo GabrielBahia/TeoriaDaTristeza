@@ -50,7 +50,7 @@ class Graph{
         void topologicalSorting(ofstream &output_file); // don�t know yet
         void breadthFirstSearch(ofstream& output_file); // busca em largura;
         bool deephFirstSearch1(int id, int start); // busca em profundidade; � chamada pela fecho transitivo indireta
-        void fechoTransitivoDireto(ofstream &output_file, int id); // fecho transitivo direto;
+        void fechoTransitivoDireto(ofstream &output_file, int id); // fecho transitivo direto; int id é o nó inicial
         void fechoTransitivoIndireto(ofstream &output_file, int id);
         Graph* getVertexInduced(int* listIdNodes); // don�t know yet;
         Graph* agmKuskal(ofstream &output_file); // don�t know yet;
@@ -69,7 +69,7 @@ class Graph{
         float greed(); // don�t know yet;
         float greedRandom(); // don�t know yet;
         float greedRactiveRandom(); // don�t know yet;
-
+        void printGraph(ofstream &output_file);
 };
 
 #endif // GRAPH_H_INCLUDED

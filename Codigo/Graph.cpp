@@ -30,6 +30,9 @@ Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
     this->weighted_node = weighted_node;          // if it has weight on its nodes
     this->first_node = this->last_node = nullptr; // first and last node starts as null cause theres is nothing in the start
     this->negative_edge = false;
+    /*for(int i=0;i<order;i++) {
+        insertNode(i);
+    }*/
 }
 
 // Destructor
@@ -252,7 +255,8 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
 {
 
     //com o id do v�rtice acha o vertice que deve ser analisado
-    int idParametro = getNode(id)->getIdNode(); // vai pegar a posi��o exata em um vetor;
+    //int idParametro = getNode(id)->getIdNode(); // vai pegar a posi��o exata em um vetor;
+    //output_file << idParametro;
     //cria um vetor que marca quais v�rtices ja foram analisados
     //bool visitados[this->order];
     bool *visitados = new bool[this->order];
@@ -264,7 +268,6 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
     //adiciona o vertice inicial nele
     fila.push(id);
     //ordem.push(id); //nao sabemos praq
-
     for (int i = 0; i < this->order; i++)
     {
         visitados[i] = false;
@@ -274,15 +277,17 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
     //come�a itera��o (enquanto a fila n�o estiver vazia repita)
     while (!(fila.empty()))
     {
+        output_file << "entrou";
         //pega um v�rtice a ser analisado da fila
         ///int aux = fila.front();
         int IdVet = getNode(fila.front())->getIdNode(); // j� que os vetores come�am da posi��o 0, isso possivelmente equivale a passar a posi��o equivalente do id do vertice no vetor
         Node *V = getNode(fila.front());
+        output_file << IdVet;
         ///V = getNode(fila.front());
         //exclui ele da fila
         fila.pop();
         //verifica se o v�rtice a ser analisado ja foi analisado. (se ele ja foi acaba essa itera��o)
-        if (visitados[IdVet] == false)
+        /*if (visitados[IdVet] == false)
         {
             //marca o v�rtice como visitado;
             visitados[IdVet] = true;
@@ -294,9 +299,9 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
                 int verticeAdjacente = it->getTargetId(); // aqui ele possivelmente t� passando o id do vertice com o qual it(ou seja V) est� ligado pela aresta e que tem como id o v�rtice alvo
                 fila.push(verticeAdjacente);
             }
-        }
+        }*/
     }
-
+    /*
     //imprimir o FTD
     output_file << "O conjunto FTD do v�rtice " << id << " �: {";
     int cont = 0;
@@ -322,7 +327,7 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
             }
         }
     }
-    output_file << "}" << endl;
+    output_file << "}" << endl;*/
 }
 
 void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
@@ -1012,4 +1017,20 @@ int Graph::getWeightFromEdgeNodeCombo(int idNoh, int idAresta, Graph *subGrafo)
         }
     }
     return aux->getWeight();
+}
+
+void Graph::printGraph(ofstream &output_file)
+{
+    output_file << "entrou aqui dentro";
+    output_file << endl;
+    Node *p = this->first_node;
+    if(p == NULL) {
+        output_file << "C++ fdp";
+    }
+    //output_file << p->getId();
+    while(p != NULL) {
+        output_file << p->getId();
+        output_file << endl;
+        p = p->getNextNode(); 
+    }
 }

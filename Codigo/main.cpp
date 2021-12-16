@@ -104,16 +104,14 @@ int menu(){
 
     cout << "MENU" << endl;
     cout << "----" << endl;
-    cout << "[1] Subgrafo induzido por conjunto de v�rtices" << endl;
-    cout << "[2] Caminho M�nimo entre dois v�rtices - Dijkstra" << endl;
-    cout << "[3] Caminho M�nimo entre dois v�rtices - Floyd" << endl;
-    cout << "[4] �rvore Geradora M�nima de Prim" << endl;
-    cout << "[5] �rvore Geradora M�nima de Kruskal" << endl;
-    cout << "[6] Imprimir caminhamento em largura" << endl;
-    cout << "[7] Imprimir ordenacao topol�gica" << endl;
-    cout << "[8] Algoritmo Guloso" << endl;
-    cout << "[9] Algoritmo Guloso Randomizado " << endl;
-    cout << "[10] Algoritmo Guloso Randomizado Reativo" << endl;
+    cout << "[1] Subgrafo induzido pelo fecho transitivo direto "<< endl;
+    cout << "[2] Subgrafo induzido pelo fecho transitivo indireto "<< endl;
+    cout << "[3] Caminho Minimo entre dois vertices - Dijkstra" << endl;
+    cout << "[4] Caminho Minimo entre dois vertices - Floyd" << endl;
+    cout << "[5] Arvore Geradora Minima de Prim" << endl;
+    cout << "[6] Arvore Geradora Minima de Kruskal" << endl;
+    cout << "[7] Arvore dada pela ordem de caminhamento em largura" << endl;
+    cout << "[8] Imprimir ordenacao topologica" << endl;
     cout << "[0] Sair" << endl;
 
     cin >> selecao;
@@ -126,45 +124,86 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
     switch (selecao) {
 
-        //Subgrafo induzido por um conjunto de v�rtices X;
-        case 1:{
+           //Sair
+        case 0:{
+
             break;
         }
-            //Caminho m�nimo entre dois v�rtices usando Dijkstra;
+
+
+           /* Subgrafo induzido pelo fecho transitivo direto */
+        case 1:{
+
+            int x;
+            cout << "Digite o id o noh a ser pesquisado: ";
+            cin >> x;
+            graph->fechoTransitivoDireto(output_file, x);
+            break;
+        }
+
+
+            /* Subgrafo induzido pelo fecho transitivo indireto */
         case 2:{
 
+            int x;
+            cout << "Digite o id o noh a ser pesquisado: ";
+            cin >> x;
+            graph->fechoTransitivoIndireto(output_file,x);
             break;
         }
 
-            //Caminho m�nimo entre dois v�rtices usando Floyd;
+            /* Caminho Minimo entre dois vertices - Dijkstra */
         case 3:{
 
+            cout<<"Digite o vertice de origem:"<< endl;
+            int origem;
+            cin>>origem;
+            cout<<"Digite o vertice de destino:"<<endl;
+            int destino;
+            cin>> destino;
+            //graph->dijkstra(output_file,origem,destino);
             break;
         }
 
-            //AGM - Kruscal;
+            /* Caminho Minimo entre dois vertices - Floyd */
         case 4:{
 
-
-
+            cout<<"Digite o vertice de origem:"<< endl;
+            int origem;
+            cin>>origem;
+            cout<<"Digite o vertice de destino:"<<endl;
+            int destino;
+            cin>> destino;
+            graph->floydMarshall(output_file,origem,destino);
             break;
         }
 
-            //AGM Prim;
+            /* Arvore Geradora Minima de Prim */
         case 5:{
 
+            Graph *grafoX = graph->agmPrim(output_file);
+            grafoX->printGraph(output_file);
             break;
         }
 
-            //Busca em largura;
+            /* Arvore Geradora Minima de Kruskal */
         case 6:{
-            graph->fechoTransitivoIndireto(output_file, 1);
+
+            Graph *novoSubGrafo = graph->agmKuskal(output_file);
+            novoSubGrafo->printGraph(output_file);
+
             break;
         }
-            //Ordena��o Topologica;
+            //Arvore dada pela ordem de caminhamento em largura
         case 7:{
+           // ?????
 
+            break;
+        }
+           /* Imprimir ordenacao topologica */
+        case 8:{
 
+            graph->topologicalSorting(output_file);
             break;
         }
         default:
