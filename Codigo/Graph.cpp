@@ -92,22 +92,28 @@ Node *Graph::getLastNode() // return the last node of the graph!;
     The outdegree attribute of nodes is used as a counter for the number of edges in the graph.
     This allows the correct updating of the numbers of edges in the graph being directed or not.
 */
-void Graph::insertNode(int id, ofstream &output_file)
+void Graph::insertNode(int id)
 {
     Node *node = new Node(id, order);
     ///node->setNumber(order + 1);
-    if (order == 0) // if there are no nodes in the graph
+ 
+    if(!searchNode(id))
     {
-        this->first_node = this->last_node = node; // both of them receive the new node;
+         
+        if (order == 0) // if there are no nodes in the graph
+        {
+            this->first_node = this->last_node = node; // both of them receive the new node;
+        }
+        else
+        {                                 // if there are more than 0 nodes in the graph
+            last_node->setNextNode(node); // set the next node to the new node;
+            last_node = node;             // set the last node as the new node;
+        }
+        order++; // increase the order of the graph
+        /*output_file << node->getId();
+        output_file << endl;*/
     }
-    else
-    {                                 // if there are more than 0 nodes in the graph
-        last_node->setNextNode(node); // set the next node to the new node;
-        last_node = node;             // set the last node as the new node;
-    }
-    order++; // increase the order of the graph
-    output_file << node->getId();
-    output_file << endl;
+
 }
 
 void Graph::insertEdge(int id, int target_id, float weight)
@@ -290,7 +296,6 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
     //come�a itera��o (enquanto a fila n�o estiver vazia repita)
     while (!(fila.empty()))
     {
-        output_file << "entrou";
         //pega um v�rtice a ser analisado da fila
         ///int aux = fila.front();
         int IdVet = getNode(fila.front())->getIdNode(); // j� que os vetores come�am da posi��o 0, isso possivelmente equivale a passar a posi��o equivalente do id do vertice no vetor
@@ -345,9 +350,12 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
 
 void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 {
-    cout << this->order;
+    //cout << this->order;
     bool *fti = new bool[this->order];    // vetor para verificar o fecho transitivo indireto
     bool *node = new bool[this->order];   // vetor para verificar os vizinhos
+    int *vet = new int[this->order];
+    int cont = 0;
+
     for (int i = 0; i < this->order; i++) // passando false para tudo antes de come�ar
     {
         fti[i] = false;
@@ -358,26 +366,29 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 
     for (Node *p = this->first_node; p != nullptr; p = p->getNextNode()) /// percorre todos os vertices
     {
-        cout << "Posição no vetor: " << p->getIdNode() << endl;
-        cout << "Id do node: " << p->getId() << endl; 
+       /* cout << "Posição no vetor: " << p->getIdNode() << endl;
+        cout << "Id do node: " << p->getId() << endl; */
         if (!node[p->getIdNode()]) // se a posi��o do vetor que equivale ao indice do vertice-1 j� que a posi��o do vetor come�a do 0, se ela for false o c�digo ocorre, pois ainda n�o passamos por esse vertice
         {
             node[p->getIdNode()] = true;                            // passa true para a posi��o atual
             fti[p->getIdNode()] = deephFirstSearch1(id, p->getId()); // chama a busca em profundidade passando o id que queremos e o id equivalente ao no que estamos no for
             if (fti[p->getIdNode()])                                  // se true, ou seja se � possivel desse vertice p chegar ao vertice "id" que � parametro da fun��o ent�o conta++ para auxiliar com a impress�o, assim como est� escrito ali em cima;
             {
+                cout<<"vizinho: " << p->getIdNode()<<endl;
                 conta++;
+                vet[cont] = p->getIdNode(); 
+                cont++;
             }
         }
     }
-
+      cout<< "saiu do for" << endl;
     output_file << "O fecho transitivo indireto de " << id << "�: ";
     output_file << "{ ";
     output_file << this->order;
     int aux = 0;
-    for (int i = 0; i < this->order; i++)
+    for (int i = 0; i < cont; i++)
     {
-        if (fti[i])
+        if (fti[vet[i]])
         {
             if (aux == conta - 1)
             {
@@ -395,7 +406,7 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 
 bool Graph::deephFirstSearch1(int id, int start)
 {
-    cout << start << endl;
+    //cout << start << endl;
     //Criando vetor para verificar e tamb�m vetor predecessor de profundidade
     bool *verify = new bool[this->order]; // vetor do tamanho do grafo
     int conta = 0;
@@ -415,6 +426,7 @@ bool Graph::deephFirstSearch1(int id, int start)
     if (id != p->getId()) // se o v�rtice que foi passado como parametro nessa fun��o que � chamada pela fecho transitivo indireta
     {                     // n�o for igual ao id, ele faz isso, caso contrario obviamente � pois j� estamos no v�rtice que queremos buscar
         //Aux-BuscaEmProfundida(G,v);
+        cout<< "Vizinhos: "<< p->getId()<<endl;
         auxDeepthFirstSearch1(verify, p); // passa o vetor e o node que estamos come�ando, pode ser 0,1,2 ... depende de onde o for
     }                                    // da fecho transitivo indireto est� chamando
     else
@@ -426,9 +438,12 @@ bool Graph::deephFirstSearch1(int id, int start)
     if (verify[getNode(id)->getIdNode()]) // dps de passar pela aux ele verifica se foi mudado por parametro a posi��o equivalente
     {                                     // ao id que queremos no vetor, caso a gente queira o vertice 3 e passamos o vertice 8 que est� ligado
                                           // aos v�rtices 9 e 10, somente as posi��es 7,8,9 receberiam true, ou seja 8 n�o chega ao v�rtice 3, ou seja n�o entre nesse if
+        //cout<< getNodeId(id)->getIdNode()<<endl;
+        cout<< "Vizinho(2) :"<< p->getId()<<endl; 
         delete[] verify;
         return true;
     }
+    cout<<"Aux  :"<< getNodeId(id)->getIdNode()<<endl;
     delete[] verify;
     return false;
 }
@@ -447,11 +462,12 @@ void Graph::auxDeepthFirstSearch1(bool verify[], Node *v)
     for (Edge *p = v->getFirstEdge(); p != NULL; p = p->getNextEdge())
     {
         idParametro = p->getTargetIdNode(); /// pega a posi��o no vetor dos vizinhos que a gente quer verificar
+        cout << " idParametro: "<< idParametro << endl ;
         //Se w n�o visitado ent�o
 
         if (!verify[idParametro])
         {
-
+            cout<<"p->getTargetIdNode() :"<< p->getTargetIdNode() <<endl;
             aux = getNode(p->getTargetId());
             //AuxBuscaEmProfundidade(G,w);
             auxDeepthFirstSearch1(verify, aux);
@@ -729,10 +745,10 @@ Graph *Graph::agmPrim(ofstream &output_file)
     //para todo noh da lista faça
     for (p = grafoVI->getFirstNode(); p != NULL; p = p->getNextNode())
     {
-        //grafoX->insertNode(p->getId());
+        grafoX->insertNode(p->getId());
     }
 
-    //bool adicionados[this->order]; //marca quais vértices ja possuem um caminho
+   // bool adicionados[this->order]; //marca quais vértices ja possuem um caminho
     bool *adicionados = new bool [this->order];
     for (int i = 0; i < this->order; i++)
     {
@@ -1034,7 +1050,7 @@ int Graph::getWeightFromEdgeNodeCombo(int idNoh, int idAresta, Graph *subGrafo)
     }
     return aux->getWeight();
 }
-
+/*
 void Graph::printGraph(ofstream &output_file)
 {
     output_file << endl;
@@ -1050,7 +1066,50 @@ void Graph::printGraph(ofstream &output_file)
         output_file << endl;
         p = p->getNextNode(); 
     }
+}*/
+
+void Graph::printGraph(ofstream &output_file)
+{
+    Node *p = this->first_node;
+    Edge *aux = p->getFirstEdge();
+    if (!directed)
+    {
+        output_file << "strict graph{"<<endl;
+        while (p != NULL)
+        {
+
+            aux = p->getFirstEdge();
+            while (aux != NULL)
+            {
+
+                output_file << p->getId() << " -- " << aux->getTargetId() << endl;
+                aux = aux->getNextEdge();
+            }
+            p = p->getNextNode();
+        }
+        output_file <<"}"<<endl;
+    }
+    else
+    {
+        output_file << "digraph{"<<endl;
+        while (p != NULL)
+        {
+
+            aux = p->getFirstEdge();
+            while (aux != NULL)
+            {
+
+                output_file << p->getId() << " -> " << aux->getTargetId() << endl;
+                aux = aux->getNextEdge();
+            }
+            p = p->getNextNode();
+        }
+        output_file <<"}"<<endl;
+    }
+        output_file << endl;
+    output_file << endl;
 }
+
 
 void Graph::printEdge(ofstream &output_file)
 {

@@ -10,7 +10,6 @@
 #include "Graph.h"
 #include "Node.h"
 
-//xabblau
 
 using namespace std;
 
@@ -95,8 +94,8 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
         // graph->insertNode(idNodeSource);
         //cout << "IdNodeSource: " << idNodeSource << endl;
         //cout << "IdNodeTarget: " << idNodeTarget << endl;
-        graph->insertNode(idNodeSource, output_file);
-        graph->insertNode(idNodeTarget, output_file);
+        graph->insertNode(idNodeSource);
+        graph->insertNode(idNodeTarget);
         graph->insertEdge(idNodeSource, idNodeTarget, 0);
         output_file << endl;
     }
@@ -140,12 +139,12 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
            /* Subgrafo induzido pelo fecho transitivo direto */
         case 1:{
            //graph->printGraph(output_file);
-           /* int x;
+            int x;
             cout << "Digite o id o noh a ser pesquisado: ";
             cin >> x;
-            graph->fechoTransitivoDireto(output_file, x);*/
-            graph->printGraph(output_file); 
-            graph->printEdge(output_file);
+            graph->fechoTransitivoDireto(output_file, x);
+           /* graph->printGraph(output_file); 
+            graph->printEdge(output_file);*/
             break;
         }
 
@@ -164,12 +163,14 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         case 3:{
 
             cout<<"Digite o vertice de origem:"<< endl;
+            int dist;
             int origem;
             cin>>origem;
             cout<<"Digite o vertice de destino:"<<endl;
             int destino;
             cin>> destino;
-            //graph->dijkstra(output_file,origem,destino);
+            dist = graph->dijkstra(output_file,origem,destino);
+            cout<< dist;
             break;
         }
 
