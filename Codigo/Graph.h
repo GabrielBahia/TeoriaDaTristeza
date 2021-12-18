@@ -38,27 +38,29 @@ class Graph{
         bool getWeightedNode(); // return if the nodes have weight(boolean);
         Node* getFirstNode(); // return the first node of the graph(node);
         Node* getLastNode(); // return the last node of the graph(node);
-        //Other methods
+        //Methods
         void insertNode(int id); // incrementing a node in the graph;
         void insertEdge(int id, int target_id, float weight); // incrementing an edge in the graph;
         void removeNode(int id); // removing a node of the graph;
         bool searchNode(int id); // searching for a node in the graph(boolean);
         Node* getNode(int id); // getting a node of the graph(node);
-        Node* getNodeId(int id);
+        Node* getNodeId(int id); // pegando o equivalente de cada node no indice de um vetor;
 
-        //methods phase1
-        void ordenacaoTopologica(ofstream &output_file); // don�t know yet
+        //Methods 
+        void fechoTransitivoDireto(ofstream &output_file, int id); // fecho transitivo direto; int id é o node inicial
+        void fechoTransitivoIndireto(ofstream &output_file, int id); // fecho transitivo indireto; int id é o node inicial
+        void ordenacaoTopologica(ofstream &output_file); // ordenação topologica 
         void breadthFirstSearch(ofstream& output_file); // busca em largura;
-        bool deephFirstSearch(int id, int start); // busca em profundidade; � chamada pela fecho transitivo indireta
-        void fechoTransitivoDireto(ofstream &output_file, int id); // fecho transitivo direto; int id é o nó inicial
-        void fechoTransitivoIndireto(ofstream &output_file, int id);
-        void floydMarshall(ofstream &output_file, int idSource, int idTarget); // don�t know yet;
-        Graph* getVertexInduced(int* listIdNodes); // don�t know yet;
-        Graph* agmKuskal(ofstream &output_file); // don�t know yet;
-        Graph* agmPrim(ofstream &output_file); // don�t know yet;
-        int dijkstra(int idSource, int idTarget); // don�t know yet;
+        void floydMarshall(ofstream &output_file, int idSource, int idTarget); // floyd;
+        Graph* getVertexInduced(int* listIdNodes); // 
+        Graph* agmKuskal(ofstream &output_file); // algoritmo de kuskal
+        Graph* agmPrim(ofstream &output_file); // algoritmo de Prim
+        int dijkstra(int idSource, int idTarget); // dijkstra
         int **floyd(int tam, int **dist);
+        
+        
         //fun��o auxiliar
+        bool deephFirstSearch(int id, int start); // busca em profundidade; � chamada pela fecho transitivo indireta
         void auxDeepthFirstSearch(bool verify[], Node *v);
         bool graphCiclo();
         Graph *getVertexInduced(int *listIdNodes, int tam);

@@ -118,7 +118,7 @@ void Graph::insertNode(int id)
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
-    
+    cout << "peso: " << weight << endl;
     /*if (!searchNode(id)) 
     {
        insertNode(id); 
@@ -260,66 +260,49 @@ Node *Graph::getNodeId(int id)
     return nullptr; // else it returns nullptr;
 }
 
-/// ALL THIS FUNCTIONS HERE WE DONT KNOW ALREADY
-
-//Function that prints a set of edges belongs breadth tree
-
-/*void Graph::breadthFirstSearch(ofstream &output_file, int id_inicial)
-{ /// No parametro dessa fun��o, n�o deveria ser o id?
-}*/
-
-/// ATUAL
+// INICIO FECHO TRANSITIVO DIRETO ///////////////////////////////
 
 void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
 {
-
-    //com o id do v�rtice acha o vertice que deve ser analisado
-    //int idParametro = getNode(id)->getIdNode(); // vai pegar a posi��o exata em um vetor;
-    //output_file << idParametro;
-    //cria um vetor que marca quais v�rtices ja foram analisados
-    //bool visitados[this->order];
+    //cria um vetor que marca quais nodes ja foram analisados
     bool *visitados = new bool[this->order];
     //cria o vetor fecho transitivo direto
-    //bool vet_ftd[this->order];
     bool *vet_ftd = new bool[this->order];
     //cria uma fila que diz quais vertices ainda precisam ser analisados
     queue<int> fila;
-    //adiciona o vertice inicial nele
+    //adiciona o vertice inicial na fila
     fila.push(id);
-    //ordem.push(id); //nao sabemos praq
     for (int i = 0; i < this->order; i++)
     {
         visitados[i] = false;
         vet_ftd[i] = false;
     }
 
-    //come�a itera��o (enquanto a fila n�o estiver vazia repita)
+    //começa iteração (enquanto a fila não estiver vazia)
     while (!(fila.empty()))
     {
-        //pega um v�rtice a ser analisado da fila
-        ///int aux = fila.front();
-        int IdVet = getNode(fila.front())->getIdNode(); // j� que os vetores come�am da posi��o 0, isso possivelmente equivale a passar a posi��o equivalente do id do vertice no vetor
+        //pega um node a ser analisado da fila
+        int IdVet = getNode(fila.front())->getIdNode(); // já que os vetores começam da posição 0, isso equivale a passar a posição equivalente do id do vertice no vetor
         Node *V = getNode(fila.front());
-        ///V = getNode(fila.front());
-        //exclui ele da fila
+
         fila.pop();
-        //verifica se o v�rtice a ser analisado ja foi analisado. (se ele ja foi acaba essa itera��o)
+        //verifica se o node a ser analisado ja foi analisado. (se ele ja foi acaba essa iteração)
         if (visitados[IdVet] == false)
         {
-            //marca o v�rtice como visitado;
+            //marca o node como visitado;
             visitados[IdVet] = true;
             //adiciona ele no vetor fecho transitivo direto
             vet_ftd[IdVet] = true;
-            //adiciona todos os v�rtices adjacentes a ele na fila
+            //adiciona todos os nodes adjacentes a ele na fila
             for (Edge *it = V->getFirstEdge(); it != NULL; it = it->getNextEdge())
             {
-                int verticeAdjacente = it->getTargetId(); // aqui ele possivelmente t� passando o id do vertice com o qual it(ou seja V) est� ligado pela aresta e que tem como id o v�rtice alvo
-                fila.push(verticeAdjacente);
+                int verticeAdj = it->getTargetId(); // aqui ele passa o id do node com o qual it(ou seja V) está ligado pela aresta e que tem como id o node alvo
+                fila.push(verticeAdj);
             }
         }
     }
     
-    //imprimir o FTD
+    //imprime o fecho transtivio direto do id
     output_file << "O fecho transitivo direto de " << id << " é: {"; 
     int cont = 0;
     for (int i = 0; i < this->order; i++)
@@ -347,6 +330,11 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
     output_file << "}" << endl;
 }
 
+// FIM FECHO TRANSITIVO DIRETO //////////////////////////////////
+
+
+// INICIO FECHO TRANSITIVO INDIRETO
+
 void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 {
     //cout << this->order;
@@ -356,7 +344,7 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
     int *vetId = new int[this->order];
     int cont = 0;
 
-    for (int i = 0; i < this->order; i++) // passando false para tudo antes de come�ar
+    for (int i = 0; i < this->order; i++) // passando false para tudo antes de começaar
     {
         fti[i] = false;
         node[i] = false;
@@ -366,14 +354,12 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 
     for (Node *p = this->first_node; p != nullptr; p = p->getNextNode()) /// percorre todos os vertices
     {
-       /* cout << "Posição no vetor: " << p->getIdNode() << endl;
-        cout << "Id do node: " << p->getId() << endl; */
-        //cout << "Primeiro for no vértice: " << p->getId() << endl;
-        if (!node[p->getIdNode()]) // se a posi��o do vetor que equivale ao indice do vertice-1 j� que a posi��o do vetor come�a do 0, se ela for false o c�digo ocorre, pois ainda n�o passamos por esse vertice
+
+        if (!node[p->getIdNode()]) // se a posição do vetor que equivale ao indice do vertice-1 já que a posição do vetor começa do 0, se ela for false o código ocorre, pois ainda não passamos por esse vertice
         {
-            node[p->getIdNode()] = true;                            // passa true para a posi��o atual
+            node[p->getIdNode()] = true;                            // passa true para a posição atual
             fti[p->getIdNode()] = deephFirstSearch(id, p->getId()); // chama a busca em profundidade passando o id que queremos e o id equivalente ao no que estamos no for
-            if (fti[p->getIdNode()])                                  // se true, ou seja se � possivel desse vertice p chegar ao vertice "id" que � parametro da fun��o ent�o conta++ para auxiliar com a impress�o, assim como est� escrito ali em cima;
+            if (fti[p->getIdNode()])                                  // se true, ou seja se é possivel desse node p chegar ao vertice "id" que é parametro da função então conta++ para auxiliar com a impressão, assim como está escrito ali em cima;
             {
                 conta++;
                 vetFti[cont] = p->getIdNode(); 
@@ -384,9 +370,7 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
     }
     output_file << "O fecho transitivo indireto de " << id << " é: ";
     output_file << "{ ";
-    /*for(int i =0;i<cont;i++) {
-        cout << vetId[i];
-    }*/
+
     int aux = 0;
     for (int i = 0; i < cont; i++)
     {
@@ -409,15 +393,14 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
 
 bool Graph::deephFirstSearch(int id, int start)
 {
-    //cout << "For que entrou na deephFirstSearch1: " << start << endl;
-    //cout << start << endl;
+    
     //Criando vetor para verificar e tamb�m vetor predecessor de profundidade
-    bool *verify = new bool[this->order]; // vetor do tamanho do grafo
+    bool *node = new bool[this->order]; // vetor do tamanho do grafo
     int conta = 0;
-    int idParametro; // equivale a posi��o do id do vertice no vetor;
+    int idParametro; // equivale a posição do id do vertice no vetor;
     for (int i = 0; i < this->order; i++)
     {
-        verify[i] = false; // passa false para todas as posi��es
+        node[i] = false; // passa false para todas as posi��es
     }
     // cria vetor para auxiliar
     Node *p;
@@ -430,7 +413,7 @@ bool Graph::deephFirstSearch(int id, int start)
     if (id != p->getId()) // se o v�rtice que foi passado como parametro nessa fun��o que � chamada pela fecho transitivo indireta
     {                     // n�o for igual ao id, ele faz isso, caso contrario obviamente � pois j� estamos no v�rtice que queremos buscar
         //Aux-BuscaEmProfundida(G,v);
-        auxDeepthFirstSearch(verify, p); // passa o vetor e o node que estamos come�ando, pode ser 0,1,2 ... depende de onde o for
+        auxDeepthFirstSearch(node, p); // passa o vetor e o node que estamos come�ando, pode ser 0,1,2 ... depende de onde o for
     }                                    // da fecho transitivo indireto est� chamando
     else
     {
@@ -438,54 +421,57 @@ bool Graph::deephFirstSearch(int id, int start)
     }
 
     //Se encontrou
-    if (verify[getNode(id)->getIdNode()]) // dps de passar pela aux ele verifica se foi mudado por parametro a posi��o equivalente
+    if (node[getNode(id)->getIdNode()]) // dps de passar pela aux ele verifica se foi mudado por parametro a posi��o equivalente
     {                                     // ao id que queremos no vetor, caso a gente queira o vertice 3 e passamos o vertice 8 que est� ligado
                                           // aos v�rtices 9 e 10, somente as posi��es 7,8,9 receberiam true, ou seja 8 n�o chega ao v�rtice 3, ou seja n�o entre nesse if
         //cout<< getNodeId(id)->getIdNode()<<endl;
-        delete[] verify;
+        delete[] node;
         return true;
     }
     //cout<<"Aux  :"<< getNodeId(start)->getIdNode()<<endl;
-    delete[] verify;
+    delete[] node;
     return false;
 }
 
-void Graph::auxDeepthFirstSearch(bool verify[], Node *v)
+void Graph::auxDeepthFirstSearch(bool node[], Node *v)
 {
-    //cout << "Vértice na auxDeepthFirstSearch1: " << v->getId() << endl;
-    //Protocolo inicial
-    int idParametro = v->getIdNode(); /// pega a posi��o equivalente do id desse v�rtice no vetor;
+
+    int idParametro = v->getIdNode(); /// pega a posição equivalente do id desse node no vetor;
 
     Node *aux;
 
     //Marca v como visitado;
-    verify[idParametro] = true; /// marca o v�rtice que estamos como visitado;
+    node[idParametro] = true; /// marca o node que estamos como visitado;
 
-    //Para todo w em Adj(v)
+    //Para todo node em Adj(v)
     for (Edge *p = v->getFirstEdge(); p != NULL; p = p->getNextEdge())
     {
-        idParametro = p->getTargetIdNode(); /// pega a posi��o no vetor dos vizinhos que a gente quer verificar
-        //cout << " idParametro: "<< idParametro << endl ;
-        //Se w n�o visitado ent�o
-        if (!verify[idParametro])
+        idParametro = p->getTargetIdNode(); /// pega a posição no vetor dos vizinhos que a gente quer verificar
+        
+        //Se o node !visitado então
+        if (!node[idParametro])
         {
-            //cout << "Id no p: " << p->getTargetId() << endl;
-            //cout<<"p->getTargetIdNode() :"<< p->getTargetIdNode() <<endl;
+            
             aux = getNode(p->getTargetId());
-            //AuxBuscaEmProfundidade(G,w);
-            auxDeepthFirstSearch(verify, aux);
+            
+            auxDeepthFirstSearch(node, aux);
         }
     }
     /*
-        Explicando essa fun��o acima: se por exemplo n�s chamamos atraves da deepthFirstSearch o v�rtice 8
-        que � ligado aos v�rtices 9 e 10, por�m estamos buscando o v�rtice 3, ele retornara para a fecho
-        transitivo indireto falso, pois na linha 355 n�s passamos para todos os v�rtices falso, na chamada
-        da fun��o na qual o v�rtice 8 foi chamado, logo ap�s n�s chamamos essa fun��o aq passando o vetor com
-        tudo falso e o v�rtice 8, como ele est� ligado ao 9 e 10, somente esses 3 ir�o receber true, oq acabara
-        fazendo com que a posi��o 2 ou seja (3-1) que equivale a posi��o do vetor, continue false
+        Explicando essa função acima: se por exemplo nós chamamos atraves da deepthFirstSearch o node 8
+        que é ligado aos nodes 9 e 10, porém estamos buscando o node 3, ele retornara para a fecho
+        transitivo indireto falso, pois na linha 355 nós passamos para todos os node falso, na chamada
+        da função na qual o node 8 foi chamado, logo após nós chamamos essa função aq passando o vetor com
+        tudo falso e o node 8, como ele está ligado ao 9 e 10, somente esses 3 irão receber true, oq acabara
+        fazendo com que a posição 2 ou seja (3-1) que equivale a posição do vetor, continue false
 
     */
 }
+
+// FIM FECHO TRANSITIVO INDIRETO ////////////////////////////////
+
+
+// INICIO FLOYD ////////////////////////////////////////////////////////////
 
 void Graph::floydMarshall(ofstream &output_file, int idSource, int idTarget)
 {
@@ -585,6 +571,10 @@ int **Graph::floyd(int tam, int **dist)
     return dist;
 }
 
+// FIM FLOYD ////////////////////////////////////////////////////
+
+// INICIO DIJKSTRA /////////////////////////////////////////////
+
 int Graph::dijkstra(int orig, int dest)
 {
 
@@ -622,10 +612,12 @@ int Graph::dijkstra(int orig, int dest)
             pq.pop(); // remove da fila
 
             // verifica se o v�rtice n�o foi expandido
-            if (visitados[u->getId()] == false)
+            //if (visitados[u->getId()] == false)
+            if(visitados[u->getIdNode()] == false)
             {
                 // marca como visitado
-                visitados[u->getId()] = true;
+                //visitados[u->getId()] = true;
+                visitados[u->getIdNode()] = true;
 
                 //list<pair<int, int> >::iterator it;
 
@@ -635,14 +627,17 @@ int Graph::dijkstra(int orig, int dest)
                 {
                     // obt�m o v�rtice adjacente e o custo da aresta
 
-                    int v = aux->getTargetId();
+                    //int v = aux->getTargetId();
+                    int v = aux->getTargetIdNode();
                     int custo_aresta = aux->getWeight();
 
                     // relaxamento (u, v)
-                    if (dist[v] > (dist[u->getId()] + custo_aresta))
+                    //if (dist[v] > (dist[u->getId()] + custo_aresta))
+                    if (dist[v] > (dist[u->getIdNode()] + custo_aresta))
                     {
                         // atualiza a dist�ncia de "v" e insere na fila
-                        dist[v] = dist[u->getId()] + custo_aresta;
+                        //dist[v] = dist[u->getId()] + custo_aresta;
+                        dist[v] = dist[u->getIdNode()] + custo_aresta;
                         pq.push(make_pair(dist[v], v));
                     }
                 }
@@ -655,46 +650,50 @@ int Graph::dijkstra(int orig, int dest)
     return 0;
 }
 
+/////////// FIM DIJKSTRA /////////////////////////////////////////////
+
+/////////// INICIO DA ORDENAÇÃO TOPOLOGICA///////////////////////////
+
 //function that prints a topological sorting
 void Graph::ordenacaoTopologica(ofstream &output_file)
 {
     list<Node*> listaNode;
-    list<int> listaTopologica;
-    if (this->graphCiclo())// verifica se o grafo e aciclico ou nao
+    list<int> TopologicList;
+    if (this->graphCiclo())// verifica se o grafo é aciclico ou não
     {
-        output_file <<" Se Grafo possui ciclos, nao possui ordenação topologica"<<endl;
+        output_file <<" Se o Grafo possui ciclos, logo, nao possui ordenação topologica"<<endl;
     }
     else{ // adaptando algoritimo kahn's
-            Edge *auxAres;
-            Node *auxNo;
+            Node *auxNode;
+            Edge *auxEdge;
             //procurando nos com enttrada =0
-            for (auxNo=this->first_node;auxNo!=NULL;auxNo = auxNo->getNextNode())
-            {   if (auxNo->getInDegree()==0)// se entrada  = 0
+            for (auxNode=this->first_node;auxNode!=NULL;auxNode = auxNode->getNextNode())
+            {   if (auxNode->getInDegree()==0)// se entrada  = 0
                 {
-                    listaNode.push_back(auxNo); //coloca os nos corretos na fila
+                    listaNode.push_back(auxNode); //coloca os nos corretos na fila
                 }
             }
             while (!listaNode.empty())// enquanto lista e vazia
             {
                 Node *aux = listaNode.front();
                 listaNode.pop_front(); //remove da lista
-                listaTopologica.push_back(aux->getId()); //coloca na lista auxiliar
-                for(auxAres =aux->getFirstEdge(); auxAres!=NULL;auxAres=auxAres->getNextEdge())
+                TopologicList.push_back(aux->getId()); //coloca na lista auxiliar
+                for(auxEdge =aux->getFirstEdge(); auxEdge!=NULL;auxEdge=auxEdge->getNextEdge())
                 {
-                    auxNo = this->getNode(auxAres->getTargetId()); //pega o no vizinho
-                    auxNo->decrementInDegree(); //decrementa o grau de entrada
-                    if (auxNo->getInDegree()==0) //se a entrada = 0
+                    auxNode = this->getNode(auxEdge->getTargetId()); //pega o no vizinho
+                    auxNode->decrementInDegree(); //decrementa o grau de entrada
+                    if (auxNode->getInDegree()==0) //se a entrada = 0
                     {
-                        listaNode.push_back(auxNo);
+                        listaNode.push_back(auxNode);
                     }
 
                 }
             }
             //imprimindo ordenaçao a classificação topologica
             output_file << "Ordenação Topologica :" << endl;
-            for(list<int>::iterator i = listaTopologica.begin(); i != listaTopologica.end(); i++)
+            for(list<int>::iterator i = TopologicList.begin(); i != TopologicList.end(); i++)
             {
-                    if(listaTopologica.size() == this->getOrder())
+                    if(TopologicList.size() == this->getOrder())
                     output_file << (*i) << endl;
             }
 
@@ -703,29 +702,27 @@ void Graph::ordenacaoTopologica(ofstream &output_file)
 
 bool Graph::graphCiclo()
 {
-    list<int> auxC;
-    // coloca os components em uma lista
+    list<int> auxCiclo;
+    // Alocando os ints em uma lista
     for (int i = 0; i < this->order; i++)
     {
-        auxC.push_back(i);
-    }// Então a lista é classificada
-    auxC.sort();
+        auxCiclo.push_back(i);
+    }
+    auxCiclo.sort();
 
-    for (list<int>::iterator i = auxC.begin(); i !=  auxC.end();){
-     int prev = *i;
+    for (list<int>::iterator i = auxCiclo.begin(); i !=  auxCiclo.end();){
+     int anterior = *i;
         i++;
         // Se houver componentes iguais, o gráfo é cíclico,
          // entao o grafo tem um circuito
-        if (prev == *i)
+        if (anterior == *i)
             return true;
     }
         // Se  forem diferentes entre eles, o grafo nao tem circuito
     return false;
 }
 
-void breadthFirstSearch(ofstream &output_file)
-{
-}
+/// FIM DA ORDENAÇÃO TOPOLOGICA ///////////////////////////
 
 Graph *Graph::agmPrim(ofstream &output_file)
 {
