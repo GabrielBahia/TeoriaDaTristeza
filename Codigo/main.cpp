@@ -169,7 +169,8 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             cout<<"Digite o vertice de destino:"<<endl;
             int destino;
             cin>> destino;
-            dist = graph->dijkstra(output_file,origem,destino);
+            dist = graph->dijkstra(origem,destino);
+            output_file << "Custo minimo da origem: " << origem << " até destino: " << destino << " é: " << dist;
             cout<< dist;
             break;
         }
@@ -206,7 +207,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             //Arvore dada pela ordem de caminhamento em largura
         case 7:{
            // ?????
-
+            //graph->
             break;
         }
            /* Imprimir ordenacao topologica */

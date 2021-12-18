@@ -141,7 +141,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
             if (!node->hasEdgeBetween(target_id)) // return if theres is no edge between the node id and the node target_id
             {
                 Node *target = getNode(target_id);
-                node->insertEdge(target_id, weight, target->getIdNode()); // inserts the edge between the node we are to the node targeted
+                node->insertEdge(target_id, weight, target->getIdNode()); // inserts the edge between the node we are to the node targeted 
             }
         }
         else
@@ -152,7 +152,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
                 Node *aux = getNode(target_id);
                 node->insertEdge(target_id, weight, aux->getIdNode()); // inserts the edge between the two nodes
                 //Node *aux = getNode(target_id);
-                aux->insertEdge(node->getId(), node->getWeight(), aux->getIdNode()); // inserts the edge between the two nodes;
+                aux->insertEdge(node->getId(), node->getWeight(), node->getIdNode()); // inserts the edge between the two nodes;
             }
         }
     }
@@ -353,7 +353,8 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
     //cout << this->order;
     bool *fti = new bool[this->order];    // vetor para verificar o fecho transitivo indireto
     bool *node = new bool[this->order];   // vetor para verificar os vizinhos
-    int *vet = new int[this->order];
+    int *vetFti = new int[this->order];
+    int *vetId = new int[this->order];
     int cont = 0;
 
     for (int i = 0; i < this->order; i++) // passando false para tudo antes de come�ar
@@ -368,44 +369,50 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
     {
        /* cout << "Posição no vetor: " << p->getIdNode() << endl;
         cout << "Id do node: " << p->getId() << endl; */
+        //cout << "Primeiro for no vértice: " << p->getId() << endl;
         if (!node[p->getIdNode()]) // se a posi��o do vetor que equivale ao indice do vertice-1 j� que a posi��o do vetor come�a do 0, se ela for false o c�digo ocorre, pois ainda n�o passamos por esse vertice
         {
             node[p->getIdNode()] = true;                            // passa true para a posi��o atual
             fti[p->getIdNode()] = deephFirstSearch1(id, p->getId()); // chama a busca em profundidade passando o id que queremos e o id equivalente ao no que estamos no for
             if (fti[p->getIdNode()])                                  // se true, ou seja se � possivel desse vertice p chegar ao vertice "id" que � parametro da fun��o ent�o conta++ para auxiliar com a impress�o, assim como est� escrito ali em cima;
             {
-                cout<<"vizinho: " << p->getIdNode()<<endl;
+                cout<<"vizinho: " << p->getIdNode() << endl;
                 conta++;
-                vet[cont] = p->getIdNode(); 
+                vetFti[cont] = p->getIdNode(); 
+                vetId[cont] = p->getId();
                 cont++;
             }
         }
     }
-      cout<< "saiu do for" << endl;
     output_file << "O fecho transitivo indireto de " << id << "�: ";
     output_file << "{ ";
-    output_file << this->order;
+    cout << "contadora: " << cont << endl;
+    /*for(int i =0;i<cont;i++) {
+        cout << vetId[i];
+    }*/
     int aux = 0;
     for (int i = 0; i < cont; i++)
     {
-        if (fti[vet[i]])
+        if (fti[vetFti[i]])
         {
             if (aux == conta - 1)
             {
-                output_file << (getNode(i)->getId());
+                output_file << (getNode(vetId[i])->getId());
                 aux++;
             }
             else
             {
-                output_file << (getNode(i)->getId()) << ",";
+                output_file << (getNode(vetId[i])->getId()) << ",";
                 aux++;
             }
         }
     }
+    output_file << " }";
 }
 
 bool Graph::deephFirstSearch1(int id, int start)
 {
+    //cout << "For que entrou na deephFirstSearch1: " << start << endl;
     //cout << start << endl;
     //Criando vetor para verificar e tamb�m vetor predecessor de profundidade
     bool *verify = new bool[this->order]; // vetor do tamanho do grafo
@@ -426,7 +433,7 @@ bool Graph::deephFirstSearch1(int id, int start)
     if (id != p->getId()) // se o v�rtice que foi passado como parametro nessa fun��o que � chamada pela fecho transitivo indireta
     {                     // n�o for igual ao id, ele faz isso, caso contrario obviamente � pois j� estamos no v�rtice que queremos buscar
         //Aux-BuscaEmProfundida(G,v);
-        cout<< "Vizinhos: "<< p->getId()<<endl;
+        cout<< "Vizinhos: " << p->getId() << endl;
         auxDeepthFirstSearch1(verify, p); // passa o vetor e o node que estamos come�ando, pode ser 0,1,2 ... depende de onde o for
     }                                    // da fecho transitivo indireto est� chamando
     else
@@ -443,13 +450,14 @@ bool Graph::deephFirstSearch1(int id, int start)
         delete[] verify;
         return true;
     }
-    cout<<"Aux  :"<< getNodeId(id)->getIdNode()<<endl;
+    //cout<<"Aux  :"<< getNodeId(start)->getIdNode()<<endl;
     delete[] verify;
     return false;
 }
 
 void Graph::auxDeepthFirstSearch1(bool verify[], Node *v)
 {
+    //cout << "Vértice na auxDeepthFirstSearch1: " << v->getId() << endl;
     //Protocolo inicial
     int idParametro = v->getIdNode(); /// pega a posi��o equivalente do id desse v�rtice no vetor;
 
@@ -462,12 +470,12 @@ void Graph::auxDeepthFirstSearch1(bool verify[], Node *v)
     for (Edge *p = v->getFirstEdge(); p != NULL; p = p->getNextEdge())
     {
         idParametro = p->getTargetIdNode(); /// pega a posi��o no vetor dos vizinhos que a gente quer verificar
-        cout << " idParametro: "<< idParametro << endl ;
+        //cout << " idParametro: "<< idParametro << endl ;
         //Se w n�o visitado ent�o
-
         if (!verify[idParametro])
         {
-            cout<<"p->getTargetIdNode() :"<< p->getTargetIdNode() <<endl;
+            //cout << "Id no p: " << p->getTargetId() << endl;
+            //cout<<"p->getTargetIdNode() :"<< p->getTargetIdNode() <<endl;
             aux = getNode(p->getTargetId());
             //AuxBuscaEmProfundidade(G,w);
             auxDeepthFirstSearch1(verify, aux);

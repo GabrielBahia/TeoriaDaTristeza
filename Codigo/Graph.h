@@ -52,10 +52,10 @@ class Graph{
         bool deephFirstSearch1(int id, int start); // busca em profundidade; � chamada pela fecho transitivo indireta
         void fechoTransitivoDireto(ofstream &output_file, int id); // fecho transitivo direto; int id é o nó inicial
         void fechoTransitivoIndireto(ofstream &output_file, int id);
+        void floydMarshall(ofstream &output_file, int idSource, int idTarget); // don�t know yet;
         Graph* getVertexInduced(int* listIdNodes); // don�t know yet;
         Graph* agmKuskal(ofstream &output_file); // don�t know yet;
         Graph* agmPrim(ofstream &output_file); // don�t know yet;
-        void floydMarshall(ofstream &output_file, int idSource, int idTarget); // don�t know yet;
         int dijkstra(int idSource, int idTarget); // don�t know yet;
         int **floyd(int tam, int **dist);
         //fun��o auxiliar
@@ -65,10 +65,10 @@ class Graph{
         void getWeithlessEdge(int *nohAresta);
         bool verificaSubarvore(int v1, int v2, Graph *subGrafo);
         int getWeightFromEdgeNodeCombo(int idNoh, int idAresta, Graph *subGrafo);
-        //methods phase1
-        float greed(); // don�t know yet;
+        //methods phase1 Possivelmente vamos ter de tirar esses dq pra baixo
+        /*float greed(); // don�t know yet;
         float greedRandom(); // don�t know yet;
-        float greedRactiveRandom(); // don�t know yet;
+        float greedRactiveRandom(); // don�t know yet;*/
         void printGraph(ofstream &output_file);
         void printEdge(ofstream &output_file);
 };
