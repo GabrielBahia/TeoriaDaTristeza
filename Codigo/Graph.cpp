@@ -300,7 +300,6 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
         ///int aux = fila.front();
         int IdVet = getNode(fila.front())->getIdNode(); // j� que os vetores come�am da posi��o 0, isso possivelmente equivale a passar a posi��o equivalente do id do vertice no vetor
         Node *V = getNode(fila.front());
-        output_file << IdVet;
         ///V = getNode(fila.front());
         //exclui ele da fila
         fila.pop();
@@ -321,7 +320,7 @@ void Graph::fechoTransitivoDireto(ofstream &output_file, int id)
     }
     
     //imprimir o FTD
-    output_file << "O conjunto FTD do v�rtice " << id << " �: {";
+    output_file << "O fecho transitivo direto de " << id << " é: {"; 
     int cont = 0;
     for (int i = 0; i < this->order; i++)
     {
@@ -373,10 +372,9 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
         if (!node[p->getIdNode()]) // se a posi��o do vetor que equivale ao indice do vertice-1 j� que a posi��o do vetor come�a do 0, se ela for false o c�digo ocorre, pois ainda n�o passamos por esse vertice
         {
             node[p->getIdNode()] = true;                            // passa true para a posi��o atual
-            fti[p->getIdNode()] = deephFirstSearch1(id, p->getId()); // chama a busca em profundidade passando o id que queremos e o id equivalente ao no que estamos no for
+            fti[p->getIdNode()] = deephFirstSearch(id, p->getId()); // chama a busca em profundidade passando o id que queremos e o id equivalente ao no que estamos no for
             if (fti[p->getIdNode()])                                  // se true, ou seja se � possivel desse vertice p chegar ao vertice "id" que � parametro da fun��o ent�o conta++ para auxiliar com a impress�o, assim como est� escrito ali em cima;
             {
-                cout<<"vizinho: " << p->getIdNode() << endl;
                 conta++;
                 vetFti[cont] = p->getIdNode(); 
                 vetId[cont] = p->getId();
@@ -384,9 +382,8 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
             }
         }
     }
-    output_file << "O fecho transitivo indireto de " << id << "�: ";
+    output_file << "O fecho transitivo indireto de " << id << " é: ";
     output_file << "{ ";
-    cout << "contadora: " << cont << endl;
     /*for(int i =0;i<cont;i++) {
         cout << vetId[i];
     }*/
@@ -402,7 +399,7 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
             }
             else
             {
-                output_file << (getNode(vetId[i])->getId()) << ",";
+                output_file << (getNode(vetId[i])->getId()) << ", ";
                 aux++;
             }
         }
@@ -410,7 +407,7 @@ void Graph::fechoTransitivoIndireto(ofstream &output_file, int id)
     output_file << " }";
 }
 
-bool Graph::deephFirstSearch1(int id, int start)
+bool Graph::deephFirstSearch(int id, int start)
 {
     //cout << "For que entrou na deephFirstSearch1: " << start << endl;
     //cout << start << endl;
@@ -433,8 +430,7 @@ bool Graph::deephFirstSearch1(int id, int start)
     if (id != p->getId()) // se o v�rtice que foi passado como parametro nessa fun��o que � chamada pela fecho transitivo indireta
     {                     // n�o for igual ao id, ele faz isso, caso contrario obviamente � pois j� estamos no v�rtice que queremos buscar
         //Aux-BuscaEmProfundida(G,v);
-        cout<< "Vizinhos: " << p->getId() << endl;
-        auxDeepthFirstSearch1(verify, p); // passa o vetor e o node que estamos come�ando, pode ser 0,1,2 ... depende de onde o for
+        auxDeepthFirstSearch(verify, p); // passa o vetor e o node que estamos come�ando, pode ser 0,1,2 ... depende de onde o for
     }                                    // da fecho transitivo indireto est� chamando
     else
     {
@@ -446,7 +442,6 @@ bool Graph::deephFirstSearch1(int id, int start)
     {                                     // ao id que queremos no vetor, caso a gente queira o vertice 3 e passamos o vertice 8 que est� ligado
                                           // aos v�rtices 9 e 10, somente as posi��es 7,8,9 receberiam true, ou seja 8 n�o chega ao v�rtice 3, ou seja n�o entre nesse if
         //cout<< getNodeId(id)->getIdNode()<<endl;
-        cout<< "Vizinho(2) :"<< p->getId()<<endl; 
         delete[] verify;
         return true;
     }
@@ -455,7 +450,7 @@ bool Graph::deephFirstSearch1(int id, int start)
     return false;
 }
 
-void Graph::auxDeepthFirstSearch1(bool verify[], Node *v)
+void Graph::auxDeepthFirstSearch(bool verify[], Node *v)
 {
     //cout << "Vértice na auxDeepthFirstSearch1: " << v->getId() << endl;
     //Protocolo inicial
@@ -478,7 +473,7 @@ void Graph::auxDeepthFirstSearch1(bool verify[], Node *v)
             //cout<<"p->getTargetIdNode() :"<< p->getTargetIdNode() <<endl;
             aux = getNode(p->getTargetId());
             //AuxBuscaEmProfundidade(G,w);
-            auxDeepthFirstSearch1(verify, aux);
+            auxDeepthFirstSearch(verify, aux);
         }
     }
     /*
@@ -661,9 +656,9 @@ int Graph::dijkstra(int orig, int dest)
 }
 
 //function that prints a topological sorting
-void Graph::topologicalSorting(ofstream &output_file)
+void Graph::ordenacaoTopologica(ofstream &output_file)
 {
-    list<Node*> listaNos;
+    list<Node*> listaNode;
     list<int> listaTopologica;
     if (this->graphCiclo())// verifica se o grafo e aciclico ou nao
     {
@@ -676,13 +671,13 @@ void Graph::topologicalSorting(ofstream &output_file)
             for (auxNo=this->first_node;auxNo!=NULL;auxNo = auxNo->getNextNode())
             {   if (auxNo->getInDegree()==0)// se entrada  = 0
                 {
-                    listaNos.push_back(auxNo); //coloca os nos corretos na fila
+                    listaNode.push_back(auxNo); //coloca os nos corretos na fila
                 }
             }
-            while (!listaNos.empty())// enquanto lista e vazia
+            while (!listaNode.empty())// enquanto lista e vazia
             {
-                Node *aux = listaNos.front();
-                listaNos.pop_front(); //remove da lista
+                Node *aux = listaNode.front();
+                listaNode.pop_front(); //remove da lista
                 listaTopologica.push_back(aux->getId()); //coloca na lista auxiliar
                 for(auxAres =aux->getFirstEdge(); auxAres!=NULL;auxAres=auxAres->getNextEdge())
                 {
@@ -690,7 +685,7 @@ void Graph::topologicalSorting(ofstream &output_file)
                     auxNo->decrementInDegree(); //decrementa o grau de entrada
                     if (auxNo->getInDegree()==0) //se a entrada = 0
                     {
-                        listaNos.push_back(auxNo);
+                        listaNode.push_back(auxNo);
                     }
 
                 }
@@ -1038,7 +1033,7 @@ bool Graph::verificaSubarvore(int v1, int v2, Graph *subGrafo)
     for (Node *p = subGrafo->getFirstNode(); p != NULL; p = p->getNextNode())
     {
 
-        fti[p->getId() - 1] = subGrafo->deephFirstSearch1(v2, p->getId());
+        fti[p->getId() - 1] = subGrafo->deephFirstSearch(v2, p->getId());
     }
 
     return fti[v1 - 1];

@@ -97,7 +97,7 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
         graph->insertNode(idNodeSource);
         graph->insertNode(idNodeTarget);
         graph->insertEdge(idNodeSource, idNodeTarget, 0);
-        output_file << endl;
+        //output_file << endl;
     }
 
     return graph;
@@ -213,7 +213,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
            /* Imprimir ordenacao topologica */
         case 8:{
 
-            graph->topologicalSorting(output_file);
+            graph->ordenacaoTopologica(output_file);
             break;
         }
         default:

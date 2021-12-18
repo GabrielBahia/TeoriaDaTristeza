@@ -47,9 +47,9 @@ class Graph{
         Node* getNodeId(int id);
 
         //methods phase1
-        void topologicalSorting(ofstream &output_file); // don�t know yet
+        void ordenacaoTopologica(ofstream &output_file); // don�t know yet
         void breadthFirstSearch(ofstream& output_file); // busca em largura;
-        bool deephFirstSearch1(int id, int start); // busca em profundidade; � chamada pela fecho transitivo indireta
+        bool deephFirstSearch(int id, int start); // busca em profundidade; � chamada pela fecho transitivo indireta
         void fechoTransitivoDireto(ofstream &output_file, int id); // fecho transitivo direto; int id é o nó inicial
         void fechoTransitivoIndireto(ofstream &output_file, int id);
         void floydMarshall(ofstream &output_file, int idSource, int idTarget); // don�t know yet;
@@ -59,7 +59,7 @@ class Graph{
         int dijkstra(int idSource, int idTarget); // don�t know yet;
         int **floyd(int tam, int **dist);
         //fun��o auxiliar
-        void auxDeepthFirstSearch1(bool verify[], Node *v);
+        void auxDeepthFirstSearch(bool verify[], Node *v);
         bool graphCiclo();
         Graph *getVertexInduced(int *listIdNodes, int tam);
         void getWeithlessEdge(int *nohAresta);
