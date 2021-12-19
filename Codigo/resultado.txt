@@ -1,3 +1,0 @@
-Custo minimo da origem: 1 até destino: 24 é: 1211898698
-Custo minimo da origem: 1 até destino: 2 é: 1000000000
-

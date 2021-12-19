@@ -118,7 +118,7 @@ void Graph::insertNode(int id)
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
-    cout << "peso: " << weight << endl;
+    //cout << "peso: " << weight << endl;
     /*if (!searchNode(id)) 
     {
        insertNode(id); 
@@ -578,7 +578,7 @@ int **Graph::floyd(int tam, int **dist)
 int Graph::dijkstra(int orig, int dest)
 {
 
-    if (negative_edge != true)
+    if (negative_edge == false)
     {
 
         //int dist[this->getOrder()];       // vetor de dist�ncias
@@ -745,7 +745,7 @@ Graph *Graph::agmPrim(ofstream &output_file)
     //para todo noh da lista faça
     for (p = grafoVI->getFirstNode(); p != NULL; p = p->getNextNode())
     {
-        grafoX->insertNode(p->getId());
+        grafoX->insertNode(p->getIdNode());
     }
 
    // bool adicionados[this->order]; //marca quais vértices ja possuem um caminho
@@ -775,7 +775,7 @@ Graph *Graph::agmPrim(ofstream &output_file)
             Node *verticeAnalisado = grafoVI->getNode(*k);
             for (Edge *it = verticeAnalisado->getFirstEdge(); it != NULL; it = it->getNextEdge()) //percorre todas arestas de grafoVI
             {
-                int verticeAdjacente = it->getTargetId(); //pega o vértice alvo dessa aresta
+                int verticeAdjacente = it->getTargetIdNode(); //pega o vértice alvo dessa aresta
                 int custo_aresta = it->getWeight();       //pega o custo dessa aresta
 
                 if (adicionados[verticeAdjacente - 1] == false) //se o vértice alvo não foi adicionado
@@ -848,11 +848,12 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
 
             // se a aresta do vertice pra onde ela aponta existir
 
-            verificaSeTem = subGrafo->searchNode(aux->getTargetId());
+            verificaSeTem = subGrafo->searchNode(aux->getTargetIdNode());
             if (verificaSeTem)
             {
                 // incluir a aresta no noh do subgrafo;
-                subGrafo->insertEdge(p->getId(), aux->getTargetId(), aux->getWeight());
+                //subGrafo->insertEdge(p->getId(), aux->getTargetId(), aux->getWeight());
+                p->insertEdge(aux->getTargetId(), aux->getWeight(), aux->getTargetIdNode());
             }
         }
     }
