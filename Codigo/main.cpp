@@ -84,10 +84,11 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
     int numEdges;
     float weightEdge;
     Graph* graph;
+    int weightNode;
     //Pegando a ordem do grafo
     
     input_file >> order;
-    if(weightedEdge) {
+    if(weightedEdge && !weightedNode) {
         //Criando objeto grafo
         graph = new Graph(order, directed, weightedEdge, weightedNode);
         //Leitura de arquivo
@@ -95,13 +96,26 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
             // graph->insertNode(idNodeSource);
             //cout << "IdNodeSource: " << idNodeSource << endl;
             //cout << "IdNodeTarget: " << idNodeTarget << endl;
-            graph->insertNode(idNodeSource);
-            graph->insertNode(idNodeTarget);
+            graph->insertNode(idNodeSource,0);
+            graph->insertNode(idNodeTarget,0);
             graph->insertEdge(idNodeSource, idNodeTarget, weightEdge);
             //output_file << endl;
         }
+    } else if(!weightedEdge && weightedNode) {
+        //Criando objeto grafo
+        graph = new Graph(order, directed, weightedEdge, weightedNode);
+        //Leitura de arquivo
+        while(input_file >> idNodeSource >> idNodeTarget >> weightNode) {
+            // graph->insertNode(idNodeSource);
+            //cout << "IdNodeSource: " << idNodeSource << endl;
+            //cout << "IdNodeTarget: " << idNodeTarget << endl;
+            graph->insertNode(idNodeSource,weightNode);
+            graph->insertNode(idNodeTarget,weightNode);
+            graph->insertEdge(idNodeSource, idNodeTarget, 0);
+            //output_file << endl;
+        }
     }
-    else {
+    else if(!weightedEdge && !weightedNode) {
         //Criando objeto grafo
         graph = new Graph(order, directed, weightedEdge, weightedNode);
         //Leitura de arquivo
@@ -109,9 +123,22 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
             // graph->insertNode(idNodeSource);
             //cout << "IdNodeSource: " << idNodeSource << endl;
             //cout << "IdNodeTarget: " << idNodeTarget << endl;
-            graph->insertNode(idNodeSource);
-            graph->insertNode(idNodeTarget);
+            graph->insertNode(idNodeSource,0);
+            graph->insertNode(idNodeTarget,0);
             graph->insertEdge(idNodeSource, idNodeTarget, 0);
+            //output_file << endl;
+        }
+    } else {
+        //Criando objeto grafo
+        graph = new Graph(order, directed, weightedEdge, weightedNode);
+        //Leitura de arquivo
+        while(input_file >> idNodeSource >> idNodeTarget >> weightEdge >> weightNode) {
+            // graph->insertNode(idNodeSource);
+            //cout << "IdNodeSource: " << idNodeSource << endl;
+            //cout << "IdNodeTarget: " << idNodeTarget << endl;
+            graph->insertNode(idNodeSource,weightNode);
+            graph->insertNode(idNodeTarget,weightNode);
+            graph->insertEdge(idNodeSource, idNodeTarget, weightEdge);
             //output_file << endl;
         }
     }

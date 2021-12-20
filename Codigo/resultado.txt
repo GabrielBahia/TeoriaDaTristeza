@@ -1,0 +1,4 @@
+O fecho transitivo direto de 1 é: {1, 2, 3, 23, 24}
+
+O fecho transitivo indireto de 1 é: { 1 }
+
