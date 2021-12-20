@@ -258,6 +258,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         case 8:{
 
             graph->ord_Topologica(output_file);
+         
             break;
         }
         default:

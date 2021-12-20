@@ -981,9 +981,61 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
 void Graph::arv_Buscalargura(ofstream &output_file, int id)
 {
 
+  int num[this->order];
+  int pa[this->order];
+  int cont = 0;
 
 
+    for (int i = 0; i < this->order; i++)
+        num[i] = pa[i] = -1;
 
+        
+    list<Node*> listN;  
+    num[id-1] = cont++; 
+    pa[id-1] = id;
+    listN.push_back(getNode(id));
+
+
+    while (!listN.empty()) 
+    {
+        Node *aux = listN.front();
+        listN.pop_front(); 
+
+        for (Edge *auxE = aux->getFirstEdge(); auxE!=NULL; auxE=auxE->getNextEdge())
+        {
+             if (num[(auxE->getTargetId())-1] == -1) {
+                num[(auxE->getTargetId())-1] = cont++; 
+                pa[(auxE->getTargetId())-1] = aux->getId();
+                listN.push_back(getNode(auxE->getTargetId()));
+            }
+
+        }
+            
+    }
+
+      Graph *arvBL = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+    
+     for(int i=1;i<this->order+1;i++)
+     {
+        arvBL->insertNode(i,0); 
+        cout<< i <<endl;
+
+     }
+
+
+     for(int i=0;i<this->order;i++)
+     {
+         if(i+1 != id )
+         {
+           arvBL->insertEdge(pa[i],i+1,0);
+         }
+
+     }
+
+    output_file << "Arvore dada pelo caminhamento em lagura: ";
+
+    arvBL->printGraph(output_file);
+ 
 }
 
 
