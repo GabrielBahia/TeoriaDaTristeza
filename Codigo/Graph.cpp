@@ -472,116 +472,158 @@ void Graph::auxDeepthFirstSearch(bool node[], Node *v)
 
 // INICIO DIJKSTRA /////////////////////////////////////////////
 
-int Graph::dijkstra(int orig, int dest)
+void Graph::caminhoMin_djkstra(ofstream &output_file, int orig, int dest)
 {
+   int dist[this->order];           //vetor que faz uma analogia entre id e distancia
+    int verticeAnterior[this->order]; //vetor que faz uma analogia entre id e vértice predecessor do caminho minimo
+    bool visited[this->order];          //vetor que verifica se o vértice ja foi visitado
 
-    if (negative_edge == false)
+    //Fazer uma fila de prioridade minima.
+    //a ideia é fazer uma fila onde o primeiro valor seja a distancia
+    //e o segundo valor seja o id do vértice
+    typedef pair<int, int> o;
+    priority_queue<o, vector<o>, greater<o>> pq;
+
+    //Iniciar todas as distancias como inifinito, todos vertices como não visitados e todos predecessores como inexistentes(-1)
+    for (int i = 0; i < this->order; i++)
     {
+        dist[i] = 4203209;
+        visited[i] = false;
+        verticeAnterior[i] = -1;
+    }
 
-        //int dist[this->getOrder()];       // vetor de dist�ncias
-        int *dist = new int[this->getOrder()]; // vetor de dist�ncias
-        //bool visitados[this->getOrder()]; // vetor de visitados para n�o repetir vertices j� expandido
-        bool *visitados = new bool [this->getOrder()]; // vetor de visitados para n�o repetir vertices j� expandido
-        // fila de prioridades de pair (distancia, v�rtice)
-        priority_queue<pair<int, int>,
-                       vector<pair<int, int>>, greater<pair<int, int>>>
-            pq;
+    dist[orig - 1] = 0;            //Distancia do vertice inicial até ele mesmo é 0
+    verticeAnterior[orig - 1] = -2; //Predecessor do vertice inicial é tido como -2
 
-        // inicia o vetor de dist�ncias e visitados
-        for (int i = 0; i < this->getOrder(); i++)
+    //inserir o vertice inicial na fila
+    pq.push(make_pair(dist[orig - 1], orig));
+    //iteraçao
+    while (!pq.empty())
+    {
+        pair<int, int> dist_no = pq.top(); //copia par (id do vertice e distancia) do topo
+        int idVertice = dist_no.second;
+        Node *verticeAnalisado = this->getNode(idVertice); //obtem o vértice a ser analisado a partir de seu id
+        pq.pop();                                        //remove o par da fila
+
+        //verifica se o vértice ja foi visitado
+        if (visited[verticeAnalisado->getId() - 1] == false)
         {
-            dist[i] = INFINITO;
-            visitados[i] = false;
-        }
-
-        // a dist�ncia de orig para orig � 0
-        dist[orig] = 0;
-
-        // insere na fila
-        pq.push(make_pair(dist[orig], orig));
-
-        // loop do algoritmo
-        while (!pq.empty())
-        {
-            pair<int, int> p = pq.top(); // extrai o pair do topo
-            //int u = p.second; // obt�m o v�rtice do pair
-            Node *u = getNode(p.second);
-            pq.pop(); // remove da fila
-
-            // verifica se o v�rtice n�o foi expandido
-            //if (visitados[u->getId()] == false)
-            if(visitados[u->getIdNode()] == false)
+            //marca como visitado
+            visited[verticeAnalisado->getId() - 1] = true;
+            for (Edge *it = verticeAnalisado->getFirstEdge(); it != NULL; it = it->getNextEdge())
             {
-                // marca como visitado
-                //visitados[u->getId()] = true;
-                visitados[u->getIdNode()] = true;
-
-                //list<pair<int, int> >::iterator it;
-
-                // percorre os v�rtices "v" adjacentes de "u"
-                //Edge *p = v->getFirstEdge(); p != NULL; p = p->getNextEdge()
-                for (Edge *aux = u->getFirstEdge(); aux != NULL; aux = aux->getNextEdge())
+                //obtém o vertice adjancente e o custa da aresta
+                int verticeAdjacente = it->getTargetId() - 1;
+                int custo_aresta = it->getWeight();
+                //verificar se a distancia vértices adjacente é maior que a distancia da distancia do vertice analisado + o custa da aresta
+                if (dist[verticeAdjacente] > (dist[verticeAnalisado->getId() - 1] + custo_aresta))
                 {
-                    // obt�m o v�rtice adjacente e o custo da aresta
-
-                    //int v = aux->getTargetId();
-                    int v = aux->getTargetIdNode();
-                    int custo_aresta = aux->getWeight();
-
-                    // relaxamento (u, v)
-                    //if (dist[v] > (dist[u->getId()] + custo_aresta))
-                    if (dist[v] > (dist[u->getIdNode()] + custo_aresta))
-                    {
-                        // atualiza a dist�ncia de "v" e insere na fila
-                        //dist[v] = dist[u->getId()] + custo_aresta;
-                        dist[v] = dist[u->getIdNode()] + custo_aresta;
-                        pq.push(make_pair(dist[v], v));
-                    }
+                    //atualiza a distancia do vertice Adjacente e insere na fila
+                    dist[verticeAdjacente] = dist[verticeAnalisado->getId() - 1] + custo_aresta;
+                    verticeAnterior[verticeAdjacente] = verticeAnalisado->getId();
+                    pq.push(make_pair(dist[verticeAdjacente], verticeAdjacente + 1));
                 }
             }
         }
-
-        // retorna a dist�ncia m�nima at� o destino
-        return dist[dest];
     }
-    return 0;
+
+    if (verticeAnterior[dest - 1] != -1 && verticeAnterior[dest - 1] != -2)
+    {
+
+        if (verticeAnterior[dest - 1] != -1 && verticeAnterior[dest - 1] != -2)
+        {
+            if (this->directed)
+            {
+                list<int> caminho;
+                int a = verticeAnterior[dest - 1];
+                while (verticeAnterior[a - 1] != -2 && verticeAnterior[a - 1] != -1)
+                {
+                    caminho.push_front(a);
+                    a = verticeAnterior[a - 1];
+                }
+                output_file << "Custo da Distancia de "<<orig<< " até "<< dest <<" é: "<<dist[dest-1]<<endl;
+                output_file << orig;
+                for (int i = 0; !(caminho.empty()); i++)
+                {
+                    output_file << " -> " << caminho.front();
+                    caminho.pop_front();
+                }
+                output_file << " -> " << dest;
+            }
+
+            if (!(this->directed))
+            {
+                list<int> caminho;
+                int a = verticeAnterior[dest - 1];
+                while (verticeAnterior[a - 1] != -2 && verticeAnterior[a - 1] != -1)
+                {
+                    caminho.push_front(a);
+                    a = verticeAnterior[a - 1];
+                }
+                output_file << "Custo da Distancia de "<<orig<< " até "<< dest <<" é: "<<dist[dest-1]<<endl;
+                output_file << orig;
+                for (int i = 0; !(caminho.empty()); i++)
+                {
+                    output_file << " -- " << caminho.front();
+                    caminho.pop_front();
+                }
+                output_file << " -- " << dest;
+            }
+        }
+        else if (verticeAnterior[dest - 1] == -1)
+        {
+            output_file << "não existe caminho" << endl;
+        }
+        else if (verticeAnterior[dest - 1] == -2)
+        {
+            output_file <<" O vertice de origem é o mesmo que o destino" << endl;
+        }
+    }
+
+
 }
 
 /////////// FIM DIJKSTRA /////////////////////////////////////////////
 
 // INICIO FLOYD ////////////////////////////////////////////////////////////
 
-void Graph::floydMarshall(ofstream &output_file, int idSource, int idTarget)
+void Graph::caminhoMin_floyd(ofstream &output_file, int idSource, int idTarget)
 {
-    int tam = this->order;               // recebe ordem do grafo
-    Node *auxNode = this->first_node;    // recebe primeiro no
-    int ** dist = new int *[this->order]; // inicializando matriz que recebe vetor
-    dist = floyd(tam, dist);             // dist recebe funcao floyd
-    output_file << "Menor caminho entre o No[" << idSource << "] e o No[" << idTarget << "] e: [" << dist[idSource - 1][idTarget - 1] << "]" << endl;
+    int ordem = this->order;               // recebe ordem do grafo
+    //Node *auxNode = this->first_node;     // recebe primeiro no // (NAO ESTA SENDO USADO)
+    int ** dist = new int *[ordem]; // inicializando matriz que recebe vetor
+    dist = constroiMat_floyd(ordem, dist);             // dist recebe funcao floyd
+    output_file << "O menor caminho entre o No[" << idSource << "] e o No[" << idTarget << "] e: [" << dist[idSource - 1][idTarget - 1] << "]" << endl;
 
-    Node *auxNode2 = this->first_node;
+    // Não precisa imprimir a matriz
+    
+   /* Node *auxN = this->first_node;
+
+    
     output_file << " matriz das Distâncias mais curtas entre cada par de vértices:" << endl;
-    for (int i = 0; i < this->order + 1; i++)
+    for (int i = 0; i < ordem + 1; i++)
     {
         if (i == 0)
             output_file << setw(7) << " ";
         else
         {
-            output_file << setw(7) << auxNode2->getId();
-            auxNode2 = auxNode2->getNextNode();
+            output_file << setw(7) << auxN->getId();
+            auxN = auxN->getNextNode();
         }
     }
+
     output_file << endl;
-    auxNode2 = this->first_node;
-    for (int i = 0; i < this->order; i++)
+    auxN = this->first_node;
+
+    for (int i = 0; i < ordem; i++)
     {
-        for (int j = 0; j < this->order + 1; j++)
+        for (int j = 0; j < ordem + 1; j++)
         {
             if (j == 0)
             {
-                output_file << setw(7) << " | " << auxNode2->getId() << " | ";
-                
-                auxNode2 = auxNode2->getNextNode();
+                output_file << setw(7) << " | " << auxN->getId() << " | ";
+                ;
+                auxN= auxN->getNextNode();
             }
             else
             {
@@ -594,50 +636,54 @@ void Graph::floydMarshall(ofstream &output_file, int idSource, int idTarget)
         }
         output_file << endl;
     }
+    */
 }
 
-int **Graph::floyd(int tam, int **dist)
-{
-    dist = new int *[tam];
-    for (int i = 0; i < tam; i++)
+int **Graph::constroiMat_floyd(int ordem, int **dist)
+{ // fucnao para utilizar lista de adj e para usar o alg de floyd
+
+    dist = new int *[ordem];
+    for (int i = 0; i < ordem; i++)
     {
         dist[i] = new int[this->order];
     }
-    Node *auxNode1 = this->first_node; // ponteiro do primeiro nó recebe primeiro no do grafo
-    int peso_edge = 1;                  // peso da aresta
-    Node *auxNode2;                    // ponteiro auxiliar para um no
-    
 
-    for (int i = 0; auxNode1 != NULL; auxNode1 = auxNode1->getNextNode(), i++)
+    Node *auxA = this->first_node; // ponteiro do primeiro nó recebe primeiro no do grafo
+    Node *auxB;                    // ponteiro auxiliar para um no
+    int pesoEdge = 1;                  // peso da aresta
+    // matriz com os valores de cada aresta entre os nos
+    for (int i = 0; auxA != NULL; auxA = auxA->getNextNode(), i++)
     {
-        auxNode2 = this->first_node;
+        auxB = this->first_node;
 
-        for (int j = 0; auxNode2 != NULL; auxNode2 = auxNode2->getNextNode(), j++)
+        for (int j = 0; auxB != NULL; auxB = auxB->getNextNode(), j++)
         {
-            Edge *aux = auxNode1->hasEdgeBetween(auxNode2->getId());
+            Edge *aux = auxA->hasEdgeBetween(auxB->getId());
 
             if (this->weighted_edge && aux != NULL)
-                peso_edge = aux->getWeight();
+                pesoEdge = aux->getWeight();
 
-            if (auxNode1->getId() == auxNode2->getId())
+            if (auxA->getId() == auxB->getId())
                 dist[i][j] = 0;
 
             else if (aux != NULL)
 
-                dist[i][j] = peso_edge;
+                dist[i][j] = pesoEdge;
 
             else
                 dist[i][j] = INT_MAX / 2;
         }
     }
-    for (int k = 0; k < tam; k++)
+    for (int k = 0; k < ordem; k++)
     {
-        for (int i = 0; i < tam; i++)
+        // Escolhendo todos os vértices como fonte, um por um
+        for (int i = 0; i < ordem; i++)
         {
             if (i != k)
-            { 
-                for (int j = 0; j < tam; j++)
+            { // Escolhendo todos os vértices como destino
+                for (int j = 0; j < ordem; j++)
                 {
+                    //Se o vértice c estiver no caminho mais curto de i para j, em seguida, atualize o valor de dist [i] [j]
                     if (dist[i][j] > dist[i][k] + dist[k][j] && dist[i][k] + dist[i][j] > 0)
                         dist[i][j] = dist[i][k] + dist[k][j];
                 }
@@ -649,97 +695,6 @@ int **Graph::floyd(int tam, int **dist)
 
 // FIM FLOYD ////////////////////////////////////////////////////
 
-Graph *Graph::agmPrim(ofstream &output_file)
-{
-    int tam, x;
-    cout << "Digite o numero de vértices de 1 a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
-    cin >> tam;
-    int *listaNode = new int[tam];
-    for (int i = 0; i < tam; i++)
-    {
-        cout << "Digite o vértice de numero " << i + 1 << ": " << endl;
-        cin >> x;
-        listaNode[i] = x;
-    }
-
-    Graph *grafo1;
-    grafo1 = this->getVertexInduced(listaNode, tam);
-
-    Graph *grafo2 = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
-    Node *p;
-    //para todo noh da lista faça
-    for (p = grafo1->getFirstNode(); p != NULL; p = p->getNextNode())
-    {
-        grafo2->insertNode(p->getIdNode(),p->getWeight());
-    }
-
-   // bool adicionados[this->order]; //marca quais vértices ja possuem um caminho
-    bool *adds = new bool [this->order];
-    for (int i = 0; i < this->order; i++)
-    {
-        adds[i] = false;
-    }
-    adds[x] = true;
-
-    std::list<int> vertices; 
-    std::list<int>::iterator k;
-    vertices.push_front(x);
-
-    bool todosNodeAdd = false;
-
-    int custoTotal=0;
-
-
-    while (todosNodeAdd == false) //até ter um caminho para todos os node
-    {
-        int node1; //node armazena o node de onde vai sair o edge
-        int node2; //node armazena o node que o edge vai chegar
-        int menorCusto = 999999999;
-        for (k = vertices.begin(); k != vertices.end(); k++) //percorre todos vértices da lista
-        {
-            Node *verticeAnalisado = grafo1->getNode(*k);
-            for (Edge *it = verticeAnalisado->getFirstEdge(); it != NULL; it = it->getNextEdge()) //percorre todas arestas de grafoVI
-            {
-                int verticeAdjacente = it->getTargetIdNode(); //node target desse edge
-                int custo_aresta = it->getWeight();       //custo desse edge
-
-                if (adds[verticeAdjacente - 1] == false) //node alvo não foi adicionado
-                {
-                    if (menorCusto > custo_aresta) //custo desse edge for menor de todas que ja forram analisados
-                    {
-                        node1 = verticeAnalisado->getId(); //node que esta saindo esse edge
-                        node2 = verticeAdjacente; //node onde esta chegando esse edge
-                        menorCusto = custo_aresta; //custo desse edge
-                    }
-                }
-            }
-        }
-
-        grafo2->insertEdge(node1, node2, menorCusto);
-
-        custoTotal=custoTotal+menorCusto;
-
-        vertices.push_front(node2); //add node2 na listaNode
-        adds[node2 - 1] = true; //marcar node2 como adicionado
-        int contador = 0;
-        for (int i = 0; i < (this->order); i++) //verifica se todos nodes ja foram adicionados se sim todosNodeAdd=true
-        {
-            if (adds[i] == true)
-            {
-                contador++;
-            }
-        }
-        if (contador == (grafo2->order))
-        {
-            todosNodeAdd = true;
-        }
-    }
-    delete[] listaNode;
-
-    output_file<<"Peso da Arvore Geradora Minima: "<<custoTotal<<endl;
-
-    return grafo2;
-}
 
 
 Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
@@ -780,42 +735,146 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
     return subGrafo;
 }
 
-Graph *Graph::agmKuskal(ofstream &output_file)
+
+
+// INICIO PRIM ////////////////////////////////////////////////////////////
+
+Graph *Graph::arvGMin_Prim(ofstream &output_file)
 {
-    int tam, v;
-    cout << "Digite o numero de vértices de '1' a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
-    cin >> tam;
-    int *listaNode = new int[this->order];
+    int num, aux;
+    cout << "Digite o numero de vértices de 1 a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
+    cin >> num;
+    int *nodes = new int[num];
+    for (int i = 0; i < num; i++)
+    {
+        cout << "Digite o vértice de numero " << i + 1 << ": " << endl;
+        cin >> aux;
+        nodes[i] = aux;
+    }
+
+    Graph *grafoA;
+    grafoA = this->getVertexInduced(nodes, num);
+
+    Graph *grafoB = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+    Node *v;
+    //para todo noh da lista faça
+    for (v = grafoA->getFirstNode(); v != NULL; v = v->getNextNode())
+    {
+        grafoB->insertNode(v->getIdNode(),v->getWeight());
+    }
+
+   // bool adicionados[this->order]; //marca quais vértices ja possuem um caminho
+    bool *adds = new bool [this->order];
     for (int i = 0; i < this->order; i++)
     {
-        listaNode[i] = -1;
+        adds[i] = false;
     }
-    for (int i = 0; i < tam; i++)
+    adds[aux] = true;
+
+    std::list<int> vertices; 
+    std::list<int>::iterator k;
+    vertices.push_front(aux);
+
+    bool todosNodeAdd = false;
+
+    int custoT=0;
+
+
+    while (todosNodeAdd == false) //até ter um caminho para todos os node
+    {
+        int nodeA; //node armazena o node de onde vai sair o edge
+        int nodeB; //node armazena o node que o edge vai chegar
+        int custoMenor = 999999999;
+        for (k = vertices.begin(); k != vertices.end(); k++) //percorre todos vértices da lista
+        {
+            Node *verticeAnalisado = grafoA->getNode(*k);
+            for (Edge *ed = verticeAnalisado->getFirstEdge(); ed != NULL; ed = ed->getNextEdge()) //percorre todas arestas de grafoVI
+            {
+                int verticeAdjacente = ed->getTargetIdNode(); //node target desse edge
+                int custo_aresta = ed->getWeight();       //custo desse edge
+
+                if (adds[verticeAdjacente - 1] == false) //node alvo não foi adicionado
+                {
+                    if (custoMenor > custo_aresta) //custo desse edge for menor de todas que ja forram analisados
+                    {
+                        nodeA = verticeAnalisado->getId(); //node que esta saindo esse edge
+                        nodeB = verticeAdjacente; //node onde esta chegando esse edge
+                        custoMenor = custo_aresta; //custo desse edge
+                    }
+                }
+            }
+        }
+
+        grafoB->insertEdge(nodeA, nodeB, custoMenor);
+
+        custoT=custoT+custoMenor;
+
+        vertices.push_front(nodeB); //add nodeB no nodes
+        adds[nodeB - 1] = true; //marcar nodeB como adicionado
+        int cont = 0;
+        for (int i = 0; i < (this->order); i++) //verifica se todos nodes ja foram adicionados se sim todosNodeAdd=true
+        {
+            if (adds[i] == true)
+            {
+                cont++;
+            }
+        }
+        if (cont == (grafoB->order))
+        {
+            todosNodeAdd = true;
+        }
+    }
+    delete[] nodes;
+
+     // Nao precisa dessa parte, ( se caso for apagar, apagar a variavel custoT)
+
+   /*
+    output_file<<"Peso da Arvore Geradora Minima: "<<custoT<<endl;*/
+
+    return grafoB;
+}
+
+// FIM PRIM ////////////////////////////////////////////////////
+
+
+// INICIO KRUSKAL ////////////////////////////////////////////////////////////
+
+Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
+{
+    int num, v;
+    cout << "Digite o numero de vértices de '1' a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
+    cin >> num;
+    int *nodes = new int[this->order];
+    for (int i = 0; i < this->order; i++)
+    {
+        nodes[i] = -1;
+    }
+    for (int i = 0; i < num; i++)
     {
         cout << "Digite o vértice numero " << i + 1 << ": " << endl;
         cin >> v;
-        listaNode[i] = v;
+        nodes[i] = v;
     }
     //pre-requisitos pra fazer a ordenacao
-    Graph *grafo1;
-    grafo1 = this->getVertexInduced(listaNode, tam);
+    Graph *grafoA;
+    grafoA = this->getVertexInduced(nodes, num);
 
-    Graph *grafoAux = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node); //vai vira o grafoVI
+    Graph *grafoB = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node); //vai vira o grafoVI
 
     int *EdgeNode = new int[3];
     int totalEdge;
 
-    totalEdge = grafo1->getNumberEdges();
+    totalEdge = grafoA->getNumberEdges();
 
-    list<pair<int, int>> lista;
+    list<pair<int, int>> listP;
 
     Node *sup;
     Node *p;
     Edge *aux;
 
-    for (sup = grafo1->getFirstNode(); sup != NULL; sup = sup->getNextNode())
+    for (sup = grafoA->getFirstNode(); sup != NULL; sup = sup->getNextNode())
     {
-        //grafoAux->insertNode(sup->getId());
+        //grafoB->insertNode(sup->getId());
     }
 
     //Criar uma lista L com as arestas ordenadas em
@@ -823,12 +882,12 @@ Graph *Graph::agmKuskal(ofstream &output_file)
     for (int i = 0; i < totalEdge; i++)
     {
         // acha a aresta de menor peso
-        grafo1->getWeithlessEdge(EdgeNode);
+        grafoA->getWeithlessEdge(EdgeNode);
         //insere a aresta de menor peso
-        lista.push_back(make_pair(EdgeNode[0], EdgeNode[1]));
+        listP.push_back(make_pair(EdgeNode[0], EdgeNode[1]));
         //retira a aresta do grafo pra evitar repetir a mesma aresta;
-        sup = grafo1->getNode(EdgeNode[0]);
-        p = grafo1->getNode(EdgeNode[1]);
+        sup = grafoA->getNode(EdgeNode[0]);
+        p = grafoA->getNode(EdgeNode[1]);
         if (!this->directed)
         {
             sup->removeEdge(p->getId(), this->directed, p);
@@ -842,17 +901,17 @@ Graph *Graph::agmKuskal(ofstream &output_file)
             sup->removeEdge(p->getId(), this->directed, p);
         }
         //adiciona a a resta num grafo auxiliar.
-        grafoAux->insertEdge(EdgeNode[0], EdgeNode[1], EdgeNode[2]);
+        grafoB->insertEdge(EdgeNode[0], EdgeNode[1], EdgeNode[2]);
     }
 
     //Organizar a lista;
 
     //Criar |V| subárvores contendo cada uma um nó
     //isolado.
-    Graph *arvoreGerMin = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
-    for (sup = grafoAux->getFirstNode(); sup != NULL; sup = sup->getNextNode())
+    Graph *agMin = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+    for (sup = grafoB->getFirstNode(); sup != NULL; sup = sup->getNextNode())
     {
-        //arvoreGerMin->insertNode(sup->getId());
+        //agMin->insertNode(sup->getId());
     }
 
     //F ¬ Æ
@@ -860,55 +919,75 @@ Graph *Graph::agmKuskal(ofstream &output_file)
     list<pair<int, int>> listaAux;
 
     //contador ¬ 0
-    int conta = 0;
-    int numMaxAresta = arvoreGerMin->getOrder() - 1;
-    //bool verify[this->order] = ;
-    bool *verify = new bool[this->order];
+    int cont = 0;
+    int numMaxAresta = agMin->getOrder() - 1;
+    //bool verificado[this->order] = ;
+    bool *verificado = new bool[this->order];
 
     for (int i = 0; i < this->order; i++)
     {
-        verify[i] = false;
+        verificado[i] = false;
     }
 
     //Enquanto contador < |V|-1 e L 1 Æ faça
-    while (conta < numMaxAresta && !lista.empty())
+    while (cont < numMaxAresta && !listP.empty())
     {
         //Seja (u,v) a próxima aresta de L.
-        pair<int, int> distancia_no = lista.front(); //copia par (id do vertice e distancia) do topo
-        int v1 = distancia_no.first;
-        int v2 = distancia_no.second;
+        pair<int, int> dist_no = listP.front(); //copia par (id do vertice e distancia) do topo
+        int v1 = dist_no.first;
+        int v2 = dist_no.second;
 
-        lista.pop_front();
+        listP.pop_front();
         //Se u e v não estão na mesma subárvore então
-        if (!verificaSubarvore(v1, v2, arvoreGerMin))
+        if (!verificaSubarvore(v1, v2, agMin))
         {
              //F ¬ F È {(u,v)}
             //preenche a lista;
             listaAux.push_back(make_pair(v1, v2));
             //busca o peso da aresta
-            int peso = getWeightFromEdgeNodeCombo(v1, v2, grafoAux);
+            int peso = getWeightFromEdgeNodeCombo(v1, v2, grafoB);
 
             //Unir as subárvores que contêm u e v.
-            arvoreGerMin->insertEdge(v1, v2, peso);
+            agMin->insertEdge(v1, v2, peso);
             //contador ¬ contador + 1
-            conta++;
+            cont++;
             //fim-se
         }
     }
 
-    int pesoTotal = 0;
+    // NAO PRECISA DESSA PARTE
+
+   /* int pesoT = 0;
     while (!listaAux.empty())
     {
-        pair<int, int> distancia_no = listaAux.front(); //copia par (id do vertice e distancia) do topo
-        int v1 = distancia_no.first;
-        int v2 = distancia_no.second;
-        pesoTotal = pesoTotal + getWeightFromEdgeNodeCombo(v1, v2, arvoreGerMin);
+        pair<int, int> dist_no = listaAux.front(); //copia par (id do vertice e distancia) do topo
+        int v1 = dist_no.first;
+        int v2 = dist_no.second;
+        pesoT = pesoT + getWeightFromEdgeNodeCombo(v1, v2, agMin);
         listaAux.pop_front();
     }
-    output_file << "Peso da Arvore Geradora Minima: " << pesoTotal << endl;
-    return arvoreGerMin;
+    output_file << "Peso da Arvore Geradora Minima: " << pesoT << endl;
+    */
+
+    return agMin;
 
 }
+
+// FIM KRUSKAL ////////////////////////////////////////////////////
+
+
+// INICIO BUSCA EM LARGURA ////////////////////////////////////////////////////////////
+
+void Graph::arv_Buscalargura(ofstream &output_file, int id)
+{
+
+
+
+
+}
+
+
+// FIM BUSCA EM LARGURA ////////////////////////////////////////////////////
 
 void Graph::getWeithlessEdge(int *nohAresta)
 {
@@ -1015,46 +1094,46 @@ void Graph::printGraph(ofstream &output_file)
 
 /////////// INICIO DA ORDENAÇÃO TOPOLOGICA///////////////////////////
 
-void Graph::ordenacaoTopologica(ofstream &output_file)
+void Graph::ord_Topologica(ofstream &output_file)
 {
-    list<Node*> listaNode;
-    list<int> TopologicList;
+    list<Node*> listN; // lista de nodes
+    list<int> listTop; // lista topologica
     if (this->graphTemCiclo())// verifica se o grafo é aciclico ou não
     {
         output_file <<" Se o Grafo possui ciclos, logo, nao possui ordenação topologica"<<endl;
     }
     else{ // adaptando algoritimo kahn's
-            Node *auxNode;
-            Edge *auxEdge;
+            Node *auxN;
+            Edge *auxE;
             //procurando nos com enttrada =0
-            for (auxNode=this->first_node;auxNode!=NULL;auxNode = auxNode->getNextNode())
-            {   if (auxNode->getInDegree()==0)// se entrada  = 0
+            for (auxN=this->first_node;auxN!=NULL;auxN = auxN->getNextNode())
+            {   if (auxN->getInDegree()==0)// se entrada  = 0
                 {
-                    listaNode.push_back(auxNode); //coloca os nos corretos na fila
+                    listN.push_back(auxN); //coloca os nos corretos na fila
                 }
             }
-            while (!listaNode.empty())// enquanto lista e vazia
+            while (!listN.empty())// enquanto lista e vazia
             {
-                Node *aux = listaNode.front();
-                listaNode.pop_front(); //remove da lista
-                TopologicList.push_back(aux->getId()); //coloca na lista auxiliar
-                for(auxEdge =aux->getFirstEdge(); auxEdge!=NULL;auxEdge=auxEdge->getNextEdge())
+                Node *aux = listN.front();
+                listN.pop_front(); //remove da lista
+                listTop.push_back(aux->getId()); //coloca na lista auxiliar
+                for(auxE =aux->getFirstEdge(); auxE!=NULL;auxE=auxE->getNextEdge())
                 {
-                    auxNode = this->getNode(auxEdge->getTargetId()); //pega o no vizinho
-                    auxNode->decrementInDegree(); //decrementa o grau de entrada
-                    if (auxNode->getInDegree()==0) //se a entrada = 0
+                    auxN = this->getNode(auxE->getTargetId()); //pega o no vizinho
+                    auxN->decrementInDegree(); //decrementa o grau de entrada
+                    if (auxN->getInDegree()==0) //se a entrada = 0
                     {
-                        listaNode.push_back(auxNode);
+                        listN.push_back(auxN);
                     }
 
                 }
             }
             //imprimindo ordenaçao a classificação topologica
             output_file << "Ordenação Topologica :" << endl;
-            for(list<int>::iterator i = TopologicList.begin(); i != TopologicList.end(); i++)
+            for(list<int>::iterator k = listTop.begin(); k != listTop.end(); k++)
             {
-                    if(TopologicList.size() == this->getOrder())
-                    output_file << (*i) << endl;
+                    if(listTop.size() == this->getOrder())
+                    output_file << (*k) << endl;
             }
 
         }

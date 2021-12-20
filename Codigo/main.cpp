@@ -206,15 +206,13 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         case 3:{
 
             cout<<"Digite o vertice de origem:"<< endl;
-            int dist;
             int origem;
             cin>>origem;
             cout<<"Digite o vertice de destino:"<<endl;
             int destino;
             cin>> destino;
-            dist = graph->dijkstra(origem,destino);
-            output_file << "Custo minimo da origem: " << origem << " até destino: " << destino << " é: " << dist;
-            cout<< dist;
+            graph->caminhoMin_djkstra(output_file,origem ,destino);
+
             break;
         }
 
@@ -227,36 +225,39 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             cout<<"Digite o vertice de destino:"<<endl;
             int destino;
             cin>> destino;
-            graph->floydMarshall(output_file,origem,destino);
+            graph->caminhoMin_floyd(output_file,origem,destino);
             break;
         }
 
             /* Arvore Geradora Minima de Prim */
         case 5:{
 
-            Graph *grafoX = graph->agmPrim(output_file);
-            grafoX->printGraph(output_file);
+            Graph *grafoAux = graph->arvGMin_Prim(output_file);
+            grafoAux->printGraph(output_file);
             break;
         }
 
             /* Arvore Geradora Minima de Kruskal */
         case 6:{
 
-            Graph *novoSubGrafo = graph->agmKuskal(output_file);
-            novoSubGrafo->printGraph(output_file);
+            Graph *grafoAux2 = graph->arvGMin_Kruskal(output_file);
+            grafoAux2->printGraph(output_file);
 
             break;
         }
             //Arvore dada pela ordem de caminhamento em largura
-        case 7:{
-           // ?????
-            //graph->
+        case 7:{ 
+
+            cout<<"Digite o id do vertice:"<< endl;
+            int x;
+            cin >>x;
+            graph->arv_Buscalargura(output_file,x);
             break;
         }
            /* Imprimir ordenacao topologica */
         case 8:{
 
-            graph->ordenacaoTopologica(output_file);
+            graph->ord_Topologica(output_file);
             break;
         }
         default:

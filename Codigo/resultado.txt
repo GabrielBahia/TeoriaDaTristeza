@@ -1,4 +1,7 @@
-O fecho transitivo direto de 1 é: {1, 2, 3, 23, 24}
+O fecho transitivo direto de 1 é: {1, 2, 3, 4, 23, 24}
 
-O fecho transitivo indireto de 1 é: { 1 }
+O fecho transitivo indireto de 1 é: { 1, 2, 4, 3, 23, 24 }
+Custo da Distancia de 1 até 4 é: 0
+1 -- 2 -- 4
+O menor caminho entre o No[1] e o No[4] e: [3]
 
