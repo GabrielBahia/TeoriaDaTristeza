@@ -472,128 +472,253 @@ void Graph::auxDeepthFirstSearch(bool node[], Node *v)
 
 // INICIO DIJKSTRA /////////////////////////////////////////////
 
-void Graph::caminhoMin_djkstra(ofstream &output_file, int orig, int dest)
-{
-   int dist[this->order];           //vetor que faz uma analogia entre id e distancia
-    int verticeAnterior[this->order]; //vetor que faz uma analogia entre id e vértice predecessor do caminho minimo
-    bool visited[this->order];          //vetor que verifica se o vértice ja foi visitado
+void Graph::caminhoMin_djkstra(ofstream &output_file, int orig, int dest) {
 
-    //Fazer uma fila de prioridade minima.
-    //a ideia é fazer uma fila onde o primeiro valor seja a distancia
-    //e o segundo valor seja o id do vértice
-    typedef pair<int, int> o;
-    priority_queue<o, vector<o>, greater<o>> pq;
-
-    //Iniciar todas as distancias como inifinito, todos vertices como não visitados e todos predecessores como inexistentes(-1)
-    for (int i = 0; i < this->order; i++)
+    if(!this->negative_edge)
     {
-        dist[i] = 4203209;
-        visited[i] = false;
-        verticeAnterior[i] = -1;
-    }
+        if(this->weighted_edge)
+        {
+                if(this->directed)
+                {
 
-    dist[orig - 1] = 0;            //Distancia do vertice inicial até ele mesmo é 0
-    verticeAnterior[orig - 1] = -2; //Predecessor do vertice inicial é tido como -2
+                    int pa[this->order];
+                    int dist[this->order];   
+                    bool mature[this->order];
 
-    //inserir o vertice inicial na fila
-    pq.push(make_pair(dist[orig - 1], orig));
-    //iteraçao
-    while (!pq.empty())
+                    for (int i=0; i<this->order; i++)
+                        pa[i] = -1, mature[i] = false, dist[i] = INT_MAX;
+
+                    int auxPa = getNode(orig)->getIdNode();
+                    int auxDest = getNode(dest)->getIdNode();
+
+
+                    pa[auxPa] = orig;
+                    dist[auxPa] = 0;
+
+                        while (true) 
+                        {
+                            // escolha de y:
+                            int min = INT_MAX;
+                            Node *y;
+
+                            for (Node *z = this->first_node; z != nullptr; z = z->getNextNode()) 
+                            {
+                                if (mature[z->getIdNode()]) continue;
+                                    if (dist[z->getIdNode()] < min) 
+                                    {
+                                        min = dist[z->getIdNode()];
+                                        y = z;
+                                    }
+                                    
+                            }
+
+                            if (min == INT_MAX) break;
+                            // atualização de dist[] e pa[]:
+                            for (Edge *a = y->getFirstEdge(); a != nullptr; a = a->getNextEdge()) {
+                                if (mature[a->getTargetIdNode()]) continue;
+                                if (dist[y->getIdNode()] + a->getWeight() < dist[a->getTargetIdNode()]) {
+                                    dist[a->getTargetIdNode()] = dist[y->getIdNode()] + a->getWeight();
+                                    pa[a->getTargetIdNode()] = y->getId();
+                                }
+                            }
+                            mature[y->getIdNode()] = true;
+                        }
+
+                        if(dist[auxDest] == INT_MAX )
+                        output_file << " Nao existe caminho entre o vertice " << orig << " ao vertice " << dest << endl;
+                        else  
+                        output_file << " A distancia do vertice " << orig << " ao vertice " << dest << " sera: " << dist[auxDest] << endl;
+
+                } else {
+                    int pa[this->order];
+                    int dist[this->order];   
+                    bool mature[this->order];
+
+                    for (int i=0; i<this->order; i++)
+                        pa[i] = -1, mature[i] = false, dist[i] = INT_MAX;
+
+                    int auxPa = getNode(orig)->getIdNode();
+                    int auxDest = getNode(dest)->getIdNode();
+
+
+                    pa[auxPa] = orig;
+                    dist[auxPa] = 0;
+
+                        while (true) 
+                        {
+                            // escolha de y:
+                            int min = INT_MAX;
+                            Node *y;
+
+                            for (Node *z = this->first_node; z != nullptr; z = z->getNextNode()) 
+                            {
+                                if (mature[z->getIdNode()]) continue;
+                                    if (dist[z->getIdNode()] < min) 
+                                    {
+                                        min = dist[z->getIdNode()];
+                                        y = z;
+                                    }
+                                    
+                            }
+
+                            if (min == INT_MAX) break;
+                            // atualização de dist[] e pa[]:
+                            for (Edge *a = y->getFirstEdge(); a != nullptr; a = a->getNextEdge()) {
+                                if (mature[a->getTargetIdNode()]) continue;
+                                if (dist[y->getIdNode()] + a->getWeight() < dist[a->getTargetIdNode()]) {
+                                    dist[a->getTargetIdNode()] = dist[y->getIdNode()] + a->getWeight();
+                                    pa[a->getTargetIdNode()] = y->getId();
+                                }
+                            }
+                            mature[y->getIdNode()] = true;
+                        }   
+                        
+                        int dist2 = -1;
+                        dist2 = auxCaminhoMin_djkstra(dest,orig);
+
+                        if(dist[auxDest] == INT_MAX )
+                        {
+                            output_file << " Nao existe caminho entre o vertice " << orig << " ao vertice " << dest << endl;
+                        }
+                        else if (dist2 != dist[auxDest] && dist2 != -1)
+                        {  
+                            if(dist2 == 0)
+                            {
+                            output_file << " A distancia do vertice " << orig << " ao vertice " << dest << " sera: " << dist[auxDest]<< endl;
+                            }
+                            else
+                            {
+                            output_file << " A distancia do vertice " << orig << " ao vertice " << dest << " sera: " << dist2 << endl;
+                            }
+                        } 
+                        else if(dist2 == -1 )
+                        {
+                            output_file << " Nao existe caminho entre o vertice " << orig << " ao vertice " << dest << endl;
+                        }                
+                }
+        }
+        else
+        {
+            output_file << " A distancia do vertice " << orig << " ao vertice " << dest << " sera: " << 0 << endl;
+        }
+    } 
+    else
     {
-        pair<int, int> dist_no = pq.top(); //copia par (id do vertice e distancia) do topo
-        int idVertice = dist_no.second;
-        Node *verticeAnalisado = this->getNode(idVertice); //obtem o vértice a ser analisado a partir de seu id
-        pq.pop();                                        //remove o par da fila
-
-        //verifica se o vértice ja foi visitado
-        if (visited[verticeAnalisado->getId() - 1] == false)
-        {
-            //marca como visitado
-            visited[verticeAnalisado->getId() - 1] = true;
-            for (Edge *it = verticeAnalisado->getFirstEdge(); it != NULL; it = it->getNextEdge())
-            {
-                //obtém o vertice adjancente e o custa da aresta
-                int verticeAdjacente = it->getTargetId() - 1;
-                int custo_aresta = it->getWeight();
-                //verificar se a distancia vértices adjacente é maior que a distancia da distancia do vertice analisado + o custa da aresta
-                if (dist[verticeAdjacente] > (dist[verticeAnalisado->getId() - 1] + custo_aresta))
-                {
-                    //atualiza a distancia do vertice Adjacente e insere na fila
-                    dist[verticeAdjacente] = dist[verticeAnalisado->getId() - 1] + custo_aresta;
-                    verticeAnterior[verticeAdjacente] = verticeAnalisado->getId();
-                    pq.push(make_pair(dist[verticeAdjacente], verticeAdjacente + 1));
-                }
-            }
-        }
+        output_file << " Não foi possível pois existem arestas com peso negativo" << endl;
     }
-
-    if (verticeAnterior[dest - 1] != -1 && verticeAnterior[dest - 1] != -2)
-    {
-
-        if (verticeAnterior[dest - 1] != -1 && verticeAnterior[dest - 1] != -2)
-        {
-            if (this->directed)
-            {
-                list<int> caminho;
-                int a = verticeAnterior[dest - 1];
-                while (verticeAnterior[a - 1] != -2 && verticeAnterior[a - 1] != -1)
-                {
-                    caminho.push_front(a);
-                    a = verticeAnterior[a - 1];
-                }
-                output_file << "Custo da Distancia de "<<orig<< " até "<< dest <<" é: "<<dist[dest-1]<<endl;
-                output_file << orig;
-                for (int i = 0; !(caminho.empty()); i++)
-                {
-                    output_file << " -> " << caminho.front();
-                    caminho.pop_front();
-                }
-                output_file << " -> " << dest;
-            }
-
-            if (!(this->directed))
-            {
-                list<int> caminho;
-                int a = verticeAnterior[dest - 1];
-                while (verticeAnterior[a - 1] != -2 && verticeAnterior[a - 1] != -1)
-                {
-                    caminho.push_front(a);
-                    a = verticeAnterior[a - 1];
-                }
-                output_file << "Custo da Distancia de "<<orig<< " até "<< dest <<" é: "<<dist[dest-1]<<endl;
-                output_file << orig;
-                for (int i = 0; !(caminho.empty()); i++)
-                {
-                    output_file << " -- " << caminho.front();
-                    caminho.pop_front();
-                }
-                output_file << " -- " << dest;
-            }
-        }
-        else if (verticeAnterior[dest - 1] == -1)
-        {
-            output_file << "não existe caminho" << endl;
-        }
-        else if (verticeAnterior[dest - 1] == -2)
-        {
-            output_file <<" O vertice de origem é o mesmo que o destino" << endl;
-        }
-    }
-
 
 }
 
+
+int Graph::auxCaminhoMin_djkstra(int orig, int dest)
+{
+    int pa[this->order];
+        int dist[this->order];   
+        bool mature[this->order];
+
+        for (int i=0; i<this->order; i++)
+            pa[i] = -1, mature[i] = false, dist[i] = INT_MAX;
+
+        int auxPa = getNode(orig)->getIdNode();
+        int auxDest = getNode(dest)->getIdNode();
+
+
+        pa[auxPa] = orig;
+        dist[auxPa] = 0;
+
+            while (true) 
+            {
+                // escolha de y:
+                int min = INT_MAX;
+                Node *y;
+
+                for (Node *z = this->first_node; z != nullptr; z = z->getNextNode()) 
+                {
+                    if (mature[z->getIdNode()]) continue;
+                        if (dist[z->getIdNode()] < min) 
+                        {
+                            min = dist[z->getIdNode()];
+                            y = z;
+                        }
+                        
+                }
+
+                if (min == INT_MAX) break;
+                // atualização de dist[] e pa[]:
+                for (Edge *a = y->getFirstEdge(); a != nullptr; a = a->getNextEdge()) {
+                    if (mature[a->getTargetIdNode()]) continue;
+                    if (dist[y->getIdNode()] + a->getWeight() < dist[a->getTargetIdNode()]) {
+                        dist[a->getTargetIdNode()] = dist[y->getIdNode()] + a->getWeight();
+                        pa[a->getTargetIdNode()] = y->getId();
+                    }
+                }
+                mature[y->getIdNode()] = true;
+            }
+
+    if(!this->negative_edge)
+    {
+        if(dist[auxDest] != INT_MAX)
+        {
+          return dist[auxDest];
+        } 
+        else
+        {
+            return -1;
+        }
+    }
+    else
+    {
+        if(dist[auxDest] != INT_MAX)
+        {
+          return dist[auxDest];
+        } 
+        else
+        {
+           exit(0);
+        } 
+    }
+     
+}
+
 /////////// FIM DIJKSTRA /////////////////////////////////////////////
+
 
 // INICIO FLOYD ////////////////////////////////////////////////////////////
 
 void Graph::caminhoMin_floyd(ofstream &output_file, int idSource, int idTarget)
 {
-    int ordem = this->order;               // recebe ordem do grafo
-    //Node *auxNode = this->first_node;     // recebe primeiro no // (NAO ESTA SENDO USADO)
-    int ** dist = new int *[ordem]; // inicializando matriz que recebe vetor
-    dist = constroiMat_floyd(ordem, dist);             // dist recebe funcao floyd
-    output_file << "O menor caminho entre o No[" << idSource << "] e o No[" << idTarget << "] e: [" << dist[idSource - 1][idTarget - 1] << "]" << endl;
+    if(this->directed)
+    {
+        Node *node = getNode(idSource);
+        bool verifica = false;
+
+        for(Edge *aux = node->getFirstEdge(); aux != nullptr; aux = aux->getNextEdge())
+        {
+            if(aux->getTargetId() == idTarget)
+            {
+                verifica = true;
+            }
+
+        }
+        
+        if(verifica == true)
+        {
+            int ordem = this->order;               // recebe ordem do grafo
+            //Node *auxNode = this->first_node;     // recebe primeiro no // (NAO ESTA SENDO USADO)
+            int ** dist = new int *[ordem]; // inicializando matriz que recebe vetor
+            dist = constroiMat_floyd(ordem, dist);             // dist recebe funcao floyd
+            output_file << "O menor caminho entre o No[" << idSource << "] e o No[" << idTarget << "] e: [" << dist[idSource - 1][idTarget - 1] << "]" << endl;
+        }
+        else
+        {
+            output_file << " Nao existe caminho entre o No[" << idSource << "] e o No[" << idTarget << "]" << endl;
+        }
+    }
+    else
+    {
+        output_file << " O grafo nao é direcionado " << endl;
+    }
+
 
     // Não precisa imprimir a matriz
     
@@ -834,8 +959,9 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
     return grafoB;
 }
 
-// FIM PRIM ////////////////////////////////////////////////////
 
+
+// FIM PRIM ////////////////////////////////////////////////////
 
 // INICIO KRUSKAL ////////////////////////////////////////////////////////////
 
@@ -1016,11 +1142,7 @@ void Graph::arv_Buscalargura(ofstream &output_file, int id)
       Graph *arvBL = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
     
      for(int i=1;i<this->order+1;i++)
-     {
         arvBL->insertNode(i,0); 
-        cout<< i <<endl;
-
-     }
 
 
      for(int i=0;i<this->order;i++)
