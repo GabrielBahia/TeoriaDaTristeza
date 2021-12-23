@@ -481,9 +481,12 @@ void Graph::caminhoMin_djkstra(ofstream &output_file, int orig, int dest) {
                 if(this->directed)
                 {
 
-                    int pa[this->order];
+                    /*int pa[this->order];
                     int dist[this->order];   
-                    bool mature[this->order];
+                    bool mature[this->order];*/
+                    int *pa = new int[this->order];
+                    int *dist = new int[this->order];
+                    bool *mature = new bool[this->order];
 
                     for (int i=0; i<this->order; i++)
                         pa[i] = -1, mature[i] = false, dist[i] = INT_MAX;
@@ -530,9 +533,12 @@ void Graph::caminhoMin_djkstra(ofstream &output_file, int orig, int dest) {
                         output_file << " A distancia do vertice " << orig << " ao vertice " << dest << " sera: " << dist[auxDest] << endl;
 
                 } else {
-                    int pa[this->order];
+                    /*int pa[this->order];
                     int dist[this->order];   
-                    bool mature[this->order];
+                    bool mature[this->order];*/
+                    int *pa = new int[this->order];
+                    int *dist = new int[this->order];
+                    bool *mature = new bool[this->order];
 
                     for (int i=0; i<this->order; i++)
                         pa[i] = -1, mature[i] = false, dist[i] = INT_MAX;
@@ -612,9 +618,12 @@ void Graph::caminhoMin_djkstra(ofstream &output_file, int orig, int dest) {
 
 int Graph::auxCaminhoMin_djkstra(int orig, int dest)
 {
-    int pa[this->order];
+    /*int pa[this->order];
         int dist[this->order];   
-        bool mature[this->order];
+        bool mature[this->order];*/
+    int *pa = new int[this->order];
+    int *dist = new int[this->order];
+    bool *mature = new bool[this->order];
 
         for (int i=0; i<this->order; i++)
             pa[i] = -1, mature[i] = false, dist[i] = INT_MAX;
@@ -685,29 +694,45 @@ int Graph::auxCaminhoMin_djkstra(int orig, int dest)
 
 // INICIO FLOYD ////////////////////////////////////////////////////////////
 
+void Graph::existeCaminho(bool *verifica,int idSource,int idTarget) {
+    Node *node = getNode(idSource);
+    for(Edge *aux = node->getFirstEdge(); aux != nullptr; aux = aux->getNextEdge()) {
+        if(aux != nullptr) {
+            if(aux->getTargetId() == idTarget) {
+                *verifica = true;
+            } else {
+                existeCaminho(verifica, aux->getTargetId(), idTarget);
+            }
+        }
+    }
+}
+
 void Graph::caminhoMin_floyd(ofstream &output_file, int idSource, int idTarget)
 {
     if(this->directed)
     {
         Node *node = getNode(idSource);
-        bool verifica = false;
-
-        for(Edge *aux = node->getFirstEdge(); aux != nullptr; aux = aux->getNextEdge())
+        bool aux = false;
+        bool *verifica;
+        verifica = &aux;
+        existeCaminho(verifica,idSource,idTarget);
+        /*for(Edge *aux = node->getFirstEdge(); aux != nullptr; aux = aux->getNextEdge())
         {
             if(aux->getTargetId() == idTarget)
             {
                 verifica = true;
             }
 
-        }
-        
-        if(verifica == true)
+        }*/
+        if(*verifica == true)
         {
             int ordem = this->order;               // recebe ordem do grafo
             //Node *auxNode = this->first_node;     // recebe primeiro no // (NAO ESTA SENDO USADO)
             int ** dist = new int *[ordem]; // inicializando matriz que recebe vetor
             dist = constroiMat_floyd(ordem, dist);             // dist recebe funcao floyd
-            output_file << "O menor caminho entre o No[" << idSource << "] e o No[" << idTarget << "] e: [" << dist[idSource - 1][idTarget - 1] << "]" << endl;
+            Node *node1 = getNode(idSource);
+            Node *node2 = getNode(idTarget);
+            output_file << "O menor caminho entre o No[" << idSource << "] e o No[" << idTarget << "] e: [" << dist[node1->getIdNode()][node2->getIdNode()] << "]" << endl;
         }
         else
         {
@@ -1107,8 +1132,10 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
 void Graph::arv_Buscalargura(ofstream &output_file, int id)
 {
 
-  int num[this->order];
-  int pa[this->order];
+  /*int num[this->order];
+  int pa[this->order];*/
+  int *num = new int[this->order];
+  int *pa = new int[this->order];
   int cont = 0;
 
 

@@ -1,5 +1,9 @@
-O menor caminho entre o No[1] e o No[23] e: [13]
+O menor caminho entre o No[1] e o No[4] e: [31]
 
- Nao existe caminho entre o No[23] e o No[1]
+O menor caminho entre o No[1] e o No[2] e: [15]
+
+ Nao existe caminho entre o No[1] e o No[8]
+
+ Nao existe caminho entre o No[1] e o No[198]
 
 

@@ -61,6 +61,7 @@ class Graph{
         bool deephFirstSearch(int id, int start); // busca em profundidade; � chamada pela fecho transitivo indireta
         void auxDeepthFirstSearch(bool verify[], Node *v);
         int auxCaminhoMin_djkstra(int dest,int orig);
+        void existeCaminho(bool *verifica,int idSource,int idTarget);
         int **constroiMat_floyd(int tam, int **dist); 
         Graph *getVertexInduced(int *listIdNodes, int tam);
         void getWeithlessEdge(int *nohAresta);
