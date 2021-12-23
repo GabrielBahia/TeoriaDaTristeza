@@ -1,9 +1,30 @@
-O menor caminho entre o No[1] e o No[4] e: [31]
+digraph{
+1 -> 2PESO : 15
+1 -> 23PESO : 13
+1 -> 24PESO : 14
+2 -> 4PESO : 0
+3 -> 2PESO : 2
+3 -> 4PESO : 1
+5 -> 6PESO : 2
+7 -> 8PESO : 3
+9 -> 10PESO : 4
+11 -> 12PESO : 5
+13 -> 14PESO : 6
+15 -> 16PESO : 7
+17 -> 18PESO : 8
+19 -> 20PESO : 9
+21 -> 22PESO : 10
+23 -> 24PESO : 11
+23 -> 2PESO : 12
+}
 
-O menor caminho entre o No[1] e o No[2] e: [15]
 
- Nao existe caminho entre o No[1] e o No[8]
+Peso da Arvore Geradora Minima: 15
+digraph{
+2 -> 1PESO : 15
+4 -> 2PESO : 0
+}
 
- Nao existe caminho entre o No[1] e o No[198]
+
 
 
