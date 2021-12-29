@@ -142,7 +142,10 @@ void Graph::insertEdge(int id, int target_id, float weight)
             {
                 Node *target = getNode(target_id);
                 node->insertEdge(target_id, weight, target->getIdNode()); // inserts the edge between the node we are to the node targeted 
+                this->number_edges++;
                // getNode(target_id)->insertEdge(node->getId(), weight, node->getIdNode());
+               cout<< "number_edges : " << number_edges << endl;
+               
             }
         }
         else
@@ -155,8 +158,8 @@ void Graph::insertEdge(int id, int target_id, float weight)
                 //Node *aux = getNode(target_id);
                 aux->insertEdge(node->getId(), weight, node->getIdNode()); // inserts the edge between the two nodes;
                 //aux->insertEdge(node->getId(), node->getWeight(), node->getIdNode()); // inserts the edge between the two nodes;
-               
-
+                this->number_edges++; 
+                cout<< "number_edges : " << number_edges << endl;
 
             }
         }
@@ -876,8 +879,10 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
     Edge *aux2;
     bool verifica = false;
     bool verifica2 = false;
+
     //para todo noh do subgrafo,
     
+
     for (node = subGrafo->getFirstNode(); node != nullptr; node = node->getNextNode())
     {
 
@@ -886,37 +891,58 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
            for (aux = inicio->getFirstEdge(); aux != nullptr; aux = aux->getNextEdge())
            {
 
-           // se a aresta do vertice pra onde ela aponta existir
+            // se a aresta do vertice pra onde ela aponta existir
 
-            verifica = subGrafo->searchNode(aux->getTargetId());
-            verifica2 = inicio->searchEdge(aux->getTargetId());
-            //verifica = this->searchNode(aux->getTargetId());
+                verifica = subGrafo->searchNode(aux->getTargetId());
+                verifica2 = inicio->searchEdge(aux->getTargetId());
+                //verifica = this->searchNode(aux->getTargetId());
 
 
-            if (verifica && verifica2)
-            {
-                // incluir a aresta no noh do subgrafo;
-                node->insertEdge(aux->getTargetId(), aux->getWeight(), aux->getTargetIdNode()); 
-                 getNode(aux->getTargetId())->insertEdge(node->getId(), aux->getWeight(), node->getIdNode()); 
-            } 
+                if (verifica && verifica2)
+                {
+                    
+                    // incluir a aresta no noh do subgrafo;
+                    if(node->searchEdge(aux->getTargetId()) == false)
+                    {
+                       /* node->insertEdge(aux->getTargetId(), aux->getWeight(), aux->getTargetIdNode()); 
+                            getNode(aux->getTargetId())->insertEdge(node->getId(), aux->getWeight(), node->getIdNode()); 
+                            subGrafo->number_edges++;*/ 
+                            // SEM IF FUNCIONANDO PARA PRIM
+                        if(!directed)
+                        {
+                            node->insertEdge(aux->getTargetId(), aux->getWeight(), aux->getTargetIdNode()); 
+                            getNode(aux->getTargetId())->insertEdge(node->getId(), aux->getWeight(), node->getIdNode()); 
+                            subGrafo->number_edges++;
+                        }
+                        else
+                        {
+                            node->insertEdge(aux->getTargetId(), aux->getWeight(), aux->getTargetIdNode());
+                            subGrafo->number_edges++;
+                        }
+                        
+                    }
+                } 
 
            }
         //verificar as arestas no grafo original. 
     }
 
-    
+    if(directed)
+    {
+        number_edges = number_edges/2;
+    }
+
+    cout << "subGrafo->number_edges" << subGrafo->getNumberEdges() << endl;
 
     return subGrafo;
 }
-
-
 
 // INICIO PRIM ////////////////////////////////////////////////////////////
 
 
 Graph *Graph::arvGMin_Prim(ofstream &output_file)
 {
-    this->printGraph(output_file);
+    
      
     int num, aux;
     cout << "Digite o numero de vértices de 1 a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
@@ -930,15 +956,11 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
         cout << "NODES : " << nodes[i] << " i: " << i << endl;
     }
     
-   
-  
 
    Graph *grafoA;
 
     
     grafoA = this->getVertexInduced(nodes, num);
-
-     
 
     Graph *grafoB = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
      Node *v;
@@ -976,6 +998,7 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
         {
             
             Node *verticeAnalisado = grafoA->getNode(*k);
+            // cout <<  "verticeAnalisado :" 
             for (Edge *ed = verticeAnalisado->getFirstEdge(); ed != nullptr; ed = ed->getNextEdge()) //percorre todas arestas de grafoVI
             {
                
@@ -1053,8 +1076,8 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
     int num, v;
     cout << "Digite o numero de vértices de '1' a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
     cin >> num;
-    int *nodes = new int[this->order];
-    for (int i = 0; i < this->order; i++)
+    int *nodes = new int[num];
+    for (int i = 0; i < num; i++)
     {
         nodes[i] = -1;
     }
@@ -1065,15 +1088,28 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
         nodes[i] = v;
     }
     //pre-requisitos pra fazer a ordenacao
+
     Graph *grafoA;
     grafoA = this->getVertexInduced(nodes, num);
 
     Graph *grafoB = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node); //vai vira o grafoVI
 
     int *EdgeNode = new int[3];
-    int totalEdge;
+    int totalEdge = 0;
 
-    totalEdge = grafoA->getNumberEdges();
+    /* for(Node *auxN = grafoA->getFirstNode(); auxN != nullptr; auxN = auxN->getNextNode())
+    {
+        for(Edge *auxE = auxN->getFirstEdge(); auxE != nullptr; auxE = auxE->getNextEdge())
+        { 
+            totalEdge++;
+        }
+    }
+
+    totalEdge = totalEdge/2;*/
+
+     totalEdge = grafoA->getNumberEdges();
+
+    cout << "totalEdge : " << totalEdge << endl;
 
     list<pair<int, int>> listP;
 
@@ -1081,11 +1117,12 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
     Node *p;
     Edge *aux;
 
-    for (sup = grafoA->getFirstNode(); sup != NULL; sup = sup->getNextNode())
+    for (sup = grafoA->getFirstNode(); sup != nullptr; sup = sup->getNextNode())
     {
-        //grafoB->insertNode(sup->getId());
+        grafoB->insertNode(sup->getId(),sup->getWeight());
     }
-
+    
+        
     //Criar uma lista L com as arestas ordenadas em
     //ordem crescente de pesos.
     for (int i = 0; i < totalEdge; i++)
@@ -1111,17 +1148,21 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
         }
         //adiciona a a resta num grafo auxiliar.
         grafoB->insertEdge(EdgeNode[0], EdgeNode[1], EdgeNode[2]);
+        cout << "EdgeNode[0] : " << EdgeNode[0] << " EdgeNode[1] : " << EdgeNode[1] << " EdgeNode[2] : " <<  EdgeNode[2] << endl;
     }
-
+   
+      
     //Organizar a lista;
 
     //Criar |V| subárvores contendo cada uma um nó
     //isolado.
     Graph *agMin = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
-    for (sup = grafoB->getFirstNode(); sup != NULL; sup = sup->getNextNode())
+    for (sup = grafoB->getFirstNode(); sup != nullptr; sup = sup->getNextNode())
     {
-        //agMin->insertNode(sup->getId());
+        agMin->insertNode(sup->getId(), sup->getWeight());
     }
+
+     
 
     //F ¬ Æ
     //Cria lista vazia
@@ -1137,7 +1178,8 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
     {
         verificado[i] = false;
     }
-
+      
+ 
     //Enquanto contador < |V|-1 e L 1 Æ faça
     while (cont < numMaxAresta && !listP.empty())
     {
@@ -1163,10 +1205,11 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
             //fim-se
         }
     }
-
+   
+    
     // NAO PRECISA DESSA PARTE
 
-   /* int pesoT = 0;
+    int pesoT = 0;
     while (!listaAux.empty())
     {
         pair<int, int> dist_no = listaAux.front(); //copia par (id do vertice e distancia) do topo
@@ -1176,7 +1219,9 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
         listaAux.pop_front();
     }
     output_file << "Peso da Arvore Geradora Minima: " << pesoT << endl;
-    */
+
+     
+     
 
     return agMin;
 
@@ -1324,7 +1369,7 @@ void Graph::printGraph(ofstream &output_file)
             while (aux != NULL)
             {
 
-                output_file << p->getId() << " -- " << aux->getTargetId() <<"PESO : " << aux->getWeight() << endl;
+                output_file << p->getId() << " -- " << aux->getTargetId() <<" PESO : " << aux->getWeight() << endl;
                 aux = aux->getNextEdge();
             }
             p = p->getNextNode();
@@ -1341,7 +1386,7 @@ void Graph::printGraph(ofstream &output_file)
             while (aux != NULL)
             {
 
-                output_file << p->getId() << " -> " << aux->getTargetId() <<"PESO : " << aux->getWeight() << endl;
+                output_file << p->getId() << " -> " << aux->getTargetId() <<" PESO : " << aux->getWeight() << endl;
                 aux = aux->getNextEdge();
             }
             p = p->getNextNode();

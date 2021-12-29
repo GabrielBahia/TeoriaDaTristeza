@@ -16,13 +16,15 @@ class Graph{
     //Atributes
     private:
         int order; // number of nodes in the graph;
-        int number_edges; // number of the edges in the graph;
+       // int number_edges; 
+        int number_edges;// number of the edges in the graph;
         bool directed; // directed graph?;
         bool weighted_edge; // weighted edge?;
         bool weighted_node; // weighted node?;
         Node* first_node; // first node of the graph;
         Node* last_node; // last node of the graph;
         bool negative_edge;
+        
 
     public:
         //Constructor
