@@ -1,7 +1,11 @@
-Peso da Arvore Geradora Minima: 15
-digraph{
-2 -> 1 PESO : 15
-4 -> 2 PESO : 0
+Peso da Arvore Geradora Minima: 8
+strict graph{
+1 -- 6 PESO : 5
+1 -- 3 PESO : 2
+3 -- 1 PESO : 2
+3 -- 5 PESO : 1
+5 -- 3 PESO : 1
+6 -- 1 PESO : 5
 }
 
 

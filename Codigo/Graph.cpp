@@ -904,11 +904,11 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
                     // incluir a aresta no noh do subgrafo;
                     if(node->searchEdge(aux->getTargetId()) == false)
                     {
-                       /* node->insertEdge(aux->getTargetId(), aux->getWeight(), aux->getTargetIdNode()); 
+                            node->insertEdge(aux->getTargetId(), aux->getWeight(), aux->getTargetIdNode()); 
                             getNode(aux->getTargetId())->insertEdge(node->getId(), aux->getWeight(), node->getIdNode()); 
-                            subGrafo->number_edges++;*/ 
+                            subGrafo->number_edges++;
                             // SEM IF FUNCIONANDO PARA PRIM
-                        if(!directed)
+                       /* if(!directed)
                         {
                             node->insertEdge(aux->getTargetId(), aux->getWeight(), aux->getTargetIdNode()); 
                             getNode(aux->getTargetId())->insertEdge(node->getId(), aux->getWeight(), node->getIdNode()); 
@@ -919,7 +919,7 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
                             node->insertEdge(aux->getTargetId(), aux->getWeight(), aux->getTargetIdNode());
                             subGrafo->number_edges++;
                         }
-                        
+                        */
                     }
                 } 
 
@@ -962,6 +962,8 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
     
     grafoA = this->getVertexInduced(nodes, num);
 
+   
+
     Graph *grafoB = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
      Node *v;
     //para todo noh da lista faça
@@ -970,7 +972,6 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
         grafoB->insertNode(v->getId(),v->getWeight());
     }
 
-   
 
    // bool adicionados[this->order]; //marca quais vértices ja possuem um caminho
     bool *adds = new bool [num];
@@ -982,23 +983,30 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
 
     std::list<int> vertices; 
     std::list<int>::iterator k;
-    vertices.push_front(aux);
+    vertices.push_front(getNode(aux)->getId());
+
 
     bool todosNodeAdd = false;
 
     int custoT=0;
+    int auxVet[num];
+    int contAux = 0;
+    int *contz = &contAux;
 
-    
+
     while (todosNodeAdd == false) //até ter um caminho para todos os node
     {
         int nodeA; //node armazena o node de onde vai sair o edge
         int nodeB; //node armazena o node que o edge vai chegar
         int custoMenor = 999999999;
+         
         for (k = vertices.begin(); k != vertices.end(); k++) //percorre todos vértices da lista
         {
             
             Node *verticeAnalisado = grafoA->getNode(*k);
-            // cout <<  "verticeAnalisado :" 
+             
+             cout << "verticeAnalisado : " << verticeAnalisado->getId() << endl;
+          
             for (Edge *ed = verticeAnalisado->getFirstEdge(); ed != nullptr; ed = ed->getNextEdge()) //percorre todas arestas de grafoVI
             {
                
@@ -1012,7 +1020,7 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
                 if (adds[ed->getTargetIdNode()] == false) //node alvo não foi adicionado0
                 {
                     
-                    if (custoMenor > custo_aresta) //custo desse edge for menor de todas que ja forram analisados
+                    if (custoMenor >= custo_aresta) //custo desse edge for menor de todas que ja forram analisados
                     {
                         
                         nodeA = verticeAnalisado->getId(); //node que esta saindo esse edge
@@ -1021,39 +1029,52 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
                     }
                 }
             }
-            
+
         }
+
+        
+            cout << " SAIU DO FOR "<< endl;
 
          cout << " NODEA: " << nodeA << " --- " << " NODEB: " << nodeB << endl;
         grafoB->insertEdge(nodeA, nodeB, custoMenor);
 
         custoT=custoT+custoMenor;
 
-        
-          vertices.push_front(nodeB); //add nodeB no nodes
-         //adds[nodeB - 1] = true; //marcar nodeB como adicionado
+        vertices.push_front(nodeB); //add nodeB no nodes
+          //adds[nodeB - 1] = true; //marcar nodeB como adicionado
          // adds[nodeB] = true; //marcar nodeB como adicionado
          adds[getNode(nodeB)->getIdNode()] = true;
-        
+         
 
-         for(int i=0;i<num;i++)
-          cout<< "ADDS NA POSICAO: "<< i << " SERA : " <<  adds[i] << endl;
+         auxVet[*contz] = getNode(nodeB)->getIdNode();
+         cout << "CONTZ : " << *contz << endl;
+
+         /*for(int i=0;i<num;i++)
+          cout<< "ADDS NA POSICAO: "<< i << " SERA : " <<  adds[aux[i]] << endl;*/
 
         int cont = 0;
+        int aux2;
+        cout << " ENTROU 1 " << endl;
         for (int i = 0; i < num; i++) //verifica se todos nodes ja foram adicionados se sim todosNodeAdd=true
         {
-            if (adds[i] == true)
+            cout << " ENTROU 2 " << endl;
+            aux2 = auxVet[i];
+
+            if (adds[aux2] == true)
             {
                 cout << "CHEGOU ATE AQUI" << endl;
                 cont++;
             }
         }
+
         if (cont == (grafoB->order))
         {
             
             todosNodeAdd = true;
         }
         cout  << " CONT : " << cont << endl;
+
+        contAux++;
     }
 
     delete[] nodes;
