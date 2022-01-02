@@ -1,11 +1,14 @@
-Peso da Arvore Geradora Minima: 8
-strict graph{
-1 -- 6 PESO : 5
+Arvore dada pelo caminhamento em lagura: strict graph{
+1 -- 2 PESO : 4
 1 -- 3 PESO : 2
+1 -- 6 PESO : 5
+2 -- 1 PESO : 4
 3 -- 1 PESO : 2
+3 -- 4 PESO : 3
 3 -- 5 PESO : 1
-5 -- 3 PESO : 1
 6 -- 1 PESO : 5
+4 -- 3 PESO : 3
+5 -- 3 PESO : 1
 }
 
 

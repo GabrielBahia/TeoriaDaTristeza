@@ -908,7 +908,7 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
                             getNode(aux->getTargetId())->insertEdge(node->getId(), aux->getWeight(), node->getIdNode()); 
                             subGrafo->number_edges++;
                             // SEM IF FUNCIONANDO PARA PRIM
-                       /* if(!directed)
+                      /*  if(!directed)
                         {
                             node->insertEdge(aux->getTargetId(), aux->getWeight(), aux->getTargetIdNode()); 
                             getNode(aux->getTargetId())->insertEdge(node->getId(), aux->getWeight(), node->getIdNode()); 
@@ -938,6 +938,125 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
 }
 
 // INICIO PRIM ////////////////////////////////////////////////////////////
+
+//PRIM 2
+/*
+Graph *Graph::arvGMin_Prim(ofstream &output_file)
+{ 
+    
+    int num, aux;
+    cout << "Digite o numero de vértices de 1 a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
+    cin >> num;
+    int *nodes = new int[num];
+    for (int i = 0; i < num; i++)
+    {
+        cout << "Digite o vértice de numero " << i + 1 << ": " << endl;
+        cin >> aux;
+        nodes[i] = aux;
+        cout << "NODES : " << nodes[i] << " i: " << i << endl;
+    }
+    
+
+   Graph *grafoA;
+
+    
+    grafoA = this->getVertexInduced(nodes, num);
+    // criando subGrafoVeti
+
+
+
+   int *pa = new int[this->order];
+   bool tree[1000];
+   int preco[1000];
+   // inicialização:
+   for (int i = 0; i < this->order; i++)
+   {
+       pa[i] = -1;
+       tree[i] = false;
+       preco[i] = INT_MAX; 
+   }   
+
+    Node *auxN = grafoA->getFirstNode();
+    pa[auxN->getIdNode()] = 0,
+    tree[auxN->getIdNode()] = true;
+
+   for (Edge *auxE = auxN->getFirstEdge(); auxE != nullptr; auxE=auxE->getNextEdge())
+   {
+       pa[auxE->getTargetIdNode()] = 0;
+       preco[auxE->getTargetIdNode()] = auxE->getWeight();
+   }
+       
+
+   while (true)
+    { 
+      int min = INT_MAX;
+      Node *y; 
+
+       for (Node *w = grafoA->getFirstNode(); w != nullptr ; w = w->getNextNode())
+       {
+         if (!tree[w->getIdNode()] && preco[w->getIdNode()] < min)
+         {
+              min = preco[w->getIdNode()];
+               y = w;
+         } 
+       }
+
+      if (min == INT_MAX) break;
+      // a aresta pa[y]-y é a mais barata da franja
+      tree[y->getIdNode()] = true;
+      // atualização dos preços e ganchos: 
+      for (Edge *a = y->getFirstEdge(); a != nullptr; a = a->getNextEdge())
+       {
+         if (!tree[a->getTargetIdNode()] && a->getWeight() < preco[a->getTargetIdNode()]) 
+         {
+            preco[a->getTargetIdNode()] = a->getWeight();
+            pa[a->getTargetIdNode()] = y->getId();
+         }
+      }
+   }
+
+    // montando subArv e printando
+
+    Graph *arvPrim = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+    
+     for(int i=1;i!=this->order+1;i++)
+        arvPrim->insertNode(i,0); 
+      
+    
+    int auxP;
+
+    //for(int i=0;i<this->order;i++)
+    //cout << " PA i: " << i << " = " << pa[i] << endl;
+
+     
+
+     for(int i=0;i<this->order;i++)
+     {
+         
+        
+        if(i+1 != (grafoA->getFirstNode())->getId() )
+        {  
+
+             for(Edge *e = getNode(pa[i])->getFirstEdge(); e != nullptr; e = e->getNextEdge())
+            {              
+               if(e->getTargetId() == i+1)
+               {
+                 auxP = e->getWeight();
+               }
+            }
+            
+            //cout << "VERTICE A : " << pa[i] << " VERTICE B : " << i+1 << endl;
+            arvPrim->insertEdge(pa[i],i+1, auxP);
+                     
+        }
+
+     }
+
+      return arvPrim;
+}
+
+*/
+
 
 
 Graph *Graph::arvGMin_Prim(ofstream &output_file)
@@ -1041,26 +1160,28 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
         custoT=custoT+custoMenor;
 
         vertices.push_front(nodeB); //add nodeB no nodes
-          //adds[nodeB - 1] = true; //marcar nodeB como adicionado
-         // adds[nodeB] = true; //marcar nodeB como adicionado
-         adds[getNode(nodeB)->getIdNode()] = true;
+        adds[getNode(nodeB)->getIdNode()] = true;
          
 
          auxVet[*contz] = getNode(nodeB)->getIdNode();
          cout << "CONTZ : " << *contz << endl;
 
-         /*for(int i=0;i<num;i++)
-          cout<< "ADDS NA POSICAO: "<< i << " SERA : " <<  adds[aux[i]] << endl;*/
+         //for(int i=0;i<num;i++)
+         // cout<< "ADDS NA POSICAO: "<< i << " SERA : " <<  adds[aux[i]] << endl;
 
         int cont = 0;
         int aux2;
         cout << " ENTROU 1 " << endl;
+ 
+         for (int i = 0; i < num; i++)
+         cout << "ADDS " << adds[i] << endl;
+
         for (int i = 0; i < num; i++) //verifica se todos nodes ja foram adicionados se sim todosNodeAdd=true
         {
             cout << " ENTROU 2 " << endl;
-            aux2 = auxVet[i];
+            //aux2 = auxVet[i];
 
-            if (adds[aux2] == true)
+            if (adds[i] == true)
             {
                 cout << "CHEGOU ATE AQUI" << endl;
                 cont++;
@@ -1258,7 +1379,11 @@ void Graph::arv_Buscalargura(ofstream &output_file, int id)
 
   int *num = new int[this->order];
   int *pa = new int[this->order];
+  int *vetAd = new int[this->order];
+  int *posicoes= new int[this->order];
+  bool entrou = false;
   int cont = 0;
+  int cont2 = 0;
 
 
     for (int i = 0; i < this->order; i++)
@@ -1269,40 +1394,70 @@ void Graph::arv_Buscalargura(ofstream &output_file, int id)
     Node *node1 = getNode(id);
     num[node1->getIdNode()] = cont++; 
     pa[node1->getIdNode()] = id;
+    cout <<  " node1->getIdNode() : " << node1->getIdNode() << " id : " << id << endl;
     listN.push_back(getNode(id));
-
+    vetAd[cont2] = id;
+    posicoes[0] = id;
 
     while (!listN.empty()) 
     {
+        entrou = false;
         Node *aux = listN.front();
+
         listN.pop_front(); 
 
         for (Edge *auxE = aux->getFirstEdge(); auxE!=NULL; auxE=auxE->getNextEdge())
         {
              if (num[auxE->getTargetIdNode()] == -1) {
-                num[auxE->getTargetIdNode()] = cont++; 
+                 posicoes[cont] = aux->getId();
+                num[auxE->getTargetIdNode()] = cont; 
+                cont++;
                 pa[auxE->getTargetIdNode()] = aux->getId();
+                cout <<  " auxE->getTargetId()  " << auxE->getTargetId() << endl;
+                cout <<  " auxE->getTargetIdNode()  " << (auxE->getTargetIdNode()) << endl;
+                cout <<  " aux->getId()  " << aux->getId() << endl;
                 listN.push_back(getNode(auxE->getTargetId()));
+                cont2++;
+                vetAd[cont2] = auxE->getTargetId();
             }
 
         }
-            
+        cout << "SAIU DO FOR " << endl;
+     
     }
+     cout << "CHEGOU " << endl;
+     cout << "CONT2 " << cont2 << endl;
 
       Graph *arvBL = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
-    
-     for(int i=1;i<this->order+1;i++)
-        arvBL->insertNode(i,0); 
 
-    
-
-     for(int i=0;i<this->order;i++)
+     for(int i=0;i<=cont2;i++)
      {
-        
-         if(i+1 != id )
-         {         
-           arvBL->insertEdge(pa[i],i+1,0);
-         }
+        cout << " VETAD : " << vetAd[i] << endl;
+        arvBL->insertNode(vetAd[i],0); 
+     }
+
+    int auxP;
+    int auxId;
+
+    for(int i=0;i<=cont2;i++)
+    cout << " PA i: " << i << " = " << posicoes[i]<< endl;
+
+
+     for(int i=1;i<=cont2;i++)
+     {
+          cout << " ENTROU " << endl;
+          
+            Node *e = getNode(posicoes[i]);
+            for(Edge *x = e->getFirstEdge(); x != nullptr; x = x->getNextEdge())
+            {
+                if(x->getTargetId() == vetAd[i])
+                {
+                   auxP = x->getWeight();
+                }
+            }
+
+            cout << "VERTICE A : " << pa[i] << " VERTICE B : " << i+1 << endl;
+            arvBL->insertEdge(posicoes[i],vetAd[i],auxP);
 
      }
 
