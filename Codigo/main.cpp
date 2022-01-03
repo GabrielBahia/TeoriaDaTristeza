@@ -231,17 +231,23 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
             /* Arvore Geradora Minima de Prim */
         case 5:{
-
             Graph *grafoAux = graph->arvGMin_Prim(output_file);
-            grafoAux->printGraph(output_file);
+            if(grafoAux == nullptr) {
+                cout << "Não é possivel realizar o agm_Prim para grafos direcionados";
+            } else {
+                grafoAux->printGraph(output_file);
+            }
             break;
         }
 
             /* Arvore Geradora Minima de Kruskal */
         case 6:{
-
             Graph *grafoAux2 = graph->arvGMin_Kruskal(output_file);
-            grafoAux2->printGraph(output_file);
+            if(grafoAux2 == nullptr) {
+                cout << "Não é possivel realizar o agm_Prim para grafos direcionados";
+            } else {
+                grafoAux2->printGraph(output_file);
+            }
 
             break;
         }
