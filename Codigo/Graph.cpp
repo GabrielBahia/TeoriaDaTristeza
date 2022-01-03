@@ -934,6 +934,13 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
 
     cout << "subGrafo->number_edges" << subGrafo->getNumberEdges() << endl;
 
+    for(Node *i = subGrafo->first_node; i!= nullptr; i = i->getNextNode()) {
+        for(Edge *e = i->getFirstEdge();e!= nullptr; e = e->getNextEdge()) {
+            cout << "Node subGrafo: " << i->getId() << " Aresta subGrafo: " << e->getTargetId() << endl;
+        }
+    }
+    cout << "saiu";
+
     return subGrafo;
 }
 
@@ -1063,9 +1070,11 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
 {
     
      
-    int num, aux;
+    int num, aux, contNodes = 1;
+    int cont = 0;
     cout << "Digite o numero de vértices de 1 a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
     cin >> num;
+    int *posicoes = new int[num];
     int *nodes = new int[num];
     for (int i = 0; i < num; i++)
     {
@@ -1076,15 +1085,13 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
     }
     
 
-   Graph *grafoA;
+    Graph *grafoA;
 
     
     grafoA = this->getVertexInduced(nodes, num);
 
-   
-
-    Graph *grafoB = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
-     Node *v;
+    Graph *grafoB = new Graph(num, this->directed, this->weighted_edge, this->weighted_node);
+    Node *v;
     //para todo noh da lista faça
     for (v = grafoA->getFirstNode(); v != NULL; v = v->getNextNode())
     {
@@ -1093,12 +1100,20 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
 
 
    // bool adicionados[this->order]; //marca quais vértices ja possuem um caminho
-    bool *adds = new bool [num];
-    for (int i = 0; i < num; i++)
+    bool *adds = new bool [this->order];
+    for (int i = 0; i < this->order; i++)
     {
-        adds[i] = false;
+        adds[i] = true;
+        for(int j=0;j<num;j++) {
+            if(getNode(nodes[j])->getIdNode() == i) {
+                //cout << "I aqui: " << i << "Vértices aqui: " << getNode(nodes[j])->getId() << endl;
+                adds[i] = false;
+            }
+        }
     }
+
     adds[getNode(aux)->getIdNode()] = true;
+    posicoes[cont] = getNode(aux)->getIdNode(); 
 
     std::list<int> vertices; 
     std::list<int>::iterator k;
@@ -1108,7 +1123,8 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
     bool todosNodeAdd = false;
 
     int custoT=0;
-    int auxVet[num];
+    //int auxVet[num];
+    int *auxVet = new int[num];
     int contAux = 0;
     int *contz = &contAux;
 
@@ -1124,7 +1140,7 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
             
             Node *verticeAnalisado = grafoA->getNode(*k);
              
-             cout << "verticeAnalisado : " << verticeAnalisado->getId() << endl;
+             //cout << "verticeAnalisado : " << verticeAnalisado->getId() << endl;
           
             for (Edge *ed = verticeAnalisado->getFirstEdge(); ed != nullptr; ed = ed->getNextEdge()) //percorre todas arestas de grafoVI
             {
@@ -1138,7 +1154,10 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
                 // if (adds[verticeAdjacente -1 ] == false) //node alvo não foi adicionado
                 if (adds[ed->getTargetIdNode()] == false) //node alvo não foi adicionado0
                 {
-                    
+                    contNodes++;
+                    cout << "Ids vizinhos do: " <<verticeAnalisado->getId() << ": " << ed->getTargetId() << endl; 
+                    cont++;
+                    posicoes[cont] = ed->getTargetIdNode();
                     if (custoMenor >= custo_aresta) //custo desse edge for menor de todas que ja forram analisados
                     {
                         
@@ -1151,10 +1170,12 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
 
         }
 
-        
-            cout << " SAIU DO FOR "<< endl;
+        for(int i=0;i<num;i++) {
+            cout << "Posições: " << posicoes[i] << endl;
+        }        
+            //cout << " SAIU DO FOR "<< endl;
 
-         cout << " NODEA: " << nodeA << " --- " << " NODEB: " << nodeB << endl;
+        //cout << " NODEA: " << nodeA << " --- " << " NODEB: " << nodeB << endl;
         grafoB->insertEdge(nodeA, nodeB, custoMenor);
 
         custoT=custoT+custoMenor;
@@ -1163,37 +1184,43 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
         adds[getNode(nodeB)->getIdNode()] = true;
          
 
-         auxVet[*contz] = getNode(nodeB)->getIdNode();
-         cout << "CONTZ : " << *contz << endl;
+        auxVet[*contz] = getNode(nodeB)->getIdNode();
+        //cout << "CONTZ : " << *contz << endl;
 
-         //for(int i=0;i<num;i++)
-         // cout<< "ADDS NA POSICAO: "<< i << " SERA : " <<  adds[aux[i]] << endl;
+        //for(int i=0;i<num;i++)
+        // cout<< "ADDS NA POSICAO: "<< i << " SERA : " <<  adds[aux[i]] << endl;
 
         int cont = 0;
         int aux2;
-        cout << " ENTROU 1 " << endl;
+        //cout << " ENTROU 1 " << endl;
  
-         for (int i = 0; i < num; i++)
-         cout << "ADDS " << adds[i] << endl;
-
+         //for (int i = 0; i < num; i++)
+         //cout << "ADDS " << adds[posicoes[i]] << endl;
+        int x = 0;
         for (int i = 0; i < num; i++) //verifica se todos nodes ja foram adicionados se sim todosNodeAdd=true
         {
-            cout << " ENTROU 2 " << endl;
+            //cout << " ENTROU 2 " << endl;
             //aux2 = auxVet[i];
 
-            if (adds[i] == true)
+            if (adds[posicoes[i]] == true)
             {
-                cout << "CHEGOU ATE AQUI" << endl;
+                //cout << "CHEGOU ATE AQUI" << endl;
+                cout << "Posicoes num: " << posicoes[i] << endl;
+                cout << "Posicoes: " << adds[posicoes[i]] << endl;
+                cout << "Entrou aqui: " << x << endl;
                 cont++;
+                x++;
             }
         }
 
+        cout << "Valor da cont: " << cont << endl;
+        cout << "Valor da ordem do grafo b: " << grafoB->order << endl;
         if (cont == (grafoB->order))
         {
             
             todosNodeAdd = true;
         }
-        cout  << " CONT : " << cont << endl;
+        //cout  << " CONT : " << cont << endl;
 
         contAux++;
     }
@@ -1204,7 +1231,6 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
 
    
     output_file<<"Peso da Arvore Geradora Minima: "<<custoT<<endl;
-
    return grafoB;
 }
 
