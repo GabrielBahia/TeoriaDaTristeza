@@ -818,16 +818,15 @@ Graph* Graph::getVertexInduced(int *listIdNodes, int tam)
 
 // INICIO PRIM ////////////////////////////////////////////////////////////
 
-//PRIM 2
-
 Graph *Graph::arvGMin_Prim(ofstream &output_file)
-{ 
-    
-    int num, aux;
-    int *vetAd = new int[this->order];
-    int *posicoes = new int[this->order];
-    int cont = 0;
-    int cont2 = 0;
+{
+
+    if(this->directed && !weighted_edge ) {
+        return nullptr;
+    }  
+
+    int num, vert;
+ 
     cout << "Digite o numero de vértices de 1 a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
     cin >> num;
     int *nodes = new int[num];
@@ -835,24 +834,24 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
     for (int i = 0; i < num; i++)
     {
         cout << "Digite o vértice de numero " << i + 1 << ": " << endl;
-        cin >> aux;
-        nodes[i] = aux;
-        cout << "NODES : " << nodes[i] << " i: " << i << endl;
+        cin >> vert;
+        nodes[i] = vert;
     }
-    
 
-   Graph *grafoA;
+    int *posicoes = new int[num];
+    int *aux = new int[num];
 
-    
+    int cont = 0;
+
+    Graph *grafoA;
+
     grafoA = this->getVertexInduced(nodes, num);
     // criando subGrafoVeti
 
-    vetAd[0] = grafoA->getFirstNode()->getId();
-    posicoes[0] = vetAd[0];
-
    int *pa = new int[this->order];
-   bool tree[100000];
-   int preco[100000];
+   bool tree[this->order];
+   int preco[this->order];
+
    // inicialização:
    for (int i = 0; i < grafoA->order; i++)
    {
@@ -862,23 +861,30 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
    }   
 
     Node *auxN = grafoA->getFirstNode();
-    pa[auxN->getIdNode()] = 0,
     tree[auxN->getIdNode()] = true;
+    posicoes[auxN->getIdNode()] = auxN->getId();
+    aux[cont] = auxN->getIdNode();
+    pa[cont] = auxN->getId();
 
    for (Edge *auxE = auxN->getFirstEdge(); auxE != nullptr; auxE=auxE->getNextEdge())
    {
-       pa[auxE->getTargetIdNode()] = 0;
+       cont++;
+       pa[auxE->getTargetIdNode()] = auxN->getId();
+       posicoes[auxE->getTargetIdNode()] = auxE->getTargetId();
+       aux[cont] = auxE->getTargetIdNode(); 
        preco[auxE->getTargetIdNode()] = auxE->getWeight();
    }
-       
+ 
 
    while (true)
     { 
+      
       int min = INT_MAX;
       Node *y; 
 
        for (Node *w = grafoA->getFirstNode(); w != nullptr ; w = w->getNextNode())
        {
+
          if (!tree[w->getIdNode()] && preco[w->getIdNode()] < min)
          {
               min = preco[w->getIdNode()];
@@ -892,14 +898,14 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
       // atualização dos preços e ganchos: 
       for (Edge *a = y->getFirstEdge(); a != nullptr; a = a->getNextEdge())
        {
+
          if (!tree[a->getTargetIdNode()] && a->getWeight() < preco[a->getTargetIdNode()]) 
          {
-            cont2++;
+            cont++;
             preco[a->getTargetIdNode()] = a->getWeight();
             pa[a->getTargetIdNode()] = y->getId();
-            posicoes[cont] = y->getId();
-            cont++;
-            vetAd[cont2] = a->getTargetId();
+            posicoes[a->getTargetIdNode()] = a->getTargetId();
+            aux[cont] = a->getTargetIdNode();
          }
       }
    }
@@ -907,221 +913,47 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
     // montando subArv e printando
 
     Graph *arvPrim = new Graph(num, this->directed, this->weighted_edge, this->weighted_node);
-    
-    for(int i=0;i<=cont2;i++)
+
+     int aux2;
+     for(int i=0;i<=cont;i++)
      {
-        cout << " VETAD : " << vetAd[i] << endl;
-        arvPrim->insertNode(vetAd[i],0); 
+        aux2 = aux[i];
+        arvPrim->insertNode(posicoes[aux2],0); 
      }
 
-    int auxP;
-    int auxId;
+     int auxP;
+     int total = 0;
 
-    for(int i=0;i<=cont2;i++)
-    cout << " PA i: " << i << " = " << posicoes[i]<< endl;
-
-    for(int i =0;i<num;i++) {
-        cout << "Posicoes: " << posicoes[i] << endl;
-        cout << "VetAd: " << vetAd[i] << endl;
-    }
-
-     for(int i=1;i<=cont2;i++)
+      for(int i=0;i<=cont;i++)
      {
-          cout << " ENTROU " << endl;
-          
-            Node *e = getNode(posicoes[i]);
+
+         Node *e = getNode(pa[aux[i]]);
+         
             for(Edge *x = e->getFirstEdge(); x != nullptr; x = x->getNextEdge())
             {
-                if(x->getTargetId() == vetAd[i])
+                if(x->getTargetId() == posicoes[aux[i]])
                 {
                    auxP = x->getWeight();
+                   total = total + auxP;
                 }
             }
 
-            cout << "VERTICE A : " << pa[i] << " VERTICE B : " << i+1 << endl;
-            arvPrim->insertEdge(posicoes[i],vetAd[i],auxP);
+         if(pa[aux[i]] != posicoes[aux[i]])
+         {
+           arvPrim->insertEdge(pa[aux[i]],posicoes[aux[i]],auxP);
+         }
 
      }
 
-      return arvPrim;
+     total = total/2;
+
+    output_file << " O peso total da Arvore Geradora Minina pelo algoritmo de Prim sera: " << endl;
+    output_file << total << endl;
+    output_file << "Arvore Geradora Minina pelo algoritmo de Prim: " << endl;
+
+    return arvPrim;
+
 }
-
-
-/*
-Graph *Graph::arvGMin_Prim(ofstream &output_file)
-{
-    if(this->directed) {
-        return nullptr;
-    }   
-    int num, aux, contNodes = 0;
-    int cont = 0;
-    cout << "Digite o numero de vértices de 1 a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
-    cin >> num;
-    int *posicoes = new int[num];
-    int *nodes = new int[num];
-    for (int i = 0; i < num; i++)
-    {
-        cout << "Digite o vértice de numero " << i + 1 << ": " << endl;
-        cin >> aux;
-        nodes[i] = aux;
-        //cout << "NODES : " << nodes[i] << " i: " << i << endl;
-    }
-    
-
-    Graph *grafoA;
-
-    grafoA = this->getVertexInduced(nodes, num);
-    cout << "Num de elementos presente: " << num << endl;
-    Graph *grafoB = new Graph(num, this->directed, this->weighted_edge, this->weighted_node);
-    Node *v;
-    //para todo noh da lista faça
-    for (v = grafoA->getFirstNode(); v != NULL; v = v->getNextNode())
-    {
-        grafoB->insertNode(v->getId(),v->getWeight());
-    }
-
-
-   // bool adicionados[this->order]; //marca quais vértices ja possuem um caminho
-    bool *adds = new bool [this->order];
-    for (int i = 0; i < this->order; i++)
-    {
-        adds[i] = true;
-        for(int j=0;j<num;j++) {
-            if(getNode(nodes[j])->getIdNode() == i) {
-                //cout << "I aqui: " << i << "Vértices aqui: " << getNode(nodes[j])->getId() << endl;
-                adds[i] = false;
-            }
-        }
-    }
-
-    adds[getNode(aux)->getIdNode()] = true;
-    posicoes[cont] = getNode(aux)->getIdNode(); 
-
-    std::list<int> vertices; 
-    std::list<int>::iterator k;
-    vertices.push_front(getNode(aux)->getId());
-
-
-    bool todosNodeAdd = false;
-
-    int custoT=0;
-    //int auxVet[num];
-    int *auxVet = new int[num];
-    int contAux = 0;
-    int *contz = &contAux;
-    int contAux2 = 0;
-
-    bool *vet = new bool[num];
-    for(int i =0;i<num;i++) {
-        vet[i] = false;
-    } 
-    while (todosNodeAdd == false) //até ter um caminho para todos os node
-    {
-        int nodeA; //node armazena o node de onde vai sair o edge
-        int nodeB; //node armazena o node que o edge vai chegar
-        int custoMenor = 999999999;
-        for (k = vertices.begin(); k != vertices.end(); k++) //percorre todos vértices da lista
-        {
-            if(vet[getNode(*k)->getIdNode()] == false) {
-                Node *verticeAnalisado = grafoA->getNode(*k);
-                
-                //cout << "verticeAnalisado : " << verticeAnalisado->getId() << endl;
-            
-                for (Edge *ed = verticeAnalisado->getFirstEdge(); ed != nullptr; ed = ed->getNextEdge()) //percorre todas arestas de grafoVI
-                {
-                
-                //int verticeAdjacente = ed->getTargetIdNode(); //node target desse edge
-                    int verticeAdjacente = ed->getTargetId(); //node target desse edge
-                    int custo_aresta = ed->getWeight();       //custo desse edge
-                    cout <<"NODE: " << verticeAnalisado->getId() << " EDGE:  "<< ed->getTargetId() <<  "CUSTO DO EDGE:  " << custo_aresta << endl;
-
-                    
-                    // if (adds[verticeAdjacente -1 ] == false) //node alvo não foi adicionado
-                    if (adds[ed->getTargetIdNode()] == false) //node alvo não foi adicionado0
-                    {
-                        contNodes++;
-                        cout << "Ids vizinhos do: " <<verticeAnalisado->getId() << ": " << ed->getTargetId() << endl; 
-                        cont++;
-                        posicoes[cont] = ed->getTargetIdNode();
-                        if (custoMenor >= custo_aresta) //custo desse edge for menor de todas que ja forram analisados
-                        {
-                            nodeA = verticeAnalisado->getId(); //node que esta saindo esse edge
-                            nodeB = verticeAdjacente; //node onde esta chegando esse edge
-                            custoMenor = custo_aresta; //custo desse edge
-                        }
-                    }
-                }
-            }
-            vet[getNode(*k)->getIdNode()] = true;
-        }
-
-        for(int i=0;i<num;i++) {
-            cout << "Posições: " << posicoes[i] << endl;
-        }        
-            //cout << " SAIU DO FOR "<< endl;
-
-        //cout << " NODEA: " << nodeA << " --- " << " NODEB: " << nodeB << endl;
-        grafoB->insertEdge(nodeA, nodeB, custoMenor);
-
-        custoT=custoT+custoMenor;
-
-        vertices.push_front(nodeB); //add nodeB no nodes
-        vertices.pop_back();
-        adds[getNode(nodeB)->getIdNode()] = true;
-    
-
-        auxVet[*contz] = getNode(nodeB)->getIdNode();
-        cout << "NodeB: " << getNode(nodeB)->getId() << endl;
-        cout << "NodeB Vet: " << getNode(nodeB)->getIdNode() << endl;
-        //cout << "CONTZ : " << *contz << endl;
-
-        //for(int i=0;i<num;i++)
-        // cout<< "ADDS NA POSICAO: "<< i << " SERA : " <<  adds[aux[i]] << endl;
-
-        //int cont = 0;
-        int aux2;
-        //cout << " ENTROU 1 " << endl;
- 
-         //for (int i = 0; i < num; i++)
-         //cout << "ADDS " << adds[posicoes[i]] << endl;
-        int x = 0;
-        for (int i = 0; i < contNodes; i++) //verifica se todos nodes ja foram adicionados se sim todosNodeAdd=true
-        {
-            //cout << " ENTROU 2 " << endl;
-            //aux2 = auxVet[i];
-
-            if (adds[posicoes[i]] == true)
-            {
-                //cout << "CHEGOU ATE AQUI" << endl;
-                cout << "Posicoes num: " << posicoes[i] << endl;
-                cout << "Posicoes: " << adds[posicoes[i]] << endl;
-                //cout << "Entrou aqui: " << x << endl;
-                contAux2++;
-                x++;
-            }
-        }
-
-        cout << "Valor do contNodes: " << contNodes << endl;
-        cout << "Valor da cont: " << contAux2 << endl;
-        //cout << "Valor da ordem do grafo b: " << grafoB->order num << endl;
-        if (contAux2 == (grafoB->order))
-        {
-            todosNodeAdd = true;
-        }
-        //cout  << " CONT : " << cont << endl;
-
-        contAux++;
-    }
-
-    delete[] nodes;
-
-     // Nao precisa dessa parte, ( se caso for apagar, apagar a variavel custoT)
-
-   
-    output_file<<"Peso da Arvore Geradora Minima: "<<custoT<<endl;
-   return grafoB;
-}
-*/
 
 // FIM PRIM ////////////////////////////////////////////////////
 
@@ -1129,9 +961,11 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
 
 Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
 {
-    if(this->directed) {
+    if(this->directed && !weighted_edge) {
         return nullptr;
-    }   
+    }
+
+       
     int num, v;
     cout << "Digite o numero de vértices de '1' a " << this->order << " que serão adicionados no subgrafo vértice induzido" << endl;
     cin >> num;
@@ -1187,7 +1021,6 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
             p->removeEdge(sup->getId(), this->directed, sup);
             sup->removeEdge(p->getId(), this->directed, p);
             p->removeEdge(sup->getId(), this->directed, sup);
-            cout << sup->getId() << " -- " << p->getId() << endl;
         }
         else
         {
@@ -1195,7 +1028,6 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
         }
         //adiciona a a resta num grafo auxiliar.
         grafoB->insertEdge(EdgeNode[0], EdgeNode[1], EdgeNode[2]);
-        cout << "EdgeNode[0] : " << EdgeNode[0] << " EdgeNode[1] : " << EdgeNode[1] << " EdgeNode[2] : " <<  EdgeNode[2] << endl;
     }
    
       
@@ -1245,8 +1077,6 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
     }
    
     
-    // NAO PRECISA DESSA PARTE
-
     int pesoT = 0;
     while (!listaAux.empty())
     {
@@ -1258,8 +1088,6 @@ Graph *Graph::arvGMin_Kruskal(ofstream &output_file)
     }
     output_file << "Peso da Arvore Geradora Minima: " << pesoT << endl;
 
-     
-     
 
     return agMin;
 
@@ -1290,7 +1118,6 @@ void Graph::arv_Buscalargura(ofstream &output_file, int id)
     Node *node1 = getNode(id);
     num[node1->getIdNode()] = cont++; 
     pa[node1->getIdNode()] = id;
-    cout <<  " node1->getIdNode() : " << node1->getIdNode() << " id : " << id << endl;
     listN.push_back(getNode(id));
     vetAd[cont2] = id;
     posicoes[0] = id;
@@ -1309,9 +1136,6 @@ void Graph::arv_Buscalargura(ofstream &output_file, int id)
                 num[auxE->getTargetIdNode()] = cont; 
                 cont++;
                 pa[auxE->getTargetIdNode()] = aux->getId();
-                cout <<  " auxE->getTargetId()  " << auxE->getTargetId() << endl;
-                cout <<  " auxE->getTargetIdNode()  " << (auxE->getTargetIdNode()) << endl;
-                cout <<  " aux->getId()  " << aux->getId() << endl;
                 listN.push_back(getNode(auxE->getTargetId()));
                 cont2++;
                 vetAd[cont2] = auxE->getTargetId();
