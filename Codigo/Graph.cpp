@@ -1358,6 +1358,13 @@ bool Graph::graphTemCiclo()
 
 void Graph::Guloso(ofstream &output_file, int p)
 {
+    bool *nodes = new bool[this->order];  // vetor para verificar os vértices já utilizados
+
+    for(int i=0;i<this->order;i++)
+    {
+        nodes[i] = false;
+    }
+
 	if(this->weighted_node) 
     {
         vector<list<Node> > listVector; //Note space between "> >"
@@ -1372,16 +1379,37 @@ void Graph::Guloso(ofstream &output_file, int p)
             //list<Node>::iterator nodeIterator;
             int x = 1 + (rand() % this->order); // escolhendo número aleatorio
             Node *nodeAux = this->getNodeId(x); // pegando node referente a esse número
-            if(nodeAux->getInDegree() == 1) {
-                listVector[i].emplace_back(*nodeAux); // caso o node só tenha uma aresta a gente vai inserir o único vizinho direto na lista que o vizinho tá
-                listVector[i].emplace_back(*nodeAux->getFirstEdge()); // único vizinho direto já pode pegar direto no getFirstEdge()
-            } else {
-                listVector[i].emplace_back(*nodeAux); // inserindo esse node na lista da posição i do vector
+
+            if(nodes[nodeAux->getIdNode()] == false)
+            {
+                // Verifica se o vértice nodeAux possui algum vizinho de grau 1
+                for(Edge *edgeAux = nodeAux->getFirstEdge(); edgeAux != nullptr; edgeAux = edgeAux->getNextEdge())
+                {
+                    if(getNode(edgeAux->getTargetId())->getInDegree() == 1)
+                    {
+                        listVector[i].emplace_back(getNode(edgeAux->getTargetId())); // Coloca o vizinho de grau 1 na lista
+                        nodes[edgeAux->getTargetId()] = true;                        // Coloca o vértice como já utilizado
+                    }    
+
+                }
+
+                if(nodeAux->getInDegree() == 1) {
+                    listVector[i].emplace_back(*nodeAux);                                        // caso o node só tenha uma aresta a gente vai inserir o único vizinho direto na lista que o vizinho tá
+                    listVector[i].emplace_back(getNode(nodeAux->getFirstEdge()->getTargetId())); // único vizinho direto já pode pegar direto no getFirstEdge()
+                    nodes[nodeAux->getIdNode()] = true;                                          // Coloca o vértice como já utilizado
+                    nodes[nodeAux->getFirstEdge()->getTargetIdNode()] = true; 
+                } else {
+                    listVector[i].emplace_back(*nodeAux); // inserindo esse node na lista da posição i do vector
+                    nodes[nodeAux->getIdNode()] = true;   // Coloca o vértice como já utilizado
+                }
             }
+                
         }  
         
         list<int> nodeWeight;
         list<int> nodeEdge;
+        list<int> rank;
+        
         for(Node *node = this->first_node;node != nullptr;node = node->getNextNode())
         {
             if(node->getId() != listVector[0].begin()->getId() && node->getId() != listVector[1].begin()->getId() )
@@ -1391,6 +1419,10 @@ void Graph::Guloso(ofstream &output_file, int p)
             }
         }
 
+        for(interator k ::  )
+        {
+
+        }
         while(nodeWeight.size() != 0 ) //verificando se a lista esta vazia 
         {
             
