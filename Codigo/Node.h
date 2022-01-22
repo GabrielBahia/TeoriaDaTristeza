@@ -25,6 +25,7 @@ class Node{
     public:
         // Constructor
         Node(int id, int order);
+        Node();
         // Destructor
         ~Node();
         // Getters
@@ -33,6 +34,7 @@ class Node{
         int getId();
         int getInDegree();
         int getOutDegree();
+        int getTotal_Edge();
         float getWeight();
         Node* getNextNode();
         int getIdNode();

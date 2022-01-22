@@ -1,0 +1,6 @@
+Primeiro node: 4
+Segundo node: 4
+Primeiro idNode: 4
+Primeiro idNode: 4
+Primeiro idNode dnv: 3
+Primeiro idNode dnv: 4

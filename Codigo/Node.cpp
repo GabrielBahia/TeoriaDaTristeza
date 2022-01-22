@@ -69,6 +69,10 @@ int Node::getOutDegree(){
 
 }
 
+int Node::getTotal_Edge() {
+    return this->total_edge;
+}
+
 float Node::getWeight(){
 
     return this->weight; // return the weight of the node!;
@@ -109,7 +113,6 @@ void Node::insertEdge(int target_id, float weight, int idNode){
         edge->setWeight(weight);
         this->last_edge->setNextEdge(edge);
         this->last_edge = edge;
-
     }
     else{
          // Allocating the new edge and keeping the integrity of the edge list

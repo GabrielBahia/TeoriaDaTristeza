@@ -71,6 +71,14 @@ class Graph{
         int getWeightFromEdgeNodeCombo(int idNoh, int idAresta, Graph *subGrafo);
         void printGraph(ofstream &output_file);
         bool graphTemCiclo();
+
+
+        //Methods Segunda Etapa
+        void Guloso(ofstream &output_file, int p);
+
+
+        //Funções Auxiliares Segunda Etapa
+        list<Node> criaLista();
 };
 
 #endif // GRAPH_H_INCLUDED

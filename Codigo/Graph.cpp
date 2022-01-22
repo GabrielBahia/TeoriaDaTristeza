@@ -6,6 +6,7 @@
 #include <stack>
 #include <queue>
 #include <list>
+#include <vector>
 #include <math.h>
 #include <cstdlib>
 #include <ctime>
@@ -120,6 +121,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
             {
                 Node *target = getNode(target_id);
                 node->insertEdge(target_id, weight, target->getIdNode()); // inserts the edge between the node we are to the node targeted 
+                target->incrementInDegree();
                 this->number_edges++;
             }
         }
@@ -132,6 +134,8 @@ void Graph::insertEdge(int id, int target_id, float weight)
                 node->insertEdge(target_id, weight, aux->getIdNode()); // inserts the edge between the two nodes
                 aux->insertEdge(node->getId(), weight, node->getIdNode()); // inserts the edge between the two nodes;
                 this->number_edges++; 
+                node->incrementInDegree();
+                aux->incrementInDegree();
             }
         }
     }
@@ -849,8 +853,8 @@ Graph *Graph::arvGMin_Prim(ofstream &output_file)
     // criando subGrafoVeti
 
    int *pa = new int[this->order];
-   bool tree[this->order];
-   int preco[this->order];
+   bool *tree = new bool[this->order];
+   int *preco = new int[this->order];
 
    // inicialização:
    for (int i = 0; i < grafoA->order; i++)
@@ -1351,3 +1355,70 @@ bool Graph::graphTemCiclo()
 }
 
 /// FIM DA ORDENAÇÃO TOPOLOGICA ///////////////////////////
+
+void Graph::Guloso(ofstream &output_file, int p)
+{
+	if(this->weighted_node) 
+    {
+        vector<list<Node> > listVector; //Note space between "> >"
+        for(int i=0;i<p;i++) {
+            listVector.push_back(criaLista());
+        }
+
+        srand(time(0));
+
+        for(int i=0;i<p;i++) 
+        {
+            //list<Node>::iterator nodeIterator;
+            int x = 1 + (rand() % this->order); // escolhendo número aleatorio
+            Node *nodeAux = this->getNodeId(x); // pegando node referente a esse número
+            if(nodeAux->getInDegree() == 1) {
+                listVector[i].emplace_back(*nodeAux); // caso o node só tenha uma aresta a gente vai inserir o único vizinho direto na lista que o vizinho tá
+                listVector[i].emplace_back(*nodeAux->getFirstEdge()); // único vizinho direto já pode pegar direto no getFirstEdge()
+            } else {
+                listVector[i].emplace_back(*nodeAux); // inserindo esse node na lista da posição i do vector
+            }
+        }  
+        
+        list<int> nodeWeight;
+        list<int> nodeEdge;
+        for(Node *node = this->first_node;node != nullptr;node = node->getNextNode())
+        {
+            if(node->getId() != listVector[0].begin()->getId() && node->getId() != listVector[1].begin()->getId() )
+            {
+                nodeWeight.push_back(node->getWeight());
+                nodeEdge.push_back(node->getTotal_Edge());
+            }
+        }
+
+        while(nodeWeight.size() != 0 ) //verificando se a lista esta vazia 
+        {
+            
+        }
+ 
+
+
+
+
+
+
+    } else {
+        output_file << "O grafo não tem peso nas arestas" << endl;
+    }
+    
+    
+}
+
+list<Node> Graph::criaLista() {
+    list<Node> List;
+    return List;
+}
+
+
+
+/// SEGUNDA ETAPA DO TRAB /////////////////////////////////
+
+
+
+
+/// FIM DA SEGUNDA ETAPA DO TRAB //////////////////////////

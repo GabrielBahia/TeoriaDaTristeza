@@ -160,6 +160,7 @@ int menu(){
     cout << "[6] Arvore Geradora Minima de Kruskal" << endl;
     cout << "[7] Arvore dada pela ordem de caminhamento em largura" << endl;
     cout << "[8] Imprimir ordenacao topologica" << endl;
+    cout << "[9] Algoritmo guloso" << endl;
     cout << "[0] Sair" << endl;
 
     cin >> selecao;
@@ -265,6 +266,12 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
             graph->ord_Topologica(output_file);
          
+            break;
+        }
+
+        case 9:{
+            graph->Guloso(output_file, 2);
+
             break;
         }
         default:
