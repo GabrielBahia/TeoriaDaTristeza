@@ -1360,6 +1360,7 @@ void Graph::Guloso(ofstream &output_file, int p)
 {
     bool *nodes = new bool[this->order];  // vetor para verificar os vértices já utilizados
 
+
     for(int i=0;i<this->order;i++)
     {
         nodes[i] = false;
@@ -1367,9 +1368,9 @@ void Graph::Guloso(ofstream &output_file, int p)
 
 	if(this->weighted_node) 
     {
-        vector<list<Node> > listVector; //Note space between "> >"
+        vector<vector<Node>> listVector; //Note space between "> >"
         for(int i=0;i<p;i++) {
-            listVector.push_back(criaLista());
+            listVector.push_back(criaVector());
         }
 
         srand(time(0));
@@ -1406,25 +1407,29 @@ void Graph::Guloso(ofstream &output_file, int p)
                 
         }  
         
-        list<int> nodeWeight;
-        list<int> nodeEdge;
-        list<int> rank;
+        vector<int> nodeWeight;
+        vector<int> nodeEdge;
+        vector<int> idWeight;
+        vector<int> idEdge;
+
+        vector<vector<float>> listRank;
+        
         
         for(Node *node = this->first_node;node != nullptr;node = node->getNextNode())
         {
             if(node->getId() != listVector[0].begin()->getId() && node->getId() != listVector[1].begin()->getId() )
-            {
+            {              
                 nodeWeight.push_back(node->getWeight());
                 nodeEdge.push_back(node->getTotal_Edge());
             }
         }
 
-        for(interator k ::  )
-        {
 
-        }
         while(nodeWeight.size() != 0 ) //verificando se a lista esta vazia 
         {
+            
+
+            
             
         }
  
@@ -1436,14 +1441,77 @@ void Graph::Guloso(ofstream &output_file, int p)
 
     } else {
         output_file << "O grafo não tem peso nas arestas" << endl;
-    }
-    
+    }  
     
 }
 
-list<Node> Graph::criaLista() {
-    list<Node> List;
-    return List;
+/*
+vector<float> Graph::geraRank(vector<vector<Node>> vectorCluster, int idCluster, vector<int> nodeWeight, vector<int> nodeGrau )
+{   
+    
+    int vet[2];
+    int resultado;
+    vector<float> rank;
+    int maior=0;
+    int menor=0;
+
+    vector<Node> = vectorCluster[idCluster];
+
+
+    
+    for(int i=0; i<vectorCluster[idCluster].size(); i++)
+    {
+        vectorCluster[idCluster][i];
+        if(vectorCluster[idCluster][i] >= maior)
+        {
+            maior = vectorCluster[idCluster][i]->getId();
+        }
+
+        if(vectorCluster[idCluster][i] <= menor)
+        {
+            menor = vectorCluster[idCluster][i];
+        }
+    }
+
+    // vet[0] =  ;
+    // vet[1] =  ;
+
+
+        for(int i=0;i<this->order;i++)
+        {
+            
+            if(nodeWeight[i] >= vet[1]  )
+            {
+               resultado = (nodeWeight[i] - vet[0])/nodeGrau[i]; 
+            }
+            else if( nodeWeight[i] <= vet[0])
+            {
+                resultado = (nodeWeight[i] - vet[1])/nodeGrau[i];
+            }
+            else if( nodeWeight[i] >= vet[0] && nodeWeight[i] <= vet[1])
+            {
+                resultado = 0;
+            }
+            
+            if(resultado < 0)
+            {
+                resultado = resultado * -1;
+            }
+            
+             rank[i] = resultado;
+
+        }
+
+    return rank;
+
+}
+
+*/
+
+
+vector<Node> Graph::criaVector() {
+    vector<Node> vector;
+    return vector;
 }
 
 

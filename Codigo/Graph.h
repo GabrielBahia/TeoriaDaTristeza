@@ -78,7 +78,8 @@ class Graph{
 
 
         //Funções Auxiliares Segunda Etapa
-        list<Node> criaLista();
+        vector<Node> criaVector();
+        vector<float> geraRank(vector<vector<Node>> vectorCluster, int idCluster, vector<int> nodeWeight, vector<int> nodeGrau );
 };
 
 #endif // GRAPH_H_INCLUDED

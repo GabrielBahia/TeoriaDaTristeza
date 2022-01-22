@@ -4,6 +4,8 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "vector": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp"
     }
 }
