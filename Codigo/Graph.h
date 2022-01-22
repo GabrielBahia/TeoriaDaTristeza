@@ -5,6 +5,7 @@
 #ifndef GRAPH_H_INCLUDED
 #define GRAPH_H_INCLUDED
 #include "Node.h"
+#include <vector>
 #include <fstream>
 #include <stack>
 #include <list>

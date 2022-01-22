@@ -1,6 +1,10 @@
-Primeiro node: 4
-Segundo node: 4
-Primeiro idNode: 4
-Primeiro idNode: 4
-Primeiro idNode dnv: 3
-Primeiro idNode dnv: 4
+ x : 5
+ x : 1
+ Lista de node posicao:  5
+ Lista de node posicao:  2
+ nodeWeight : 10
+ nodeWeight : 2
+ nodeEdge : 3
+ nodeEdge : 4
+
+
