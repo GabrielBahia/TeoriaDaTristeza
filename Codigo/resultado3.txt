@@ -1,0 +1,101 @@
+Node id: 1 entrada: 3
+Node id: 2 entrada: 2
+Node id: 3 entrada: 4
+Node id: 6 entrada: 2
+Node id: 4 entrada: 3
+Node id: 5 entrada: 2
+Entrou no 3
+Entrou no 3
+Ids restante: 1
+Ids restante: 6
+Ids restante: 4
+Ids restante: 5
+Maior valor: 5 Menor valor: 5
+Maior valor: 5 Menor valor: 5
+Peso atual: 10
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Peso atual: 15
+Valor do gap atual: 0
+Valor do gapNode: 10
+Valos do gapFinal: 3.33333
+Peso atual: 0
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Tamanho da lista i = 0 e:4
+Gap do node 1 e: 1.66667
+Gap do node 6 e: 2
+Gap do node 4 e: 3.33333
+Gap do node 5 e: 2.5
+Valor do cont: 0
+Chegou 1
+Chegou 1.5
+Id da aresta: 2
+Chegou 1.6
+Chegou 1.5
+Id da aresta: 3
+Chegou 1.6
+Chegou 1.5
+Id da aresta: 6
+Chegou 1.6
+Chegou 2
+Chegou 3
+Começo do vectorWeightEdge: 1
+Valor do cont: 0
+Tamanho antes de excluir: 4
+Elementos apos o resize: 6
+Elementos apos o resize: 4
+Elementos apos o resize: 5
+Tamanho dps de excluir: 3
+Testeeeeeeeeeeeeeeeeeeeeeeeee
+Testando após excluir: 6
+Testando após excluir: 4
+Testando após excluir: 5
+Verificando o espaço dela antes de apagar para ter certeza: 4
+Verificando se ela ainda continua tendo o mesmo espaço: 4
+1
+2
+3
+6
+4
+5
+Maior valor: 9 Menor valor: 9
+Maior valor: 9 Menor valor: 9
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 8
+Valos do gapFinal: 4
+Peso atual: 15
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 2
+Peso atual: 0
+Valor do gap atual: 0
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+Tamanho da lista i = 1 e:3
+Gap do node 6 e: 4
+Gap do node 4 e: 2
+Gap do node 5 e: 4.5
+Valor do cont: 1
+Chegou 1
+Chegou 1.5
+Id da aresta: 3
+Chegou 1.6
+Chegou 1.5
+Id da aresta: 5
+Chegou 1.6
+Chegou 1.5
+Id da aresta: 6
+Chegou 1.6
+Chegou 2
+Chegou 3
+Começo do vectorWeightEdge: 6
+Valor do cont: 1
+Tamanho antes de excluir: 3

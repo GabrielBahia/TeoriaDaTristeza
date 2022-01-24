@@ -1,0 +1,4 @@
+Node id: 1 entrada: 1
+Node id: 2 entrada: 1
+Entrou no 1
+Entrou no 2

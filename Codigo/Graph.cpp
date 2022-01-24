@@ -12,6 +12,7 @@
 #include <ctime>
 #include <float.h>
 #include <iomanip>
+#include <iterator>
 #include <algorithm> /// fun��o find
 using namespace std;
 #define INFINITO 1000000000;
@@ -1358,88 +1359,213 @@ bool Graph::graphTemCiclo()
 
 void Graph::Guloso(ofstream &output_file, int p)
 {
-    bool *nodes = new bool[this->order];  // vetor para verificar os vértices já utilizados
+    bool *visitado = new bool[this->order];  // vetor para verificar os vértices já utilizados
 
+    for (Node *node = this->first_node; node != nullptr; node = node->getNextNode())
+    {
+        output_file << "Node id: " << node->getId() << " entrada: " << node->getInDegree() << endl;
+    }
+    
 
     for(int i=0;i<this->order;i++)
     {
-        nodes[i] = false;
+        visitado[i] = false; // marcando todos nodes como não visitados
     }
 
-	if(this->weighted_node) 
+	if(this->weighted_node) // só pode grafo com node com peso
     {
-        vector<vector<Node>> vectorNode; //Note space between "> >"
+        //vector<vector<Node>> vectorNode;
+        vector<vector<Node>> *vectorNode = new vector<vector<Node>>; //Note space between "> >" // vetor de vetores de node
+        vectorNode->reserve(this->order);
+    
         for(int i=0;i<p;i++) {
-            vectorNode.push_back(criaVector());
+            vectorNode->push_back(*criaVector()); // criando os vetores de node;
+            vectorNode->at(i).reserve(this->order);
+            //cout << "Tamanho i: " << i << " " << vectorNode->end()->capacity() << endl;
         }
 
-        srand(time(0));
+        srand(time(0)); // semente aleatoria
 
         for(int i=0;i<p;i++) 
         {
-            //list<Node>::iterator nodeIterator;
-            int x = 1 + (rand() % this->order-1); // escolhendo número aleatorio
-            output_file << " x : " << x << endl;
-            Node *nodeAux = this->getNodeId(x); // pegando node referente a esse número
+            Node *nodeAux;
+            do {
+                int x = 1 + (rand() % this->order-1); // escolhendo número aleatorio
+                //output_file << " x : " << x << endl;
+                nodeAux = this->getNodeId(x); // pegando node referente a esse número
+                //output_file << "Id: " << nodeAux->getId() << " -- " << " Grau entrada: " << nodeAux->getInDegree() << " -- " << " Grau saida: " << nodeAux->getTotal_Edge() << endl;
+            } while(visitado[nodeAux->getIdNode()]); // se o node já tiver sido colocado ele troca
+            visitado[nodeAux->getIdNode()] = true; // marcando como visitado
 
-            if(nodes[nodeAux->getIdNode()] == false)
+            // Verifica se o vértice nodeAux possui algum vizinho de grau 1
+            for(Edge *edgeAux = nodeAux->getFirstEdge(); edgeAux != nullptr; edgeAux = edgeAux->getNextEdge())
             {
-                // Verifica se o vértice nodeAux possui algum vizinho de grau 1
-                for(Edge *edgeAux = nodeAux->getFirstEdge(); edgeAux != nullptr; edgeAux = edgeAux->getNextEdge())
+                if(getNode(edgeAux->getTargetId())->getInDegree() == 1) // verificando se a aresta ao nó escolhido só tem o nó escolhido como vizinho
                 {
-                    if(getNode(edgeAux->getTargetId())->getInDegree() == 1)
-                    {
-                        vectorNode[i].emplace_back(*getNode(edgeAux->getTargetId())); // Coloca o vizinho de grau 1 na lista
-                        nodes[edgeAux->getTargetId()] = true;                        // Coloca o vértice como já utilizado
-                    }    
+                    vectorNode->at(i).emplace_back(*getNode(edgeAux->getTargetId())); // Coloca o vizinho de grau 1 na lista
+                    visitado[edgeAux->getTargetIdNode()] = true;  // Coloca o node vizinho como já utilizado
+                    visitado[nodeAux->getIdNode()] = true; // coloca o node escolhido como já utilizado
+                    //output_file << "Esse vertice: " << vectorNode[i].at(0).getId() << endl;
+                    output_file << "Entrou no 1" << endl;
+                }    
 
-                }
-
-                if(nodeAux->getInDegree() == 1) {
-                    vectorNode[i].emplace_back(*nodeAux);                                        // caso o node só tenha uma aresta a gente vai inserir o único vizinho direto na lista que o vizinho tá
-                    vectorNode[i].emplace_back(*getNode(nodeAux->getFirstEdge()->getTargetId())); // único vizinho direto já pode pegar direto no getFirstEdge()
-                    nodes[nodeAux->getIdNode()] = true;                                          // Coloca o vértice como já utilizado
-                    nodes[nodeAux->getFirstEdge()->getTargetIdNode()] = true; 
-                } else {
-                    vectorNode[i].emplace_back(*nodeAux); // inserindo esse node na lista da posição i do vector
-                    nodes[nodeAux->getIdNode()] = true;   // Coloca o vértice como já utilizado
-                }
             }
-                
-        }  
-        
-        vector<int> nodeWeight;
-        vector<int> nodeEdge;
-        vector<int> idWeight;
-        vector<int> idEdge;
 
-        vector<vector<float>> listRank;
-        
-        
-        for(Node *node = this->first_node;node != nullptr;node = node->getNextNode())
-        {
-            if(node->getId() != vectorNode[0].begin()->getId() && node->getId() != vectorNode[1].begin()->getId() )
-            {                           
-                nodeWeight.push_back(node->getWeight());
-                nodeEdge.push_back(node->getTotal_Edge());
+            if(nodeAux->getInDegree() == 1) { // se o nó escolhido tem grau de entrada 1 já pega o vizinho dele junto
+                vectorNode->at(i).emplace_back(*nodeAux);  // caso o node só tenha uma aresta a gente vai inserir o único vizinho direto na lista que o vizinho tá
+                vectorNode->at(i).emplace_back(*getNode(nodeAux->getFirstEdge()->getTargetId())); // único vizinho direto já pode pegar direto no getFirstEdge()
+                visitado[nodeAux->getIdNode()] = true;  // Coloca o node como já utilizado
+                visitado[nodeAux->getFirstEdge()->getTargetIdNode()] = true; // coloca o vizinho do node como já utilizado
+                //output_file << "Esse vertice: " << vectorNode[i].at(0).getId() << endl;
+                //output_file << "Esse vertice: " << vectorNode[i].at(1).getId() << endl;
+                output_file << "Entrou no 2" << endl;
+            } else {
+                vectorNode->at(i).emplace_back(*nodeAux); // inserindo esse node na lista da posição i do vector
+                visitado[nodeAux->getIdNode()] = true;   // Coloca o vértice como já utilizado
+                //output_file << "Esse vertice: " << vectorNode[i].at(0).getId() << endl;
+                output_file << "Entrou no 3" << endl;
             }
         }
 
-        
-        output_file << " Lista de node posicao:  " << (vectorNode.at(0)).at(0).getId() << endl;
-        output_file << " Lista de node posicao:  " << (vectorNode.at(1)).at(0).getId() << endl;
-    
-      
-        output_file << " nodeWeight : " << nodeWeight.at(0) << endl;
-        output_file << " nodeWeight : " << nodeWeight.at(1) << endl;
-        output_file << " nodeEdge : " << nodeEdge.at(0) << endl;
-        output_file << " nodeEdge : " << nodeEdge.at(1) << endl;
+        //vector<Node> *vectorWeight = new vector<Node>(); // vector de pesos dos nodes
+        //vector<Node> *vectorEdge = new vector<Node>(); // vector de grau dos nodes
+        vector<Node> *vectorWeightEdge = new vector<Node>();
+        vector<vector<float>> *listRank = new vector<vector<float>>; // vector de ranqueamento dos nodes
+        vectorWeightEdge->reserve(this->order-p);
+        listRank->reserve(p); // reservando espaço para o total de clusters nesse vector 
+        for(int i=0;i<p;i++) {
+            listRank->push_back(*criaVetorRank(p)); // alocando vectors em cada posição da listRank
+            listRank->at(i).reserve(this->order-2); // reservando espaço para o total de nodes em cada posição da listRank
+        }
+        //vectorWeight->reserve(this->order-p); // reservando espaço para o total de nodes nesse vector 
+        //vectorEdge->reserve(this->order-p); // reservando espaço para o total de nodes nesse vector 
 
-        
-       
+        Node *node = this->first_node;
 
+        for(Node *node = this->first_node;node != nullptr;node = node->getNextNode())
+        {
+            if((node->getId() != vectorNode->at(0).at(0).getId()) && (node->getId() != vectorNode->at(1).at(0).getId()) && !visitado[node->getIdNode()])
+            {       
+                //vectorWeight->emplace_back(*node);
+                //vectorEdge->emplace_back(*node);
+                vectorWeightEdge->emplace_back(*node);
+            }
+        }
 
-       /* while(nodeWeight.size() != 0 ) //verificando se a lista esta vazia 
+        for(int i=0;i<vectorWeightEdge->size();i++) {
+            output_file << "Ids restante: " << vectorWeightEdge->at(i).getId() << endl;            
+        }
+
+        do {
+            for(int i=0;i<p;i++) {  
+                float menorVal;   
+                int contPosicao = 0;
+                float gap = 0;
+                float maiorValor = vectorNode->at(i).at(0).getWeight();
+                float menorValor = vectorNode->at(i).at(0).getWeight();
+                //getMaiorMenorVal(&maiorValor, &menorValor, vectorNode->at(i), i, p);
+                output_file << "Maior valor: " << maiorValor << " Menor valor: " << menorValor << endl;
+                for(int j=0;j<vectorNode->at(i).size();j++) {
+                    if(maiorValor < vectorNode->at(i).at(j).getWeight()) {
+                        maiorValor = vectorNode->at(i).at(j).getWeight();
+                    } else if(menorValor > vectorNode->at(i).at(j).getWeight()) {
+                        menorValor = vectorNode->at(i).at(j).getWeight();
+                    }
+                } // possivelmente isso vai sair daqui
+                output_file << "Maior valor: " << maiorValor << " Menor valor: " << menorValor << endl;
+                gap = maiorValor - menorValor;
+                for(int j=0;j<vectorWeightEdge->size();j++) {
+                    float gapNode;
+                    float gapFinal;
+                    output_file << "Peso atual: " << vectorWeightEdge->at(j).getWeight() << endl;
+                    if(vectorWeightEdge->at(j).getWeight() > maiorValor) {
+                        gapNode = vectorWeightEdge->at(j).getWeight() - menorValor;
+                    } else if(vectorWeightEdge->at(j).getWeight() < menorValor) {
+                        gapNode = maiorValor - vectorWeightEdge->at(j).getWeight();
+                    } else {
+                        gapNode = 0;
+                    }
+                    gapNode = gapNode - gap;
+                    if(gapNode < 0) {
+                        gapNode *= -1;
+                    }
+                    gapFinal = gapNode / vectorWeightEdge->at(j).getTotal_Edge();
+                    output_file << "Valor do gap atual: " << gap << endl;
+                    output_file << "Valor do gapNode: " << gapNode << endl;
+                    output_file << "Valos do gapFinal: " << gapFinal << endl;
+                    listRank->at(i).emplace_back(gapFinal);
+                    if(j == 0) {
+                        menorVal = gapFinal;
+                    } else {
+                        if(menorVal > gapFinal) {
+                            menorVal = gapFinal;
+                            contPosicao = j; // armazena a posição com menor gap;
+                        }
+                    }
+                    //sort(listRank->at(i).begin(), listRank->at(i).end(), greater<float>());
+                }
+                output_file << "Tamanho da lista i = " << i << " e:" << listRank->at(i).size() << endl;
+                for (int j = 0; j < listRank->at(i).size(); j++)
+                {
+                    output_file << "Gap do node " << vectorWeightEdge->at(j).getId() << " e: " << listRank->at(i).at(j) << endl;
+                }
+                output_file << "Valor do cont: " << contPosicao << endl;
+                vectorWeightEdge->at(contPosicao).setCor(i);
+                vectorNode->at(i).emplace_back(vectorWeightEdge->at(contPosicao));  
+                output_file << "Chegou 1" << endl;
+                for(Edge *edge = vectorWeightEdge->at(contPosicao).getFirstEdge();edge != nullptr;edge = edge->getNextEdge()) {
+                    output_file << "Chegou 1.5" << endl;
+                    output_file << "Id da aresta: " << edge->getTargetId() << endl;
+                    if(getNode(edge->getTargetId())->getInDegree() == 1) {
+                        output_file << "Chegou 1.5.5" << endl;
+                        getNode(edge->getTargetId())->setCor(i);
+                    }
+                    output_file << "Chegou 1.6" << endl;
+                }
+                output_file << "Chegou 2" << endl;
+                if(vectorWeightEdge->at(contPosicao).getInDegree() == 1) {
+                    vectorNode->at(i).emplace_back(*getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId()));
+                }
+                output_file << "Chegou 3" << endl;
+                //vector<Node>::iterator id;
+                output_file << "Começo do vectorWeightEdge: " << vectorWeightEdge->begin()->getId() << endl;
+                vector<Node>::iterator n;
+                
+                n = vectorWeightEdge->begin();
+
+                advance(n, contPosicao);
+                
+                output_file << "Valor do cont: " << contPosicao << endl;
+                output_file << "Tamanho antes de excluir: " << vectorWeightEdge->size() << endl;
+                vectorWeightEdge->erase(n);
+                //vectorWeightEdge->resize(vectorWeightEdge->size()-1);
+                for(int i =0;i<vectorWeightEdge->size();i++) {
+                    output_file << "Elementos apos o resize: " << vectorWeightEdge->at(i).getId() << endl;
+                }
+                output_file << "Tamanho dps de excluir: " << vectorWeightEdge->size() << endl; 
+                output_file << "Testeeeeeeeeeeeeeeeeeeeeeeeee" << endl;
+                //vectorWeightEdge->erase(vectorWeightEdge->begin() + contPosicao);
+
+                for(int l=0;l<vectorWeightEdge->size();l++) {
+                    output_file << "Testando após excluir: " << vectorWeightEdge->at(l).getId() << endl;
+                }
+
+                output_file << "Verificando o espaço dela antes de apagar para ter certeza: " << listRank->at(i).capacity() << endl;
+                listRank->at(i).clear();
+                listRank->reserve(listRank->capacity()-1);
+                output_file << "Verificando se ela ainda continua tendo o mesmo espaço: " << listRank->at(i).capacity() << endl;
+                //vectorWeightEdge->erase(vectorWeightEdge->begin() + j);
+                for(Node *node = this->first_node;node != nullptr; node = node->getNextNode()) {
+                    output_file << node->getId() << endl;
+                }
+            }
+        } while(!vectorWeightEdge->empty());
+
+        /*for(int i =0;i<vectorNode->at(0).size();i++) {
+            for(int j =0;j<vectorNode->at(i).size();j++)
+            output_file << "Nods " << vectorNode->at(i).at(j).getId() << " com cor:" << vectorNode->at(i).at(j).getCor() << endl;
+        }*/
+       /*while(nodeWeight.size() != 0 ) //verificando se a lista esta vazia 
         {
             
 
@@ -1447,7 +1573,6 @@ void Graph::Guloso(ofstream &output_file, int p)
             
         }*/
  
-
 
 
 
@@ -1523,11 +1648,30 @@ vector<float> Graph::geraRank(vector<vector<Node>> vectorCluster, int idCluster,
 */
 
 
-vector<Node> Graph::criaVector() {
-    vector<Node> vector;
-    return vector;
+vector<Node> *Graph::criaVector() {
+    //vector<Node> vector;
+    vector<Node> *vectorNode = new vector<Node>();
+    //vectorNode->reserve(this->order);
+    return vectorNode;
 }
 
+vector<float> *Graph::criaVetorRank(int p) {
+    vector<float> *vectorNode = new vector<float>;
+    //vectorNode->reserve(this->order-p);
+    return vectorNode;
+}
+
+/*void Graph::getMaiorMenorVal(float *maiorValor, float *menorValor, vector<Node> *vectorNode, int i, int p) {
+    cout << "Valor do i denovo: " << i << endl;
+    cout << "Valor do p denovo: " << p << endl;
+    for(int j=0;j<vectorNode->at(p).size();j++) {
+        if(*maiorValor < vectorNode->at(i).at(j).getWeight()) {
+            *maiorValor = vectorNode->at(i).at(j).getWeight();
+        } else if(*menorValor > vectorNode->at(i).at(j).getWeight()) {
+            *menorValor = vectorNode->at(i).at(j).getWeight();
+        }
+    }
+}*/
 
 
 /// SEGUNDA ETAPA DO TRAB /////////////////////////////////

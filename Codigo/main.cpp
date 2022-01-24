@@ -49,9 +49,7 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
     }else if(graph->getWeightedNode() && !graph->getWeightedEdge()){
 
         float nodeSourceWeight, nodeTargetWeight;
-
-        while(input_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight) {
-
+        while(input_file >> idNodeSource >> idNodeTarget >> nodeSourceWeight >> nodeTargetWeight) {
             graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
             graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);
             graph->insertEdge(idNodeSource, idNodeTarget, 0);
@@ -62,7 +60,7 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
 
         float nodeSourceWeight, nodeTargetWeight, edgeWeight;
 
-        while(input_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight) {
+        while(input_file >> idNodeSource >> idNodeTarget >> nodeSourceWeight >> nodeTargetWeight) {
 
             graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);
             graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
@@ -85,6 +83,7 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
     float weightEdge;
     Graph* graph;
     int weightNode;
+    int weightNodeTarget; //fazendo isso pois não estou usando as instancias do stenio
     //Pegando a ordem do grafo
     
     input_file >> order;
@@ -105,12 +104,14 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
         //Criando objeto grafo
         graph = new Graph(order, directed, weightedEdge, weightedNode);
         //Leitura de arquivo
-        while(input_file >> idNodeSource >> idNodeTarget >> weightNode) {
+        //while(input_file >> idNodeSource >> idNodeTarget >> weightNode) { // comentei essa e fiz o while de baixo pois não estou utilizando as instancias do stenio
+        while(input_file >> idNodeSource >> idNodeTarget >> weightNode >> weightNodeTarget) {
             // graph->insertNode(idNodeSource);
             //cout << "IdNodeSource: " << idNodeSource << endl;
             //cout << "IdNodeTarget: " << idNodeTarget << endl;
             graph->insertNode(idNodeSource,weightNode);
-            graph->insertNode(idNodeTarget,weightNode);
+            //graph->insertNode(idNodeTarget,weightNode);
+            graph->insertNode(idNodeTarget,weightNodeTarget);
             graph->insertEdge(idNodeSource, idNodeTarget, 0);
             //output_file << endl;
         }
@@ -164,7 +165,7 @@ int menu(){
     cout << "[0] Sair" << endl;
 
     cin >> selecao;
-
+    cout << "Selecao: " << selecao << endl;
     return selecao;
 
 }
@@ -271,9 +272,10 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
         case 9:{
             graph->Guloso(output_file, 2);
-
+            output_file << "saiu" << endl;
             break;
         }
+
         default:
         {
             cout << " Error!!! invalid option!!" << endl;
@@ -299,7 +301,7 @@ int mainMenu(ofstream& output_file, Graph* graph){
         output_file << endl;
 
     }
-
+    output_file << "Saiu pq?: " << selecao << endl;
     return 0;
 }
 

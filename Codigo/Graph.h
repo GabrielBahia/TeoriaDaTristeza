@@ -79,8 +79,10 @@ class Graph{
 
 
         //Funções Auxiliares Segunda Etapa
-        vector<Node> criaVector();
-        vector<float> geraRank(vector<vector<Node>> vectorCluster, int idCluster, vector<int> nodeWeight, vector<int> nodeGrau );
+        vector<Node> *criaVector();
+        vector<float> *criaVetorRank(int p);
+        //vector<float> geraRank(vector<vector<Node>> vectorCluster, int idCluster, vector<int> nodeWeight, vector<int> nodeGrau );
+        //void getMaiorMenorVal(float *maiorValor, float *menorValor, vector<Node> vectorNode, int i ,int p);
 };
 
 #endif // GRAPH_H_INCLUDED

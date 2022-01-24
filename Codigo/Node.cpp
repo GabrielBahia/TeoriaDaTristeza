@@ -20,8 +20,12 @@ Node::Node(int id,int order){
     this->last_edge = nullptr; // set the last edge as null!;
     this->next_node = nullptr; // set the next node as null!;
     this->idNode = order;
-
+    this->cor = 0;
 };
+
+Node::Node() {
+    
+}
 
 // Destructor
 Node::~Node(){
@@ -65,11 +69,11 @@ int Node::getInDegree(){
 
 int Node::getOutDegree(){
 
-    return this->out_degree; //
+    return this->out_degree;
 
 }
 
-int Node::getTotal_Edge() {
+float Node::getTotal_Edge() {
     return this->total_edge;
 }
 
@@ -89,6 +93,9 @@ int Node::getIdNode() {
     return this->idNode; // retorna o ID que eu quero, ou seja n�o h� erro na hora de passar esses valores para um vetor de verifica��o de visitado
 }
 
+int Node::getCor() {
+    return this->cor;
+}
 
 // Setters
 
@@ -102,6 +109,10 @@ void Node::setWeight(float weight){
 
     this->weight = weight; // set the weigth to the node that is calling the function!;
 
+}
+
+void Node::setCor(int cor) {
+    this->cor = cor;
 }
 
 // Other methods
