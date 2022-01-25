@@ -1519,6 +1519,12 @@ void Graph::Guloso(ofstream &output_file, int p)
                     if(getNode(edge->getTargetId())->getInDegree() == 1) {
                         output_file << "Chegou 1.5.5" << endl;
                         getNode(edge->getTargetId())->setCor(i);
+                        for(int i=0;i<vectorWeightEdge->size();i++) {
+                            if(vectorWeightEdge->at(i).getId() == getNode(edge->getTargetId())->getId()) {
+                                vectorWeightEdge->erase(vectorWeightEdge->begin() + i);
+                            }
+                        }
+                        vectorNode->at(i).emplace_back(getNode(edge->getTargetId()));
                     }
                     output_file << "Chegou 1.6" << endl;
                 }

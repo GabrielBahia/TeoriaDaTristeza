@@ -1,63 +1,63 @@
 Node id: 1 entrada: 2
 Node id: 5 entrada: 3
 Node id: 4 entrada: 4
-Node id: 0 entrada: 4
+Node id: 0 entrada: 3
 Node id: 2 entrada: 3
-Node id: 3 entrada: 2
+Node id: 3 entrada: 1
 Entrou no 3
 Entrou no 3
 Ids restante: 5
-Ids restante: 4
+Ids restante: 0
 Ids restante: 2
 Ids restante: 3
-Maior valor: 2 Menor valor: 2
-Maior valor: 2 Menor valor: 2
+Maior valor: 1 Menor valor: 1
+Maior valor: 1 Menor valor: 1
 Peso atual: 8
 Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 2
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.25
+Valor do gapNode: 7
+Valos do gapFinal: 2.33333
 Peso atual: 2
 Valor do gap atual: 0
-Valor do gapNode: 0
-Valos do gapFinal: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
 Peso atual: 7
 Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
+Valor do gapNode: 6
+Valos do gapFinal: 6
 Tamanho da lista i = 0 e:4
-Gap do node 5 e: 2
-Gap do node 4 e: 0.25
-Gap do node 2 e: 0
-Gap do node 3 e: 2.5
-Valor do cont: 2
+Gap do node 5 e: 2.33333
+Gap do node 0 e: 0.333333
+Gap do node 2 e: 0.333333
+Gap do node 3 e: 6
+Valor do cont: 1
 Chegou 1
 Chegou 1.5
-Id da aresta: 0
-Chegou 1.6
-Chegou 1.5
-Id da aresta: 3
-Chegou 1.6
-Chegou 1.5
 Id da aresta: 4
+Chegou 1.6
+Chegou 1.5
+Id da aresta: 5
+Chegou 1.6
+Chegou 1.5
+Id da aresta: 2
 Chegou 1.6
 Chegou 2
 Chegou 3
 Começo do vectorWeightEdge: 5
  VALOR DO N: 5
  VALOR DO N: 5
-Valor do cont: 2
+Valor do cont: 1
 Tamanho antes de excluir: 4
 Elementos apos o resize: 5
-Elementos apos o resize: 4
+Elementos apos o resize: 2
 Elementos apos o resize: 3
 Tamanho dps de excluir: 3
 Testeeeeeeeeeeeeeeeeeeeeeeeee
 Testando após excluir: 5
-Testando após excluir: 4
+Testando após excluir: 2
 Testando após excluir: 3
 Verificando o espaço dela antes de apagar para ter certeza: 4
 Verificando se ela ainda continua tendo o mesmo espaço: 4
@@ -73,31 +73,29 @@ Peso atual: 8
 Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 1.33333
-Peso atual: 1
+Peso atual: 2
 Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 0.75
+Valor do gapNode: 2
+Valos do gapFinal: 0.666667
 Peso atual: 7
 Valor do gap atual: 0
 Valor do gapNode: 3
-Valos do gapFinal: 1.5
+Valos do gapFinal: 3
 Tamanho da lista i = 1 e:3
 Gap do node 5 e: 1.33333
-Gap do node 4 e: 0.75
-Gap do node 3 e: 1.5
+Gap do node 2 e: 0.666667
+Gap do node 3 e: 3
 Valor do cont: 1
 Chegou 1
-Chegou 1.5
-Id da aresta: 1
-Chegou 1.6
 Chegou 1.5
 Id da aresta: 0
 Chegou 1.6
 Chegou 1.5
-Id da aresta: 5
+Id da aresta: 3
+Chegou 1.5.5
 Chegou 1.6
 Chegou 1.5
-Id da aresta: 2
+Id da aresta: 4
 Chegou 1.6
 Chegou 2
 Chegou 3
@@ -120,19 +118,19 @@ Verificando se ela ainda continua tendo o mesmo espaço: 4
 0
 2
 3
-Maior valor: 2 Menor valor: 2
-Maior valor: 2 Menor valor: 2
+Maior valor: 1 Menor valor: 1
+Maior valor: 2 Menor valor: 1
 Peso atual: 8
-Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 2
+Valor do gap atual: 1
+Valor do gapNode: 7
+Valos do gapFinal: 2.33333
 Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 6
 Tamanho da lista i = 0 e:2
-Gap do node 5 e: 2
-Gap do node 3 e: 2.5
+Gap do node 5 e: 2.33333
+Gap do node 3 e: 6
 Valor do cont: 0
 Chegou 1
 Chegou 1.5
@@ -164,13 +162,13 @@ Verificando se ela ainda continua tendo o mesmo espaço: 4
 2
 3
 Maior valor: 4 Menor valor: 4
-Maior valor: 4 Menor valor: 1
+Maior valor: 4 Menor valor: 2
 Peso atual: 7
-Valor do gap atual: 3
-Valor do gapNode: 6
-Valos do gapFinal: 3
+Valor do gap atual: 2
+Valor do gapNode: 5
+Valos do gapFinal: 5
 Tamanho da lista i = 1 e:1
-Gap do node 3 e: 3
+Gap do node 3 e: 5
 Valor do cont: 0
 Chegou 1
 Chegou 1.5
@@ -193,13 +191,12 @@ Verificando se ela ainda continua tendo o mesmo espaço: 4
 0
 2
 3
+Nods 4 com cor:0
 Nods 0 com cor:0
-Nods 2 com cor:0
 Nods 5 com cor:0
 Nods 1 com cor:0
-Nods 4 com cor:1
+Nods 2 com cor:1
 Nods 3 com cor:1
+Nods 2 com cor:0
 saiu
 
-
-Saiu pq?: 0
