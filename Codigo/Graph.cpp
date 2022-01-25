@@ -1485,7 +1485,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                     } else {
                         gapNode = 0;
                     }
-                    gapNode = gapNode - gap;
+                    //gapNode = gapNode - gap;
                     if(gapNode < 0) {
                         gapNode *= -1;
                     }
@@ -1530,8 +1530,12 @@ void Graph::Guloso(ofstream &output_file, int p)
                 //vector<Node>::iterator id;
                 output_file << "Começo do vectorWeightEdge: " << vectorWeightEdge->begin()->getId() << endl;
                 vector<Node>::iterator n;
+
+                output_file << " VALOR DO N: " <<  vectorWeightEdge->at(0).getId() << endl;
+                output_file << " VALOR DO N: " <<  vectorWeightEdge->at(0).getId() << endl;
+
                 
-                n = vectorWeightEdge->begin();
+                n = vectorWeightEdge->begin(); 
 
                 advance(n, contPosicao);
                 
@@ -1561,10 +1565,13 @@ void Graph::Guloso(ofstream &output_file, int p)
             }
         } while(!vectorWeightEdge->empty());
 
-        /*for(int i =0;i<vectorNode->at(0).size();i++) {
+       // output_file << " vectorNode->size()  : " << vectorNode->size() << endl;
+
+        for(int i =0;i<vectorNode->size();i++) {
             for(int j =0;j<vectorNode->at(i).size();j++)
             output_file << "Nods " << vectorNode->at(i).at(j).getId() << " com cor:" << vectorNode->at(i).at(j).getCor() << endl;
-        }*/
+        }
+
        /*while(nodeWeight.size() != 0 ) //verificando se a lista esta vazia 
         {
             

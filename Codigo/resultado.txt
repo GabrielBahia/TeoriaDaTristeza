@@ -1,40 +1,43 @@
-Node id: 1 entrada: 3
-Node id: 2 entrada: 2
-Node id: 3 entrada: 4
-Node id: 6 entrada: 2
-Node id: 4 entrada: 3
-Node id: 5 entrada: 2
+Node id: 1 entrada: 2
+Node id: 5 entrada: 3
+Node id: 4 entrada: 4
+Node id: 0 entrada: 4
+Node id: 2 entrada: 3
+Node id: 3 entrada: 2
 Entrou no 3
 Entrou no 3
-Ids restante: 1
-Ids restante: 2
-Ids restante: 4
 Ids restante: 5
-Maior valor: 1 Menor valor: 1
-Maior valor: 1 Menor valor: 1
-Peso atual: 10
+Ids restante: 4
+Ids restante: 2
+Ids restante: 3
+Maior valor: 2 Menor valor: 2
+Maior valor: 2 Menor valor: 2
+Peso atual: 8
 Valor do gap atual: 0
-Valor do gapNode: 9
-Valos do gapFinal: 3
-Peso atual: 5
-Valor do gap atual: 0
-Valor do gapNode: 4
+Valor do gapNode: 6
 Valos do gapFinal: 2
-Peso atual: 15
-Valor do gap atual: 0
-Valor do gapNode: 14
-Valos do gapFinal: 4.66667
-Peso atual: 0
+Peso atual: 1
 Valor do gap atual: 0
 Valor do gapNode: 1
-Valos do gapFinal: 0.5
+Valos do gapFinal: 0.25
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
 Tamanho da lista i = 0 e:4
-Gap do node 1 e: 3
-Gap do node 2 e: 2
-Gap do node 4 e: 4.66667
-Gap do node 5 e: 0.5
-Valor do cont: 3
+Gap do node 5 e: 2
+Gap do node 4 e: 0.25
+Gap do node 2 e: 0
+Gap do node 3 e: 2.5
+Valor do cont: 2
 Chegou 1
+Chegou 1.5
+Id da aresta: 0
+Chegou 1.6
 Chegou 1.5
 Id da aresta: 3
 Chegou 1.6
@@ -43,74 +46,160 @@ Id da aresta: 4
 Chegou 1.6
 Chegou 2
 Chegou 3
-Começo do vectorWeightEdge: 1
-Dentro do for: 1
-Dentro do for: 2
-Dentro do for: 4
-Valor do t: 3
-Testando após excluir: 1
-Testando após excluir: 2
+Começo do vectorWeightEdge: 5
+ VALOR DO N: 5
+ VALOR DO N: 5
+Valor do cont: 2
+Tamanho antes de excluir: 4
+Elementos apos o resize: 5
+Elementos apos o resize: 4
+Elementos apos o resize: 3
+Tamanho dps de excluir: 3
+Testeeeeeeeeeeeeeeeeeeeeeeeee
+Testando após excluir: 5
 Testando após excluir: 4
+Testando após excluir: 3
 Verificando o espaço dela antes de apagar para ter certeza: 4
 Verificando se ela ainda continua tendo o mesmo espaço: 4
-Maior valor: 9 Menor valor: 9
-Maior valor: 9 Menor valor: 9
-Peso atual: 10
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.333333
-Peso atual: 5
+1
+5
+4
+0
+2
+3
+Maior valor: 4 Menor valor: 4
+Maior valor: 4 Menor valor: 4
+Peso atual: 8
 Valor do gap atual: 0
 Valor do gapNode: 4
-Valos do gapFinal: 2
-Peso atual: 15
+Valos do gapFinal: 1.33333
+Peso atual: 1
 Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 2
+Valor do gapNode: 3
+Valos do gapFinal: 0.75
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1.5
 Tamanho da lista i = 1 e:3
-Gap do node 1 e: 0.333333
-Gap do node 2 e: 2
-Gap do node 4 e: 2
-Valor do cont: 0
+Gap do node 5 e: 1.33333
+Gap do node 4 e: 0.75
+Gap do node 3 e: 1.5
+Valor do cont: 1
 Chegou 1
+Chegou 1.5
+Id da aresta: 1
+Chegou 1.6
+Chegou 1.5
+Id da aresta: 0
+Chegou 1.6
+Chegou 1.5
+Id da aresta: 5
+Chegou 1.6
 Chegou 1.5
 Id da aresta: 2
 Chegou 1.6
-Chegou 1.5
-Id da aresta: 3
-Chegou 1.6
-Chegou 1.5
-Id da aresta: 6
-Chegou 1.6
 Chegou 2
 Chegou 3
-Começo do vectorWeightEdge: 1
-Valor do t: 0
+Começo do vectorWeightEdge: 5
+ VALOR DO N: 5
+ VALOR DO N: 5
+Valor do cont: 1
+Tamanho antes de excluir: 3
+Elementos apos o resize: 5
+Elementos apos o resize: 3
+Tamanho dps de excluir: 2
 Testeeeeeeeeeeeeeeeeeeeeeeeee
+Testando após excluir: 5
+Testando após excluir: 3
 Verificando o espaço dela antes de apagar para ter certeza: 4
 Verificando se ela ainda continua tendo o mesmo espaço: 4
-Maior valor: 1 Menor valor: 1
-Maior valor: 1 Menor valor: 0
-Peso atual: 5
-Valor do gap atual: 1
-Valor do gapNode: 4
+1
+5
+4
+0
+2
+3
+Maior valor: 2 Menor valor: 2
+Maior valor: 2 Menor valor: 2
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 6
 Valos do gapFinal: 2
-Peso atual: 15
-Valor do gap atual: 1
-Valor do gapNode: 14
-Valos do gapFinal: 4.66667
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
 Tamanho da lista i = 0 e:2
-Gap do node 2 e: 2
-Gap do node 4 e: 4.66667
+Gap do node 5 e: 2
+Gap do node 3 e: 2.5
 Valor do cont: 0
 Chegou 1
 Chegou 1.5
 Id da aresta: 1
 Chegou 1.6
 Chegou 1.5
-Id da aresta: 3
+Id da aresta: 0
+Chegou 1.6
+Chegou 1.5
+Id da aresta: 4
 Chegou 1.6
 Chegou 2
 Chegou 3
-Começo do vectorWeightEdge: 2
-Valor do t: 0
+Começo do vectorWeightEdge: 5
+ VALOR DO N: 5
+ VALOR DO N: 5
+Valor do cont: 0
+Tamanho antes de excluir: 2
+Elementos apos o resize: 3
+Tamanho dps de excluir: 1
+Testeeeeeeeeeeeeeeeeeeeeeeeee
+Testando após excluir: 3
+Verificando o espaço dela antes de apagar para ter certeza: 4
+Verificando se ela ainda continua tendo o mesmo espaço: 4
+1
+5
+4
+0
+2
+3
+Maior valor: 4 Menor valor: 4
+Maior valor: 4 Menor valor: 1
+Peso atual: 7
+Valor do gap atual: 3
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Tamanho da lista i = 1 e:1
+Gap do node 3 e: 3
+Valor do cont: 0
+Chegou 1
+Chegou 1.5
+Id da aresta: 2
+Chegou 1.6
+Chegou 2
+Chegou 3
+Começo do vectorWeightEdge: 3
+ VALOR DO N: 3
+ VALOR DO N: 3
+Valor do cont: 0
+Tamanho antes de excluir: 1
+Tamanho dps de excluir: 0
+Testeeeeeeeeeeeeeeeeeeeeeeeee
+Verificando o espaço dela antes de apagar para ter certeza: 4
+Verificando se ela ainda continua tendo o mesmo espaço: 4
+1
+5
+4
+0
+2
+3
+Nods 0 com cor:0
+Nods 2 com cor:0
+Nods 5 com cor:0
+Nods 1 com cor:0
+Nods 4 com cor:1
+Nods 3 com cor:1
+saiu
+
+
+Saiu pq?: 0
