@@ -1537,10 +1537,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                 output_file << "Começo do vectorWeightEdge: " << vectorWeightEdge->begin()->getId() << endl;
                 vector<Node>::iterator n;
 
-                output_file << " VALOR DO N: " <<  vectorWeightEdge->at(0).getId() << endl;
-                output_file << " VALOR DO N: " <<  vectorWeightEdge->at(0).getId() << endl;
-
-                
+                //output_file << " VALOR DO N: " <<  vectorWeightEdge->at(0).getId() << endl;
                 n = vectorWeightEdge->begin(); 
 
                 advance(n, contPosicao);
@@ -1567,6 +1564,10 @@ void Graph::Guloso(ofstream &output_file, int p)
                 //vectorWeightEdge->erase(vectorWeightEdge->begin() + j);
                 for(Node *node = this->first_node;node != nullptr; node = node->getNextNode()) {
                     output_file << node->getId() << endl;
+                }
+
+                for(int i=0;i<vectorNode->at(i).size();i++) {
+                    cout << "VectorNode: " << vectorNode->at(i).at(i).getId() << endl;
                 }
             }
         } while(!vectorWeightEdge->empty());
