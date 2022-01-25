@@ -1456,8 +1456,17 @@ void Graph::Guloso(ofstream &output_file, int p)
             output_file << "Ids restante: " << vectorWeightEdge->at(i).getId() << endl;            
         }
 
+        vector<vector<int>> *listMaiorMenorPeso = new vector<vector<int>>;
+        listMaiorMenorPeso->reserve(p);
+        //output_file << listMaiorMenorPeso.at(0).capacity() << endl;
+        //output_file <<  listMaiorMenorPeso.capacity() << endl;
+        for(int i=0;i<p;i++) {
+            listMaiorMenorPeso->emplace_back(*criaVetorMaiorMenor());
+            listMaiorMenorPeso->at(i).reserve(2);
+        }
+        output_file <<  "Chegou" << endl;
         do {
-            for(int i=0;i<p;i++) {  
+            for(int i=0;i<p;i++) {
                 float menorVal;   
                 int contPosicao = 0;
                 float gap = 0;
@@ -1472,8 +1481,13 @@ void Graph::Guloso(ofstream &output_file, int p)
                         menorValor = vectorNode->at(i).at(j).getWeight();
                     }
                 } // possivelmente isso vai sair daqui
-                output_file << "Maior valor: " << maiorValor << " Menor valor: " << menorValor << endl;
+                listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(), maiorValor);
+                listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).end(), menorValor);
+
                 gap = maiorValor - menorValor;
+                //listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(), 18);
+                //listMaiorMenorPeso->at(i).at(1) = 17;
+            
                 for(int j=0;j<vectorWeightEdge->size();j++) {
                     float gapNode;
                     float gapFinal;
@@ -1511,6 +1525,11 @@ void Graph::Guloso(ofstream &output_file, int p)
                 }
                 output_file << "Valor do cont: " << contPosicao << endl;
                 vectorWeightEdge->at(contPosicao).setCor(i);
+                if(vectorWeightEdge->at(contPosicao).getWeight() > listMaiorMenorPeso->at(i).at(0)) {
+                    listMaiorMenorPeso->at(i).at(0) = vectorWeightEdge->at(contPosicao).getWeight();
+                } else if(vectorWeightEdge->at(contPosicao).getWeight() < listMaiorMenorPeso->at(i).at(1)) {
+                    listMaiorMenorPeso->at(i).at(1) = vectorWeightEdge->at(contPosicao).getWeight();
+                }
                 vectorNode->at(i).emplace_back(vectorWeightEdge->at(contPosicao));  
                 for(Edge *edge = vectorWeightEdge->at(contPosicao).getFirstEdge();edge != nullptr;edge = edge->getNextEdge()) {
                     output_file << "Id da aresta: " << edge->getTargetId() << endl;
@@ -1521,6 +1540,11 @@ void Graph::Guloso(ofstream &output_file, int p)
                             if(vectorWeightEdge->at(i).getId() == getNode(edge->getTargetId())->getId()) {
                                 vectorWeightEdge->erase(vectorWeightEdge->begin() + i);
                             }
+                        }
+                        if(getNode(edge->getTargetId())->getWeight() > listMaiorMenorPeso->at(i).at(0)) {
+                            listMaiorMenorPeso->at(i).at(0) = getNode(edge->getTargetId())->getWeight();
+                        } else if(getNode(edge->getTargetId())->getWeight() < listMaiorMenorPeso->at(i).at(1)) {
+                            listMaiorMenorPeso->at(i).at(1) = getNode(edge->getTargetId())->getWeight();
                         }
                         vectorNode->at(i).emplace_back(*getNode(edge->getTargetId()));
                     }
@@ -1568,6 +1592,86 @@ void Graph::Guloso(ofstream &output_file, int p)
         for(int i =0;i<vectorNode->size();i++) {
             for(int j =0;j<vectorNode->at(i).size();j++)
             output_file << "Nods " << vectorNode->at(i).at(j).getId() << " com cor:" << vectorNode->at(i).at(j).getCor() << endl;
+        }
+
+        for(int i =0;i<p;i++)
+        {
+            bool *verificados = new bool[this->order];
+            int contClusterAux = 1;
+            for(int j =0;j<this->order;j++) {
+                verificados[j] = false;
+            }
+            vector<vector<Node>> *vetorClusterNodes = new vector<vector<Node>>;
+            vetorClusterNodes->reserve(1);
+            for(int j=0;j<1;j++) {
+                vetorClusterNodes->at(j).emplace_back(criaVector());
+                vetorClusterNodes->at(j).reserve(vectorNode->at(i).size());
+            }
+            vetorClusterNodes->at(0).at(0) = vectorNode->at(i).at(0); 
+            //vectorNode->at(i).erase(vectorNode->at(i).begin());
+            //int contSubCluster = 1;
+            while(!vectorNode->at(i).empty()) {
+                for(int k=0;k<contClusterAux;k++) {
+                    for(int j=0;j<vetorClusterNodes->at(k).size();j++) {
+                        Node *node = &vetorClusterNodes->at(k).front();
+                        verificados[node->getIdNode()] = true;
+                        int *vizinhos = new int[node->getTotal_Edge()];
+                        int contAuxVizinhos = 0;
+                        bool inseriu = false;
+                        for(Edge *edge = node->getFirstEdge();edge!=nullptr;edge = edge->getNextEdge()) {
+                            if((getNode(edge->getTargetId())->getCor() == node->getCor()) && !verificados[edge->getTargetIdNode()]) {
+                                vetorClusterNodes->at(k).emplace_back(*getNode(edge->getTargetId()));
+                                vizinhos[contAuxVizinhos] = edge->getTargetId();
+                                contAuxVizinhos++;
+                                inseriu = true;
+                            }
+                        }
+                        for(int l=0;l<contAuxVizinhos;l++) {
+                            for(int aux=0;aux<vectorNode->at(i).size();aux++) {
+                                if(vectorNode->at(i).at(aux).getId() == vizinhos[l]) {
+                                    vectorNode->at(i).erase(vectorNode->at(i).begin() + aux);
+                                }
+                            }
+                        }
+                        
+                        if(inseriu == false) {
+                            if(vetorClusterNodes->at(k).size()-(j+1) <= 0) {
+                                vetorClusterNodes->at(k+1).emplace_back(*vectorNode->at(i).begin());
+                            }
+                        }
+
+                    }
+                    if(!vectorNode->at(i).empty()) {
+                        contClusterAux++;
+                    }
+                }
+            }   
+            
+            /*for(int j=0;j<vectorNode->at(i).size();j++) {
+                for(Edge *edge = vectorNode->at(i).at(j).getFirstEdge();edge != nullptr; edge = edge->getNextEdge()) {
+                    for(int k=0;k<vectorNode->at(i).size();k++) {
+                        if(k != j) {
+                            if(edge->getTargetId() == vectorNode->at(i).at(k).getId()) {
+                                existeAresta = true;
+                                nodeForaCluster = &vectorNode->at(i).at(j);
+                            }
+                        }
+
+                    }
+                }
+                /*if(!existeAresta) {
+                    nodeForaCluster->getId();
+                    vector<int> *vetorDeCor = new vector<int>;
+                    vetorDeCor->reserve(p);
+                    for(Edge *edge = nodeForaCluster->getFirstEdge();edge != nullptr; edge = edge->getNextEdge()) {
+                        vetorDeCor->emplace_back(getNode(edge->getTargetId())->getCor());
+                    }
+                    nodeForaCluster->setCor(emplace_black);
+                    for(int k =0;k<vetorDeCor->size();k++) {
+                        
+                    }
+                }
+            }*/
         }
 
        /*while(nodeWeight.size() != 0 ) //verificando se a lista esta vazia 
@@ -1663,6 +1767,11 @@ vector<Node> *Graph::criaVector() {
 vector<float> *Graph::criaVetorRank(int p) {
     vector<float> *vectorNode = new vector<float>;
     //vectorNode->reserve(this->order-p);
+    return vectorNode;
+}
+
+vector<int> *Graph::criaVetorMaiorMenor() {
+    vector<int> *vectorNode = new vector<int>;
     return vectorNode;
 }
 
