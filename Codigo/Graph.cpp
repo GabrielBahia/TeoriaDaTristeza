@@ -1504,18 +1504,13 @@ void Graph::Guloso(ofstream &output_file, int p)
                     }
                     //sort(listRank->at(i).begin(), listRank->at(i).end(), greater<float>());
                 }
-                output_file << "Tamanho da lista i = " << i << " e:" << listRank->at(i).size() << endl;
                 for (int j = 0; j < listRank->at(i).size(); j++)
                 {
                     output_file << "Gap do node " << vectorWeightEdge->at(j).getId() << " e: " << listRank->at(i).at(j) << endl;
                 }
-                output_file << "Valor do cont: " << contPosicao << endl;
                 vectorWeightEdge->at(contPosicao).setCor(i);
                 vectorNode->at(i).emplace_back(vectorWeightEdge->at(contPosicao));  
-                output_file << "Chegou 1" << endl;
                 for(Edge *edge = vectorWeightEdge->at(contPosicao).getFirstEdge();edge != nullptr;edge = edge->getNextEdge()) {
-                    output_file << "Chegou 1.5" << endl;
-                    output_file << "Id da aresta: " << edge->getTargetId() << endl;
                     if(getNode(edge->getTargetId())->getInDegree() == 1) {
                         output_file << "Chegou 1.5.5" << endl;
                         getNode(edge->getTargetId())->setCor(i);
@@ -1526,15 +1521,11 @@ void Graph::Guloso(ofstream &output_file, int p)
                         }
                         vectorNode->at(i).emplace_back(getNode(edge->getTargetId()));
                     }
-                    output_file << "Chegou 1.6" << endl;
                 }
-                output_file << "Chegou 2" << endl;
                 if(vectorWeightEdge->at(contPosicao).getInDegree() == 1) {
                     vectorNode->at(i).emplace_back(*getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId()));
                 }
-                output_file << "Chegou 3" << endl;
                 //vector<Node>::iterator id;
-                output_file << "Começo do vectorWeightEdge: " << vectorWeightEdge->begin()->getId() << endl;
                 vector<Node>::iterator n;
 
                 //output_file << " VALOR DO N: " <<  vectorWeightEdge->at(0).getId() << endl;
@@ -1543,31 +1534,25 @@ void Graph::Guloso(ofstream &output_file, int p)
                 advance(n, contPosicao);
                 
                 output_file << "Valor do cont: " << contPosicao << endl;
-                output_file << "Tamanho antes de excluir: " << vectorWeightEdge->size() << endl;
                 vectorWeightEdge->erase(n);
                 //vectorWeightEdge->resize(vectorWeightEdge->size()-1);
-                for(int i =0;i<vectorWeightEdge->size();i++) {
+                /*for(int i =0;i<vectorWeightEdge->size();i++) {
                     output_file << "Elementos apos o resize: " << vectorWeightEdge->at(i).getId() << endl;
-                }
-                output_file << "Tamanho dps de excluir: " << vectorWeightEdge->size() << endl; 
-                output_file << "Testeeeeeeeeeeeeeeeeeeeeeeeee" << endl;
+                }*/
                 //vectorWeightEdge->erase(vectorWeightEdge->begin() + contPosicao);
 
-                for(int l=0;l<vectorWeightEdge->size();l++) {
+                /*for(int l=0;l<vectorWeightEdge->size();l++) {
                     output_file << "Testando após excluir: " << vectorWeightEdge->at(l).getId() << endl;
-                }
+                }*/
 
-                output_file << "Verificando o espaço dela antes de apagar para ter certeza: " << listRank->at(i).capacity() << endl;
+                //output_file << "Verificando o espaço dela antes de apagar para ter certeza: " << listRank->at(i).capacity() << endl;
                 listRank->at(i).clear();
                 listRank->reserve(listRank->capacity()-1);
-                output_file << "Verificando se ela ainda continua tendo o mesmo espaço: " << listRank->at(i).capacity() << endl;
+                //output_file << "Verificando se ela ainda continua tendo o mesmo espaço: " << listRank->at(i).capacity() << endl;
                 //vectorWeightEdge->erase(vectorWeightEdge->begin() + j);
-                for(Node *node = this->first_node;node != nullptr; node = node->getNextNode()) {
-                    output_file << node->getId() << endl;
-                }
 
-                for(int i=0;i<vectorNode->at(i).size();i++) {
-                    cout << "VectorNode: " << vectorNode->at(i).at(i).getId() << endl;
+                for(int k=0;k<vectorNode->at(i).size();k++) {
+                    output_file <<"i : " << i << "VectorNode: " << vectorNode->at(i).at(k).getId() << endl;
                 }
             }
         } while(!vectorWeightEdge->empty());
