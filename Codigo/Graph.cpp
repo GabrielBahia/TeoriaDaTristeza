@@ -1601,19 +1601,27 @@ void Graph::Guloso(ofstream &output_file, int p)
             for(int j =0;j<this->order;j++) {
                 verificados[j] = false;
             }
+            vector<vector<int>> *maiorMenorValSubCluster = new vector<vector<int>>;
+            maiorMenorValSubCluster->reserve(this->order);
             vector<vector<Node>> *vetorClusterNodes = new vector<vector<Node>>;
-            vetorClusterNodes->reserve(1);
+            vetorClusterNodes->reserve(this->order);
             for(int j=0;j<1;j++) {
                 vetorClusterNodes->at(j).emplace_back(criaVector());
                 vetorClusterNodes->at(j).reserve(vectorNode->at(i).size());
+                maiorMenorValSubCluster->at(j).emplace_back(criaVetorMaiorMenor());
+                maiorMenorValSubCluster->at(j).reserve(2);
             }
             vetorClusterNodes->at(0).at(0) = vectorNode->at(i).at(0); 
-            //vectorNode->at(i).erase(vectorNode->at(i).begin());
+            vectorNode->at(i).erase(vectorNode->at(i).begin());
+            //int contSameCluster;
             //int contSubCluster = 1;
             while(!vectorNode->at(i).empty()) {
                 for(int k=0;k<contClusterAux;k++) {
+                    //contSameCluster = 0;
+                    maiorMenorValSubCluster->at(i).front() = vetorClusterNodes->at(k).at(0).getWeight();
+                    maiorMenorValSubCluster->at(i).back() = vetorClusterNodes->at(k).at(0).getWeight();
                     for(int j=0;j<vetorClusterNodes->at(k).size();j++) {
-                        Node *node = &vetorClusterNodes->at(k).front();
+                        Node *node = &vetorClusterNodes->at(k).at(j);
                         verificados[node->getIdNode()] = true;
                         int *vizinhos = new int[node->getTotal_Edge()];
                         int contAuxVizinhos = 0;
@@ -1626,6 +1634,10 @@ void Graph::Guloso(ofstream &output_file, int p)
                                 inseriu = true;
                             }
                         }
+                        //vizinhos[contAuxVizinhos] = node->getId();
+                        //contAuxVizinhos++;
+
+                        //talvez volte com isso;
                         for(int l=0;l<contAuxVizinhos;l++) {
                             for(int aux=0;aux<vectorNode->at(i).size();aux++) {
                                 if(vectorNode->at(i).at(aux).getId() == vizinhos[l]) {
@@ -1633,13 +1645,20 @@ void Graph::Guloso(ofstream &output_file, int p)
                                 }
                             }
                         }
-                        
+                        //talvez volte com isso 
+
                         if(inseriu == false) {
                             if(vetorClusterNodes->at(k).size()-(j+1) <= 0) {
                                 vetorClusterNodes->at(k+1).emplace_back(*vectorNode->at(i).begin());
+                                vectorNode->at(i).erase(vectorNode->at(i).begin());
                             }
                         }
 
+                        if(vetorClusterNodes->at(i).at(j).getWeight() > listMaiorMenorPeso->at(i).front()) {
+                            maiorMenorValSubCluster->at(i).front() = vetorClusterNodes->at(i).at(j).getWeight();
+                        } else if(vetorClusterNodes->at(i).at(j).getWeight() < listMaiorMenorPeso->at(i).back()) {
+                            maiorMenorValSubCluster->at(i).back() = vetorClusterNodes->at(i).at(j).getWeight();
+                        }
                     }
                     if(!vectorNode->at(i).empty()) {
                         contClusterAux++;
