@@ -1,0 +1,1518 @@
+Node id: 0 entrada: 2
+Node id: 5 entrada: 3
+Node id: 11 entrada: 3
+Node id: 1 entrada: 3
+Node id: 4 entrada: 3
+Node id: 14 entrada: 2
+Node id: 19 entrada: 2
+Node id: 2 entrada: 2
+Node id: 18 entrada: 4
+Node id: 3 entrada: 1
+Node id: 20 entrada: 4
+Node id: 12 entrada: 2
+Node id: 9 entrada: 4
+Node id: 6 entrada: 3
+Node id: 7 entrada: 1
+Node id: 8 entrada: 1
+Node id: 17 entrada: 2
+Node id: 16 entrada: 2
+Node id: 10 entrada: 2
+Node id: 13 entrada: 2
+Node id: 15 entrada: 2
+Ids restante: 11
+Ids restante: 1
+Ids restante: 4
+Ids restante: 14
+Ids restante: 19
+Ids restante: 2
+Ids restante: 18
+Ids restante: 3
+Ids restante: 20
+Ids restante: 12
+Ids restante: 9
+Ids restante: 6
+Ids restante: 7
+Ids restante: 8
+Ids restante: 17
+Ids restante: 16
+Ids restante: 10
+Ids restante: 13
+Ids restante: 15
+Chegou
+Maior valor: 6 Menor valor: 6
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 1
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 10
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 1
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 2
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 0.75
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.25
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 2
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 6
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1.5
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Tamanho da lista i = 0 e:19
+Gap do node 11 e: 0
+Gap do node 1 e: 0
+Gap do node 4 e: 1.66667
+Gap do node 14 e: 3
+Gap do node 19 e: 1
+Gap do node 2 e: 2.5
+Gap do node 18 e: 1
+Gap do node 3 e: 2
+Gap do node 20 e: 0.75
+Gap do node 12 e: 2
+Gap do node 9 e: 0.25
+Gap do node 6 e: 1
+Gap do node 7 e: 2
+Gap do node 8 e: 6
+Gap do node 17 e: 2.5
+Gap do node 16 e: 1.5
+Gap do node 10 e: 2.5
+Gap do node 13 e: 0.5
+Gap do node 15 e: 2
+Valor do cont: 0
+Id da aresta: 0
+Id da aresta: 20
+Id da aresta: 18
+Começo do vectorWeightEdge: 11
+Valor do cont: 0
+i :0VectorNode: 0
+i :0VectorNode: 11
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 8 Menor valor: 8
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 0.666667
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+Peso atual: 10
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 0.5
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 4
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.25
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.25
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 4
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 4
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Tamanho da lista i = 1 e:18
+Gap do node 1 e: 0.666667
+Gap do node 4 e: 1
+Gap do node 14 e: 2
+Gap do node 19 e: 0
+Gap do node 2 e: 3.5
+Gap do node 18 e: 0.5
+Gap do node 3 e: 4
+Gap do node 20 e: 0.25
+Gap do node 12 e: 3
+Gap do node 9 e: 0.25
+Gap do node 6 e: 1.66667
+Gap do node 7 e: 4
+Gap do node 8 e: 4
+Gap do node 17 e: 3.5
+Gap do node 16 e: 2.5
+Gap do node 10 e: 3.5
+Gap do node 13 e: 0.5
+Gap do node 15 e: 3
+Valor do cont: 3
+Id da aresta: 1
+Id da aresta: 6
+Começo do vectorWeightEdge: 1
+Valor do cont: 3
+i :1VectorNode: 5
+i :1VectorNode: 19
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 6 Menor valor: 6
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 10
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 1
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 2
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 0.75
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.25
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 2
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 6
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1.5
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Tamanho da lista i = 0 e:17
+Gap do node 1 e: 0
+Gap do node 4 e: 1.66667
+Gap do node 14 e: 3
+Gap do node 2 e: 2.5
+Gap do node 18 e: 1
+Gap do node 3 e: 2
+Gap do node 20 e: 0.75
+Gap do node 12 e: 2
+Gap do node 9 e: 0.25
+Gap do node 6 e: 1
+Gap do node 7 e: 2
+Gap do node 8 e: 6
+Gap do node 17 e: 2.5
+Gap do node 16 e: 1.5
+Gap do node 10 e: 2.5
+Gap do node 13 e: 0.5
+Gap do node 15 e: 2
+Valor do cont: 0
+Id da aresta: 4
+Id da aresta: 14
+Id da aresta: 19
+Começo do vectorWeightEdge: 1
+Valor do cont: 0
+i :0VectorNode: 0
+i :0VectorNode: 11
+i :0VectorNode: 1
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 8 Menor valor: 8
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+Peso atual: 10
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 0.5
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 4
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.25
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.25
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 4
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 4
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Tamanho da lista i = 1 e:16
+Gap do node 4 e: 1
+Gap do node 14 e: 2
+Gap do node 2 e: 3.5
+Gap do node 18 e: 0.5
+Gap do node 3 e: 4
+Gap do node 20 e: 0.25
+Gap do node 12 e: 3
+Gap do node 9 e: 0.25
+Gap do node 6 e: 1.66667
+Gap do node 7 e: 4
+Gap do node 8 e: 4
+Gap do node 17 e: 3.5
+Gap do node 16 e: 2.5
+Gap do node 10 e: 3.5
+Gap do node 13 e: 0.5
+Gap do node 15 e: 3
+Valor do cont: 5
+Id da aresta: 4
+Id da aresta: 11
+Id da aresta: 13
+Id da aresta: 15
+Começo do vectorWeightEdge: 4
+Valor do cont: 5
+i :1VectorNode: 5
+i :1VectorNode: 19
+i :1VectorNode: 20
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 6 Menor valor: 6
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 10
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 1
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 2
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.25
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 2
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 6
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1.5
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Tamanho da lista i = 0 e:15
+Gap do node 4 e: 1.66667
+Gap do node 14 e: 3
+Gap do node 2 e: 2.5
+Gap do node 18 e: 1
+Gap do node 3 e: 2
+Gap do node 12 e: 2
+Gap do node 9 e: 0.25
+Gap do node 6 e: 1
+Gap do node 7 e: 2
+Gap do node 8 e: 6
+Gap do node 17 e: 2.5
+Gap do node 16 e: 1.5
+Gap do node 10 e: 2.5
+Gap do node 13 e: 0.5
+Gap do node 15 e: 2
+Valor do cont: 6
+Id da aresta: 5
+Id da aresta: 17
+Id da aresta: 16
+Id da aresta: 10
+Começo do vectorWeightEdge: 4
+Valor do cont: 6
+i :0VectorNode: 0
+i :0VectorNode: 11
+i :0VectorNode: 1
+i :0VectorNode: 9
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 8 Menor valor: 8
+Peso atual: 11
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 1
+Peso atual: 12
+Valor do gap atual: 1
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 8
+Valos do gapFinal: 4
+Peso atual: 10
+Valor do gap atual: 1
+Valor do gapNode: 2
+Valos do gapFinal: 0.5
+Peso atual: 4
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 5
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 2
+Peso atual: 4
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 5
+Peso atual: 12
+Valor do gap atual: 1
+Valor do gapNode: 4
+Valos do gapFinal: 4
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 8
+Valos do gapFinal: 4
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 8
+Valos do gapFinal: 4
+Peso atual: 7
+Valor do gap atual: 1
+Valor do gapNode: 2
+Valos do gapFinal: 1
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+Tamanho da lista i = 1 e:14
+Gap do node 4 e: 1
+Gap do node 14 e: 2
+Gap do node 2 e: 4
+Gap do node 18 e: 0.5
+Gap do node 3 e: 5
+Gap do node 12 e: 3.5
+Gap do node 6 e: 2
+Gap do node 7 e: 5
+Gap do node 8 e: 4
+Gap do node 17 e: 4
+Gap do node 16 e: 3
+Gap do node 10 e: 4
+Gap do node 13 e: 1
+Gap do node 15 e: 3.5
+Valor do cont: 3
+Id da aresta: 2
+Id da aresta: 4
+Id da aresta: 8
+Chegou 1.5.5
+Id da aresta: 11
+Começo do vectorWeightEdge: 4
+Valor do cont: 3
+i :1VectorNode: 5
+i :1VectorNode: 19
+i :1VectorNode: 20
+i :1VectorNode: 18
+i :1VectorNode: 8
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 6 Menor valor: 6
+Peso atual: 11
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+Peso atual: 12
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 4
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 3
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 4
+Valos do gapFinal: 1.33333
+Peso atual: 4
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 3
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 7
+Valor do gap atual: 1
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Tamanho da lista i = 0 e:12
+Gap do node 4 e: 1.66667
+Gap do node 14 e: 3
+Gap do node 2 e: 3
+Gap do node 3 e: 3
+Gap do node 12 e: 2.5
+Gap do node 6 e: 1.33333
+Gap do node 7 e: 3
+Gap do node 17 e: 3
+Gap do node 16 e: 2
+Gap do node 10 e: 3
+Gap do node 13 e: 0
+Gap do node 15 e: 2.5
+Valor do cont: 10
+Id da aresta: 20
+Id da aresta: 16
+Começo do vectorWeightEdge: 4
+Valor do cont: 10
+i :0VectorNode: 0
+i :0VectorNode: 11
+i :0VectorNode: 1
+i :0VectorNode: 9
+i :0VectorNode: 13
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 8 Menor valor: 8
+Peso atual: 11
+Valor do gap atual: 4
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 12
+Valor do gap atual: 4
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 4
+Valor do gap atual: 4
+Valor do gapNode: 8
+Valos do gapFinal: 8
+Peso atual: 2
+Valor do gap atual: 4
+Valor do gapNode: 10
+Valos do gapFinal: 5
+Peso atual: 3
+Valor do gap atual: 4
+Valor do gapNode: 9
+Valos do gapFinal: 3
+Peso atual: 4
+Valor do gap atual: 4
+Valor do gapNode: 8
+Valos do gapFinal: 8
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 3
+Valor do gap atual: 4
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 2
+Valor do gap atual: 4
+Valor do gapNode: 10
+Valos do gapFinal: 5
+Tamanho da lista i = 1 e:11
+Gap do node 4 e: 0
+Gap do node 14 e: 0
+Gap do node 2 e: 5.5
+Gap do node 3 e: 8
+Gap do node 12 e: 5
+Gap do node 6 e: 3
+Gap do node 7 e: 8
+Gap do node 17 e: 5.5
+Gap do node 16 e: 4.5
+Gap do node 10 e: 5.5
+Gap do node 15 e: 5
+Valor do cont: 0
+Id da aresta: 1
+Id da aresta: 20
+Id da aresta: 18
+Começo do vectorWeightEdge: 4
+Valor do cont: 0
+i :1VectorNode: 5
+i :1VectorNode: 19
+i :1VectorNode: 20
+i :1VectorNode: 18
+i :1VectorNode: 8
+i :1VectorNode: 4
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 6 Menor valor: 6
+Peso atual: 12
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 4
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 3
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 4
+Valos do gapFinal: 1.33333
+Peso atual: 4
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 3
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Tamanho da lista i = 0 e:10
+Gap do node 14 e: 3
+Gap do node 2 e: 3
+Gap do node 3 e: 3
+Gap do node 12 e: 2.5
+Gap do node 6 e: 1.33333
+Gap do node 7 e: 3
+Gap do node 17 e: 3
+Gap do node 16 e: 2
+Gap do node 10 e: 3
+Gap do node 15 e: 2.5
+Valor do cont: 4
+Id da aresta: 12
+Id da aresta: 7
+Chegou 1.5.5
+Id da aresta: 19
+Começo do vectorWeightEdge: 14
+Valor do cont: 4
+i :0VectorNode: 0
+i :0VectorNode: 11
+i :0VectorNode: 1
+i :0VectorNode: 9
+i :0VectorNode: 13
+i :0VectorNode: 6
+i :0VectorNode: 7
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 8 Menor valor: 8
+Peso atual: 12
+Valor do gap atual: 4
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 4
+Valor do gap atual: 4
+Valor do gapNode: 8
+Valos do gapFinal: 8
+Peso atual: 2
+Valor do gap atual: 4
+Valor do gapNode: 10
+Valos do gapFinal: 5
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 3
+Valor do gap atual: 4
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 2
+Valor do gap atual: 4
+Valor do gapNode: 10
+Valos do gapFinal: 5
+Tamanho da lista i = 1 e:8
+Gap do node 14 e: 0
+Gap do node 2 e: 5.5
+Gap do node 3 e: 8
+Gap do node 12 e: 5
+Gap do node 17 e: 5.5
+Gap do node 16 e: 4.5
+Gap do node 10 e: 5.5
+Gap do node 15 e: 5
+Valor do cont: 0
+Id da aresta: 1
+Id da aresta: 10
+Começo do vectorWeightEdge: 14
+Valor do cont: 0
+i :1VectorNode: 5
+i :1VectorNode: 19
+i :1VectorNode: 20
+i :1VectorNode: 18
+i :1VectorNode: 8
+i :1VectorNode: 4
+i :1VectorNode: 14
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 6 Menor valor: 6
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 4
+Valor do gap atual: 4
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 2
+Valor do gap atual: 4
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 3
+Valor do gap atual: 4
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 2
+Valor do gap atual: 4
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Tamanho da lista i = 0 e:7
+Gap do node 2 e: 3
+Gap do node 3 e: 0
+Gap do node 12 e: 2.5
+Gap do node 17 e: 3
+Gap do node 16 e: 0
+Gap do node 10 e: 3
+Gap do node 15 e: 2.5
+Valor do cont: 1
+Id da aresta: 2
+Começo do vectorWeightEdge: 2
+Valor do cont: 1
+i :0VectorNode: 0
+i :0VectorNode: 11
+i :0VectorNode: 1
+i :0VectorNode: 9
+i :0VectorNode: 13
+i :0VectorNode: 6
+i :0VectorNode: 7
+i :0VectorNode: 3
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 8 Menor valor: 8
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 2
+Valor do gap atual: 4
+Valor do gapNode: 10
+Valos do gapFinal: 5
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 3
+Valor do gap atual: 4
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 2
+Valor do gap atual: 4
+Valor do gapNode: 10
+Valos do gapFinal: 5
+Tamanho da lista i = 1 e:6
+Gap do node 2 e: 5.5
+Gap do node 12 e: 5
+Gap do node 17 e: 5.5
+Gap do node 16 e: 4.5
+Gap do node 10 e: 5.5
+Gap do node 15 e: 5
+Valor do cont: 3
+Id da aresta: 9
+Id da aresta: 13
+Começo do vectorWeightEdge: 2
+Valor do cont: 3
+i :1VectorNode: 5
+i :1VectorNode: 19
+i :1VectorNode: 20
+i :1VectorNode: 18
+i :1VectorNode: 8
+i :1VectorNode: 4
+i :1VectorNode: 14
+i :1VectorNode: 16
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 6 Menor valor: 6
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 2
+Valor do gap atual: 4
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 1
+Valor do gap atual: 4
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 2
+Valor do gap atual: 4
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Tamanho da lista i = 0 e:5
+Gap do node 2 e: 3
+Gap do node 12 e: 2.5
+Gap do node 17 e: 3
+Gap do node 10 e: 3
+Gap do node 15 e: 2.5
+Valor do cont: 1
+Id da aresta: 5
+Id da aresta: 6
+Começo do vectorWeightEdge: 2
+Valor do cont: 1
+i :0VectorNode: 0
+i :0VectorNode: 11
+i :0VectorNode: 1
+i :0VectorNode: 9
+i :0VectorNode: 13
+i :0VectorNode: 6
+i :0VectorNode: 7
+i :0VectorNode: 3
+i :0VectorNode: 12
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 8 Menor valor: 8
+Peso atual: 1
+Valor do gap atual: 9
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 1
+Valor do gap atual: 9
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 1
+Valor do gap atual: 9
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 2
+Valor do gap atual: 9
+Valor do gapNode: 10
+Valos do gapFinal: 5
+Tamanho da lista i = 1 e:4
+Gap do node 2 e: 5.5
+Gap do node 17 e: 5.5
+Gap do node 10 e: 5.5
+Gap do node 15 e: 5
+Valor do cont: 3
+Id da aresta: 17
+Começo do vectorWeightEdge: 2
+Valor do cont: 3
+i :1VectorNode: 5
+i :1VectorNode: 19
+i :1VectorNode: 20
+i :1VectorNode: 18
+i :1VectorNode: 8
+i :1VectorNode: 4
+i :1VectorNode: 14
+i :1VectorNode: 16
+i :1VectorNode: 15
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 6 Menor valor: 6
+Peso atual: 1
+Valor do gap atual: 5
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 1
+Valor do gap atual: 5
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Peso atual: 1
+Valor do gap atual: 5
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Tamanho da lista i = 0 e:3
+Gap do node 2 e: 3
+Gap do node 17 e: 3
+Gap do node 10 e: 3
+Valor do cont: 0
+Id da aresta: 18
+Id da aresta: 3
+Começo do vectorWeightEdge: 2
+Valor do cont: 0
+i :0VectorNode: 0
+i :0VectorNode: 11
+i :0VectorNode: 1
+i :0VectorNode: 9
+i :0VectorNode: 13
+i :0VectorNode: 6
+i :0VectorNode: 7
+i :0VectorNode: 3
+i :0VectorNode: 12
+i :0VectorNode: 2
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 8 Menor valor: 8
+Peso atual: 1
+Valor do gap atual: 10
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Peso atual: 1
+Valor do gap atual: 10
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+Tamanho da lista i = 1 e:2
+Gap do node 17 e: 5.5
+Gap do node 10 e: 5.5
+Valor do cont: 0
+Id da aresta: 9
+Id da aresta: 15
+Começo do vectorWeightEdge: 17
+Valor do cont: 0
+i :1VectorNode: 5
+i :1VectorNode: 19
+i :1VectorNode: 20
+i :1VectorNode: 18
+i :1VectorNode: 8
+i :1VectorNode: 4
+i :1VectorNode: 14
+i :1VectorNode: 16
+i :1VectorNode: 15
+i :1VectorNode: 17
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 6 Menor valor: 6
+Peso atual: 1
+Valor do gap atual: 6
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Tamanho da lista i = 0 e:1
+Gap do node 10 e: 0
+Valor do cont: 0
+Id da aresta: 9
+Começo do vectorWeightEdge: 10
+Valor do cont: 0
+i :0VectorNode: 0
+i :0VectorNode: 11
+i :0VectorNode: 1
+i :0VectorNode: 9
+i :0VectorNode: 13
+i :0VectorNode: 6
+i :0VectorNode: 7
+i :0VectorNode: 3
+i :0VectorNode: 12
+i :0VectorNode: 2
+i :0VectorNode: 10
+0
+5
+11
+1
+4
+14
+19
+2
+18
+3
+20
+12
+9
+6
+7
+8
+17
+16
+10
+13
+15
+Maior valor: 8 Menor valor: 8
+Tamanho da lista i = 1 e:0
+Valor do cont: 0
+Nods 0 com cor:0
+Nods 11 com cor:0
+Nods 1 com cor:0
+Nods 9 com cor:0
+Nods 13 com cor:0
+Nods 6 com cor:0
+Nods 7 com cor:0
+Nods 3 com cor:0
+Nods 12 com cor:0
+Nods 2 com cor:0
+Nods 10 com cor:0
+Nods 5 com cor:0
+Nods 19 com cor:1
+Nods 20 com cor:1
+Nods 18 com cor:1
+Nods 8 com cor:1
+Nods 4 com cor:1
+Nods 14 com cor:1
+Nods 16 com cor:1
+Nods 15 com cor:1
+Nods 17 com cor:1
+ Kluster : 0 Valor : 0
+ Kluster : 0 Valor : 5
+ Kluster : 0 Valor : 11
+ Kluster : 0 Valor : 12
+ Kluster : 0 Valor : 9
+ Kluster : 0 Valor : 20
+ Kluster : 0 Valor : 18
+ Kluster : 0 Valor : 6
+ Kluster : 0 Valor : 17
+ Kluster : 0 Valor : 16
+ Kluster : 0 Valor : 10
+ Kluster : 0 Valor : 4
+ Kluster : 0 Valor : 2
+ Kluster : 0 Valor : 1
+ Kluster : 0 Valor : 14
+ Kluster : 0 Valor : 19
+ Kluster : 1 Valor : 19
+saiu
+

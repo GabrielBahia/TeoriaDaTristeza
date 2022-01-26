@@ -1384,9 +1384,9 @@ void Graph::Guloso(ofstream &output_file, int p)
             //cout << "Tamanho i: " << i << " " << vectorNode->end()->capacity() << endl;
         }
 
-        srand(time(0)); // semente aleatoria
+        //srand(time(0)); // semente aleatoria
 
-        for(int i=0;i<p;i++) 
+        /*for(int i=0;i<p;i++) 
         {
             Node *nodeAux;
             do {
@@ -1425,17 +1425,25 @@ void Graph::Guloso(ofstream &output_file, int p)
                 //output_file << "Esse vertice: " << vectorNode[i].at(0).getId() << endl;
                 output_file << "Entrou no 3" << endl;
             }
-        }
+        }*/
+
+        vectorNode->at(0).emplace_back(*getNode(0));
+        vectorNode->at(1).emplace_back(*getNode(5));
+        visitado[getNode(0)->getIdNode()] = true;
+        visitado[getNode(5)->getIdNode()] = true;
+
 
         //vector<Node> *vectorWeight = new vector<Node>(); // vector de pesos dos nodes
         //vector<Node> *vectorEdge = new vector<Node>(); // vector de grau dos nodes
         vector<Node> *vectorWeightEdge = new vector<Node>();
         vector<vector<float>> *listRank = new vector<vector<float>>; // vector de ranqueamento dos nodes
-        vectorWeightEdge->reserve(this->order-p);
+        //vectorWeightEdge->reserve(this->order-p);
+        vectorWeightEdge->reserve(this->order);
         listRank->reserve(p); // reservando espaço para o total de clusters nesse vector 
         for(int i=0;i<p;i++) {
             listRank->push_back(*criaVetorRank(p)); // alocando vectors em cada posição da listRank
-            listRank->at(i).reserve(this->order-2); // reservando espaço para o total de nodes em cada posição da listRank
+            //listRank->at(i).reserve(this->order-2); // reservando espaço para o total de nodes em cada posição da listRank
+            listRank->at(i).reserve(this->order);
         }
         //vectorWeight->reserve(this->order-p); // reservando espaço para o total de nodes nesse vector 
         //vectorEdge->reserve(this->order-p); // reservando espaço para o total de nodes nesse vector 
@@ -1466,6 +1474,7 @@ void Graph::Guloso(ofstream &output_file, int p)
         }
         output_file <<  "Chegou" << endl;
         do {
+            cout << " ENTROUU 11" << endl;
             for(int i=0;i<p;i++) {
                 float menorVal;   
                 int contPosicao = 0;
@@ -1487,7 +1496,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                 gap = maiorValor - menorValor;
                 //listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(), 18);
                 //listMaiorMenorPeso->at(i).at(1) = 17;
-            
+                cout << " COMECOU 1 " << endl;
                 for(int j=0;j<vectorWeightEdge->size();j++) {
                     float gapNode;
                     float gapFinal;
@@ -1518,75 +1527,94 @@ void Graph::Guloso(ofstream &output_file, int p)
                     }
                     //sort(listRank->at(i).begin(), listRank->at(i).end(), greater<float>());
                 }
+                cout << " SAIU 1 " << endl;
                 output_file << "Tamanho da lista i = " << i << " e:" << listRank->at(i).size() << endl;
                 for (int j = 0; j < listRank->at(i).size(); j++)
                 {
                     output_file << "Gap do node " << vectorWeightEdge->at(j).getId() << " e: " << listRank->at(i).at(j) << endl;
                 }
                 output_file << "Valor do cont: " << contPosicao << endl;
-                vectorWeightEdge->at(contPosicao).setCor(i);
-                if(vectorWeightEdge->at(contPosicao).getWeight() > listMaiorMenorPeso->at(i).at(0)) {
-                    listMaiorMenorPeso->at(i).at(0) = vectorWeightEdge->at(contPosicao).getWeight();
-                } else if(vectorWeightEdge->at(contPosicao).getWeight() < listMaiorMenorPeso->at(i).at(1)) {
-                    listMaiorMenorPeso->at(i).at(1) = vectorWeightEdge->at(contPosicao).getWeight();
-                }
-                vectorNode->at(i).emplace_back(vectorWeightEdge->at(contPosicao));  
-                for(Edge *edge = vectorWeightEdge->at(contPosicao).getFirstEdge();edge != nullptr;edge = edge->getNextEdge()) {
-                    output_file << "Id da aresta: " << edge->getTargetId() << endl;
-                    if(getNode(edge->getTargetId())->getInDegree() == 1) {
-                        output_file << "Chegou 1.5.5" << endl;
-                        getNode(edge->getTargetId())->setCor(i);
-                        for(int i=0;i<vectorWeightEdge->size();i++) {
-                            if(vectorWeightEdge->at(i).getId() == getNode(edge->getTargetId())->getId()) {
-                                vectorWeightEdge->erase(vectorWeightEdge->begin() + i);
+               // cout << " ANTES " << endl;
+               // cout << " contPosicao " <<  contPosicao << endl;
+               // cout << " vectorWeightEdge->capacity() " << vectorWeightEdge->capacity() << endl;
+
+                if(vectorWeightEdge->size() > 0 )
+                {
+                    vectorWeightEdge->at(contPosicao).setCor(i);
+                    visitado[vectorWeightEdge->at(contPosicao).getIdNode()] = true;
+                // cout << " DEPOIS " << endl;
+                // cout << " vectorWeightEdge->at(contPosicao).getWeight() " << vectorWeightEdge->at(contPosicao).getWeight() << endl;
+                    if(vectorWeightEdge->at(contPosicao).getWeight() > listMaiorMenorPeso->at(i).at(0)) {
+                        cout << " ENTROU NO 1 if " << endl;
+                        listMaiorMenorPeso->at(i).at(0) = vectorWeightEdge->at(contPosicao).getWeight();
+                    } else if(vectorWeightEdge->at(contPosicao).getWeight() < listMaiorMenorPeso->at(i).at(1)) {
+                        cout << " ENTROU NO 2 if " << endl;
+                        listMaiorMenorPeso->at(i).at(1) = vectorWeightEdge->at(contPosicao).getWeight();
+                    }
+                    cout << " saiu if " << endl;
+                    vectorNode->at(i).emplace_back(vectorWeightEdge->at(contPosicao));  
+                    cout << " COMECOU 2 " << endl;
+                    for(Edge *edge = vectorWeightEdge->at(contPosicao).getFirstEdge();edge != nullptr;edge = edge->getNextEdge()) {
+                        output_file << "Id da aresta: " << edge->getTargetId() << endl;
+                        if((getNode(edge->getTargetId())->getInDegree() == 1) && !visitado[getNode(edge->getTargetId())->getIdNode()] ) {
+                            output_file << "Chegou 1.5.5" << endl;
+                            getNode(edge->getTargetId())->setCor(i);
+                            visitado[getNode(edge->getTargetId())->getIdNode()] = true;
+                            for(int i=0;i<vectorWeightEdge->size();i++) {
+                                if(vectorWeightEdge->at(i).getId() == getNode(edge->getTargetId())->getId()) {
+                                    vectorWeightEdge->erase(vectorWeightEdge->begin() + i);
+                                }
                             }
+                            if(getNode(edge->getTargetId())->getWeight() > listMaiorMenorPeso->at(i).at(0)) {
+                                listMaiorMenorPeso->at(i).at(0) = getNode(edge->getTargetId())->getWeight();
+                            } else if(getNode(edge->getTargetId())->getWeight() < listMaiorMenorPeso->at(i).at(1)) {
+                                listMaiorMenorPeso->at(i).at(1) = getNode(edge->getTargetId())->getWeight();
+                            }
+                            vectorNode->at(i).emplace_back(*getNode(edge->getTargetId()));
                         }
-                        if(getNode(edge->getTargetId())->getWeight() > listMaiorMenorPeso->at(i).at(0)) {
-                            listMaiorMenorPeso->at(i).at(0) = getNode(edge->getTargetId())->getWeight();
-                        } else if(getNode(edge->getTargetId())->getWeight() < listMaiorMenorPeso->at(i).at(1)) {
-                            listMaiorMenorPeso->at(i).at(1) = getNode(edge->getTargetId())->getWeight();
-                        }
-                        vectorNode->at(i).emplace_back(*getNode(edge->getTargetId()));
+                    }
+                    cout << " SAIU 2 " << endl;
+                    if((vectorWeightEdge->at(contPosicao).getInDegree() == 1) && !visitado[vectorWeightEdge->at(contPosicao).getIdNode()]) {
+                        vectorNode->at(i).emplace_back(*getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId()));
+                        visitado[getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getIdNode()] = true;
+                    }
+                    //vector<Node>::iterator id;
+                    output_file << "Começo do vectorWeightEdge: " << vectorWeightEdge->begin()->getId() << endl;
+                    vector<Node>::iterator n;
+                    
+                    n = vectorWeightEdge->begin(); 
+
+                    advance(n, contPosicao);
+                    
+                    output_file << "Valor do cont: " << contPosicao << endl;
+                    //output_file << "Tamanho antes de excluir: " << vectorWeightEdge->size() << endl;
+                    vectorWeightEdge->erase(n);
+                    //vectorWeightEdge->resize(vectorWeightEdge->size()-1);
+                /* for(int i =0;i<vectorWeightEdge->size();i++) {
+                        output_file << "Elementos apos o resize: " << vectorWeightEdge->at(i).getId() << endl;
+                    }*/               
+                    //vectorWeightEdge->erase(vectorWeightEdge->begin() + contPosicao);
+
+                    /*for(int l=0;l<vectorWeightEdge->size();l++) {
+                        output_file << "Testando após excluir: " << vectorWeightEdge->at(l).getId() << endl;
+                    }*/
+
+                    //output_file << "Verificando o espaço dela antes de apagar para ter certeza: " << listRank->at(i).capacity() << endl;
+                    listRank->at(i).clear();
+                    listRank->reserve(listRank->capacity()-1);
+                    //output_file << "Verificando se ela ainda continua tendo o mesmo espaço: " << listRank->at(i).capacity() << endl;
+                    //vectorWeightEdge->erase(vectorWeightEdge->begin() + j);
+                    for(int k=0;k<vectorNode->at(i).size();k++) {
+                        output_file <<"i :"<< i << "VectorNode: " << vectorNode->at(i).at(k).getId() << endl;
+                    }
+                    for(Node *node = this->first_node;node != nullptr; node = node->getNextNode()) {
+                        output_file << node->getId() << endl;
                     }
                 }
-                if(vectorWeightEdge->at(contPosicao).getInDegree() == 1) {
-                    vectorNode->at(i).emplace_back(*getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId()));
-                }
-                //vector<Node>::iterator id;
-                output_file << "Começo do vectorWeightEdge: " << vectorWeightEdge->begin()->getId() << endl;
-                vector<Node>::iterator n;
-                
-                n = vectorWeightEdge->begin(); 
-
-                advance(n, contPosicao);
-                
-                output_file << "Valor do cont: " << contPosicao << endl;
-                //output_file << "Tamanho antes de excluir: " << vectorWeightEdge->size() << endl;
-                vectorWeightEdge->erase(n);
-                //vectorWeightEdge->resize(vectorWeightEdge->size()-1);
-               /* for(int i =0;i<vectorWeightEdge->size();i++) {
-                    output_file << "Elementos apos o resize: " << vectorWeightEdge->at(i).getId() << endl;
-                }*/               
-                //vectorWeightEdge->erase(vectorWeightEdge->begin() + contPosicao);
-
-                /*for(int l=0;l<vectorWeightEdge->size();l++) {
-                    output_file << "Testando após excluir: " << vectorWeightEdge->at(l).getId() << endl;
-                }*/
-
-                //output_file << "Verificando o espaço dela antes de apagar para ter certeza: " << listRank->at(i).capacity() << endl;
-                listRank->at(i).clear();
-                listRank->reserve(listRank->capacity()-1);
-                //output_file << "Verificando se ela ainda continua tendo o mesmo espaço: " << listRank->at(i).capacity() << endl;
-                //vectorWeightEdge->erase(vectorWeightEdge->begin() + j);
-                for(int k=0;k<vectorNode->at(i).size();k++) {
-                    output_file <<"i :"<< i << "VectorNode: " << vectorNode->at(i).at(k).getId() << endl;
-                }
-                for(Node *node = this->first_node;node != nullptr; node = node->getNextNode()) {
-                    output_file << node->getId() << endl;
-                }
             }
-        } while(!vectorWeightEdge->empty());
 
+        } while(!vectorWeightEdge->empty());
+        cout << " SAIU DO WHILE 11 " << endl;
        // output_file << " vectorNode->size()  : " << vectorNode->size() << endl;
 
         for(int i =0;i<vectorNode->size();i++) {
@@ -1625,6 +1653,10 @@ void Graph::Guloso(ofstream &output_file, int p)
                     contSameCluster = 0;
                     maiorMenorValSubCluster->at(i).front() = vetorClusterNodes->at(k).at(0).getWeight();
                     maiorMenorValSubCluster->at(i).back() = vetorClusterNodes->at(k).at(0).getWeight();
+
+                    int maior = vetorClusterNodes->at(k).at(0).getWeight();
+                    int menor = vetorClusterNodes->at(k).at(0).getWeight();
+                        
                     for(int j=0;j<vetorClusterNodes->at(k).size();j++) 
                     {
                         Node *node = &vetorClusterNodes->at(k).at(j);
@@ -1663,23 +1695,38 @@ void Graph::Guloso(ofstream &output_file, int p)
                             }
                         }
 
-                        /*if(vetorClusterNodes->at(i).at(j).getWeight() > listMaiorMenorPeso->at(i).front()) {
-                            maiorMenorValSubCluster->at(i).front() = vetorClusterNodes->at(i).at(j).getWeight();
-                        } else if(vetorClusterNodes->at(i).at(j).getWeight() < listMaiorMenorPeso->at(i).back()) {
-                            maiorMenorValSubCluster->at(i).back() = vetorClusterNodes->at(i).at(j).getWeight();
+                       /* if(vetorClusterNodes->at(k).at(j).getWeight() > listMaiorMenorPeso->at(k).front()) {
+                            maiorMenorValSubCluster->at(i).front() = vetorClusterNodes->at(k).at(j).getWeight();
+                        } else if(vetorClusterNodes->at(k).at(j).getWeight() < listMaiorMenorPeso->at(k).back()) {
+                            maiorMenorValSubCluster->at(i).back() = vetorClusterNodes->at(k).at(j).getWeight();
                         }
                         */
-                    }
+                            if(inseriu)
+                            {
+                                if(maior < vetorClusterNodes->at(k).at(j+1).getWeight())
+                                {
+                                    maior = vetorClusterNodes->at(k).at(j+1).getWeight();
+                                }
+                                else if( menor > vetorClusterNodes->at(k).at(j+1).getWeight())
+                                {
+                                    menor = vetorClusterNodes->at(k).at(j+1).getWeight();
+                                }
+                            }
 
-                    /*
+                    }
+                    
+                    maiorMenorValSubCluster->at(k).front() = maior;
+                    maiorMenorValSubCluster->at(k).back() = menor;
+                    
                     if(!vectorNode->at(i).empty()) {
                         contClusterAux++;
                     }
 
-                    */
-                }
+                    cout << "i "<< i << "vetorClusterNodes.size() " << vetorClusterNodes->size() << endl; 
+                } 
             //} 
             
+           
             for(int n=0;n<vetorClusterNodes->at(i).size();n++)
             {
                 output_file << " Kluster : " << i << " Valor : " << vetorClusterNodes->at(i).at(n).getId() << endl;

@@ -1,0 +1,32 @@
+Nodes(13,19)
+
+-> VERDE
+
+contClusterAux =0
+maiorMenorValSubCluster->at(0).front() = 8
+maiorMenorValSubCluster->at(1).back() = 1
+vetorClusterNodes->at(k).size() = 6;
+k =0 ; j = 5; node(id) = 0; adicionou (0,11,5,9,10,17)
+
+node(id) = 1; 
+contClusterAux = 1;
+maiorMenorValSubCluster->at(0).front() = 6
+maiorMenorValSubCluster->at(1).back() = 6
+
+node(id) = 13; 
+contClusterAux = 2;
+maiorMenorValSubCluster->at(0).front() = 7
+maiorMenorValSubCluster->at(1).back() = 7
+
+node(id) = 6; adicionou(7);
+contClusterAux = 3;
+maiorMenorValSubCluster->at(0).front() = 4
+maiorMenorValSubCluster->at(1).back() = 3
+
+node(id) = 3; adicionou();
+contClusterAux = 4;
+maiorMenorValSubCluster->at(0).front() = 10
+maiorMenorValSubCluster->at(1).back() = 4
+-----------------------------------------
+
+-> LARANJA:
