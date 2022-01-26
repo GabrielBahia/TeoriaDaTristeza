@@ -1,0 +1,86 @@
+----------------> Variáveis:
+
+-1378: vector<vector<Node>> *vectorNode = Um vector de vetores do tipo Node que armazena os dois primeiros Nodes sorteados
+-1432: vector<Node> *vectorWeightEdge = Um vector para para armazenar os vértices não sortedos ( para obter o peso e as arestas
+desse Node )
+-1433: vector<vector<float>> *listRank = Um vector para armazenar os melhores candidatos para entrar em determinado Kluster;
+(os melhores candidatos seram aqueles que possuem a menor razão entre (Contribuição do Node para o Gep)/Grau do Node).
+-1459: vector<vector<int>> *listMaiorMenorPeso = Um vector para armazenar o maior e o menor peso de cada Kluster
+-1599: bool *verificados = Vetor para verificar se o vértice foi verificado
+-1600: int contClusterAux = Número de SubKlusters(Cada Kluster desconexo é um SubKluster).
+-1604: vector<vector<int>> *maiorMenorValSubCluster = Vector para armazenar o maior e menor peso de cada Kluster
+-1606: vector<vector<Node>> *vetorClusterNodes = Vector para salvar os Nodes de cada SubKluster criado.
+
+
+--------------> Descrição do algoritmo guloso:
+
+1360: Declaração da função; Parâmetros: Grafo e número de Klusters
+
+1389-1428: Nesse for estamos verificando se os Nodes sorteados possuem aretas de grau um, ou se eles possuem um grau de 
+entrada igual a 1; Caso exista, inserimos estas arestas + o Node sorteado no mesmo Kluster, caso contrário inserimos apenas 
+o Node sorteado.
+
+1445-1453: Inserindo no vector vectorWeightEdge os vértices que não foram sorteados
+
+1468-1588: While montando cada Kluster sem verificar a conexão (até a !vectorWeightEdge->empty())
+           -1469-1587: For para percorrer cada Kluster.
+	   -1477-1483: For para percorrer no que se tem até o momento dentro do Kluster e armazenar seu maior e menor valor.
+	   -1487: Calculando o GAP.
+  	   -1491-1520: For para	montar a lista de rankeamento dos melhores vértices para entrar no Kluster atual do laço
+calculando a razão (contribuição)/grauNode.	
+	   -1527: Inserindo o Node com melhor rankeamento no Kluster (alterando a cor).
+           -1528-1532: Atualizando a lista de maior e menor valor do Kluster.
+	   -1533: Colocando o Node escolhido no Kluster.
+	   -1534-1551: Verificando se o Node inserido possui vizinho de grau 1, se existir, o vizinho será inserido.
+ 	   -1552-1554: Verifica se o Node escolhido tem grau de entrada 1, caso estiver, ele será inserido.
+
+1597-1694: For para arrumar os Klusters desconexos
+           -1614: Pegando o Node inicial do Kluster atual.
+           -1615: Excluindo o Node inicial do kluster atual.		 	
+	   -1618: While possivelmente será retirado.
+	   -1619-1666: For parar fazer o SubKluster de cada Kluster.
+		       -1621-1622: Pegando o maior e o menor valor do Kluster atual;
+		       -1623-1662: For para montar os SubKlusters
+		                   -1629-1636: Pegando os vizinhos do último Node inserido no SubKluster
+	 	      		   -1641-1647: Retirando dos Klusters originais os vizinhos que foram encontrados
+				   -1650-1655: if para verificar se não houve novos Nodes sendo inseridos no SubKluster
+					       -1651-1654: Verificar se o tamanho do SubKluster - a posição atual é <= 0.
+(se for <= 0, starta a próxima posição de SubKluster, com o primeiro Node do Kluster atual da vectorNode e elimina esse Node)
+                                   -1657-1661: Salvando os maiores e menores valores de cada SubKluster
+		        -1663-1665: Ele sairá do For caso não sejam inseridos novos elementos && todos os elementos atuais do SubKluster
+já foram percorridos.
+		
+						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   	 

@@ -1440,7 +1440,7 @@ void Graph::Guloso(ofstream &output_file, int p)
         //vectorWeight->reserve(this->order-p); // reservando espaço para o total de nodes nesse vector 
         //vectorEdge->reserve(this->order-p); // reservando espaço para o total de nodes nesse vector 
 
-        Node *node = this->first_node;
+        //Node *node = this->first_node;
 
         for(Node *node = this->first_node;node != nullptr;node = node->getNextNode())
         {
@@ -1603,27 +1603,34 @@ void Graph::Guloso(ofstream &output_file, int p)
             }
             vector<vector<int>> *maiorMenorValSubCluster = new vector<vector<int>>;
             maiorMenorValSubCluster->reserve(this->order);
-            vector<vector<Node>> *vetorClusterNodes = new vector<vector<Node>>;
+            vector<vector<Node>> *vetorClusterNodes = new vector<vector<Node>>();
             vetorClusterNodes->reserve(this->order);
-            for(int j=0;j<1;j++) {
-                vetorClusterNodes->at(j).emplace_back(criaVector());
+            for(int j=0;j<this->order;j++) {
+                vetorClusterNodes->push_back(*criaVector());
                 vetorClusterNodes->at(j).reserve(vectorNode->at(i).size());
-                maiorMenorValSubCluster->at(j).emplace_back(criaVetorMaiorMenor());
+                maiorMenorValSubCluster->emplace_back(*criaVetorMaiorMenor());
                 maiorMenorValSubCluster->at(j).reserve(2);
             }
-            vetorClusterNodes->at(0).at(0) = vectorNode->at(i).at(0); 
+            vetorClusterNodes->at(0).insert(vetorClusterNodes->at(0).begin(),vectorNode->at(i).at(0)); 
+            //output_file << "vetorClusterNodes->at(0).at(0) :" << vetorClusterNodes->at(0).at(0).getId() << endl;
+            cout<< "vectorNode->at(i).begin() " << vectorNode->at(i).at(0).getId() << endl;
+            cout << " CAPACIDADE 1: " << vetorClusterNodes->capacity() << endl;
+            cout << " CAPACIDADE 2: " << vetorClusterNodes->at(i).capacity() << endl;
             vectorNode->at(i).erase(vectorNode->at(i).begin());
-            //int contSameCluster;
-            //int contSubCluster = 1;
-            while(!vectorNode->at(i).empty()) {
-                for(int k=0;k<contClusterAux;k++) {
-                    //contSameCluster = 0;
+            int contSameCluster;
+            int contSubCluster = 1;
+            //while(!vectorNode->at(i).empty()) {
+                for(int k=0;k<contClusterAux;k++) 
+                {
+                    contSameCluster = 0;
                     maiorMenorValSubCluster->at(i).front() = vetorClusterNodes->at(k).at(0).getWeight();
                     maiorMenorValSubCluster->at(i).back() = vetorClusterNodes->at(k).at(0).getWeight();
-                    for(int j=0;j<vetorClusterNodes->at(k).size();j++) {
+                    for(int j=0;j<vetorClusterNodes->at(k).size();j++) 
+                    {
                         Node *node = &vetorClusterNodes->at(k).at(j);
-                        verificados[node->getIdNode()] = true;
-                        int *vizinhos = new int[node->getTotal_Edge()];
+                        verificados[node->getIdNode()] = true;                     
+                        int tam = node->getTotal_Edge();
+                        int *vizinhos = new int[tam];
                         int contAuxVizinhos = 0;
                         bool inseriu = false;
                         for(Edge *edge = node->getFirstEdge();edge!=nullptr;edge = edge->getNextEdge()) {
@@ -1647,64 +1654,39 @@ void Graph::Guloso(ofstream &output_file, int p)
                         }
                         //talvez volte com isso 
 
-                        if(inseriu == false) {
+                        if((inseriu == false) && !vectorNode->at(i).empty()) {
                             if(vetorClusterNodes->at(k).size()-(j+1) <= 0) {
+                                cout << " ENTROU 111111111111111 " << endl;
+                                cout << " TAMANHAO K "<< vetorClusterNodes->size() << endl;
                                 vetorClusterNodes->at(k+1).emplace_back(*vectorNode->at(i).begin());
                                 vectorNode->at(i).erase(vectorNode->at(i).begin());
                             }
                         }
 
-                        if(vetorClusterNodes->at(i).at(j).getWeight() > listMaiorMenorPeso->at(i).front()) {
+                        /*if(vetorClusterNodes->at(i).at(j).getWeight() > listMaiorMenorPeso->at(i).front()) {
                             maiorMenorValSubCluster->at(i).front() = vetorClusterNodes->at(i).at(j).getWeight();
                         } else if(vetorClusterNodes->at(i).at(j).getWeight() < listMaiorMenorPeso->at(i).back()) {
                             maiorMenorValSubCluster->at(i).back() = vetorClusterNodes->at(i).at(j).getWeight();
                         }
+                        */
                     }
+
+                    /*
                     if(!vectorNode->at(i).empty()) {
                         contClusterAux++;
                     }
-                }
-            }   
-            
-            /*for(int j=0;j<vectorNode->at(i).size();j++) {
-                for(Edge *edge = vectorNode->at(i).at(j).getFirstEdge();edge != nullptr; edge = edge->getNextEdge()) {
-                    for(int k=0;k<vectorNode->at(i).size();k++) {
-                        if(k != j) {
-                            if(edge->getTargetId() == vectorNode->at(i).at(k).getId()) {
-                                existeAresta = true;
-                                nodeForaCluster = &vectorNode->at(i).at(j);
-                            }
-                        }
 
-                    }
+                    */
                 }
-                /*if(!existeAresta) {
-                    nodeForaCluster->getId();
-                    vector<int> *vetorDeCor = new vector<int>;
-                    vetorDeCor->reserve(p);
-                    for(Edge *edge = nodeForaCluster->getFirstEdge();edge != nullptr; edge = edge->getNextEdge()) {
-                        vetorDeCor->emplace_back(getNode(edge->getTargetId())->getCor());
-                    }
-                    nodeForaCluster->setCor(emplace_black);
-                    for(int k =0;k<vetorDeCor->size();k++) {
-                        
-                    }
-                }
-            }*/
+            //} 
+            
+            for(int n=0;n<vetorClusterNodes->at(i).size();n++)
+            {
+                output_file << " Kluster : " << i << " Valor : " << vetorClusterNodes->at(i).at(n).getId() << endl;
+            }
         }
 
-       /*while(nodeWeight.size() != 0 ) //verificando se a lista esta vazia 
-        {
-            
-
-            
-            
-        }*/
- 
-
-
-
-
+       
 
     } else {
         output_file << "O grafo não tem peso nas arestas" << endl;
