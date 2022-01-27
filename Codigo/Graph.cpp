@@ -1361,11 +1361,16 @@ void Graph::Guloso(ofstream &output_file, int p)
 {
     bool *visitado = new bool[this->order];  // vetor para verificar os vértices já utilizados
 
-    for (Node *node = this->first_node; node != nullptr; node = node->getNextNode())
+    /*for (Node *node = this->first_node; node != nullptr; node = node->getNextNode())
     {
         output_file << "Node id: " << node->getId() << " entrada: " << node->getInDegree() << endl;
-    }
+    }*/
     
+    for(Node *i = this->first_node; i != nullptr; i = i->getNextNode())
+    {
+        output_file << " Id : " << i->getId() << " IdNode : " << i->getIdNode() << endl;
+
+    }
 
     for(int i=0;i<this->order;i++)
     {
@@ -1431,6 +1436,8 @@ void Graph::Guloso(ofstream &output_file, int p)
         vectorNode->at(1).emplace_back(*getNode(5));
         visitado[getNode(0)->getIdNode()] = true;
         visitado[getNode(5)->getIdNode()] = true;
+        getNode(0)->setCor(0);
+        getNode(5)->setCor(1);
 
 
         //vector<Node> *vectorWeight = new vector<Node>(); // vector de pesos dos nodes
@@ -1460,9 +1467,9 @@ void Graph::Guloso(ofstream &output_file, int p)
             }
         }
 
-        for(int i=0;i<vectorWeightEdge->size();i++) {
+        /*for(int i=0;i<vectorWeightEdge->size();i++) {
             output_file << "Ids restante: " << vectorWeightEdge->at(i).getId() << endl;            
-        }
+        }*/
 
         vector<vector<int>> *listMaiorMenorPeso = new vector<vector<int>>;
         listMaiorMenorPeso->reserve(p);
@@ -1472,7 +1479,7 @@ void Graph::Guloso(ofstream &output_file, int p)
             listMaiorMenorPeso->emplace_back(*criaVetorMaiorMenor());
             listMaiorMenorPeso->at(i).reserve(2);
         }
-        output_file <<  "Chegou" << endl;
+        //output_file <<  "Chegou" << endl;
         do {
             cout << " ENTROUU 11" << endl;
             for(int i=0;i<p;i++) {
@@ -1500,6 +1507,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                 for(int j=0;j<vectorWeightEdge->size();j++) {
                     float gapNode;
                     float gapFinal;
+                    output_file << " Vertice atual: " << vectorWeightEdge->at(j).getId() << endl;
                     output_file << "Peso atual: " << vectorWeightEdge->at(j).getWeight() << endl;
                     if(vectorWeightEdge->at(j).getWeight() > maiorValor) {
                         gapNode = vectorWeightEdge->at(j).getWeight() - menorValor;
@@ -1528,7 +1536,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                     //sort(listRank->at(i).begin(), listRank->at(i).end(), greater<float>());
                 }
                 cout << " SAIU 1 " << endl;
-                output_file << "Tamanho da lista i = " << i << " e:" << listRank->at(i).size() << endl;
+                // output_file << "Tamanho da lista i = " << i << " e:" << listRank->at(i).size() << endl;
                 for (int j = 0; j < listRank->at(i).size(); j++)
                 {
                     output_file << "Gap do node " << vectorWeightEdge->at(j).getId() << " e: " << listRank->at(i).at(j) << endl;
@@ -1538,9 +1546,10 @@ void Graph::Guloso(ofstream &output_file, int p)
                // cout << " contPosicao " <<  contPosicao << endl;
                // cout << " vectorWeightEdge->capacity() " << vectorWeightEdge->capacity() << endl;
 
-                if(vectorWeightEdge->size() > 0 )
+                if((vectorWeightEdge->size() > 0) && !visitado[vectorWeightEdge->at(contPosicao).getIdNode()])
                 {
                     vectorWeightEdge->at(contPosicao).setCor(i);
+                    output_file << " Vertice : " << vectorWeightEdge->at(contPosicao).getId() << " Cor : " << i << endl;
                     visitado[vectorWeightEdge->at(contPosicao).getIdNode()] = true;
                 // cout << " DEPOIS " << endl;
                 // cout << " vectorWeightEdge->at(contPosicao).getWeight() " << vectorWeightEdge->at(contPosicao).getWeight() << endl;
@@ -1559,6 +1568,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                         if((getNode(edge->getTargetId())->getInDegree() == 1) && !visitado[getNode(edge->getTargetId())->getIdNode()] ) {
                             output_file << "Chegou 1.5.5" << endl;
                             getNode(edge->getTargetId())->setCor(i);
+                            output_file << " Vertice : " << getNode(edge->getTargetId())->getId() << " Cor : " << i << endl;
                             visitado[getNode(edge->getTargetId())->getIdNode()] = true;
                             for(int i=0;i<vectorWeightEdge->size();i++) {
                                 if(vectorWeightEdge->at(i).getId() == getNode(edge->getTargetId())->getId()) {
@@ -1573,8 +1583,14 @@ void Graph::Guloso(ofstream &output_file, int p)
                             vectorNode->at(i).emplace_back(*getNode(edge->getTargetId()));
                         }
                     }
+                    int posicaoNode = getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getIdNode();
+                    output_file << " POSICAONODE : " << posicaoNode << endl;
                     cout << " SAIU 2 " << endl;
+                    output_file << " Visitado  " << boolalpha << visitado[posicaoNode] << endl;
+                    output_file << " Vertice : " << vectorWeightEdge->at(contPosicao).getId()  << " .getInDegree()" << vectorWeightEdge->at(contPosicao).getInDegree() << endl;
                     if((vectorWeightEdge->at(contPosicao).getInDegree() == 1) && !visitado[vectorWeightEdge->at(contPosicao).getIdNode()]) {
+                        getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->setCor(i);
+                        output_file << " Vertice : " << getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getId() << " Cor : " << i << endl;
                         vectorNode->at(i).emplace_back(*getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId()));
                         visitado[getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getIdNode()] = true;
                     }
@@ -1586,7 +1602,7 @@ void Graph::Guloso(ofstream &output_file, int p)
 
                     advance(n, contPosicao);
                     
-                    output_file << "Valor do cont: " << contPosicao << endl;
+                    // output_file << "Valor do cont: " << contPosicao << endl;
                     //output_file << "Tamanho antes de excluir: " << vectorWeightEdge->size() << endl;
                     vectorWeightEdge->erase(n);
                     //vectorWeightEdge->resize(vectorWeightEdge->size()-1);
@@ -1607,9 +1623,9 @@ void Graph::Guloso(ofstream &output_file, int p)
                     for(int k=0;k<vectorNode->at(i).size();k++) {
                         output_file <<"i :"<< i << "VectorNode: " << vectorNode->at(i).at(k).getId() << endl;
                     }
-                    for(Node *node = this->first_node;node != nullptr; node = node->getNextNode()) {
+                    /*for(Node *node = this->first_node;node != nullptr; node = node->getNextNode()) {
                         output_file << node->getId() << endl;
-                    }
+                    }*/
                 }
             }
 
@@ -1620,6 +1636,18 @@ void Graph::Guloso(ofstream &output_file, int p)
         for(int i =0;i<vectorNode->size();i++) {
             for(int j =0;j<vectorNode->at(i).size();j++)
             output_file << "Nods " << vectorNode->at(i).at(j).getId() << " com cor:" << vectorNode->at(i).at(j).getCor() << endl;
+        }
+
+        for(int a=0;a<vectorNode->at(0).size();a++)
+        {
+            output_file << " vectorNode.at(0). at (" << a << ") = " << vectorNode->at(0).at(a).getId() << endl;
+        }
+
+        output_file << endl;
+
+        for(int a=0;a<vectorNode->at(1).size();a++)
+        {
+            output_file << " vectorNode.at(1). at (" << a << ") = " << vectorNode->at(1).at(a).getId() << endl;
         }
 
         for(int i =0;i<p;i++)
@@ -1634,12 +1662,15 @@ void Graph::Guloso(ofstream &output_file, int p)
             vector<vector<Node>> *vetorClusterNodes = new vector<vector<Node>>();
             vetorClusterNodes->reserve(this->order);
             for(int j=0;j<this->order;j++) {
-                vetorClusterNodes->push_back(*criaVector());
+                //vetorClusterNodes->push_back(*criaVector());
+                vetorClusterNodes->emplace_back(*criaVector());
                 vetorClusterNodes->at(j).reserve(vectorNode->at(i).size());
                 maiorMenorValSubCluster->emplace_back(*criaVetorMaiorMenor());
                 maiorMenorValSubCluster->at(j).reserve(2);
             }
-            vetorClusterNodes->at(0).insert(vetorClusterNodes->at(0).begin(),vectorNode->at(i).at(0)); 
+            output_file << "  i : " << i << endl;
+            vetorClusterNodes->at(0).insert(vetorClusterNodes->at(0).begin(),vectorNode->at(i).at(0));      
+            output_file << "vetorClusterNodes->at(0).at(0) :  " << vetorClusterNodes->at(0).at(0).getId() << endl;
             //output_file << "vetorClusterNodes->at(0).at(0) :" << vetorClusterNodes->at(0).at(0).getId() << endl;
             cout<< "vectorNode->at(i).begin() " << vectorNode->at(i).at(0).getId() << endl;
             cout << " CAPACIDADE 1: " << vetorClusterNodes->capacity() << endl;
@@ -1660,6 +1691,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                     for(int j=0;j<vetorClusterNodes->at(k).size();j++) 
                     {
                         Node *node = &vetorClusterNodes->at(k).at(j);
+                        output_file << "  vetorClusterNodes->at(k).at(j).getId() :  " << vetorClusterNodes->at(k).at(j).getId() << endl;
                         verificados[node->getIdNode()] = true;                     
                         int tam = node->getTotal_Edge();
                         int *vizinhos = new int[tam];
@@ -1725,14 +1757,19 @@ void Graph::Guloso(ofstream &output_file, int p)
                     cout << "i "<< i << "vetorClusterNodes.size() " << vetorClusterNodes->size() << endl; 
                 } 
             //} 
-            
+
+
            
-            for(int n=0;n<vetorClusterNodes->at(i).size();n++)
+            if(i == 0)
             {
-                output_file << " Kluster : " << i << " Valor : " << vetorClusterNodes->at(i).at(n).getId() << endl;
+                output_file << "vetorClusterNodes.size()  " << vetorClusterNodes->size()  << endl;
+                output_file << "vetorClusterNodes->at(0).size()  " << vetorClusterNodes->at(0).size()  << endl;
+                for(int n=0;n<vetorClusterNodes->at(0).size();n++)
+                {      
+                    output_file << " Kluster : " << i << " Valor : " << vetorClusterNodes->at(0).at(n).getId() << endl;
+                }
             }
         }
-
        
 
     } else {
