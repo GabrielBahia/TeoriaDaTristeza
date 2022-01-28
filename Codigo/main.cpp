@@ -73,6 +73,10 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
     return graph;
 }
 
+
+
+
+
 Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, int weightedNode, ofstream &output_file){
 
     //Vari�veis para auxiliar na cria��o dos n�s no Grafo
@@ -85,12 +89,38 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
     int weightNode;
     int weightNodeTarget; //fazendo isso pois não estou usando as instancias do stenio
     //Pegando a ordem do grafo
+
+    //getline(input_file) // Pular linha 
+
+  /*  int kluster = 0;
+    int ordem = 0;
+    string s;
+
+    getline(input_file,s);
+    getline(input_file,s);
+    getline(input_file,s);
+
+    input_file >> s;
+    input_file >> s;
+    input_file >> s;
+    input_file >> kluster;
+
+    getline(input_file,s);
+    input_file >> s;
+    input_file >> ordem;
+
+    cout << " kluster : " << kluster << endl; 
+    cout << " Ordem do grafo : " << ordem << endl; */
+
     
     input_file >> order;
+
     if(weightedEdge && !weightedNode) {
         //Criando objeto grafo
         graph = new Graph(order, directed, weightedEdge, weightedNode);
         //Leitura de arquivo
+        //input_file >> "param: " >> variavel
+        // getline(input_file) // Pular linha 
         while(input_file >> idNodeSource >> idNodeTarget >> weightEdge) {
             // graph->insertNode(idNodeSource);
             //cout << "IdNodeSource: " << idNodeSource << endl;
@@ -143,7 +173,7 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
             //output_file << endl;
         }
     }
-
+    
     return graph;
 }
 

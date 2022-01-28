@@ -6,6 +6,17 @@
         "vector": "cpp",
         "list": "cpp",
         "*.tcc": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "format": "cpp",
+        "istream": "cpp",
+        "memory": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "xlocmes": "cpp",
+        "xlocmon": "cpp",
+        "xlocnum": "cpp",
+        "xloctime": "cpp",
+        "xutility": "cpp"
     }
 }

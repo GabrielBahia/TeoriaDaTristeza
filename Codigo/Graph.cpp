@@ -1475,6 +1475,7 @@ void Graph::Guloso(ofstream &output_file, int p)
         listMaiorMenorPeso->reserve(p);
         //output_file << listMaiorMenorPeso.at(0).capacity() << endl;
         //output_file <<  listMaiorMenorPeso.capacity() << endl;
+
         for(int i=0;i<p;i++) {
             listMaiorMenorPeso->emplace_back(*criaVetorMaiorMenor());
             listMaiorMenorPeso->at(i).reserve(2);
@@ -1503,8 +1504,8 @@ void Graph::Guloso(ofstream &output_file, int p)
                 gap = maiorValor - menorValor;
                 //listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(), 18);
                 //listMaiorMenorPeso->at(i).at(1) = 17;
-                cout << " COMECOU 1 " << endl;
                 for(int j=0;j<vectorWeightEdge->size();j++) {
+                    
                     float gapNode;
                     float gapFinal;
                     output_file << " Vertice atual: " << vectorWeightEdge->at(j).getId() << endl;
@@ -1549,7 +1550,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                 if((vectorWeightEdge->size() > 0) && !visitado[vectorWeightEdge->at(contPosicao).getIdNode()])
                 {
                     vectorWeightEdge->at(contPosicao).setCor(i);
-                    output_file << " Vertice : " << vectorWeightEdge->at(contPosicao).getId() << " Cor : " << i << endl;
+                    output_file << "SET COR !  Vertice : " << vectorWeightEdge->at(contPosicao).getId() << " Cor : " << i << endl;
                     visitado[vectorWeightEdge->at(contPosicao).getIdNode()] = true;
                 // cout << " DEPOIS " << endl;
                 // cout << " vectorWeightEdge->at(contPosicao).getWeight() " << vectorWeightEdge->at(contPosicao).getWeight() << endl;
@@ -1568,7 +1569,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                         if((getNode(edge->getTargetId())->getInDegree() == 1) && !visitado[getNode(edge->getTargetId())->getIdNode()] ) {
                             output_file << "Chegou 1.5.5" << endl;
                             getNode(edge->getTargetId())->setCor(i);
-                            output_file << " Vertice : " << getNode(edge->getTargetId())->getId() << " Cor : " << i << endl;
+                            output_file << "SET COR !! Vertice : " << getNode(edge->getTargetId())->getId() << " Cor : " << i << endl;
                             visitado[getNode(edge->getTargetId())->getIdNode()] = true;
                             for(int i=0;i<vectorWeightEdge->size();i++) {
                                 if(vectorWeightEdge->at(i).getId() == getNode(edge->getTargetId())->getId()) {
@@ -1588,10 +1589,24 @@ void Graph::Guloso(ofstream &output_file, int p)
                     cout << " SAIU 2 " << endl;
                     output_file << " Visitado  " << boolalpha << visitado[posicaoNode] << endl;
                     output_file << " Vertice : " << vectorWeightEdge->at(contPosicao).getId()  << " .getInDegree()" << vectorWeightEdge->at(contPosicao).getInDegree() << endl;
-                    if((vectorWeightEdge->at(contPosicao).getInDegree() == 1) && !visitado[vectorWeightEdge->at(contPosicao).getIdNode()]) {
+                    output_file << " PRINTADO O VERTICE QUE GRAU 1 : " << getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getId() << endl;
+                    if((vectorWeightEdge->at(contPosicao).getInDegree() == 1) && !visitado[getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getIdNode()]) {
                         getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->setCor(i);
-                        output_file << " Vertice : " << getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getId() << " Cor : " << i << endl;
+                        output_file << " SET COR !!! Vertice : " << getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getId() << " Cor : " << i << endl;
                         vectorNode->at(i).emplace_back(*getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId()));
+                        for(int vecCont = 0; vecCont < vectorWeightEdge->size(); vecCont++)
+                        {
+                            if(vectorWeightEdge->at(vecCont).getId() == vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())
+                            {
+                                vectorWeightEdge->erase(vectorWeightEdge->begin() + vecCont);
+                            }
+
+                        }
+                        if(contPosicao != 0 )
+                        {
+                            contPosicao--;
+                        }
+                        
                         visitado[getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getIdNode()] = true;
                     }
                     //vector<Node>::iterator id;
@@ -1630,13 +1645,7 @@ void Graph::Guloso(ofstream &output_file, int p)
             }
 
         } while(!vectorWeightEdge->empty());
-        cout << " SAIU DO WHILE 11 " << endl;
        // output_file << " vectorNode->size()  : " << vectorNode->size() << endl;
-
-        for(int i =0;i<vectorNode->size();i++) {
-            for(int j =0;j<vectorNode->at(i).size();j++)
-            output_file << "Nods " << vectorNode->at(i).at(j).getId() << " com cor:" << vectorNode->at(i).at(j).getCor() << endl;
-        }
 
         for(int a=0;a<vectorNode->at(0).size();a++)
         {
