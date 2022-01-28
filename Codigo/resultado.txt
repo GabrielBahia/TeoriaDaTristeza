@@ -25,21 +25,11 @@ Peso atual: 6
 Valor do gap atual: 0
 Valor do gapNode: 0
 Valos do gapFinal: 0
- Vertice atual: 1
-Peso atual: 6
-Valor do gap atual: 0
-Valor do gapNode: 0
-Valos do gapFinal: 0
  Vertice atual: 4
 Peso atual: 11
 Valor do gap atual: 0
 Valor do gapNode: 5
 Valos do gapFinal: 1.66667
- Vertice atual: 14
-Peso atual: 12
-Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 3
  Vertice atual: 19
 Peso atual: 8
 Valor do gap atual: 0
@@ -116,9 +106,7 @@ Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 2
 Gap do node 11 e: 0
-Gap do node 1 e: 0
 Gap do node 4 e: 1.66667
-Gap do node 14 e: 3
 Gap do node 19 e: 1
 Gap do node 2 e: 2.5
 Gap do node 18 e: 1
@@ -147,21 +135,11 @@ Começo do vectorWeightEdge: 11
 i :0VectorNode: 0
 i :0VectorNode: 11
 Maior valor: 8 Menor valor: 8
- Vertice atual: 1
-Peso atual: 6
-Valor do gap atual: 0
-Valor do gapNode: 2
-Valos do gapFinal: 0.666667
  Vertice atual: 4
 Peso atual: 11
 Valor do gap atual: 0
 Valor do gapNode: 3
 Valos do gapFinal: 1
- Vertice atual: 14
-Peso atual: 12
-Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 2
  Vertice atual: 19
 Peso atual: 8
 Valor do gap atual: 0
@@ -237,9 +215,7 @@ Peso atual: 2
 Valor do gap atual: 0
 Valor do gapNode: 6
 Valos do gapFinal: 3
-Gap do node 1 e: 0.666667
 Gap do node 4 e: 1
-Gap do node 14 e: 2
 Gap do node 19 e: 0
 Gap do node 2 e: 3.5
 Gap do node 18 e: 0.5
@@ -255,33 +231,23 @@ Gap do node 16 e: 2.5
 Gap do node 10 e: 3.5
 Gap do node 13 e: 0.5
 Gap do node 15 e: 3
-Valor do cont: 3
+Valor do cont: 1
 SET COR !  Vertice : 19 Cor : 1
 Id da aresta: 1
 Id da aresta: 6
  POSICAONODE : 3
- Visitado  false
+ Visitado  true
  Vertice : 19 .getInDegree()2
  PRINTADO O VERTICE QUE GRAU 1 : 1
-Começo do vectorWeightEdge: 1
+Começo do vectorWeightEdge: 4
 i :1VectorNode: 5
 i :1VectorNode: 19
 Maior valor: 6 Menor valor: 6
- Vertice atual: 1
-Peso atual: 6
-Valor do gap atual: 0
-Valor do gapNode: 0
-Valos do gapFinal: 0
  Vertice atual: 4
 Peso atual: 11
 Valor do gap atual: 0
 Valor do gapNode: 5
 Valos do gapFinal: 1.66667
- Vertice atual: 14
-Peso atual: 12
-Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 3
  Vertice atual: 2
 Peso atual: 1
 Valor do gap atual: 0
@@ -352,9 +318,7 @@ Peso atual: 2
 Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 2
-Gap do node 1 e: 0
 Gap do node 4 e: 1.66667
-Gap do node 14 e: 3
 Gap do node 2 e: 2.5
 Gap do node 18 e: 1
 Gap do node 3 e: 2
@@ -369,35 +333,30 @@ Gap do node 16 e: 1.5
 Gap do node 10 e: 2.5
 Gap do node 13 e: 0.5
 Gap do node 15 e: 2
-Valor do cont: 0
-SET COR !  Vertice : 1 Cor : 0
-Id da aresta: 4
-Id da aresta: 14
-Id da aresta: 19
- POSICAONODE : 4
- Visitado  false
- Vertice : 1 .getInDegree()3
- PRINTADO O VERTICE QUE GRAU 1 : 4
-Começo do vectorWeightEdge: 1
-i :0VectorNode: 0
-i :0VectorNode: 11
-i :0VectorNode: 1
-Maior valor: 8 Menor valor: 8
+Valor do cont: 6
+SET COR !  Vertice : 9 Cor : 2
+Id da aresta: 5
+Id da aresta: 17
+Id da aresta: 16
+Id da aresta: 10
+ POSICAONODE : 1
+ Visitado  true
+ Vertice : 9 .getInDegree()4
+ PRINTADO O VERTICE QUE GRAU 1 : 5
+Começo do vectorWeightEdge: 4
+i :2VectorNode: 1
+i :2VectorNode: 9
+Maior valor: 12 Menor valor: 12
  Vertice atual: 4
 Peso atual: 11
 Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 1
- Vertice atual: 14
-Peso atual: 12
-Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 2
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
  Vertice atual: 2
 Peso atual: 1
 Valor do gap atual: 0
-Valor do gapNode: 7
-Valos do gapFinal: 3.5
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
  Vertice atual: 18
 Peso atual: 10
 Valor do gap atual: 0
@@ -406,129 +365,110 @@ Valos do gapFinal: 0.5
  Vertice atual: 3
 Peso atual: 4
 Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 4
+Valor do gapNode: 8
+Valos do gapFinal: 8
  Vertice atual: 20
 Peso atual: 9
 Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.25
+Valor do gapNode: 3
+Valos do gapFinal: 0.75
  Vertice atual: 12
 Peso atual: 2
 Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 9
-Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.25
+Valor do gapNode: 10
+Valos do gapFinal: 5
  Vertice atual: 6
 Peso atual: 3
 Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 1.66667
+Valor do gapNode: 9
+Valos do gapFinal: 3
  Vertice atual: 7
 Peso atual: 4
 Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 4
+Valor do gapNode: 8
+Valos do gapFinal: 8
  Vertice atual: 8
 Peso atual: 12
 Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 4
+Valor do gapNode: 0
+Valos do gapFinal: 0
  Vertice atual: 17
 Peso atual: 1
 Valor do gap atual: 0
-Valor do gapNode: 7
-Valos do gapFinal: 3.5
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
  Vertice atual: 16
 Peso atual: 3
 Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
  Vertice atual: 10
 Peso atual: 1
 Valor do gap atual: 0
-Valor do gapNode: 7
-Valos do gapFinal: 3.5
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
  Vertice atual: 13
 Peso atual: 7
 Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.5
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
  Vertice atual: 15
 Peso atual: 2
 Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 3
-Gap do node 4 e: 1
-Gap do node 14 e: 2
-Gap do node 2 e: 3.5
+Valor do gapNode: 10
+Valos do gapFinal: 5
+Gap do node 4 e: 0.333333
+Gap do node 2 e: 5.5
 Gap do node 18 e: 0.5
-Gap do node 3 e: 4
-Gap do node 20 e: 0.25
-Gap do node 12 e: 3
-Gap do node 9 e: 0.25
-Gap do node 6 e: 1.66667
-Gap do node 7 e: 4
-Gap do node 8 e: 4
-Gap do node 17 e: 3.5
-Gap do node 16 e: 2.5
-Gap do node 10 e: 3.5
-Gap do node 13 e: 0.5
-Gap do node 15 e: 3
-Valor do cont: 5
-SET COR !  Vertice : 20 Cor : 1
-Id da aresta: 4
-Id da aresta: 11
-Id da aresta: 13
-Id da aresta: 15
- POSICAONODE : 4
+Gap do node 3 e: 8
+Gap do node 20 e: 0.75
+Gap do node 12 e: 5
+Gap do node 6 e: 3
+Gap do node 7 e: 8
+Gap do node 8 e: 0
+Gap do node 17 e: 5.5
+Gap do node 16 e: 4.5
+Gap do node 10 e: 5.5
+Gap do node 13 e: 2.5
+Gap do node 15 e: 5
+Valor do cont: 8
+SET COR !  Vertice : 8 Cor : 3
+Id da aresta: 18
+ POSICAONODE : 8
  Visitado  false
- Vertice : 20 .getInDegree()4
- PRINTADO O VERTICE QUE GRAU 1 : 4
+ Vertice : 8 .getInDegree()1
+ PRINTADO O VERTICE QUE GRAU 1 : 18
+ SET COR !!! Vertice : 18 Cor : 3
 Começo do vectorWeightEdge: 4
-i :1VectorNode: 5
-i :1VectorNode: 19
-i :1VectorNode: 20
+i :3VectorNode: 14
+i :3VectorNode: 8
+i :3VectorNode: 18
 Maior valor: 6 Menor valor: 6
  Vertice atual: 4
 Peso atual: 11
 Valor do gap atual: 0
 Valor do gapNode: 5
 Valos do gapFinal: 1.66667
- Vertice atual: 14
-Peso atual: 12
-Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 3
  Vertice atual: 2
 Peso atual: 1
 Valor do gap atual: 0
 Valor do gapNode: 5
 Valos do gapFinal: 2.5
- Vertice atual: 18
-Peso atual: 10
-Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 1
  Vertice atual: 3
 Peso atual: 4
 Valor do gap atual: 0
 Valor do gapNode: 2
 Valos do gapFinal: 2
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 0.75
  Vertice atual: 12
 Peso atual: 2
 Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 2
- Vertice atual: 9
-Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.25
  Vertice atual: 6
 Peso atual: 3
 Valor do gap atual: 0
@@ -539,11 +479,6 @@ Peso atual: 4
 Valor do gap atual: 0
 Valor do gapNode: 2
 Valos do gapFinal: 2
- Vertice atual: 8
-Peso atual: 12
-Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 6
  Vertice atual: 17
 Peso atual: 1
 Valor do gap atual: 0
@@ -570,149 +505,116 @@ Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 2
 Gap do node 4 e: 1.66667
-Gap do node 14 e: 3
 Gap do node 2 e: 2.5
-Gap do node 18 e: 1
 Gap do node 3 e: 2
+Gap do node 20 e: 0.75
 Gap do node 12 e: 2
-Gap do node 9 e: 0.25
 Gap do node 6 e: 1
 Gap do node 7 e: 2
-Gap do node 8 e: 6
 Gap do node 17 e: 2.5
 Gap do node 16 e: 1.5
 Gap do node 10 e: 2.5
 Gap do node 13 e: 0.5
 Gap do node 15 e: 2
-Valor do cont: 6
-SET COR !  Vertice : 9 Cor : 0
-Id da aresta: 5
-Id da aresta: 17
+Valor do cont: 10
+SET COR !  Vertice : 13 Cor : 0
+Id da aresta: 20
 Id da aresta: 16
-Id da aresta: 10
- POSICAONODE : 1
- Visitado  true
- Vertice : 9 .getInDegree()4
- PRINTADO O VERTICE QUE GRAU 1 : 5
+ POSICAONODE : 10
+ Visitado  false
+ Vertice : 13 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 20
 Começo do vectorWeightEdge: 4
 i :0VectorNode: 0
 i :0VectorNode: 11
-i :0VectorNode: 1
-i :0VectorNode: 9
+i :0VectorNode: 13
 Maior valor: 8 Menor valor: 8
  Vertice atual: 4
 Peso atual: 11
-Valor do gap atual: 1
+Valor do gap atual: 0
 Valor do gapNode: 3
 Valos do gapFinal: 1
- Vertice atual: 14
-Peso atual: 12
-Valor do gap atual: 1
-Valor do gapNode: 4
-Valos do gapFinal: 2
  Vertice atual: 2
 Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 8
-Valos do gapFinal: 4
- Vertice atual: 18
-Peso atual: 10
-Valor do gap atual: 1
-Valor do gapNode: 2
-Valos do gapFinal: 0.5
- Vertice atual: 3
-Peso atual: 4
-Valor do gap atual: 1
-Valor do gapNode: 5
-Valos do gapFinal: 5
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 1
+Valor do gap atual: 0
 Valor do gapNode: 7
 Valos do gapFinal: 3.5
+ Vertice atual: 3
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 4
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.25
+ Vertice atual: 12
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
  Vertice atual: 6
 Peso atual: 3
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 2
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
  Vertice atual: 7
 Peso atual: 4
-Valor do gap atual: 1
-Valor do gapNode: 5
-Valos do gapFinal: 5
- Vertice atual: 8
-Peso atual: 12
-Valor do gap atual: 1
+Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 4
  Vertice atual: 17
 Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 8
-Valos do gapFinal: 4
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 10
-Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 8
-Valos do gapFinal: 4
- Vertice atual: 13
-Peso atual: 7
-Valor do gap atual: 1
-Valor do gapNode: 2
-Valos do gapFinal: 1
- Vertice atual: 15
-Peso atual: 2
-Valor do gap atual: 1
+Valor do gap atual: 0
 Valor do gapNode: 7
 Valos do gapFinal: 3.5
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+ Vertice atual: 15
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
 Gap do node 4 e: 1
-Gap do node 14 e: 2
-Gap do node 2 e: 4
-Gap do node 18 e: 0.5
-Gap do node 3 e: 5
-Gap do node 12 e: 3.5
-Gap do node 6 e: 2
-Gap do node 7 e: 5
-Gap do node 8 e: 4
-Gap do node 17 e: 4
-Gap do node 16 e: 3
-Gap do node 10 e: 4
-Gap do node 13 e: 1
-Gap do node 15 e: 3.5
+Gap do node 2 e: 3.5
+Gap do node 3 e: 4
+Gap do node 20 e: 0.25
+Gap do node 12 e: 3
+Gap do node 6 e: 1.66667
+Gap do node 7 e: 4
+Gap do node 17 e: 3.5
+Gap do node 16 e: 2.5
+Gap do node 10 e: 3.5
+Gap do node 15 e: 3
 Valor do cont: 3
-SET COR !  Vertice : 18 Cor : 1
-Id da aresta: 2
+SET COR !  Vertice : 20 Cor : 1
 Id da aresta: 4
-Id da aresta: 8
-Chegou 1.5.5
-SET COR !! Vertice : 8 Cor : 1
 Id da aresta: 11
- POSICAONODE : 7
+Id da aresta: 13
+Id da aresta: 15
+ POSICAONODE : 4
  Visitado  false
- Vertice : 18 .getInDegree()4
- PRINTADO O VERTICE QUE GRAU 1 : 2
+ Vertice : 20 .getInDegree()4
+ PRINTADO O VERTICE QUE GRAU 1 : 4
 Começo do vectorWeightEdge: 4
 i :1VectorNode: 5
 i :1VectorNode: 19
 i :1VectorNode: 20
-i :1VectorNode: 18
-i :1VectorNode: 8
 Maior valor: 6 Menor valor: 6
  Vertice atual: 4
 Peso atual: 11
 Valor do gap atual: 1
 Valor do gapNode: 5
 Valos do gapFinal: 1.66667
- Vertice atual: 14
-Peso atual: 12
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
  Vertice atual: 2
 Peso atual: 1
 Valor do gap atual: 1
@@ -753,177 +655,12 @@ Peso atual: 1
 Valor do gap atual: 1
 Valor do gapNode: 6
 Valos do gapFinal: 3
- Vertice atual: 13
-Peso atual: 7
-Valor do gap atual: 1
-Valor do gapNode: 0
-Valos do gapFinal: 0
  Vertice atual: 15
 Peso atual: 2
 Valor do gap atual: 1
 Valor do gapNode: 5
 Valos do gapFinal: 2.5
 Gap do node 4 e: 1.66667
-Gap do node 14 e: 3
-Gap do node 2 e: 3
-Gap do node 3 e: 3
-Gap do node 12 e: 2.5
-Gap do node 6 e: 1.33333
-Gap do node 7 e: 3
-Gap do node 17 e: 3
-Gap do node 16 e: 2
-Gap do node 10 e: 3
-Gap do node 13 e: 0
-Gap do node 15 e: 2.5
-Valor do cont: 10
-SET COR !  Vertice : 13 Cor : 0
-Id da aresta: 20
-Id da aresta: 16
- POSICAONODE : 10
- Visitado  true
- Vertice : 13 .getInDegree()2
- PRINTADO O VERTICE QUE GRAU 1 : 20
-Começo do vectorWeightEdge: 4
-i :0VectorNode: 0
-i :0VectorNode: 11
-i :0VectorNode: 1
-i :0VectorNode: 9
-i :0VectorNode: 13
-Maior valor: 8 Menor valor: 8
- Vertice atual: 4
-Peso atual: 11
-Valor do gap atual: 4
-Valor do gapNode: 0
-Valos do gapFinal: 0
- Vertice atual: 14
-Peso atual: 12
-Valor do gap atual: 4
-Valor do gapNode: 0
-Valos do gapFinal: 0
- Vertice atual: 2
-Peso atual: 1
-Valor do gap atual: 4
-Valor do gapNode: 11
-Valos do gapFinal: 5.5
- Vertice atual: 3
-Peso atual: 4
-Valor do gap atual: 4
-Valor do gapNode: 8
-Valos do gapFinal: 8
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 4
-Valor do gapNode: 10
-Valos do gapFinal: 5
- Vertice atual: 6
-Peso atual: 3
-Valor do gap atual: 4
-Valor do gapNode: 9
-Valos do gapFinal: 3
- Vertice atual: 7
-Peso atual: 4
-Valor do gap atual: 4
-Valor do gapNode: 8
-Valos do gapFinal: 8
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 4
-Valor do gapNode: 11
-Valos do gapFinal: 5.5
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 4
-Valor do gapNode: 9
-Valos do gapFinal: 4.5
- Vertice atual: 10
-Peso atual: 1
-Valor do gap atual: 4
-Valor do gapNode: 11
-Valos do gapFinal: 5.5
- Vertice atual: 15
-Peso atual: 2
-Valor do gap atual: 4
-Valor do gapNode: 10
-Valos do gapFinal: 5
-Gap do node 4 e: 0
-Gap do node 14 e: 0
-Gap do node 2 e: 5.5
-Gap do node 3 e: 8
-Gap do node 12 e: 5
-Gap do node 6 e: 3
-Gap do node 7 e: 8
-Gap do node 17 e: 5.5
-Gap do node 16 e: 4.5
-Gap do node 10 e: 5.5
-Gap do node 15 e: 5
-Valor do cont: 0
-SET COR !  Vertice : 4 Cor : 1
-Id da aresta: 1
-Id da aresta: 20
-Id da aresta: 18
- POSICAONODE : 3
- Visitado  true
- Vertice : 4 .getInDegree()3
- PRINTADO O VERTICE QUE GRAU 1 : 1
-Começo do vectorWeightEdge: 4
-i :1VectorNode: 5
-i :1VectorNode: 19
-i :1VectorNode: 20
-i :1VectorNode: 18
-i :1VectorNode: 8
-i :1VectorNode: 4
-Maior valor: 6 Menor valor: 6
- Vertice atual: 14
-Peso atual: 12
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 2
-Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 3
-Peso atual: 4
-Valor do gap atual: 1
-Valor do gapNode: 3
-Valos do gapFinal: 3
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 1
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
- Vertice atual: 6
-Peso atual: 3
-Valor do gap atual: 1
-Valor do gapNode: 4
-Valos do gapFinal: 1.33333
- Vertice atual: 7
-Peso atual: 4
-Valor do gap atual: 1
-Valor do gapNode: 3
-Valos do gapFinal: 3
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 1
-Valor do gapNode: 4
-Valos do gapFinal: 2
- Vertice atual: 10
-Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 15
-Peso atual: 2
-Valor do gap atual: 1
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
-Gap do node 14 e: 3
 Gap do node 2 e: 3
 Gap do node 3 e: 3
 Gap do node 12 e: 2.5
@@ -934,66 +671,63 @@ Gap do node 16 e: 2
 Gap do node 10 e: 3
 Gap do node 15 e: 2.5
 Valor do cont: 4
-SET COR !  Vertice : 6 Cor : 0
+SET COR !  Vertice : 6 Cor : 2
 Id da aresta: 12
 Id da aresta: 7
 Chegou 1.5.5
-SET COR !! Vertice : 7 Cor : 0
+SET COR !! Vertice : 7 Cor : 2
 Id da aresta: 19
  POSICAONODE : 11
  Visitado  false
  Vertice : 6 .getInDegree()3
  PRINTADO O VERTICE QUE GRAU 1 : 12
-Começo do vectorWeightEdge: 14
-i :0VectorNode: 0
-i :0VectorNode: 11
-i :0VectorNode: 1
-i :0VectorNode: 9
-i :0VectorNode: 13
-i :0VectorNode: 6
-i :0VectorNode: 7
-Maior valor: 8 Menor valor: 8
- Vertice atual: 14
-Peso atual: 12
-Valor do gap atual: 4
+Começo do vectorWeightEdge: 4
+i :2VectorNode: 1
+i :2VectorNode: 9
+i :2VectorNode: 6
+i :2VectorNode: 7
+Maior valor: 12 Menor valor: 12
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 2
 Valor do gapNode: 0
 Valos do gapFinal: 0
  Vertice atual: 2
 Peso atual: 1
-Valor do gap atual: 4
+Valor do gap atual: 2
 Valor do gapNode: 11
 Valos do gapFinal: 5.5
  Vertice atual: 3
 Peso atual: 4
-Valor do gap atual: 4
+Valor do gap atual: 2
 Valor do gapNode: 8
 Valos do gapFinal: 8
  Vertice atual: 12
 Peso atual: 2
-Valor do gap atual: 4
+Valor do gap atual: 2
 Valor do gapNode: 10
 Valos do gapFinal: 5
  Vertice atual: 17
 Peso atual: 1
-Valor do gap atual: 4
+Valor do gap atual: 2
 Valor do gapNode: 11
 Valos do gapFinal: 5.5
  Vertice atual: 16
 Peso atual: 3
-Valor do gap atual: 4
+Valor do gap atual: 2
 Valor do gapNode: 9
 Valos do gapFinal: 4.5
  Vertice atual: 10
 Peso atual: 1
-Valor do gap atual: 4
+Valor do gap atual: 2
 Valor do gapNode: 11
 Valos do gapFinal: 5.5
  Vertice atual: 15
 Peso atual: 2
-Valor do gap atual: 4
+Valor do gap atual: 2
 Valor do gapNode: 10
 Valos do gapFinal: 5
-Gap do node 14 e: 0
+Gap do node 4 e: 0
 Gap do node 2 e: 5.5
 Gap do node 3 e: 8
 Gap do node 12 e: 5
@@ -1002,21 +736,125 @@ Gap do node 16 e: 4.5
 Gap do node 10 e: 5.5
 Gap do node 15 e: 5
 Valor do cont: 0
-SET COR !  Vertice : 14 Cor : 1
+SET COR !  Vertice : 4 Cor : 3
 Id da aresta: 1
-Id da aresta: 10
+Id da aresta: 20
+Id da aresta: 18
  POSICAONODE : 3
  Visitado  true
- Vertice : 14 .getInDegree()2
+ Vertice : 4 .getInDegree()3
  PRINTADO O VERTICE QUE GRAU 1 : 1
-Começo do vectorWeightEdge: 14
+Começo do vectorWeightEdge: 4
+i :3VectorNode: 14
+i :3VectorNode: 8
+i :3VectorNode: 18
+i :3VectorNode: 4
+Maior valor: 6 Menor valor: 6
+ Vertice atual: 2
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+ Vertice atual: 3
+Peso atual: 4
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 3
+ Vertice atual: 12
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+ Vertice atual: 17
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 4
+Valos do gapFinal: 2
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+ Vertice atual: 15
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Gap do node 2 e: 3
+Gap do node 3 e: 3
+Gap do node 12 e: 2.5
+Gap do node 17 e: 3
+Gap do node 16 e: 2
+Gap do node 10 e: 3
+Gap do node 15 e: 2.5
+Valor do cont: 4
+SET COR !  Vertice : 16 Cor : 0
+Id da aresta: 9
+Id da aresta: 13
+ POSICAONODE : 12
+ Visitado  true
+ Vertice : 16 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 9
+Começo do vectorWeightEdge: 2
+i :0VectorNode: 0
+i :0VectorNode: 11
+i :0VectorNode: 13
+i :0VectorNode: 16
+Maior valor: 8 Menor valor: 8
+ Vertice atual: 2
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 8
+Valos do gapFinal: 4
+ Vertice atual: 3
+Peso atual: 4
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 5
+ Vertice atual: 12
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+ Vertice atual: 17
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 8
+Valos do gapFinal: 4
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 8
+Valos do gapFinal: 4
+ Vertice atual: 15
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+Gap do node 2 e: 4
+Gap do node 3 e: 5
+Gap do node 12 e: 3.5
+Gap do node 17 e: 4
+Gap do node 10 e: 4
+Gap do node 15 e: 3.5
+Valor do cont: 2
+SET COR !  Vertice : 12 Cor : 1
+Id da aresta: 5
+Id da aresta: 6
+ POSICAONODE : 1
+ Visitado  true
+ Vertice : 12 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 5
+Começo do vectorWeightEdge: 2
 i :1VectorNode: 5
 i :1VectorNode: 19
 i :1VectorNode: 20
-i :1VectorNode: 18
-i :1VectorNode: 8
-i :1VectorNode: 4
-i :1VectorNode: 14
+i :1VectorNode: 12
 Maior valor: 6 Menor valor: 6
  Vertice atual: 2
 Peso atual: 1
@@ -1028,21 +866,11 @@ Peso atual: 4
 Valor do gap atual: 4
 Valor do gapNode: 0
 Valos do gapFinal: 0
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 4
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
  Vertice atual: 17
 Peso atual: 1
 Valor do gap atual: 4
 Valor do gapNode: 6
 Valos do gapFinal: 3
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 4
-Valor do gapNode: 0
-Valos do gapFinal: 0
  Vertice atual: 10
 Peso atual: 1
 Valor do gap atual: 4
@@ -1055,170 +883,69 @@ Valor do gapNode: 5
 Valos do gapFinal: 2.5
 Gap do node 2 e: 3
 Gap do node 3 e: 0
-Gap do node 12 e: 2.5
 Gap do node 17 e: 3
-Gap do node 16 e: 0
 Gap do node 10 e: 3
 Gap do node 15 e: 2.5
 Valor do cont: 1
-SET COR !  Vertice : 3 Cor : 0
+SET COR !  Vertice : 3 Cor : 2
 Id da aresta: 2
  POSICAONODE : 7
  Visitado  false
  Vertice : 3 .getInDegree()1
  PRINTADO O VERTICE QUE GRAU 1 : 2
- SET COR !!! Vertice : 2 Cor : 0
+ SET COR !!! Vertice : 2 Cor : 2
 Começo do vectorWeightEdge: 3
-i :0VectorNode: 0
-i :0VectorNode: 11
-i :0VectorNode: 1
-i :0VectorNode: 9
-i :0VectorNode: 13
-i :0VectorNode: 6
-i :0VectorNode: 7
-i :0VectorNode: 3
-i :0VectorNode: 2
-Maior valor: 8 Menor valor: 8
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 4
-Valor do gapNode: 10
-Valos do gapFinal: 5
+i :2VectorNode: 1
+i :2VectorNode: 9
+i :2VectorNode: 6
+i :2VectorNode: 7
+i :2VectorNode: 3
+i :2VectorNode: 2
+Maior valor: 12 Menor valor: 12
  Vertice atual: 17
 Peso atual: 1
-Valor do gap atual: 4
-Valor do gapNode: 11
-Valos do gapFinal: 5.5
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 4
-Valor do gapNode: 9
-Valos do gapFinal: 4.5
- Vertice atual: 10
-Peso atual: 1
-Valor do gap atual: 4
-Valor do gapNode: 11
-Valos do gapFinal: 5.5
- Vertice atual: 15
-Peso atual: 2
-Valor do gap atual: 4
-Valor do gapNode: 10
-Valos do gapFinal: 5
-Gap do node 12 e: 5
-Gap do node 17 e: 5.5
-Gap do node 16 e: 4.5
-Gap do node 10 e: 5.5
-Gap do node 15 e: 5
-Valor do cont: 2
-SET COR !  Vertice : 16 Cor : 1
-Id da aresta: 9
-Id da aresta: 13
- POSICAONODE : 12
- Visitado  true
- Vertice : 16 .getInDegree()2
- PRINTADO O VERTICE QUE GRAU 1 : 9
-Começo do vectorWeightEdge: 12
-i :1VectorNode: 5
-i :1VectorNode: 19
-i :1VectorNode: 20
-i :1VectorNode: 18
-i :1VectorNode: 8
-i :1VectorNode: 4
-i :1VectorNode: 14
-i :1VectorNode: 16
-Maior valor: 6 Menor valor: 6
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 6
-Valor do gapNode: 0
-Valos do gapFinal: 0
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 6
-Valor do gapNode: 0
-Valos do gapFinal: 0
- Vertice atual: 10
-Peso atual: 1
-Valor do gap atual: 6
-Valor do gapNode: 0
-Valos do gapFinal: 0
- Vertice atual: 15
-Peso atual: 2
-Valor do gap atual: 6
-Valor do gapNode: 0
-Valos do gapFinal: 0
-Gap do node 12 e: 0
-Gap do node 17 e: 0
-Gap do node 10 e: 0
-Gap do node 15 e: 0
-Valor do cont: 0
-SET COR !  Vertice : 12 Cor : 0
-Id da aresta: 5
-Id da aresta: 6
- POSICAONODE : 1
- Visitado  true
- Vertice : 12 .getInDegree()2
- PRINTADO O VERTICE QUE GRAU 1 : 5
-Começo do vectorWeightEdge: 12
-i :0VectorNode: 0
-i :0VectorNode: 11
-i :0VectorNode: 1
-i :0VectorNode: 9
-i :0VectorNode: 13
-i :0VectorNode: 6
-i :0VectorNode: 7
-i :0VectorNode: 3
-i :0VectorNode: 2
-i :0VectorNode: 12
-Maior valor: 8 Menor valor: 8
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 9
+Valor do gap atual: 2
 Valor do gapNode: 11
 Valos do gapFinal: 5.5
  Vertice atual: 10
 Peso atual: 1
-Valor do gap atual: 9
+Valor do gap atual: 2
 Valor do gapNode: 11
 Valos do gapFinal: 5.5
  Vertice atual: 15
 Peso atual: 2
-Valor do gap atual: 9
+Valor do gap atual: 2
 Valor do gapNode: 10
 Valos do gapFinal: 5
 Gap do node 17 e: 5.5
 Gap do node 10 e: 5.5
 Gap do node 15 e: 5
 Valor do cont: 2
-SET COR !  Vertice : 15 Cor : 1
+SET COR !  Vertice : 15 Cor : 3
 Id da aresta: 17
  POSICAONODE : 16
  Visitado  false
  Vertice : 15 .getInDegree()2
  PRINTADO O VERTICE QUE GRAU 1 : 17
 Começo do vectorWeightEdge: 17
-i :1VectorNode: 5
-i :1VectorNode: 19
-i :1VectorNode: 20
-i :1VectorNode: 18
-i :1VectorNode: 8
-i :1VectorNode: 4
-i :1VectorNode: 14
-i :1VectorNode: 16
-i :1VectorNode: 15
+i :3VectorNode: 14
+i :3VectorNode: 8
+i :3VectorNode: 18
+i :3VectorNode: 4
+i :3VectorNode: 15
 Maior valor: 6 Menor valor: 6
  Vertice atual: 17
 Peso atual: 1
-Valor do gap atual: 6
-Valor do gapNode: 0
-Valos do gapFinal: 0
+Valor do gap atual: 4
+Valor do gapNode: 6
+Valos do gapFinal: 3
  Vertice atual: 10
 Peso atual: 1
-Valor do gap atual: 6
-Valor do gapNode: 0
-Valos do gapFinal: 0
-Gap do node 17 e: 0
-Gap do node 10 e: 0
+Valor do gap atual: 4
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Gap do node 17 e: 3
+Gap do node 10 e: 3
 Valor do cont: 0
 SET COR !  Vertice : 17 Cor : 0
 Id da aresta: 9
@@ -1230,22 +957,16 @@ Id da aresta: 15
 Começo do vectorWeightEdge: 17
 i :0VectorNode: 0
 i :0VectorNode: 11
-i :0VectorNode: 1
-i :0VectorNode: 9
 i :0VectorNode: 13
-i :0VectorNode: 6
-i :0VectorNode: 7
-i :0VectorNode: 3
-i :0VectorNode: 2
-i :0VectorNode: 12
+i :0VectorNode: 16
 i :0VectorNode: 17
 Maior valor: 8 Menor valor: 8
  Vertice atual: 10
 Peso atual: 1
-Valor do gap atual: 10
-Valor do gapNode: 11
-Valos do gapFinal: 5.5
-Gap do node 10 e: 5.5
+Valor do gap atual: 7
+Valor do gapNode: 8
+Valos do gapFinal: 4
+Gap do node 10 e: 4
 Valor do cont: 0
 SET COR !  Vertice : 10 Cor : 1
 Id da aresta: 9
@@ -1257,91 +978,92 @@ Começo do vectorWeightEdge: 10
 i :1VectorNode: 5
 i :1VectorNode: 19
 i :1VectorNode: 20
-i :1VectorNode: 18
-i :1VectorNode: 8
-i :1VectorNode: 4
-i :1VectorNode: 14
-i :1VectorNode: 16
-i :1VectorNode: 15
+i :1VectorNode: 12
 i :1VectorNode: 10
+Maior valor: 6 Menor valor: 6
+Valor do cont: 0
+Maior valor: 12 Menor valor: 12
+Valor do cont: 0
  vectorNode.at(0). at (0) = 0
  vectorNode.at(0). at (1) = 11
- vectorNode.at(0). at (2) = 1
- vectorNode.at(0). at (3) = 9
- vectorNode.at(0). at (4) = 13
- vectorNode.at(0). at (5) = 6
- vectorNode.at(0). at (6) = 7
- vectorNode.at(0). at (7) = 3
- vectorNode.at(0). at (8) = 2
- vectorNode.at(0). at (9) = 12
- vectorNode.at(0). at (10) = 17
+ vectorNode.at(0). at (2) = 13
+ vectorNode.at(0). at (3) = 16
+ vectorNode.at(0). at (4) = 17
 
  vectorNode.at(1). at (0) = 5
  vectorNode.at(1). at (1) = 19
  vectorNode.at(1). at (2) = 20
- vectorNode.at(1). at (3) = 18
- vectorNode.at(1). at (4) = 8
- vectorNode.at(1). at (5) = 4
- vectorNode.at(1). at (6) = 14
- vectorNode.at(1). at (7) = 16
- vectorNode.at(1). at (8) = 15
- vectorNode.at(1). at (9) = 10
+ vectorNode.at(1). at (3) = 12
+ vectorNode.at(1). at (4) = 10
+  ->>>>>>>>> vectorNode->at(i).at(x).getId() cor 1
+ i  = 0 Id 0 Cor : 0
+ i  = 0 Id 11 Cor : 0
+ i  = 0 Id 13 Cor : 0
+ i  = 0 Id 16 Cor : 0
+ i  = 0 Id 17 Cor : 0
+ i  = 1 Id 5 Cor : 1
+ i  = 1 Id 19 Cor : 1
+ i  = 1 Id 20 Cor : 1
+ i  = 1 Id 12 Cor : 1
+ i  = 1 Id 10 Cor : 1
+ i  = 2 Id 1 Cor : 2
+ i  = 2 Id 9 Cor : 2
+ i  = 2 Id 6 Cor : 2
+ i  = 2 Id 7 Cor : 2
+ i  = 2 Id 3 Cor : 2
+ i  = 2 Id 2 Cor : 2
+ i  = 3 Id 14 Cor : 3
+ i  = 3 Id 8 Cor : 3
+ i  = 3 Id 18 Cor : 3
+ i  = 3 Id 4 Cor : 3
+ i  = 3 Id 15 Cor : 3
   i : 0
 vetorClusterNodes->at(0).at(0) :  0
+ COR DO 5 ********* 0
+ COR DO 0 ********* 0
   vetorClusterNodes->at(k).at(j).getId() :  0
-  vetorClusterNodes->at(k).at(j).getId() :  11
-  vetorClusterNodes->at(k).at(j).getId() :  20
-  vetorClusterNodes->at(k).at(j).getId() :  18
-  vetorClusterNodes->at(k).at(j).getId() :  4
-  vetorClusterNodes->at(k).at(j).getId() :  13
-  vetorClusterNodes->at(k).at(j).getId() :  15
-  vetorClusterNodes->at(k).at(j).getId() :  2
-  vetorClusterNodes->at(k).at(j).getId() :  4
-  vetorClusterNodes->at(k).at(j).getId() :  1
-  vetorClusterNodes->at(k).at(j).getId() :  16
-  vetorClusterNodes->at(k).at(j).getId() :  17
-  vetorClusterNodes->at(k).at(j).getId() :  1
-  vetorClusterNodes->at(k).at(j).getId() :  9
-  vetorClusterNodes->at(k).at(j).getId() :  9
-  vetorClusterNodes->at(k).at(j).getId() :  10
-  vetorClusterNodes->at(k).at(j).getId() :  10
-  vetorClusterNodes->at(k).at(j).getId() :  6
-  vetorClusterNodes->at(k).at(j).getId() :  12
-  vetorClusterNodes->at(k).at(j).getId() :  7
-  vetorClusterNodes->at(k).at(j).getId() :  19
+ node :   0 COR : 0
+ vizinho  : 5COR : 0
+ node :   0 COR : 0
+ vizinho  : 11COR : 0
+ AAAA vetorClusterNodes->at(k).at(j).getId() : 0
+ AAAA vetorClusterNodes->at(k).at(j).getId() : 5
+ AAAA vetorClusterNodes->at(k).at(j).getId() : 11
+ vectorNode->at(0) = 13
+ vectorNode->at(1) = 16
+ vectorNode->at(2) = 17
 vetorClusterNodes.size()  21
-vetorClusterNodes->at(0).size()  17
+vetorClusterNodes->at(0).size()  3
  Kluster : 0 Valor : 0
+ Kluster : 0 Valor : 5
  Kluster : 0 Valor : 11
- Kluster : 0 Valor : 20
- Kluster : 0 Valor : 18
- Kluster : 0 Valor : 4
- Kluster : 0 Valor : 13
- Kluster : 0 Valor : 15
- Kluster : 0 Valor : 2
- Kluster : 0 Valor : 4
- Kluster : 0 Valor : 1
- Kluster : 0 Valor : 16
- Kluster : 0 Valor : 17
- Kluster : 0 Valor : 1
- Kluster : 0 Valor : 9
- Kluster : 0 Valor : 9
- Kluster : 0 Valor : 10
- Kluster : 0 Valor : 10
   i : 1
 vetorClusterNodes->at(0).at(0) :  5
+ COR DO 5 ********* 0
+ COR DO 0 ********* 0
   vetorClusterNodes->at(k).at(j).getId() :  5
-  vetorClusterNodes->at(k).at(j).getId() :  0
-  vetorClusterNodes->at(k).at(j).getId() :  12
-  vetorClusterNodes->at(k).at(j).getId() :  9
-  vetorClusterNodes->at(k).at(j).getId() :  17
-  vetorClusterNodes->at(k).at(j).getId() :  16
-  vetorClusterNodes->at(k).at(j).getId() :  10
-  vetorClusterNodes->at(k).at(j).getId() :  19
-  vetorClusterNodes->at(k).at(j).getId() :  20
-  vetorClusterNodes->at(k).at(j).getId() :  18
-  vetorClusterNodes->at(k).at(j).getId() :  8
-  vetorClusterNodes->at(k).at(j).getId() :  4
+ AAAA vetorClusterNodes->at(k).at(j).getId() : 5
+ vectorNode->at(0) = 20
+ vectorNode->at(1) = 12
+ vectorNode->at(2) = 10
+  i : 2
+vetorClusterNodes->at(0).at(0) :  1
+ COR DO 5 ********* 0
+ COR DO 0 ********* 0
+  vetorClusterNodes->at(k).at(j).getId() :  1
+ AAAA vetorClusterNodes->at(k).at(j).getId() : 1
+ vectorNode->at(0) = 6
+ vectorNode->at(1) = 7
+ vectorNode->at(2) = 3
+ vectorNode->at(3) = 2
+  i : 3
+vetorClusterNodes->at(0).at(0) :  14
+ COR DO 5 ********* 0
+ COR DO 0 ********* 0
   vetorClusterNodes->at(k).at(j).getId() :  14
+ AAAA vetorClusterNodes->at(k).at(j).getId() : 14
+ vectorNode->at(0) = 18
+ vectorNode->at(1) = 4
+ vectorNode->at(2) = 15
 saiu
 

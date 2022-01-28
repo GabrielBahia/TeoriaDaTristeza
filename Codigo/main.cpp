@@ -301,7 +301,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
 
         case 9:{
-            graph->Guloso(output_file, 2);
+            graph->Guloso(output_file, 4);
             output_file << "saiu" << endl;
             break;
         }
