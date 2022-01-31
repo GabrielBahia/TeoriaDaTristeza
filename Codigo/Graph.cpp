@@ -1359,6 +1359,7 @@ bool Graph::graphTemCiclo()
 
 void Graph::Guloso(ofstream &output_file, int p)
 {
+    output_file << getNode(2)->getWeight();
     bool *visitado = new bool[this->order];  // vetor para verificar os vértices já utilizados
 
     /*for (Node *node = this->first_node; node != nullptr; node = node->getNextNode())
@@ -1391,7 +1392,7 @@ void Graph::Guloso(ofstream &output_file, int p)
 
         //srand(time(0)); // semente aleatoria
 
-        /*for(int i=0;i<p;i++) 
+        for(int i=0;i<p;i++) 
         {
             Node *nodeAux;
             do {
@@ -1430,9 +1431,9 @@ void Graph::Guloso(ofstream &output_file, int p)
                 //output_file << "Esse vertice: " << vectorNode[i].at(0).getId() << endl;
                 output_file << "Entrou no 3" << endl;
             }
-        }*/
+        }
 
-        vectorNode->at(0).emplace_back(*getNode(0));
+        /*vectorNode->at(0).emplace_back(*getNode(0));
         vectorNode->at(1).emplace_back(*getNode(5));
         vectorNode->at(2).emplace_back(*getNode(1));
         vectorNode->at(3).emplace_back(*getNode(14));
@@ -1442,7 +1443,14 @@ void Graph::Guloso(ofstream &output_file, int p)
         visitado[getNode(14)->getIdNode()] = true;
         vectorNode->at(1).begin()->setCor(1);
         vectorNode->at(2).begin()->setCor(2);
-        vectorNode->at(3).begin()->setCor(3);
+        vectorNode->at(3).begin()->setCor(3);*/
+        for(int q=0;q<vectorNode->size();q++) {
+            for(int l=0;l<vectorNode->at(q).size();l++) {
+                vectorNode->at(q).at(l).setCor(q);
+                getNode(vectorNode->at(q).at(l).getId())->setCor(q);
+                visitado[vectorNode->at(q).at(l).getIdNode()] = true;
+            }
+        }
         /*getNode(0)->setCor(0);
         getNode(5)->setCor(1);*/
 
@@ -1491,6 +1499,8 @@ void Graph::Guloso(ofstream &output_file, int p)
         for(int i=0;i<p;i++) {
             listMaiorMenorPeso->emplace_back(*criaVetorMaiorMenor());
             listMaiorMenorPeso->at(i).reserve(2);
+            listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(),-1);
+            listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).end(),1000000);
         }
         //output_file <<  "Chegou" << endl;
         do {
@@ -1502,7 +1512,6 @@ void Graph::Guloso(ofstream &output_file, int p)
                 float maiorValor = vectorNode->at(i).at(0).getWeight();
                 float menorValor = vectorNode->at(i).at(0).getWeight();
                 //getMaiorMenorVal(&maiorValor, &menorValor, vectorNode->at(i), i, p);
-                output_file << "Maior valor: " << maiorValor << " Menor valor: " << menorValor << endl;
                 for(int j=0;j<vectorNode->at(i).size();j++) {
                     if(maiorValor < vectorNode->at(i).at(j).getWeight()) {
                         maiorValor = vectorNode->at(i).at(j).getWeight();
@@ -1510,9 +1519,11 @@ void Graph::Guloso(ofstream &output_file, int p)
                         menorValor = vectorNode->at(i).at(j).getWeight();
                     }
                 } // possivelmente isso vai sair daqui
-                listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(), maiorValor);
-                listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).end(), menorValor);
-
+                //listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(), maiorValor);
+                //listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).end(), menorValor);
+                listMaiorMenorPeso->at(i).at(0) = maiorValor;
+                listMaiorMenorPeso->at(i).at(1) = menorValor;
+                
                 gap = maiorValor - menorValor;
                 //listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(), 18);
                 //listMaiorMenorPeso->at(i).at(1) = 17;
@@ -1548,6 +1559,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                     }
                     //sort(listRank->at(i).begin(), listRank->at(i).end(), greater<float>());
                 }
+
                 cout << " SAIU 1 " << endl;
                 // output_file << "Tamanho da lista i = " << i << " e:" << listRank->at(i).size() << endl;
                 for (int j = 0; j < listRank->at(i).size(); j++)
@@ -1562,10 +1574,14 @@ void Graph::Guloso(ofstream &output_file, int p)
                 if((vectorWeightEdge->size() > 0) && !visitado[vectorWeightEdge->at(contPosicao).getIdNode()])
                 {
                     vectorWeightEdge->at(contPosicao).setCor(i);
+                    getNode(vectorWeightEdge->at(contPosicao).getId())->setCor(i);
                     output_file << "SET COR !  Vertice : " << vectorWeightEdge->at(contPosicao).getId() << " Cor : " << i << endl;
                     visitado[vectorWeightEdge->at(contPosicao).getIdNode()] = true;
                 // cout << " DEPOIS " << endl;
                 // cout << " vectorWeightEdge->at(contPosicao).getWeight() " << vectorWeightEdge->at(contPosicao).getWeight() << endl;
+                    if(i == 2) {
+                        output_file << "Maior peso 1: " << listMaiorMenorPeso->at(i).at(0) << " Menor peso 1: " << listMaiorMenorPeso->at(i).at(1) << endl;
+                    }
                     if(vectorWeightEdge->at(contPosicao).getWeight() > listMaiorMenorPeso->at(i).at(0)) {
                         cout << " ENTROU NO 1 if " << endl;
                         listMaiorMenorPeso->at(i).at(0) = vectorWeightEdge->at(contPosicao).getWeight();
@@ -1573,6 +1589,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                         cout << " ENTROU NO 2 if " << endl;
                         listMaiorMenorPeso->at(i).at(1) = vectorWeightEdge->at(contPosicao).getWeight();
                     }
+
                     cout << " saiu if " << endl;
                     vectorNode->at(i).emplace_back(vectorWeightEdge->at(contPosicao));  
                     cout << " COMECOU 2 " << endl;
@@ -1588,11 +1605,13 @@ void Graph::Guloso(ofstream &output_file, int p)
                                     vectorWeightEdge->erase(vectorWeightEdge->begin() + i);
                                 }
                             }
+
                             if(getNode(edge->getTargetId())->getWeight() > listMaiorMenorPeso->at(i).at(0)) {
                                 listMaiorMenorPeso->at(i).at(0) = getNode(edge->getTargetId())->getWeight();
                             } else if(getNode(edge->getTargetId())->getWeight() < listMaiorMenorPeso->at(i).at(1)) {
                                 listMaiorMenorPeso->at(i).at(1) = getNode(edge->getTargetId())->getWeight();
                             }
+
                             vectorNode->at(i).emplace_back(*getNode(edge->getTargetId()));
                         }
                     }
@@ -1606,7 +1625,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                         getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->setCor(i);
                         output_file << " SET COR !!! Vertice : " << getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getId() << " Cor : " << i << endl;
                         vectorNode->at(i).emplace_back(*getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId()));
-                        
+
                         if(getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getWeight() > listMaiorMenorPeso->at(i).at(0)) {
                             listMaiorMenorPeso->at(i).at(0) = getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getWeight();
                         } else if(getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getWeight() < listMaiorMenorPeso->at(i).at(1)) {
@@ -1660,11 +1679,18 @@ void Graph::Guloso(ofstream &output_file, int p)
                     /*for(Node *node = this->first_node;node != nullptr; node = node->getNextNode()) {
                         output_file << node->getId() << endl;
                     }*/
+                    if(i == 2) {
+                        output_file << "Maior peso 7: " << listMaiorMenorPeso->at(i).at(0) << " Menor peso 7: " << listMaiorMenorPeso->at(i).at(1) << endl;
+                    }
                 }
             }
 
         } while(!vectorWeightEdge->empty());
        // output_file << " vectorNode->size()  : " << vectorNode->size() << endl;
+
+        for(Node *node = this->first_node; node!=nullptr; node = node->getNextNode()) {
+            output_file << "Id dos nodes: " << node->getId() << " Peso dos nodes: " << node->getWeight() << " Cores dos nodes: " << node->getCor() << endl;
+        }
 
         for(int a=0;a<vectorNode->at(0).size();a++)
         {
@@ -1686,6 +1712,10 @@ void Graph::Guloso(ofstream &output_file, int p)
                 output_file << "  ->>>>>>>>> vectorNode->at(i).at(x).getId() cor " << vectorNode->at(1).at(x).getCor() << endl;
             }
         }  
+
+        for(int w =0;w<listMaiorMenorPeso->size();w++) {
+            output_file << "I: " << w << "Maior Valor de cada cluster: " << listMaiorMenorPeso->at(w).at(0) << " Menor Valor: " << listMaiorMenorPeso->at(w).at(1) << endl; 
+        }
 
         for(int w =0;w < vectorNode->size();w++)
         {
@@ -1803,7 +1833,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                 maiorMenorValSubCluster->at(k).front() = maior;
                 maiorMenorValSubCluster->at(k).back() = menor;
 
-
+                output_file << "K: " << k << "VetorClusterNodes->at(k).size(): " << vetorClusterNodes->at(k).size() << endl;
 
                 for(int d=0; d < vetorClusterNodes->at(k).size();d++)
                 {
