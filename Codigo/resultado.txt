@@ -1025,6 +1025,8 @@ I: 3Maior Valor de cada cluster: 12 Menor Valor: 1
  i  = 3 Id 18 Cor : 3
  i  = 3 Id 4 Cor : 3
  i  = 3 Id 17 Cor : 3
+Odeio g r a f o s: 21
+Odeio g r a f o s 2: 2
   i : 0
 vetorClusterNodes->at(0).at(0) :  0
  COR DO 5 ********* 1
@@ -1067,6 +1069,8 @@ Cores: true
 Cores: true
 Cores: true
 Chegou no 5
+Size: 21
+Size 2: 3806127912
 Chegou no 6
 vetorClusterNodes->at(1).size()1
 vetorClusterNodes->at(1).at(0).getFirstEdge()20
@@ -1074,5 +1078,6 @@ getNode(vetorClusterNodes->at(1).at(0).getFirstEdge()->getTargetId())->getCor()1
 Entrou quantas x 
 Entrou 1: 
 Entrou 2: 
-9Entrou 3
-Entrou 9
+Super teste: 9
+Entrou 3
+Entrou 7

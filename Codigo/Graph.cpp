@@ -1695,7 +1695,7 @@ void Graph::Guloso(ofstream &output_file, int p)
 
         } while(!vectorWeightEdge->empty());
        // output_file << " vectorNode->size()  : " << vectorNode->size() << endl;
-
+        delete vectorWeightEdge;
         for(Node *node = this->first_node; node!=nullptr; node = node->getNextNode()) {
             output_file << "Id dos nodes: " << node->getId() << " Peso dos nodes: " << node->getWeight() << " Cores dos nodes: " << node->getCor() << endl;
         }
@@ -1948,6 +1948,8 @@ void Graph::Guloso(ofstream &output_file, int p)
                 coresPossiveis->at(x).insert(coresPossiveis->at(x).begin(), 1);
                 coresPossiveis->at(x).insert(coresPossiveis->at(x).end(), 1);
             }
+            output_file << "Size: " << coresPossiveis->capacity() << endl;
+            output_file << "Size 2: " << coresPossiveis->begin()->capacity() << endl;
             //cout << "Super teste: " << coresPossiveis->at(0).at(0) << endl;
             output_file << "Chegou no 6" << endl;
             vector<vector<int>> *valores = new vector<vector<int>>;
@@ -1963,7 +1965,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                                 output_file << "Entrou 1: " << endl;
                                 corNode->at(getNode(edge->getTargetId())->getCor()) = false; // marca a cor como visitada
                                 output_file << "Entrou 2: " << endl;
-                                output_file << listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).front(); //ela salva o maior e menor peso de cada i ou seja, de cada cluster
+                                output_file << "Super teste: " << listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).front() << endl; //ela salva o maior e menor peso de cada i ou seja, de cada cluster
                                 output_file << "Entrou 3" << endl; 
                                 if(maiorMenorValSubCluster->at(e).front() > listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).front() && maiorMenorValSubCluster->at(e).back() < listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).back()) {
                                     output_file << "Entrou 4" << endl;
