@@ -1926,6 +1926,8 @@ void Graph::Guloso(ofstream &output_file, int p)
                         listMaiorMenorPeso->insert(listMaiorMenorPeso->begin() + corSelecionado, { menor });
                     }
                 }
+
+                    
             }
 
             /*
@@ -1954,9 +1956,35 @@ void Graph::Guloso(ofstream &output_file, int p)
                     output_file << " Kluster : " << i << " Valor : " << vetorClusterNodes->at(0).at(n).getId() << endl;
                 }
             }
+
+            if( i == (p-1))
+            {
+                for(int g=0; g < vetorClusterNodes->size(); g++ )
+                {
+                    delete &vetorClusterNodes->at(g);
+                }
+
+                for(int s =0; s < maiorMenorValSubCluster->size(); s++)
+                {
+                    delete &maiorMenorValSubCluster->at(s);
+                }
+
+                delete maiorMenorValSubCluster;
+                delete vetorClusterNodes;
+                delete verificados;
+            }
         }
 
-        
+        for(int h =0; h < listRank->size();h++)
+        {
+            delete &listRank->at(h);
+        } 
+
+        delete listMaiorMenorPeso;
+        delete vectorNode; 
+        delete visitado;
+        delete vectorWeightEdge;
+        delete listRank;
        
 
     } else {
