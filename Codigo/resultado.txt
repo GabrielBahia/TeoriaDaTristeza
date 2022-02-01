@@ -1004,6 +1004,7 @@ I: 0Maior Valor de cada cluster: 10 Menor Valor: 2
 I: 1Maior Valor de cada cluster: 9 Menor Valor: 1
 I: 2Maior Valor de cada cluster: 7 Menor Valor: 2
 I: 3Maior Valor de cada cluster: 12 Menor Valor: 1
+TESTANDO TAMANHO:  4
  i  = 0 Id 0 Cor : 0
  i  = 0 Id 11 Cor : 0
  i  = 0 Id 13 Cor : 0
@@ -1025,6 +1026,7 @@ I: 3Maior Valor de cada cluster: 12 Menor Valor: 1
  i  = 3 Id 18 Cor : 3
  i  = 3 Id 4 Cor : 3
  i  = 3 Id 17 Cor : 3
+TESTANDO TAMANHO2:  4
   i : 0
 vetorClusterNodes->at(0).at(0) :  0
  COR DO 5 ********* 1
@@ -1047,6 +1049,7 @@ K: 2 Node sendo excluido: 3
  ENTROU 111111111111111 
  TAMANHAO K 21
   vetorClusterNodes->at(k).at(j).getId() :  15
+TESTANDO TAMANHO 3:  4
 K: 0 Maior Valor: 6 Menor valor: 6
 K: 1 Maior Valor: 7 Menor valor: 7
 K: 2 Maior Valor: 10 Menor valor: 4
@@ -1067,9 +1070,11 @@ Cores: true
 Cores: true
 Cores: true
 Chegou no 5
+Size coresPossiveis: 2
+TESTANDO TAMANHO:  4
 Size: 21
-Size 2: 3801638696
 Chegou no 6
+Chegou aqui
 vetorClusterNodes->at(1).size()1
 vetorClusterNodes->at(1).at(0).getFirstEdge()20
 getNode(vetorClusterNodes->at(1).at(0).getFirstEdge()->getTargetId())->getCor()1
@@ -1079,3 +1084,174 @@ Entrou 2:
 Super teste: 9
 Entrou 3
 Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+Valor do e: 1
+Testando front: 0
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(1).size(): 1
+Entradas: 1
+coresPossiveis->at(0).front(): 1
+coresPossiveis->at(0).back(): 0
+Rodous quantas x: 
+Valor do menor: 1
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+Entrou quantas x 
+Entrou 1: 
+Entrou 2: 
+Super teste: 12
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+Entrou quantas x 
+Valor do e: 2
+Testando front: 0
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(2).size(): 2
+Entradas: 1
+coresPossiveis->at(0).front(): 3
+coresPossiveis->at(0).back(): 0
+Rodous quantas x: 
+Valor do menor: 3
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+Entrou quantas x 
+Valor do e: 3
+Testando front: 0
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(3).size(): 1
+Entradas: 0
+coresPossiveis->at(0).front(): 3
+coresPossiveis->at(0).back(): 0
+Valor do menor: 3
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+vetorClusterNodes.size()  4
+vetorClusterNodes->at(0).size()  2
+ Kluster : 0 Valor : 0
+ Kluster : 0 Valor : 11
+  i : 1
+vetorClusterNodes->at(0).at(0) :  5
+ COR DO 5 ********* 1
+ COR DO 0 ********* 0
+  vetorClusterNodes->at(k).at(j).getId() :  5
+ ENTROU 111111111111111 
+ TAMANHAO K 21
+  vetorClusterNodes->at(k).at(j).getId() :  19
+ ENTROU 111111111111111 
+ TAMANHAO K 21
+  vetorClusterNodes->at(k).at(j).getId() :  20
+ ENTROU 111111111111111 
+ TAMANHAO K 21
+  vetorClusterNodes->at(k).at(j).getId() :  16
+ ENTROU 111111111111111 
+ TAMANHAO K 21
+  vetorClusterNodes->at(k).at(j).getId() :  10
+TESTANDO TAMANHO 3:  4
+K: 0 Maior Valor: 8 Menor valor: 8
+K: 1 Maior Valor: 8 Menor valor: 8
+K: 2 Maior Valor: 9 Menor valor: 9
+K: 3 Maior Valor: 3 Menor valor: 3
+K: 4 Maior Valor: 1 Menor valor: 1
+Chegou a sair
+maiorSubCluster vale: 1
+Chegou a sair 2 
+Entrou quantas x
+Entrou quantas x
+Entrou quantas x
+Entrou quantas x
+Entrou quantas x
+Gap da posicao escolhida = 0
+Posicao escolhida = 0
+Chegou no 3
+Chegou no 4
+Cores: true
+Cores: false
+Cores: true
+Cores: true
+Chegou no 5
+Size coresPossiveis: 2
+TESTANDO TAMANHO:  4
+Size: 21
+Chegou no 6
+Chegou aqui
+vetorClusterNodes->at(1).size()1
+vetorClusterNodes->at(1).at(0).getFirstEdge()1
+getNode(vetorClusterNodes->at(1).at(0).getFirstEdge()->getTargetId())->getCor()2
+Entrou quantas x 
+Entrou 1: 
+Entrou 2: 
+Super teste: 7
+Entrou 3
+Tamanho mudou: 4
+Valor aqui no 3: 12
+Node: 1
+Valor: 8
+Maior da list: 7
+Testando: 9
+Cor: 2
+Entrou 5
+Valor do e: 1
+Testando front: 0
+testando back: 1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(1).size(): 1
+Entradas: 1
+coresPossiveis->at(0).front(): 1000000
+coresPossiveis->at(0).back(): 2
+Rodous quantas x: 
+Valor do menor: 1000000
+Uma x
+duas x
+tres x
+contSelecionado: 0
+entrou 2
+Chegou a sair
+Entrou quantas x 
+Entrou 1: 
+Entrou 2: 
+Super teste: 12
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+Entrou 1: 
+Entrou 2: 
+Super teste: 10
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+Valor do e: 2
+Testando front: 0
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(2).size(): 1
+Entradas: 2
+coresPossiveis->at(0).front(): 0
+coresPossiveis->at(0).back(): 0
+Rodous quantas x: 
+Rodous quantas x: 
