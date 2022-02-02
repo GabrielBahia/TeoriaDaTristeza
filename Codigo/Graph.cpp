@@ -1359,6 +1359,9 @@ bool Graph::graphTemCiclo()
 
 void Graph::Guloso(ofstream &output_file, int p)
 {
+    for(Edge *e = getNode(5)->getFirstEdge();e != nullptr; e = e->getNextEdge()) {
+        output_file << "Arestas desse lixo: " << e->getTargetId() << endl;
+    }
 
     for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
         output_file << "PORRA: " << node->getTargetId() << endl;
@@ -1780,6 +1783,9 @@ void Graph::Guloso(ofstream &output_file, int p)
             }
             output_file << "Dando erase: " << vectorNode->at(i).begin()->getId() << endl;
             vectorNode->at(i).erase(vectorNode->at(i).begin());
+            for(Edge *e = getNode(vectorNode->at(i).begin()->getId())->getFirstEdge();e != nullptr; e = e->getNextEdge()) {
+                output_file << "Arestas desse lixo: " << e->getTargetId() << endl;
+            }
             for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
                 output_file << "LLLLLLLLAAAAAAAAA 4 : " << node->getTargetId() << endl;
             }

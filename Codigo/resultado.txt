@@ -1,3 +1,6 @@
+Arestas desse lixo: 0
+Arestas desse lixo: 12
+Arestas desse lixo: 9
 PORRA: 20
 PORRA: 16
 2
@@ -1039,6 +1042,9 @@ vetorClusterNodes->at(0).at(0) :  0
 LLLLLLLLAAAAAAAAA 3 : 20
 LLLLLLLLAAAAAAAAA 3 : 16
 Dando erase: 0
+Arestas desse lixo: 0
+Arestas desse lixo: 20
+Arestas desse lixo: 18
 LLLLLLLLAAAAAAAAA 4 : 20
 LLLLLLLLAAAAAAAAA 4 : 16
 LLLLLLLLAAAAAAAAA: 20
@@ -1255,7 +1261,9 @@ vetorClusterNodes->at(0).at(0) :  5
 LLLLLLLLAAAAAAAAA 3 : 20
 LLLLLLLLAAAAAAAAA 3 : 16
 Dando erase: 5
-LLLLLLLLAAAAAAAAA 4 : 20~´
+Arestas desse lixo: 1
+Arestas desse lixo: 6
+LLLLLLLLAAAAAAAAA 4 : 20
 LLLLLLLLAAAAAAAAA: 20
  COR DO 5 ********* 1
  COR DO 0 ********* 0
@@ -1341,6 +1349,10 @@ LLLLLLLLAAAAAAAAA 1 : 20
 vetorClusterNodes->at(0).at(0) :  1
 LLLLLLLLAAAAAAAAA 3 : 20
 Dando erase: 1
+Arestas desse lixo: 5
+Arestas desse lixo: 17
+Arestas desse lixo: 16
+Arestas desse lixo: 10
 LLLLLLLLAAAAAAAAA 4 : 20
 LLLLLLLLAAAAAAAAA: 20
  COR DO 5 ********* 1
@@ -1417,6 +1429,7 @@ LLLLLLLLAAAAAAAAA 1 : 20
 vetorClusterNodes->at(0).at(0) :  14
 LLLLLLLLAAAAAAAAA 3 : 20
 Dando erase: 14
+Arestas desse lixo: 18
 LLLLLLLLAAAAAAAAA 4 : 20
 LLLLLLLLAAAAAAAAA: 20
  COR DO 5 ********* 1
