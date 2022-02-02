@@ -1703,6 +1703,10 @@ void Graph::Guloso(ofstream &output_file, int p)
 
         } while(!vectorWeightEdge->empty());
        // output_file << " vectorNode->size()  : " << vectorNode->size() << endl;
+        for(Edge *e = getNode(5)->getFirstEdge();e != nullptr; e = e->getNextEdge()) {
+            output_file << "Arestas desse lixo: " << e->getTargetId() << endl;
+        }
+
         for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
             output_file << "PORRA: " << node->getTargetId() << endl;
         }
@@ -1745,7 +1749,9 @@ void Graph::Guloso(ofstream &output_file, int p)
             }
 
         }
-
+        for(Edge *e = getNode(5)->getFirstEdge();e != nullptr; e = e->getNextEdge()) {
+            output_file << "Arestas desse lixo 17: " << e->getTargetId() << endl;
+        }
         output_file << "TESTANDO TAMANHO2:  " << listMaiorMenorPeso->size() << endl;
         for(int i =0;i<p;i++)
         {
@@ -1921,6 +1927,9 @@ void Graph::Guloso(ofstream &output_file, int p)
                 //cout << "i "<< i << "vetorClusterNodes.size() " << vetorClusterNodes->size() << endl; 
             } 
             //}
+            for(Edge *e = getNode(5)->getFirstEdge();e != nullptr; e = e->getNextEdge()) {
+               output_file << "Arestas desse lixo: " << e->getTargetId() << endl;
+            }
             for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
                 output_file << "LLLLLLLLAAAAAAA: " << node->getTargetId() << endl;
             }
