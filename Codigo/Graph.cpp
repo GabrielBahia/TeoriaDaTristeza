@@ -2325,6 +2325,72 @@ vector<float> Graph::geraRank(vector<vector<Node>> vectorCluster, int idCluster,
 
 */
 
+void Graph::teste(ofstream &output_file) {
+    // funcionando
+    /*
+    vector<vector<Node*>> vectorNode;
+    vector<Node*> aa;
+    aa.emplace_back(getNode(13));
+    output_file << "Triste" << endl;
+    vectorNode.emplace_back(aa);
+    output_file << "Feliz" << endl;
+    output_file << "Local 1: " << aa.at(0) << endl;
+    output_file << "Local 2: " << getNode(13) << endl;
+    output_file << "Local 3: " << vectorNode.at(0).at(0) << endl;
+    */
+
+    // testando
+    vector<vector<Node*>> vectorNode;
+    output_file << "vectorNode.size()" << vectorNode.size() << endl;
+    for(int i=0;i<3;i++) {
+        vectorNode.push_back(criaVectorTeste()); // criando os vetores de node;
+        vectorNode.at(i).insert(vectorNode.at(i).end(), getNode(i));
+        //cout << "Tamanho i: " << i << " " << vectorNode->end()->capacity() << endl;
+    }
+    output_file << "vectorNode.size()" << vectorNode.size() << endl;
+    for(int i=0;i<vectorNode.size();i++) {
+        output_file << "Id: " << vectorNode.at(i).at(0)->getId() << " posição na memória: " << vectorNode.at(i).at(0) << endl;
+        output_file << "Id: " << getNode(vectorNode.at(i).at(0)->getId())->getId() << " posição na memória: " << getNode(vectorNode.at(i).at(0)->getId()) << endl;
+    }
+    vectorNode.at(0).at(0)->setCor(1);
+    getNode(vectorNode.at(0).at(0)->getId())->getCor();
+    output_file << "Node: " << vectorNode.at(0).at(0)->getId() << " vectorNode.at(0).at(0)->getCor: " << vectorNode.at(0).at(0)->getCor() << endl;
+    output_file << "Node: " << getNode(vectorNode.at(0).at(0)->getId())->getId() << "getNode(vectorNode.at(i).at(0)->getId())->getCor(): " << getNode(vectorNode.at(0).at(0)->getId())->getCor() << endl;
+    Node *node = new Node();
+    node = *vectorNode.at(0).begin();
+    output_file << "Node: " << vectorNode.at(0).at(0)->getId() << "Local de memoria: " << *vectorNode.at(0).begin() << endl;
+    output_file << "Node: " << vectorNode.at(0).at(0)->getId() << "Local de memoria: " << vectorNode.at(0).at(0) << endl;
+    output_file << "Node: " << node->getId() << "Local de memoria: " << node << endl;
+    
+    vector<Node*> aa;
+    aa.emplace_back(getNode(13));
+    vectorNode.at(0).emplace_back(aa.at(0)); 
+    output_file << "vectorNode.at(0).at(1): " << vectorNode.at(0).at(1)->getId() << " Local de memoria: " << vectorNode.at(0).at(1) << endl;
+    output_file << "aa.at(0)->getId(): " << aa.at(0)->getId() << " Local de memoria: " << aa.at(0) << endl;
+    output_file << "getNode(aa.at(0))->getId()" << getNode(aa.at(0)->getId())->getId() << " Local de memoria: " << getNode(aa.at(0)->getId()) << endl ;  
+
+    output_file << "Id: " << vectorNode.at(0).at(0)->getId() << " Local de memoria: " << vectorNode.at(0).at(0) << endl;
+
+    vectorNode.at(0).erase(vectorNode.at(0).begin());
+    for(int i=0;i<vectorNode.at(0).size();i++) {
+        output_file << "Id: " << vectorNode.at(0).at(i)->getId() << " Local de memoria: " << vectorNode.at(0).at(i) << endl;
+    }
+
+    aa.emplace_back(vectorNode.at(0).at(0));
+
+    output_file << "Id: " << aa.at(1)->getId() << " Local de memoria: " << aa.at(1) << endl;
+    aa.erase(aa.begin());
+    output_file << "Id: " << aa.at(0)->getId() << " Local de memoria: " << aa.at(0) << endl;
+    output_file << "Id: " << getNode(aa.at(0)->getId())->getId() << " Local de memoria: " << getNode(aa.at(0)->getId()) << endl;
+}
+
+vector<Node*> Graph::criaVectorTeste() {
+    //vector<Node> vector;
+    vector<Node*> vectorNode;
+    //vectorNode->reserve(this->order);
+    return vectorNode;
+}
+
 
 vector<Node> *Graph::criaVector() {
     //vector<Node> vector;

@@ -79,10 +79,12 @@ class Graph{
 
 
         //Funções Auxiliares Segunda Etapa
+        vector<Node*> criaVectorTeste();
         vector<Node> *criaVector();
         vector<float> *criaVetorRank(int p);
         vector<int> *criaVetorMaiorMenor();
         void *verificaVizinhos(Node *node, bool *verifica, int cor);
+        void teste(ofstream &output_file);
         //vector<float> geraRank(vector<vector<Node>> vectorCluster, int idCluster, vector<int> nodeWeight, vector<int> nodeGrau );
         //void getMaiorMenorVal(float *maiorValor, float *menorValor, vector<Node> vectorNode, int i ,int p);
 };
