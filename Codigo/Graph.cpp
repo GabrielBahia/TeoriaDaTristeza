@@ -1389,12 +1389,12 @@ void Graph::Guloso(ofstream &output_file, int p)
 	if(this->weighted_node) // só pode grafo com node com peso
     {
         //vector<vector<Node>> vectorNode;
-        vector<vector<Node>> *vectorNode = new vector<vector<Node>>; //Note space between "> >" // vetor de vetores de node
-        vectorNode->reserve(this->order);
+        vector<vector<Node*>> vectorNode; //Note space between "> >" // vetor de vetores de node
+        //vectorNode.reserve(this->order);
     
         for(int i=0;i<p;i++) {
-            vectorNode->push_back(*criaVector()); // criando os vetores de node;
-            vectorNode->at(i).reserve(this->order);
+            vectorNode.push_back(criaVectorTeste()); // criando os vetores de node;
+            //vectorNode->at(i).reserve(this->order);
             //cout << "Tamanho i: " << i << " " << vectorNode->end()->capacity() << endl;
         }
 
@@ -1441,22 +1441,22 @@ void Graph::Guloso(ofstream &output_file, int p)
             }
         }*/
 
-        vectorNode->at(0).emplace_back(*getNode(0));
-        vectorNode->at(1).emplace_back(*getNode(5));
-        vectorNode->at(2).emplace_back(*getNode(1));
-        vectorNode->at(3).emplace_back(*getNode(14));
+        vectorNode.at(0).emplace_back(getNode(0));
+        vectorNode.at(1).emplace_back(getNode(5));
+        vectorNode.at(2).emplace_back(getNode(1));
+        vectorNode.at(3).emplace_back(getNode(14));
         visitado[getNode(0)->getIdNode()] = true;
         visitado[getNode(5)->getIdNode()] = true;
         visitado[getNode(1)->getIdNode()] = true;
         visitado[getNode(14)->getIdNode()] = true;
-        vectorNode->at(1).begin()->setCor(1);
-        vectorNode->at(2).begin()->setCor(2);
-        vectorNode->at(3).begin()->setCor(3);
+        vectorNode.at(1).at(0)->setCor(1);
+        vectorNode.at(2).at(0)->setCor(2);
+        vectorNode.at(3).at(0)->setCor(3);
 
 
-        for(int q=0;q<vectorNode->size();q++) {
+        /*for(int q=0;q<vectorNode->size();q++) {
             getNode(vectorNode->at(q).begin()->getId())->setCor(q);
-        }
+        }*/
 
         /*Quando estiver escolhendo node aleatorio usa isso aqui ao inves das linhas de cima
         for(int q=0;q<vectorNode->size();q++) {
@@ -1478,15 +1478,18 @@ void Graph::Guloso(ofstream &output_file, int p)
 
         //vector<Node> *vectorWeight = new vector<Node>(); // vector de pesos dos nodes
         //vector<Node> *vectorEdge = new vector<Node>(); // vector de grau dos nodes
-        vector<Node> *vectorWeightEdge = new vector<Node>();
-        vector<vector<float>> *listRank = new vector<vector<float>>; // vector de ranqueamento dos nodes
+        vector<Node*> vectorWeightEdge;// = new vector<Node>();
+        vector<vector<float>> listRank; //= new vector<vector<float>>; // vector de ranqueamento dos nodes
         //vectorWeightEdge->reserve(this->order-p);
-        vectorWeightEdge->reserve(this->order);
-        listRank->reserve(p); // reservando espaço para o total de clusters nesse vector 
+        //vectorWeightEdge->reserve(this->order);
+        listRank.reserve(p); // reservando espaço para o total de clusters nesse vector 
         for(int i=0;i<p;i++) {
-            listRank->push_back(*criaVetorRank(p)); // alocando vectors em cada posição da listRank
+            vector<float> *rank = new vector<float>;
+            listRank.push_back(*rank);
+            //listRank->push_back(*criaVetorRank(p)); // alocando vectors em cada posição da listRank
+            
             //listRank->at(i).reserve(this->order-2); // reservando espaço para o total de nodes em cada posição da listRank
-            listRank->at(i).reserve(this->order);
+            //listRank->at(i).reserve(this->order);
         }
         //vectorWeight->reserve(this->order-p); // reservando espaço para o total de nodes nesse vector 
         //vectorEdge->reserve(this->order-p); // reservando espaço para o total de nodes nesse vector 
@@ -1495,11 +1498,11 @@ void Graph::Guloso(ofstream &output_file, int p)
 
         for(Node *node = this->first_node;node != nullptr;node = node->getNextNode())
         {
-            if((node->getId() != vectorNode->at(0).at(0).getId()) && (node->getId() != vectorNode->at(1).at(0).getId()) && !visitado[node->getIdNode()])
+            if(!visitado[node->getIdNode()])
             {       
                 //vectorWeight->emplace_back(*node);
                 //vectorEdge->emplace_back(*node);
-                vectorWeightEdge->emplace_back(*node);
+                vectorWeightEdge.emplace_back(node);
             }
         }
 
@@ -1507,16 +1510,17 @@ void Graph::Guloso(ofstream &output_file, int p)
             output_file << "Ids restante: " << vectorWeightEdge->at(i).getId() << endl;            
         }*/
 
-        vector<vector<int>> *listMaiorMenorPeso = new vector<vector<int>>;
-        listMaiorMenorPeso->reserve(p);
+        vector<vector<int>> listMaiorMenorPeso; //= new vector<vector<int>>;
+        listMaiorMenorPeso.reserve(p);
         //output_file << listMaiorMenorPeso.at(0).capacity() << endl;
         //output_file <<  listMaiorMenorPeso.capacity() << endl;
 
         for(int i=0;i<p;i++) {
-            listMaiorMenorPeso->emplace_back(*criaVetorMaiorMenor());
-            listMaiorMenorPeso->at(i).reserve(2);
-            listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(),-1);
-            listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).end(),1000000);
+            vector<int> *rank = new vector<int>;
+            listMaiorMenorPeso.emplace_back(*rank);
+            listMaiorMenorPeso.at(i).reserve(2);
+            listMaiorMenorPeso.at(i).insert(listMaiorMenorPeso.at(i).begin(),-1);
+            listMaiorMenorPeso.at(i).insert(listMaiorMenorPeso.at(i).end(),1000000);
         }
         //output_file <<  "Chegou" << endl;
         do {
@@ -1525,34 +1529,34 @@ void Graph::Guloso(ofstream &output_file, int p)
                 float menorVal;   
                 int contPosicao = 0;
                 float gap = 0;
-                float maiorValor = vectorNode->at(i).at(0).getWeight();
-                float menorValor = vectorNode->at(i).at(0).getWeight();
+                float maiorValor = vectorNode.at(i).at(0)->getWeight();
+                float menorValor = vectorNode.at(i).at(0)->getWeight();
                 //getMaiorMenorVal(&maiorValor, &menorValor, vectorNode->at(i), i, p);
-                for(int j=0;j<vectorNode->at(i).size();j++) {
-                    if(maiorValor < vectorNode->at(i).at(j).getWeight()) {
-                        maiorValor = vectorNode->at(i).at(j).getWeight();
-                    } else if(menorValor > vectorNode->at(i).at(j).getWeight()) {
-                        menorValor = vectorNode->at(i).at(j).getWeight();
+                for(int j=0;j<vectorNode.at(i).size();j++) {
+                    if(maiorValor < vectorNode.at(i).at(j)->getWeight()) {
+                        maiorValor = vectorNode.at(i).at(j)->getWeight();
+                    } else if(menorValor > vectorNode.at(i).at(j)->getWeight()) {
+                        menorValor = vectorNode.at(i).at(j)->getWeight();
                     }
                 } // possivelmente isso vai sair daqui
                 //listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(), maiorValor);
                 //listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).end(), menorValor);
-                listMaiorMenorPeso->at(i).at(0) = maiorValor;
-                listMaiorMenorPeso->at(i).at(1) = menorValor;
+                listMaiorMenorPeso.at(i).at(0) = maiorValor;
+                listMaiorMenorPeso.at(i).at(1) = menorValor;
                 
                 gap = maiorValor - menorValor;
                 //listMaiorMenorPeso->at(i).insert(listMaiorMenorPeso->at(i).begin(), 18);
                 //listMaiorMenorPeso->at(i).at(1) = 17;
-                for(int j=0;j<vectorWeightEdge->size();j++) {
+                for(int j=0;j<vectorWeightEdge.size();j++) {
                     
                     float gapNode;
                     float gapFinal;
-                    output_file << " Vertice atual: " << vectorWeightEdge->at(j).getId() << endl;
-                    output_file << "Peso atual: " << vectorWeightEdge->at(j).getWeight() << endl;
-                    if(vectorWeightEdge->at(j).getWeight() > maiorValor) {
-                        gapNode = vectorWeightEdge->at(j).getWeight() - menorValor;
-                    } else if(vectorWeightEdge->at(j).getWeight() < menorValor) {
-                        gapNode = maiorValor - vectorWeightEdge->at(j).getWeight();
+                    output_file << " Vertice atual: " << vectorWeightEdge.at(j)->getId() << endl;
+                    output_file << "Peso atual: " << vectorWeightEdge.at(j)->getWeight() << endl;
+                    if(vectorWeightEdge.at(j)->getWeight() > maiorValor) {
+                        gapNode = vectorWeightEdge.at(j)->getWeight() - menorValor;
+                    } else if(vectorWeightEdge.at(j)->getWeight() < menorValor) {
+                        gapNode = maiorValor - vectorWeightEdge.at(j)->getWeight();
                     } else {
                         gapNode = 0;
                     }
@@ -1560,11 +1564,11 @@ void Graph::Guloso(ofstream &output_file, int p)
                     if(gapNode < 0) {
                         gapNode *= -1;
                     }
-                    gapFinal = gapNode / vectorWeightEdge->at(j).getTotal_Edge();
+                    gapFinal = gapNode / vectorWeightEdge.at(j)->getTotal_Edge();
                     output_file << "Valor do gap atual: " << gap << endl;
                     output_file << "Valor do gapNode: " << gapNode << endl;
                     output_file << "Valos do gapFinal: " << gapFinal << endl;
-                    listRank->at(i).emplace_back(gapFinal);
+                    listRank.at(i).emplace_back(gapFinal);
                     if(j == 0) {
                         menorVal = gapFinal;
                     } else {
@@ -1578,81 +1582,81 @@ void Graph::Guloso(ofstream &output_file, int p)
 
                 cout << " SAIU 1 " << endl;
                 // output_file << "Tamanho da lista i = " << i << " e:" << listRank->at(i).size() << endl;
-                for (int j = 0; j < listRank->at(i).size(); j++)
+                for (int j = 0; j < listRank.at(i).size(); j++)
                 {
-                    output_file << "Gap do node " << vectorWeightEdge->at(j).getId() << " e: " << listRank->at(i).at(j) << endl;
+                    output_file << "Gap do node " << vectorWeightEdge.at(j)->getId() << " e: " << listRank.at(i).at(j) << endl;
                 }
                 output_file << "Valor do cont: " << contPosicao << endl;
                // cout << " ANTES " << endl;
                // cout << " contPosicao " <<  contPosicao << endl;
                // cout << " vectorWeightEdge->capacity() " << vectorWeightEdge->capacity() << endl;
 
-                if((vectorWeightEdge->size() > 0) && !visitado[vectorWeightEdge->at(contPosicao).getIdNode()])
+                if((vectorWeightEdge.size() > 0) && !visitado[vectorWeightEdge.at(contPosicao)->getIdNode()])
                 {
-                    vectorWeightEdge->at(contPosicao).setCor(i);
-                    getNode(vectorWeightEdge->at(contPosicao).getId())->setCor(i);
-                    output_file << "SET COR !  Vertice : " << vectorWeightEdge->at(contPosicao).getId() << " Cor : " << i << endl;
-                    visitado[vectorWeightEdge->at(contPosicao).getIdNode()] = true;
+                    vectorWeightEdge.at(contPosicao)->setCor(i);
+                    getNode(vectorWeightEdge.at(contPosicao)->getId())->setCor(i);
+                    output_file << "SET COR !  Vertice : " << vectorWeightEdge.at(contPosicao)->getId() << " Cor : " << i << endl;
+                    visitado[vectorWeightEdge.at(contPosicao)->getIdNode()] = true;
                 // cout << " DEPOIS " << endl;
                 // cout << " vectorWeightEdge->at(contPosicao).getWeight() " << vectorWeightEdge->at(contPosicao).getWeight() << endl;
                     if(i == 2) {
-                        output_file << "Maior peso 1: " << listMaiorMenorPeso->at(i).at(0) << " Menor peso 1: " << listMaiorMenorPeso->at(i).at(1) << endl;
+                        output_file << "Maior peso 1: " << listMaiorMenorPeso.at(i).at(0) << " Menor peso 1: " << listMaiorMenorPeso.at(i).at(1) << endl;
                     }
-                    if(vectorWeightEdge->at(contPosicao).getWeight() > listMaiorMenorPeso->at(i).at(0)) {
+                    if(vectorWeightEdge.at(contPosicao)->getWeight() > listMaiorMenorPeso.at(i).at(0)) {
                         cout << " ENTROU NO 1 if " << endl;
-                        listMaiorMenorPeso->at(i).at(0) = vectorWeightEdge->at(contPosicao).getWeight();
-                    } else if(vectorWeightEdge->at(contPosicao).getWeight() < listMaiorMenorPeso->at(i).at(1)) {
+                        listMaiorMenorPeso.at(i).at(0) = vectorWeightEdge.at(contPosicao)->getWeight();
+                    } else if(vectorWeightEdge.at(contPosicao)->getWeight() < listMaiorMenorPeso.at(i).at(1)) {
                         cout << " ENTROU NO 2 if " << endl;
-                        listMaiorMenorPeso->at(i).at(1) = vectorWeightEdge->at(contPosicao).getWeight();
+                        listMaiorMenorPeso.at(i).at(1) = vectorWeightEdge.at(contPosicao)->getWeight();
                     }
 
                     cout << " saiu if " << endl;
-                    vectorNode->at(i).emplace_back(vectorWeightEdge->at(contPosicao));  
+                    vectorNode.at(i).emplace_back(vectorWeightEdge.at(contPosicao));  
                     cout << " COMECOU 2 " << endl;
-                    for(Edge *edge = vectorWeightEdge->at(contPosicao).getFirstEdge();edge != nullptr;edge = edge->getNextEdge()) {
+                    for(Edge *edge = vectorWeightEdge.at(contPosicao)->getFirstEdge();edge != nullptr;edge = edge->getNextEdge()) {
                         output_file << "Id da aresta: " << edge->getTargetId() << endl;
                         if((getNode(edge->getTargetId())->getInDegree() == 1) && !visitado[getNode(edge->getTargetId())->getIdNode()] ) {
                             output_file << "Chegou 1.5.5" << endl;
                             getNode(edge->getTargetId())->setCor(i);
                             output_file << "SET COR !! Vertice : " << getNode(edge->getTargetId())->getId() << " Cor : " << i << endl;
                             visitado[getNode(edge->getTargetId())->getIdNode()] = true;
-                            for(int i=0;i<vectorWeightEdge->size();i++) {
-                                if(vectorWeightEdge->at(i).getId() == getNode(edge->getTargetId())->getId()) {
-                                    vectorWeightEdge->erase(vectorWeightEdge->begin() + i);
+                            for(int i=0;i<vectorWeightEdge.size();i++) {
+                                if(vectorWeightEdge.at(i)->getId() == getNode(edge->getTargetId())->getId()) {
+                                    vectorWeightEdge.erase(vectorWeightEdge.begin() + i);
                                 }
                             }
 
-                            if(getNode(edge->getTargetId())->getWeight() > listMaiorMenorPeso->at(i).at(0)) {
-                                listMaiorMenorPeso->at(i).at(0) = getNode(edge->getTargetId())->getWeight();
-                            } else if(getNode(edge->getTargetId())->getWeight() < listMaiorMenorPeso->at(i).at(1)) {
-                                listMaiorMenorPeso->at(i).at(1) = getNode(edge->getTargetId())->getWeight();
+                            if(getNode(edge->getTargetId())->getWeight() > listMaiorMenorPeso.at(i).at(0)) {
+                                listMaiorMenorPeso.at(i).at(0) = getNode(edge->getTargetId())->getWeight();
+                            } else if(getNode(edge->getTargetId())->getWeight() < listMaiorMenorPeso.at(i).at(1)) {
+                                listMaiorMenorPeso.at(i).at(1) = getNode(edge->getTargetId())->getWeight();
                             }
 
-                            vectorNode->at(i).emplace_back(*getNode(edge->getTargetId()));
+                            vectorNode.at(i).emplace_back(getNode(edge->getTargetId()));
                         }
                     }
-                    int posicaoNode = getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getIdNode();
+                    int posicaoNode = getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())->getIdNode();
                     output_file << " POSICAONODE : " << posicaoNode << endl;
                     cout << " SAIU 2 " << endl;
                     output_file << " Visitado  " << boolalpha << visitado[posicaoNode] << endl;
-                    output_file << " Vertice : " << vectorWeightEdge->at(contPosicao).getId()  << " .getInDegree()" << vectorWeightEdge->at(contPosicao).getInDegree() << endl;
-                    output_file << " PRINTADO O VERTICE QUE GRAU 1 : " << getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getId() << endl;
-                    if((vectorWeightEdge->at(contPosicao).getInDegree() == 1) && !visitado[getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getIdNode()]) {
-                        getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->setCor(i);
-                        output_file << " SET COR !!! Vertice : " << getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getId() << " Cor : " << i << endl;
-                        vectorNode->at(i).emplace_back(*getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId()));
+                    output_file << " Vertice : " << vectorWeightEdge.at(contPosicao)->getId()  << " .getInDegree()" << vectorWeightEdge.at(contPosicao)->getInDegree() << endl;
+                    output_file << " PRINTADO O VERTICE QUE GRAU 1 : " << getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())->getId() << endl;
+                    if((vectorWeightEdge.at(contPosicao)->getInDegree() == 1) && !visitado[getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())->getIdNode()]) {
+                        getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())->setCor(i);
+                        output_file << " SET COR !!! Vertice : " << getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())->getId() << " Cor : " << i << endl;
+                        vectorNode.at(i).emplace_back(getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId()));
 
-                        if(getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getWeight() > listMaiorMenorPeso->at(i).at(0)) {
-                            listMaiorMenorPeso->at(i).at(0) = getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getWeight();
-                        } else if(getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getWeight() < listMaiorMenorPeso->at(i).at(1)) {
-                            listMaiorMenorPeso->at(i).at(1) = getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getWeight();
+                        if(getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())->getWeight() > listMaiorMenorPeso.at(i).at(0)) {
+                            listMaiorMenorPeso.at(i).at(0) = getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())->getWeight();
+                        } else if(getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())->getWeight() < listMaiorMenorPeso.at(i).at(1)) {
+                            listMaiorMenorPeso.at(i).at(1) = getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())->getWeight();
                         }
 
-                        for(int vecCont = 0; vecCont < vectorWeightEdge->size(); vecCont++)
+                        for(int vecCont = 0; vecCont < vectorWeightEdge.size(); vecCont++)
                         {
-                            if(vectorWeightEdge->at(vecCont).getId() == vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())
+                            if(vectorWeightEdge.at(vecCont)->getId() == vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())
                             {
-                                vectorWeightEdge->erase(vectorWeightEdge->begin() + vecCont);
+                                vectorWeightEdge.erase(vectorWeightEdge.begin() + vecCont);
                             }
 
                         }
@@ -1661,19 +1665,19 @@ void Graph::Guloso(ofstream &output_file, int p)
                             contPosicao--;
                         }
                         
-                        visitado[getNode(vectorWeightEdge->at(contPosicao).getFirstEdge()->getTargetId())->getIdNode()] = true;
+                        visitado[getNode(vectorWeightEdge.at(contPosicao)->getFirstEdge()->getTargetId())->getIdNode()] = true;
                     }
                     //vector<Node>::iterator id;
-                    output_file << "Começo do vectorWeightEdge: " << vectorWeightEdge->begin()->getId() << endl;
-                    vector<Node>::iterator n;
+                    output_file << "Começo do vectorWeightEdge: " << vectorWeightEdge.at(0)->getId() << endl;
+                    vector<Node*>::iterator n;
                     
-                    n = vectorWeightEdge->begin(); 
+                    n = vectorWeightEdge.begin(); 
 
                     advance(n, contPosicao);
                     
                     // output_file << "Valor do cont: " << contPosicao << endl;
                     //output_file << "Tamanho antes de excluir: " << vectorWeightEdge->size() << endl;
-                    vectorWeightEdge->erase(n);
+                    vectorWeightEdge.erase(n);
                     //vectorWeightEdge->resize(vectorWeightEdge->size()-1);
                 /* for(int i =0;i<vectorWeightEdge->size();i++) {
                         output_file << "Elementos apos o resize: " << vectorWeightEdge->at(i).getId() << endl;
@@ -1685,23 +1689,23 @@ void Graph::Guloso(ofstream &output_file, int p)
                     }*/
 
                     //output_file << "Verificando o espaço dela antes de apagar para ter certeza: " << listRank->at(i).capacity() << endl;
-                    listRank->at(i).clear();
-                    listRank->reserve(listRank->capacity()-1);
+                    listRank.at(i).clear();
+                    listRank.reserve(listRank.capacity()-1);
                     //output_file << "Verificando se ela ainda continua tendo o mesmo espaço: " << listRank->at(i).capacity() << endl;
                     //vectorWeightEdge->erase(vectorWeightEdge->begin() + j);
-                    for(int k=0;k<vectorNode->at(i).size();k++) {
-                        output_file <<"i :"<< i << "VectorNode: " << vectorNode->at(i).at(k).getId() << endl;
+                    for(int k=0;k<vectorNode.at(i).size();k++) {
+                        output_file <<"i :"<< i << "VectorNode: " << vectorNode.at(i).at(k)->getId() << endl;
                     }
                     /*for(Node *node = this->first_node;node != nullptr; node = node->getNextNode()) {
                         output_file << node->getId() << endl;
                     }*/
                     if(i == 2) {
-                        output_file << "Maior peso 7: " << listMaiorMenorPeso->at(i).at(0) << " Menor peso 7: " << listMaiorMenorPeso->at(i).at(1) << endl;
+                        output_file << "Maior peso 7: " << listMaiorMenorPeso.at(i).at(0) << " Menor peso 7: " << listMaiorMenorPeso.at(i).at(1) << endl;
                     }
                 }
             }
 
-        } while(!vectorWeightEdge->empty());
+        } while(!vectorWeightEdge.empty());
        // output_file << " vectorNode->size()  : " << vectorNode->size() << endl;
         for(Edge *e = getNode(5)->getFirstEdge();e != nullptr; e = e->getNextEdge()) {
             output_file << "Arestas desse lixo: " << e->getTargetId() << endl;
@@ -1710,120 +1714,107 @@ void Graph::Guloso(ofstream &output_file, int p)
         for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
             output_file << "PORRA: " << node->getTargetId() << endl;
         }
-        delete vectorWeightEdge;
+        //delete vectorWeightEdge;
         for(Node *node = this->first_node; node!=nullptr; node = node->getNextNode()) {
             output_file << "Id dos nodes: " << node->getId() << " Peso dos nodes: " << node->getWeight() << " Cores dos nodes: " << node->getCor() << endl;
         }
 
-        for(int a=0;a<vectorNode->at(0).size();a++)
+        for(int a=0;a<vectorNode.at(0).size();a++)
         {
-            output_file << " vectorNode.at(0). at (" << a << ") = " << vectorNode->at(0).at(a).getId() << endl;
+            output_file << " vectorNode.at(0). at (" << a << ") = " << vectorNode.at(0).at(a)->getId() << endl;
         }
 
         output_file << endl;
 
-        for(int a=0;a<vectorNode->at(1).size();a++)
+        for(int a=0;a<vectorNode.at(1).size();a++)
         {
-            output_file << " vectorNode.at(1). at (" << a << ") = " << vectorNode->at(1).at(a).getId() << endl;
+            output_file << " vectorNode.at(1). at (" << a << ") = " << vectorNode.at(1).at(a)->getId() << endl;
         }
 
 
-        for(int x =0; x < vectorNode->at(1).size() ; x++)
+        for(int x =0; x < vectorNode.at(1).size() ; x++)
         {
-            if(vectorNode->at(1).at(x).getId() == 5)
+            if(vectorNode.at(1).at(x)->getId() == 5)
             {
-                output_file << "  ->>>>>>>>> vectorNode->at(i).at(x).getId() cor " << vectorNode->at(1).at(x).getCor() << endl;
+                output_file << "  ->>>>>>>>> vectorNode->at(i).at(x).getId() cor " << vectorNode.at(1).at(x)->getCor() << endl;
             }
         }  
 
-        for(int w =0;w<listMaiorMenorPeso->size();w++) {
-            output_file << "I: " << w << "Maior Valor de cada cluster: " << listMaiorMenorPeso->at(w).at(0) << " Menor Valor: " << listMaiorMenorPeso->at(w).at(1) << endl; 
+        for(int w =0;w<listMaiorMenorPeso.size();w++) {
+            output_file << "I: " << w << "Maior Valor de cada cluster: " << listMaiorMenorPeso.at(w).at(0) << " Menor Valor: " << listMaiorMenorPeso.at(w).at(1) << endl; 
         }
-        output_file << "TESTANDO TAMANHO:  " << listMaiorMenorPeso->size() << endl;
+        output_file << "TESTANDO TAMANHO:  " << listMaiorMenorPeso.size() << endl;
 
-        for(int w =0;w < vectorNode->size();w++)
+        for(int w =0;w < vectorNode.size();w++)
         {
-            for(int z =0; z < vectorNode->at(w).size();z++)
+            for(int z =0; z < vectorNode.at(w).size();z++)
             {
-                output_file << " i  = " << w << " Id " << vectorNode->at(w).at(z).getId() << " Cor : " <<  vectorNode->at(w).at(z).getCor() << endl;
+                output_file << " i  = " << w << " Id " << vectorNode.at(w).at(z)->getId() << " Cor : " <<  vectorNode.at(w).at(z)->getCor() << endl;
             }
 
         }
-        for(Edge *e = getNode(5)->getFirstEdge();e != nullptr; e = e->getNextEdge()) {
-            output_file << "Arestas desse lixo 17: " << e->getTargetId() << endl;
-        }
-        output_file << "TESTANDO TAMANHO2:  " << listMaiorMenorPeso->size() << endl;
+
+        output_file << "TESTANDO TAMANHO2:  " << listMaiorMenorPeso.size() << endl;
         for(int i =0;i<p;i++)
         {
-            for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                output_file << "LLLLLLLLAAAAAAAAA 1 : " << node->getTargetId() << endl;
-            }
+            output_file << "Começando o i: " << i << endl; 
             int contadoraSubCluster = 0;
             bool *verificados = new bool[this->order];
             int contClusterAux = 1;
             for(int j =0;j<this->order;j++) {
                 verificados[j] = false;
             }
-            vector<vector<int>> *maiorMenorValSubCluster = new vector<vector<int>>;
-            maiorMenorValSubCluster->reserve(this->order);
-            vector<vector<Node>> *vetorClusterNodes = new vector<vector<Node>>();
-            vetorClusterNodes->reserve(this->order);
+            vector<vector<int>> maiorMenorValSubCluster; //= new vector<vector<int>>;
+            maiorMenorValSubCluster.reserve(this->order);
+            vector<vector<Node*>> vetorClusterNodes; //= new vector<vector<Node>>();
+            vetorClusterNodes.reserve(this->order);
             for(int j=0;j<this->order;j++) {
                 //vetorClusterNodes->push_back(*criaVector());
-                vetorClusterNodes->emplace_back(*criaVector());
-                vetorClusterNodes->at(j).reserve(vectorNode->at(i).size());
-                maiorMenorValSubCluster->emplace_back(*criaVetorMaiorMenor());
-                maiorMenorValSubCluster->at(j).reserve(2);
+                vector<int> *rank = new vector<int>;
+                vetorClusterNodes.emplace_back(criaVectorTeste());
+                //vetorClusterNodes.at(j).reserve(vectorNode.at(i).size());
+                maiorMenorValSubCluster.emplace_back(*rank);
+                maiorMenorValSubCluster.at(j).reserve(2);
                 //maiorMenorValSubCluster->at(j).insert(maiorMenorValSubCluster->at(j).begin(), -1);
                 //maiorMenorValSubCluster->at(j).insert(maiorMenorValSubCluster->at(j).end(), -1);
             }
             output_file << "  i : " << i << endl;
-            vetorClusterNodes->at(0).insert(vetorClusterNodes->at(0).begin(),vectorNode->at(i).at(0));      
-            output_file << "vetorClusterNodes->at(0).at(0) :  " << vetorClusterNodes->at(0).at(0).getId() << endl;
+            vetorClusterNodes.at(0).insert(vetorClusterNodes.at(0).begin(), vectorNode.at(i).at(0));      
+            output_file << "vetorClusterNodes->at(0).at(0) :  " << vetorClusterNodes.at(0).at(0)->getId() << endl;
             //output_file << "vetorClusterNodes->at(0).at(0) :" << vetorClusterNodes->at(0).at(0).getId() << endl;
-            cout<< "vectorNode->at(i).begin() " << vectorNode->at(i).at(0).getId() << endl;
-            cout << " CAPACIDADE 1: " << vetorClusterNodes->capacity() << endl;
-            cout << " CAPACIDADE 2: " << vetorClusterNodes->at(i).capacity() << endl;
-            for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                output_file << "LLLLLLLLAAAAAAAAA 3 : " << node->getTargetId() << endl;
-            }
-            output_file << "Dando erase: " << vectorNode->at(i).begin()->getId() << endl;
-            vectorNode->at(i).erase(vectorNode->at(i).begin());
-            for(Edge *e = getNode(vectorNode->at(i).begin()->getId())->getFirstEdge();e != nullptr; e = e->getNextEdge()) {
-                output_file << "Arestas desse lixo: " << e->getTargetId() << endl;
-            }
-            for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                output_file << "LLLLLLLLAAAAAAAAA 4 : " << node->getTargetId() << endl;
-            }
+            cout<< "vectorNode->at(i).begin() " << vectorNode.at(i).at(0)->getId() << endl;
+            cout << " CAPACIDADE 1: " << vetorClusterNodes.capacity() << endl;
+            cout << " CAPACIDADE 2: " << vetorClusterNodes.at(i).capacity() << endl;
+
+            output_file << "Dando erase: " << vectorNode.at(i).at(0)->getId() << endl;
+            vectorNode.at(i).erase(vectorNode.at(i).begin());
+
+
             int contSameCluster;
             int contSubCluster = 1;
-            for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
-            }
+
             //while(!vectorNode->at(i).empty()) {
 
             output_file << " COR DO 5 ********* " << getNode(5)->getCor() << endl; 
            
             output_file << " COR DO 0 ********* " << getNode(0)->getCor() << endl;  
             output_file << "Testando essa porra: " << getNode(13)->getTotal_Edge() << endl;
-            for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                output_file << "LLLLLLLLAAAAAAAAA 2: " << node->getTargetId() << endl;
-            }
+
             for(int k=0;k<contClusterAux;k++) 
             {
                 contadoraSubCluster++;
                 contSameCluster = 0;
-                maiorMenorValSubCluster->at(k).front() = vetorClusterNodes->at(k).at(0).getWeight();
-                maiorMenorValSubCluster->at(k).back() = vetorClusterNodes->at(k).at(0).getWeight();
+                maiorMenorValSubCluster.at(k).front() = vetorClusterNodes.at(k).at(0)->getWeight();
+                maiorMenorValSubCluster.at(k).back() = vetorClusterNodes.at(k).at(0)->getWeight();
                 //maiorMenorValSubCluster->at(k).at(0) = vetorClusterNodes->at(k).at(0).getWeight();
                 //maiorMenorValSubCluster->at(k).at(1) = vetorClusterNodes->at(k).at(0).getWeight();
-                int maior = vetorClusterNodes->at(k).at(0).getWeight();
-                int menor = vetorClusterNodes->at(k).at(0).getWeight();
+                int maior = vetorClusterNodes.at(k).at(0)->getWeight();
+                int menor = vetorClusterNodes.at(k).at(0)->getWeight();
                 output_file << "Testando essa porra: " << getNode(13)->getTotal_Edge() << endl;        
-                for(int j=0;j<vetorClusterNodes->at(k).size();j++) 
+                for(int j=0;j<vetorClusterNodes.at(k).size();j++) 
                 {
-                    Node *node = &vetorClusterNodes->at(k).at(j);
-                    output_file << "  vetorClusterNodes->at(k).at(j).getId() :  " << vetorClusterNodes->at(k).at(j).getId() << endl;
+                    Node *node = vetorClusterNodes.at(k).at(j); //
+                    output_file << "  vetorClusterNodes->at(k).at(j).getId() :  " << vetorClusterNodes.at(k).at(j)->getId() << endl;
                     verificados[node->getIdNode()] = true;                     
                     int tam = node->getTotal_Edge();
                     int *vizinhos = new int[tam];
@@ -1843,7 +1834,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                             output_file << " node :   " << node->getId() << " COR : " << node->getCor() << endl;
                             output_file << " vizinho  : " << getNode(edge->getTargetId())->getId() << "COR : " << getNode(edge->getTargetId())->getCor() << endl;
                                 
-                            vetorClusterNodes->at(k).emplace_back(*getNode(edge->getTargetId()));
+                            vetorClusterNodes.at(k).emplace_back(getNode(edge->getTargetId()));
                             vizinhos[contAuxVizinhos] = edge->getTargetId();
                             contAuxVizinhos++;
                             inseriu = true;
@@ -1854,22 +1845,22 @@ void Graph::Guloso(ofstream &output_file, int p)
 
                     //talvez volte com isso;
                     for(int l=0;l<contAuxVizinhos;l++) {
-                        for(int aux=0;aux<vectorNode->at(i).size();aux++) {
-                            if(vectorNode->at(i).at(aux).getId() == vizinhos[l]) {
-                                output_file << "K: " << k << " Node sendo excluido: " << vectorNode->at(i).at(aux).getId() << endl;
-                                vectorNode->at(i).erase(vectorNode->at(i).begin() + aux);
+                        for(int aux=0;aux<vectorNode.at(i).size();aux++) {
+                            if(vectorNode.at(i).at(aux)->getId() == vizinhos[l]) {
+                                output_file << "K: " << k << " Node sendo excluido: " << vectorNode.at(i).at(aux)->getId() << endl;
+                                vectorNode.at(i).erase(vectorNode.at(i).begin() + aux);
                             }
                         }
                     }
                     //talvez volte com isso 
 
-                    if((inseriu == false) && !vectorNode->at(i).empty()) {
-                        if(vetorClusterNodes->at(k).size()-(j+1) <= 0) {
-                            output_file << " ENTROU 111111111111111 " << endl;
-                            output_file << " TAMANHAO K "<< vetorClusterNodes->size() << endl;
-                            vetorClusterNodes->at(k+1).emplace_back(*vectorNode->at(i).begin());
+                    if((inseriu == false) && !vectorNode.at(i).empty()) {
+                        if(vetorClusterNodes.at(k).size()-(j+1) <= 0) {
+
+                            output_file << " TAMANHAO K "<< vetorClusterNodes.size() << endl;
+                            vetorClusterNodes.at(k+1).emplace_back(vectorNode.at(i).at(0));
                             contClusterAux++;
-                            vectorNode->at(i).erase(vectorNode->at(i).begin());
+                            vectorNode.at(i).erase(vectorNode.at(i).begin());
                         }
                     }
 
@@ -1881,13 +1872,13 @@ void Graph::Guloso(ofstream &output_file, int p)
                     */
                         if(inseriu)
                         {
-                            if(maior < vetorClusterNodes->at(k).at(j+1).getWeight())
+                            if(maior < vetorClusterNodes.at(k).at(j+1)->getWeight())
                             {
-                                maior = vetorClusterNodes->at(k).at(j+1).getWeight();
+                                maior = vetorClusterNodes.at(k).at(j+1)->getWeight();
                             }
-                            else if( menor > vetorClusterNodes->at(k).at(j+1).getWeight())
+                            else if( menor > vetorClusterNodes.at(k).at(j+1)->getWeight())
                             {
-                                menor = vetorClusterNodes->at(k).at(j+1).getWeight();
+                                menor = vetorClusterNodes.at(k).at(j+1)->getWeight();
                             }
                         }
 
@@ -1895,10 +1886,10 @@ void Graph::Guloso(ofstream &output_file, int p)
                     
                 //maiorMenorValSubCluster->at(k).front() = maior;
                 //maiorMenorValSubCluster->at(k).back() = menor;
-                maiorMenorValSubCluster->at(k).insert(maiorMenorValSubCluster->at(k).begin(), maior);
-                maiorMenorValSubCluster->at(k).insert(maiorMenorValSubCluster->at(k).end(), menor);
-                cout << "Maior Valor testando: " << maiorMenorValSubCluster->at(k).front() << " Menor Valor: " << maiorMenorValSubCluster->at(k).back();
-                cout << "Tamanho testando: " << maiorMenorValSubCluster->at(k).size() << endl;
+                maiorMenorValSubCluster.at(k).insert(maiorMenorValSubCluster.at(k).begin(), maior);
+                maiorMenorValSubCluster.at(k).insert(maiorMenorValSubCluster.at(k).end(), menor);
+                cout << "Maior Valor testando: " << maiorMenorValSubCluster.at(k).front() << " Menor Valor: " << maiorMenorValSubCluster.at(k).back();
+                cout << "Tamanho testando: " << maiorMenorValSubCluster.at(k).size() << endl;
                 //maiorMenorValSubCluster->at(k).at(0) = maior;
                 //maiorMenorValSubCluster->at(k).at(1) = menor;
                 //output_file << "K: " << k << " VetorClusterNodes->at(k).size(): " << vetorClusterNodes->at(k).size() << endl;
@@ -1927,13 +1918,8 @@ void Graph::Guloso(ofstream &output_file, int p)
                 //cout << "i "<< i << "vetorClusterNodes.size() " << vetorClusterNodes->size() << endl; 
             } 
             //}
-            for(Edge *e = getNode(5)->getFirstEdge();e != nullptr; e = e->getNextEdge()) {
-               output_file << "Arestas desse lixo: " << e->getTargetId() << endl;
-            }
-            for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                output_file << "LLLLLLLLAAAAAAA: " << node->getTargetId() << endl;
-            }
-            output_file << "TESTANDO TAMANHO 3:  " << listMaiorMenorPeso->size() << endl;
+
+            output_file << "TESTANDO TAMANHO 3:  " << listMaiorMenorPeso.size() << endl;
             /*output_file << "Cor nao: " << vetorClusterNodes->at(0).at(0).getCor() << endl;
             output_file << "Cor nao 2: " << getNode(vetorClusterNodes->at(0).at(0).getId())->getCor() << endl;
             getNode(vetorClusterNodes->at(0).at(0).getId())->setCor(2);
@@ -1941,142 +1927,142 @@ void Graph::Guloso(ofstream &output_file, int p)
             output_file << "Cor nao: " << vetorClusterNodes->at(0).at(0).getCor() << endl;
             output_file << "Cor nao 2: " << getNode(vetorClusterNodes->at(0).at(0).getId())->getCor() << endl;*/
 
-            vetorClusterNodes->resize(contadoraSubCluster);
-            cout << "MaiorMenorVal: " << maiorMenorValSubCluster->size() << endl;
-            cout << "Capacidade: " << maiorMenorValSubCluster->capacity() << endl;
+            vetorClusterNodes.resize(contadoraSubCluster);
+            cout << "MaiorMenorVal: " << maiorMenorValSubCluster.size() << endl;
+            cout << "Capacidade: " << maiorMenorValSubCluster.capacity() << endl;
             //maiorMenorValSubCluster->shrink_to_fit();             
-            cout << "MaiorMenorVal: " << maiorMenorValSubCluster->size() << endl;
-            cout << "Capacidade: " << maiorMenorValSubCluster->capacity() << endl;
-            cout << "Tamanho 2: " << maiorMenorValSubCluster->at(0).size() << endl;
+            cout << "MaiorMenorVal: " << maiorMenorValSubCluster.size() << endl;
+            cout << "Capacidade: " << maiorMenorValSubCluster.capacity() << endl;
+            cout << "Tamanho 2: " << maiorMenorValSubCluster.at(0).size() << endl;
             for(int x=0;x<contadoraSubCluster;x++) {
-                output_file << "K: " << x << " Maior Valor: " << maiorMenorValSubCluster->at(x).at(0) << " Menor valor: " << maiorMenorValSubCluster->at(x).at(1) << endl;
+                output_file << "K: " << x << " Maior Valor: " << maiorMenorValSubCluster.at(x).at(0) << " Menor valor: " << maiorMenorValSubCluster.at(x).at(1) << endl;
             }
-            output_file << "Chegou a sair" << endl;
-            int maiorSubCluster = vetorClusterNodes->at(0).size(); // pegando o size do primeiro subcluster de cada cor(cada vez que o for com i < p roda)
+
+            int maiorSubCluster = vetorClusterNodes.at(0).size(); // pegando o size do primeiro subcluster de cada cor(cada vez que o for com i < p roda)
             //vector<int> *posicoesDosMaiores = new vector<int>;
-            for(int e=0;e<vetorClusterNodes->size();e++) {
-                if(maiorSubCluster < vetorClusterNodes->at(e).size()) {
-                    maiorSubCluster = vetorClusterNodes->at(e).size(); // verificando qual o maior subcluster de cada cor(cada vez que o for com i < p roda)
+            for(int e=0;e<vetorClusterNodes.size();e++) {
+                if(maiorSubCluster < vetorClusterNodes.at(e).size()) {
+                    maiorSubCluster = vetorClusterNodes.at(e).size(); // verificando qual o maior subcluster de cada cor(cada vez que o for com i < p roda)
                 }
             }
             output_file << "maiorSubCluster vale: " << maiorSubCluster << endl; 
-            output_file << "Chegou a sair 2 " << endl;
+
             bool entrou = false;
             int gapFinalSubCluster = -1;
             int posicaoMaiorSubCluster;
-            for(int e=0;e<vetorClusterNodes->size();e++) { // e < tamanho de subclusters existentes
-                if(maiorSubCluster == vetorClusterNodes->at(e).size()) { // salvando o gap do maior subcluster(maior no sentido de vértices presentes)
+            for(int e=0;e<vetorClusterNodes.size();e++) { // e < tamanho de subclusters existentes
+                if(maiorSubCluster == vetorClusterNodes.at(e).size()) { // salvando o gap do maior subcluster(maior no sentido de vértices presentes)
                     if(entrou == false) { // primeira vez a entrar
                         entrou = true;
-                        gapFinalSubCluster = maiorMenorValSubCluster->at(e).at(0) - maiorMenorValSubCluster->at(e).at(1);
+                        gapFinalSubCluster = maiorMenorValSubCluster.at(e).at(0) - maiorMenorValSubCluster.at(e).at(1);
                         posicaoMaiorSubCluster = e;
                     } else { // buscando o maior subcluster com o menor gap
-                        if(gapFinalSubCluster > (maiorMenorValSubCluster->at(e).at(0) - maiorMenorValSubCluster->at(e).at(1))) {
-                            gapFinalSubCluster = maiorMenorValSubCluster->at(e).at(0) - maiorMenorValSubCluster->at(e).at(1);
+                        if(gapFinalSubCluster > (maiorMenorValSubCluster.at(e).at(0) - maiorMenorValSubCluster.at(e).at(1))) {
+                            gapFinalSubCluster = maiorMenorValSubCluster.at(e).at(0) - maiorMenorValSubCluster.at(e).at(1);
                             posicaoMaiorSubCluster = e;
                         }
                     }
                 }
                 output_file << "Entrou quantas x" << endl;
             }
-            for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
-            }
+
             output_file << "Gap da posicao escolhida = " << gapFinalSubCluster << endl;
             output_file << "Posicao escolhida = " << posicaoMaiorSubCluster << endl;
-            vector<vector<int>> *arestas = new vector<vector<int>>;
-            arestas->reserve(vetorClusterNodes->size()); // no i = 0 tá reservando tamanho 4
-            for(int e=0;e<vetorClusterNodes->size();e++) {  // e < 4
-                arestas->push_back(*criaVetorMaiorMenor());
-                arestas->at(e).reserve(vetorClusterNodes->at(e).size()); // reservando tamanhos 2 1 2 1
+            vector<vector<int>> arestas;
+            arestas.reserve(vetorClusterNodes.size()); // no i = 0 tá reservando tamanho 4
+            for(int e=0;e<vetorClusterNodes.size();e++) {  // e < 4
+                vector<int> *rank = new vector<int>;
+                arestas.push_back(*rank);
+                arestas.at(e).reserve(vetorClusterNodes.at(e).size()); // reservando tamanhos 2 1 2 1
             }
-            output_file << "Chegou no 3" << endl;
-            vector<bool> *corNode = new vector<bool>;
-            corNode->reserve(p); // reservando as cores conforme o número de clusters solicitados
-            corNode->insert(corNode->begin(), true);
-            output_file << "Chegou no 4" << endl;
+
+            vector<bool> corNode; //= new vector<bool>;
+            corNode.reserve(p); // reservando as cores conforme o número de clusters solicitados
+            corNode.insert(corNode.begin(), true);
+
             for(int n = 0;n<p;n++) { 
                 //corNode->at(n) = true; // marcando todas as cores como true, posivel de visitar
-                corNode->insert(corNode->begin() + n, true);
+                corNode.insert(corNode.begin() + n, true);
             }
-            corNode->at(i) = false; // marcando a cor atual como false, pois não queremos ligar um subcluster em outro de mesma cor dele
+            corNode.at(i) = false; // marcando a cor atual como false, pois não queremos ligar um subcluster em outro de mesma cor dele
             for(int n =0;n<p;n++) {
-                output_file << "Cores: " << boolalpha << corNode->at(n) << endl;
+                output_file << "Cores: " << boolalpha << corNode.at(n) << endl;
             }
-            output_file << "Chegou no 5" << endl;
-            vector<vector<int>> *coresPossiveis = new vector<vector<int>>;
+
+            vector<vector<int>> coresPossiveis; //= new vector<vector<int>>;
             //vector<Node> *vectorWeightEdge = new vector<Node>();
-            coresPossiveis->reserve(this->order);
+            coresPossiveis.reserve(this->order);
             for(int x=0;x<contSubCluster;x++) {
-                coresPossiveis->push_back(*criaVetorMaiorMenor());
-                coresPossiveis->at(x).reserve(2); // 2 posições, 1° com a cor e a 2° com o gap
-                output_file << "Size coresPossiveis: " << coresPossiveis->at(x).capacity() << endl;
-                coresPossiveis->at(x).insert(coresPossiveis->at(x).begin(), 1000000);
-                coresPossiveis->at(x).insert(coresPossiveis->at(x).end(), x);
+                vector<int> *rank = new vector<int>;
+                coresPossiveis.push_back(*rank);
+                coresPossiveis.at(x).reserve(2); // 2 posições, 1° com a cor e a 2° com o gap
+                output_file << "Size coresPossiveis: " << coresPossiveis.at(x).capacity() << endl;
+                coresPossiveis.at(x).insert(coresPossiveis.at(x).begin(), 1000000);
+                coresPossiveis.at(x).insert(coresPossiveis.at(x).end(), x);
             }
-            output_file << "TESTANDO TAMANHO:  " << listMaiorMenorPeso->size() << endl;
-            output_file << "Size: " << coresPossiveis->capacity() << endl;
+
             //output_file << "Size 2: " << coresPossiveis->begin()->capacity() << endl;
             //cout << "Super teste: " << coresPossiveis->at(0).at(0) << endl;
-            output_file << "Chegou no 6" << endl;
+
             //vector<vector<int>> *valores = new vector<vector<int>>;
-            vector<vector<int>> *menorOuMaior = new vector<vector<int>>;
-            menorOuMaior->reserve(this->order);
+            vector<vector<int>> menorOuMaior; //= new vector<vector<int>>;
+            menorOuMaior.reserve(this->order);
             for(int e=0;e<this->order;e++) {
-                menorOuMaior->push_back(*criaVetorMaiorMenor());
-                menorOuMaior->at(e).reserve(2);
+                vector<int> *rank = new vector<int>;
+                menorOuMaior.push_back(*rank);
+                menorOuMaior.at(e).reserve(2);
             }
-            output_file << "Chegou aqui" << endl;
+
             int contEntradas = 0;
             //int menorOuMaior = -1;
-            output_file << "vetorClusterNodes->at(1).size()" << vetorClusterNodes->at(1).size() << endl;
-            output_file << "vetorClusterNodes->at(1).at(0).getFirstEdge()" << vetorClusterNodes->at(1).at(0).getFirstEdge()->getTargetId() << endl;
-            output_file << "getNode(vetorClusterNodes->at(1).at(0).getFirstEdge()->getTargetId())->getCor()" << getNode(vetorClusterNodes->at(1).at(0).getFirstEdge()->getTargetId())->getCor() << endl;
-            for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
-            }
-            if(i == 0) {
-                for(int e=0;e<vetorClusterNodes->size();e++) { // e < que o total de subclusters no i(cor atual)
+            
+            //if(i == 0) {
+                for(int e=0;e<vetorClusterNodes.size();e++) { // e < que o total de subclusters no i(cor atual)
                     if(e != posicaoMaiorSubCluster) { // e sendo diferente do subcluster que a gente quer manter(no caso a posição dele no vetorClusterNodes->at(e))
-                        for(int z = 0;z < vetorClusterNodes->at(e).size();z++) { // z < que a quantidade de nodes presentes em cada subcluster
+                        for(int z = 0;z < vetorClusterNodes.at(e).size();z++) { // z < que a quantidade de nodes presentes em cada subcluster
                             output_file << "Entrou quantas x " << endl;
-                            for(Edge *edge = vetorClusterNodes->at(e).at(z).getFirstEdge();edge!=nullptr;edge = edge->getNextEdge()) { // verificando as arestas de cada subvertice
-                                if(corNode->at(getNode(edge->getTargetId())->getCor())) { // se a cor do node estiver como true, ou seja não foi verificada ainda e nem é a cor do i
+                            for(Edge *edge = vetorClusterNodes.at(e).at(z)->getFirstEdge();edge!=nullptr;edge = edge->getNextEdge()) { // verificando as arestas de cada subvertice
+                                if(corNode.at(getNode(edge->getTargetId())->getCor())) { // se a cor do node estiver como true, ou seja não foi verificada ainda e nem é a cor do i
                                     output_file << "Entrou 1: " << endl;
-                                    corNode->at(getNode(edge->getTargetId())->getCor()) = false; // marca a cor como visitada
+                                    corNode.at(getNode(edge->getTargetId())->getCor()) = false; // marca a cor como visitada
                                     output_file << "Entrou 2: " << endl;
-                                    output_file << "Super teste: " << listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).front() << endl; //ela salva o maior e menor peso de cada i ou seja, de cada cluster
+                                    output_file << "Cor atual:" << getNode(edge->getTargetId())->getCor() << endl;
+                                    output_file << "Super teste: " << listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).front() << endl; //ela salva o maior e menor peso de cada i ou seja, de cada cluster
+                                    output_file << "Super teste 2: " << listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).back() << endl;
+                                    output_file << "Valor atual 1: " << maiorMenorValSubCluster.at(e).front() << endl;
+                                    output_file << "Valor atual 2: " << maiorMenorValSubCluster.at(e).back() << endl;
                                     output_file << "Entrou 3" << endl; 
-                                    if(maiorMenorValSubCluster->at(e).front() > listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).front() && maiorMenorValSubCluster->at(e).back() < listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).back()) {
+                                    if(maiorMenorValSubCluster.at(e).front() > listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).front() && maiorMenorValSubCluster.at(e).back() < listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).back()) {
                                         output_file << "Entrou 4" << endl;
-                                        coresPossiveis->at(z).push_back(maiorMenorValSubCluster->at(e).front() - maiorMenorValSubCluster->at(e).back()); // salvando o gap pra cor atual
-                                        coresPossiveis->at(z).push_back(getNode(edge->getTargetId())->getCor()); // salvando a cor do vizinho
-                                        menorOuMaior->at(contEntradas).front() = z;
-                                        menorOuMaior->at(contEntradas).back() = 0;
-                                        //menorOuMaior->insert(menorOuMaior->begin() + z, 0);
+                                        coresPossiveis.at(z).push_back(maiorMenorValSubCluster.at(e).front() - maiorMenorValSubCluster.at(e).back()); // salvando o gap pra cor atual
+                                        coresPossiveis.at(z).push_back(getNode(edge->getTargetId())->getCor()); // salvando a cor do vizinho
+                                        menorOuMaior.at(contEntradas).front() = z;
+                                        menorOuMaior.at(contEntradas).back() = 0;
+                                        //menorOuMaior->insert(menorOuMaior->begin() + z, 0);   
                                         contEntradas++;
-                                    } else if(maiorMenorValSubCluster->at(e).front() > listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).at(0)) {
-                                        output_file << "Tamanho mudou: "  << listMaiorMenorPeso->size() << endl;
-                                        output_file << "Valor aqui no 3: " << listMaiorMenorPeso->at(3).at(0) << endl;
+                                    } else if(maiorMenorValSubCluster.at(e).front() > listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).at(0)) {
+                                        output_file << "Tamanho mudou: "  << listMaiorMenorPeso.size() << endl;
+                                        output_file << "Valor aqui no 3: " << listMaiorMenorPeso.at(3).at(0) << endl;
                                         output_file << "Node: " << edge->getTargetId() << endl;
-                                        output_file << "Valor: " << maiorMenorValSubCluster->at(e).front() << endl;
-                                        output_file << "Maior da list: " << listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).front() << endl;
-                                        output_file << "Testando: " << listMaiorMenorPeso->at(1).front() << endl;
+                                        output_file << "Valor: " << maiorMenorValSubCluster.at(e).front() << endl;
+                                        output_file << "Maior da list: " << listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).front() << endl;
+                                        output_file << "Testando: " << listMaiorMenorPeso.at(1).front() << endl;
                                         output_file << "Cor: " << getNode(edge->getTargetId())->getCor() << endl;
                                         output_file << "Entrou 5" << endl;
-                                        coresPossiveis->at(z).push_back(maiorMenorValSubCluster->at(e).front() - listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).front()); // salvando o gap pra cor atual
-                                        coresPossiveis->at(z).push_back(getNode(edge->getTargetId())->getCor());  // salvando a cor do vizinho
-                                        menorOuMaior->at(contEntradas).front() = z;
-                                        menorOuMaior->at(contEntradas).back() = 1;
+                                        output_file << "Testando valor gap: " << maiorMenorValSubCluster.at(e).front() - listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).front();
+                                        coresPossiveis.at(z).push_back(maiorMenorValSubCluster.at(e).front() - listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).front()); // salvando o gap pra cor atual
+                                        coresPossiveis.at(z).push_back(getNode(edge->getTargetId())->getCor());  // salvando a cor do vizinho
+                                        menorOuMaior.at(contEntradas).front() = z;
+                                        menorOuMaior.at(contEntradas).back() = 1;
                                         //menorOuMaior->at(z) = 1;
                                         //menorOuMaior->insert(menorOuMaior->begin() + z, 1);
                                         contEntradas++;
-                                    } else if(maiorMenorValSubCluster->at(e).back() < listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).back()) {
+                                    } else if(maiorMenorValSubCluster.at(e).back() < listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).back()) {
                                         output_file << "Entrou 6" << endl;
-                                        coresPossiveis->at(z).push_back(listMaiorMenorPeso->at(getNode(edge->getTargetId())->getCor()).front() - maiorMenorValSubCluster->at(e).back()); // salvando o gap pra cor atual
-                                        coresPossiveis->at(z).push_back(getNode(edge->getTargetId())->getCor()); // salvando a cor do vizinho
-                                        menorOuMaior->at(contEntradas).front() = z;
-                                        menorOuMaior->at(contEntradas).back() = 2;
+                                        coresPossiveis.at(z).push_back(listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).front() - maiorMenorValSubCluster.at(e).back()); // salvando o gap pra cor atual
+                                        coresPossiveis.at(z).push_back(getNode(edge->getTargetId())->getCor()); // salvando a cor do vizinho
+                                        menorOuMaior.at(contEntradas).front() = z;
+                                        menorOuMaior.at(contEntradas).back() = 2;
                                         //menorOuMaior->at(z) =  2;
                                         //menorOuMaior->insert(menorOuMaior->begin() + z, 2);
                                         contEntradas++;
@@ -2086,16 +2072,16 @@ void Graph::Guloso(ofstream &output_file, int p)
                                         //coresPossiveis->at(z).push_back(getNode(edge->getTargetId())->getCor()); // salvando a cor do node
                                         //coresPossiveis->at(z).insert(coresPossiveis->at(z).begin(), 0);
                                         //output_file << coresPossiveis->at(z).at(0);
-                                        output_file << "coresPossiveis->size()" << coresPossiveis->size() << endl;
+                                        output_file << "coresPossiveis->size()" << coresPossiveis.size() << endl;
                                         output_file << "Valor do z: " << z << endl;  
                                         output_file << "Entrou no 8" << endl;  
                                         //coresPossiveis->at(z).insert(coresPossiveis->at(z).end(), getNode(edge->getTargetId())->getCor());
                                         // coresPossiveis->at(z).front() = getNode(edge->getTargetId())->getCor();
                                         //coresPossiveis->at(z).back() = 0;
-                                        coresPossiveis->at(z).front() = 0;
-                                        coresPossiveis->at(z).back() = getNode(edge->getTargetId())->getCor();
-                                        menorOuMaior->at(contEntradas).front() = z;
-                                        menorOuMaior->at(contEntradas).back() = -1;
+                                        coresPossiveis.at(z).front() = 0;
+                                        coresPossiveis.at(z).back() = getNode(edge->getTargetId())->getCor();
+                                        menorOuMaior.at(contEntradas).front() = z;
+                                        menorOuMaior.at(contEntradas).back() = -1;
                                         //menorOuMaior->at(z) = -1;
                                         //menorOuMaior->insert(menorOuMaior->begin() + z, -1);
                                         contEntradas++;
@@ -2105,84 +2091,84 @@ void Graph::Guloso(ofstream &output_file, int p)
                         }
                         output_file << "Valor do e: " << e << endl;
                         //int menor = coresPossiveis->at(z).front();
-                        output_file << "Testando front: " << menorOuMaior->at(0).front() << endl;
-                        output_file << "testando back: " << menorOuMaior->at(0).back() << endl;
-                        output_file << "Tamanho desse vet: " << menorOuMaior->size() << endl;
-                        output_file << "coresPossiveis->size(): " << coresPossiveis->size() << endl;
-                        output_file << "vetorClusterNudes->at(" << e << ").size(): " << vetorClusterNodes->at(e).size() << endl;
+                        output_file << "Testando front: " << menorOuMaior.at(0).front() << endl;
+                        output_file << "testando back: " << menorOuMaior.at(0).back() << endl;
+                        output_file << "Tamanho desse vet: " << menorOuMaior.size() << endl;
+                        output_file << "coresPossiveis->size(): " << coresPossiveis.size() << endl;
+                        output_file << "vetorClusterNudes->at(" << e << ").size(): " << vetorClusterNodes.at(e).size() << endl;
                         output_file << "Entradas: " << contEntradas << endl; 
-                        output_file << "coresPossiveis->at(0).front(): " << coresPossiveis->at(0).front() << endl;
-                        output_file << "coresPossiveis->at(0).back(): " << coresPossiveis->at(0).back() << endl;
-                        int menor = coresPossiveis->at(0).front(); // pegando o primeiro gap
-                        int corSelecionado = coresPossiveis->at(0).back(); // pegando a primeira cor selecionada
+                        output_file << "coresPossiveis->at(0).front(): " << coresPossiveis.at(0).front() << endl;
+                        output_file << "coresPossiveis->at(0).back(): " << coresPossiveis.at(0).back() << endl;
+                        int menor = coresPossiveis.at(0).front(); // pegando o primeiro gap
+                        int corSelecionado = coresPossiveis.at(0).back(); // pegando a primeira cor selecionada
                         int contPosicaoSubCluster = 0;
                         //for(int z = 0;z < coresPossiveis->size();z++) { // z < que o número de vértices presentes em cada subcluster
                         //for(int z=0;z<vetorClusterNodes->at(e).size();z++) { // esse aqui tava usando por ultimo
                         for(int z=0;z<contEntradas;z++) {
                         //if(menor > coresPossiveis->at(z).size()) { //
                             output_file << "Rodous quantas x: " << endl;
-                            if(menor > coresPossiveis->at(z).front()) {// pegando o menor valor de gap presente
-                                menor = coresPossiveis->at(z).front(); // salvando esse valor de gap como o menor
-                                corSelecionado = coresPossiveis->at(z).back(); // salvando a cor desse gap
+                            if(menor > coresPossiveis.at(z).front()) {// pegando o menor valor de gap presente
+                                menor = coresPossiveis.at(z).front(); // salvando esse valor de gap como o menor
+                                corSelecionado = coresPossiveis.at(z).back(); // salvando a cor desse gap
                                 contPosicaoSubCluster = z; // salvando essa posição escolhida com o menor gap
 
                             }
                         }
                         output_file << "Valor do menor: " << menor << endl; 
-                        for(int z=0;z<vetorClusterNodes->at(e).size();z++) {
-                            getNode(vetorClusterNodes->at(e).at(z).getId())->setCor(corSelecionado);
+                        for(int z=0;z<vetorClusterNodes.at(e).size();z++) {
+                            getNode(vetorClusterNodes.at(e).at(z)->getId())->setCor(corSelecionado);
                             if(corSelecionado > i) {
                                 //vectorNode->at(e).at(z).setCor(corSelecionado);
                                 for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
                                     output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
                                 }
-                                vetorClusterNodes->at(e).at(z).setCor(corSelecionado);
-                                vectorNode->at(corSelecionado).emplace_back(*getNode(vetorClusterNodes->at(e).at(z).getId()));
-                                output_file << "Id que eu quero descobrir: " << vetorClusterNodes->at(e).at(z).getId() << endl;
-                                verificados[vetorClusterNodes->at(e).at(z).getIdNode()] = false;
+                                vetorClusterNodes.at(e).at(z)->setCor(corSelecionado);
+                                vectorNode.at(corSelecionado).emplace_back(getNode(vetorClusterNodes.at(e).at(z)->getId()));
+                                output_file << "Id que eu quero descobrir: " << vetorClusterNodes.at(e).at(z)->getId() << endl;
+                                verificados[vetorClusterNodes.at(e).at(z)->getIdNode()] = false;
                                 for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
                                     output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
                                 }
                             }
                         }
 
-                        output_file << "Cor do node: " << vetorClusterNodes->at(e).at(0).getId() << "é: " << getNode(vetorClusterNodes->at(e).at(0).getId())->getCor() << endl;
+                        output_file << "Cor do node: " << vetorClusterNodes.at(e).at(0)->getId() << "é: " << getNode(vetorClusterNodes.at(e).at(0)->getId())->getCor() << endl;
                         //vetorClusterNodes->at(e).clear();
                         output_file << "Uma x" << endl;
-                        for(int z=0;z<coresPossiveis->size();z++) {
-                            coresPossiveis->at(z).clear();
+                        for(int z=0;z<coresPossiveis.size();z++) {
+                            coresPossiveis.at(z).clear();
                         }
                         output_file << "duas x" << endl;
 
                         //if(coresPossiveis->at(contPosicaoSubCluster).back() != 0) {
                         int contSelecionado = 0;
                         for(int z = 0;z<contEntradas;z++) {
-                            if(menorOuMaior->at(z).front() == contPosicaoSubCluster) {
+                            if(menorOuMaior.at(z).front() == contPosicaoSubCluster) {
                                 contSelecionado = z;
                             } 
                         }
                         output_file << "tres x" << endl;
                         output_file << "contSelecionado: " << contSelecionado << endl; 
-                        if(menorOuMaior->at(contSelecionado).back() == 0) {
+                        if(menorOuMaior.at(contSelecionado).back() == 0) {
                             output_file << "entrou 1" << endl;
                             //listMaiorMenorPeso->at(corSelecionado) = menor;//coresPossiveis->at(contPosicaoSubCluster);
                             //listMaiorMenorPeso->insert(listMaiorMenorPeso->begin() + corSelecionado, { menor });
-                            listMaiorMenorPeso->at(corSelecionado).at(0) = maiorMenorValSubCluster->at(e).at(0);
-                            listMaiorMenorPeso->at(corSelecionado).at(1) = maiorMenorValSubCluster->at(e).at(1);
-                        } else if(menorOuMaior->at(contSelecionado).back() == 1) {
+                            listMaiorMenorPeso.at(corSelecionado).at(0) = maiorMenorValSubCluster.at(e).at(0);
+                            listMaiorMenorPeso.at(corSelecionado).at(1) = maiorMenorValSubCluster.at(e).at(1);
+                        } else if(menorOuMaior.at(contSelecionado).back() == 1) {
                             output_file << "entrou 2" << endl;
-                            listMaiorMenorPeso->at(corSelecionado).at(0) = maiorMenorValSubCluster->at(e).at(0);
-                        } else if(menorOuMaior->at(contSelecionado).back() == 2) {
+                            listMaiorMenorPeso.at(corSelecionado).at(0) = maiorMenorValSubCluster.at(e).at(0);
+                        } else if(menorOuMaior.at(contSelecionado).back() == 2) {
                             output_file << "entrou 3" << endl;
-                            listMaiorMenorPeso->at(corSelecionado).at(1) = maiorMenorValSubCluster->at(e).at(1);
+                            listMaiorMenorPeso.at(corSelecionado).at(1) = maiorMenorValSubCluster.at(e).at(1);
                         }
                         output_file << "Chegou a sair" << endl;
                         for(int z=0;z<contEntradas;z++) {
-                            menorOuMaior->at(z).clear();
+                            menorOuMaior.at(z).clear();
                         }
                         contEntradas = 0;
-                        for(int z=0;z<vectorNode->at(corSelecionado).size();z++) {
-                            output_file << "Valores desse vet dessa cor: " << vectorNode->at(corSelecionado).at(z).getId() << endl;
+                        for(int z=0;z<vectorNode.at(corSelecionado).size();z++) {
+                            output_file << "Valores desse vet dessa cor: " << vectorNode.at(corSelecionado).at(z)->getId() << endl;
                         }
                         output_file << "Testando essa porra: " << getNode(13)->getTotal_Edge() << endl;
                     }
@@ -2190,14 +2176,16 @@ void Graph::Guloso(ofstream &output_file, int p)
                 for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
                     output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
                 }
-                for(int h=0;h<listMaiorMenorPeso->size();h++) {
-                    output_file << "Maior por enquanto: " << listMaiorMenorPeso->at(h).front() << " Menor por enquanto: " << listMaiorMenorPeso->at(h).back() << endl;
+                for(int h=0;h<listMaiorMenorPeso.size();h++) {
+                    output_file << "Maior por enquanto: " << listMaiorMenorPeso.at(h).front() << " Menor por enquanto: " << listMaiorMenorPeso.at(h).back() << endl;
                 }
                 for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
                     output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
                 }
-            }
-
+            //}
+            listMaiorMenorPeso.at(i).front() = maiorMenorValSubCluster.at(0).front();
+            listMaiorMenorPeso.at(i).back() = maiorMenorValSubCluster.at(0).back();
+            output_file << "Teste" << endl;
             /*
                 //int menor = coresPossiveis->at(z).front();
                 int menor = coresPossiveis->at(0).front(); // pegando o primeiro gap
@@ -2214,48 +2202,70 @@ void Graph::Guloso(ofstream &output_file, int p)
                     getNode(vetorClusterNodes->at(e).at(z).getId())->setCor() = corSelecionado;
                 }
             */
-
+            output_file << "Teste 2" << endl;
+            output_file << "Valor do i: " << i << endl; 
             if(i == 0)
             {
-                output_file << "vetorClusterNodes.size()  " << vetorClusterNodes->size()  << endl;
-                output_file << "vetorClusterNodes->at(0).size()  " << vetorClusterNodes->at(0).size()  << endl;
-                for(int n=0;n<vetorClusterNodes->at(0).size();n++)
+                output_file << "Entrou" << endl;
+                output_file << "vetorClusterNodes.size()  " << vetorClusterNodes.size()  << endl;
+                output_file << "vetorClusterNodes->at(0).size()  " << vetorClusterNodes.at(0).size()  << endl;
+                for(int n=0;n<vetorClusterNodes.at(0).size();n++)
                 {      
-                    output_file << " Kluster : " << i << " Valor : " << vetorClusterNodes->at(0).at(n).getId() << endl;
+                    output_file << " Kluster : " << i << " Valor : " << vetorClusterNodes.at(0).at(n)->getId() << endl;
                 }
             }
 
-            if( i == (p-1))
+            /*if( i == (p-1))
             {
-                for(int g=0; g < vetorClusterNodes->size(); g++ )
+                output_file << "Entrou" << endl;
+                for(int g=0; g < vetorClusterNodes.size(); g++ )
                 {
-                    delete &vetorClusterNodes->at(g);
+                    delete vetorClusterNodes.at(g).;
+                }
+                output_file << "Entrou2" << endl;
+                for(int s =0; s < maiorMenorValSubCluster.size(); s++)
+                {
+                    delete &maiorMenorValSubCluster.at(s);
                 }
 
-                for(int s =0; s < maiorMenorValSubCluster->size(); s++)
-                {
-                    delete &maiorMenorValSubCluster->at(s);
-                }
-
-                delete maiorMenorValSubCluster;
-                delete vetorClusterNodes;
+                //delete maiorMenorValSubCluster;
+                //delete vetorClusterNodes;
                 delete verificados;
                 //delete menorOuMaior;
-            }
+            }*/
         }
 
-        for(int h =0; h < listRank->size();h++)
+        output_file << "Chegou a sair " << endl;
+        /*for(int h =0; h < listRank.size();h++)
         {
-            delete &listRank->at(h);
+            delete &listRank.at(h);
         } 
+        */
 
-        delete listMaiorMenorPeso;
-        delete vectorNode; 
+        int gapTotal = 0;
+        output_file << "Chegou aqui " << endl;
+        for(int h=0;h<listMaiorMenorPeso.size();h++) {
+            gapTotal += listMaiorMenorPeso.at(h).at(0) - listMaiorMenorPeso.at(h).at(1);
+        }
+
+        output_file << "Testando gap final: " << gapTotal << endl;
+        /*for(int h=0;h < listMaiorMenorPeso.size();h++) {
+            delete &listMaiorMenorPeso.at(h);
+        }*/
+
+        /*for(int h=0;h<vectorNode.size();h++) {
+            for(int g=0;g<vectorNode.at(h).size();g++) {
+                delete vectorNode.at(h).at(g);
+            }
+            delete &vectorNode.at(h);
+        }*/
+
+        //delete &vectorNode;
+        //delete vectorNode; 
         delete visitado;
-        delete vectorWeightEdge;
-        delete listRank;
+        //delete vectorWeightEdge;
+        //delete listRank;
        
-
     } else {
         output_file << "O grafo não tem peso nas arestas" << endl;
     }  
