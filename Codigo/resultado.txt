@@ -1,10 +1,4 @@
-Arestas desse lixo: 0
-Arestas desse lixo: 12
-Arestas desse lixo: 9
-PORRA: 20
-PORRA: 16
-2
-10 Id : 0 IdNode : 0
+ Id : 0 IdNode : 0
  Id : 5 IdNode : 1
  Id : 11 IdNode : 2
  Id : 1 IdNode : 3
@@ -25,7 +19,2093 @@ PORRA: 16
  Id : 10 IdNode : 18
  Id : 13 IdNode : 19
  Id : 15 IdNode : 20
+Entrou no 3
+Entrou no 1
+Entrou no 3
+Entrou no 1
+Entrou no 3
+Entrou no 3
+Cluster: 0 Id: 15
+Cluster: 1 Id: 8
+Cluster: 1 Id: 18
+Cluster: 2 Id: 7
+Cluster: 2 Id: 6
+Cluster: 3 Id: 13
+ Vertice atual: 0
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 2
  Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 1.33333
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 1.33333
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 9
+Valos do gapFinal: 3
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 10
+Valos do gapFinal: 5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+ Vertice atual: 2
+Peso atual: 10
+Valor do gap atual: 0
+Valor do gapNode: 8
+Valos do gapFinal: 4
+ Vertice atual: 3
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 2
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 1.75
+ Vertice atual: 12
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 9
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.25
+ Vertice atual: 17
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+Gap do node 0 e: 2
+Gap do node 5 e: 2
+Gap do node 11 e: 1.33333
+Gap do node 1 e: 1.33333
+Gap do node 4 e: 3
+Gap do node 14 e: 5
+Gap do node 19 e: 3
+Gap do node 2 e: 4
+Gap do node 3 e: 2
+Gap do node 20 e: 1.75
+Gap do node 12 e: 0
+Gap do node 9 e: 1.25
+Gap do node 17 e: 0.5
+Gap do node 16 e: 0.5
+Gap do node 10 e: 0.5
+Valor do cont: 10
+SET COR !  Vertice : 12 Cor : 0
+Id da aresta: 5
+Id da aresta: 6
+ POSICAONODE : 1
+ Visitado  false
+ Vertice : 12 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 5
+Começo do vectorWeightEdge: 0
+i :0VectorNode: 15
+i :0VectorNode: 12
+ Vertice atual: 0
+Peso atual: 6
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 2
+Peso atual: 10
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 3
+Peso atual: 4
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 9
+Peso atual: 7
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 17
+Peso atual: 1
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Gap do node 0 e: 0
+Gap do node 5 e: 0
+Gap do node 11 e: 0
+Gap do node 1 e: 0
+Gap do node 4 e: 0
+Gap do node 14 e: 0
+Gap do node 19 e: 0
+Gap do node 2 e: 0
+Gap do node 3 e: 0
+Gap do node 20 e: 0
+Gap do node 9 e: 0
+Gap do node 17 e: 0
+Gap do node 16 e: 0
+Gap do node 10 e: 0
+Valor do cont: 0
+SET COR !  Vertice : 0 Cor : 1
+Id da aresta: 5
+Id da aresta: 11
+ POSICAONODE : 1
+ Visitado  false
+ Vertice : 0 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 5
+Começo do vectorWeightEdge: 0
+i :1VectorNode: 8
+i :1VectorNode: 18
+i :1VectorNode: 0
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+ Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 1
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 1
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 1
+Valor do gapNode: 8
+Valos do gapFinal: 2.66667
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 1
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+ Vertice atual: 2
+Peso atual: 10
+Valor do gap atual: 1
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+ Vertice atual: 3
+Peso atual: 4
+Valor do gap atual: 1
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 1.5
+ Vertice atual: 9
+Peso atual: 7
+Valor do gap atual: 1
+Valor do gapNode: 4
+Valos do gapFinal: 1
+ Vertice atual: 17
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 1.5
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 1.5
+Gap do node 5 e: 1.66667
+Gap do node 11 e: 1
+Gap do node 1 e: 1
+Gap do node 4 e: 2.66667
+Gap do node 14 e: 4.5
+Gap do node 19 e: 2.5
+Gap do node 2 e: 3.5
+Gap do node 3 e: 0
+Gap do node 20 e: 1.5
+Gap do node 9 e: 1
+Gap do node 17 e: 1.5
+Gap do node 16 e: 0
+Gap do node 10 e: 1.5
+Valor do cont: 7
+SET COR !  Vertice : 3 Cor : 2
+Maior peso 1: 4 Menor peso 1: 3
+Id da aresta: 2
+ POSICAONODE : 7
+ Visitado  false
+ Vertice : 3 .getInDegree()1
+ PRINTADO O VERTICE QUE GRAU 1 : 2
+ SET COR !!! Vertice : 2 Cor : 2
+Começo do vectorWeightEdge: 5
+i :2VectorNode: 7
+i :2VectorNode: 6
+i :2VectorNode: 3
+i :2VectorNode: 2
+Maior peso 7: 10 Menor peso 7: 3
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
+ Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 1.33333
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 0.5
+ Vertice atual: 9
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 17
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Gap do node 5 e: 0.333333
+Gap do node 11 e: 0.333333
+Gap do node 1 e: 0.333333
+Gap do node 4 e: 1.33333
+Gap do node 14 e: 2.5
+Gap do node 19 e: 0.5
+Gap do node 20 e: 0.5
+Gap do node 9 e: 0
+Gap do node 17 e: 3
+Gap do node 16 e: 2
+Gap do node 10 e: 3
+Valor do cont: 7
+SET COR !  Vertice : 9 Cor : 3
+Id da aresta: 5
+Id da aresta: 17
+Id da aresta: 16
+Id da aresta: 10
+ POSICAONODE : 1
+ Visitado  false
+ Vertice : 9 .getInDegree()4
+ PRINTADO O VERTICE QUE GRAU 1 : 5
+Começo do vectorWeightEdge: 5
+i :3VectorNode: 13
+i :3VectorNode: 9
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 2
+ Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 1.33333
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 1.33333
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 9
+Valos do gapFinal: 3
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 10
+Valos do gapFinal: 5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 1.75
+ Vertice atual: 17
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+Gap do node 5 e: 2
+Gap do node 11 e: 1.33333
+Gap do node 1 e: 1.33333
+Gap do node 4 e: 3
+Gap do node 14 e: 5
+Gap do node 19 e: 3
+Gap do node 20 e: 1.75
+Gap do node 17 e: 0.5
+Gap do node 16 e: 0.5
+Gap do node 10 e: 0.5
+Valor do cont: 7
+SET COR !  Vertice : 17 Cor : 0
+Id da aresta: 9
+Id da aresta: 15
+ POSICAONODE : 12
+ Visitado  true
+ Vertice : 17 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 9
+Começo do vectorWeightEdge: 5
+i :0VectorNode: 15
+i :0VectorNode: 12
+i :0VectorNode: 17
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Gap do node 5 e: 0
+Gap do node 11 e: 0
+Gap do node 1 e: 0
+Gap do node 4 e: 0
+Gap do node 14 e: 0
+Gap do node 19 e: 0
+Gap do node 20 e: 0
+Gap do node 16 e: 0
+Gap do node 10 e: 0
+Valor do cont: 0
+SET COR !  Vertice : 5 Cor : 1
+Id da aresta: 0
+Id da aresta: 12
+Id da aresta: 9
+ POSICAONODE : 0
+ Visitado  true
+ Vertice : 5 .getInDegree()3
+ PRINTADO O VERTICE QUE GRAU 1 : 0
+Começo do vectorWeightEdge: 5
+i :1VectorNode: 8
+i :1VectorNode: 18
+i :1VectorNode: 0
+i :1VectorNode: 5
+ Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 7
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 7
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 7
+Valor do gapNode: 8
+Valos do gapFinal: 2.66667
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 7
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 7
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 7
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 7
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 7
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+Gap do node 11 e: 0
+Gap do node 1 e: 0
+Gap do node 4 e: 2.66667
+Gap do node 14 e: 4.5
+Gap do node 19 e: 0
+Gap do node 20 e: 0
+Gap do node 16 e: 0
+Gap do node 10 e: 4.5
+Valor do cont: 0
+SET COR !  Vertice : 11 Cor : 2
+Maior peso 1: 10 Menor peso 1: 3
+Id da aresta: 0
+Id da aresta: 20
+Id da aresta: 18
+ POSICAONODE : 0
+ Visitado  true
+ Vertice : 11 .getInDegree()3
+ PRINTADO O VERTICE QUE GRAU 1 : 0
+Começo do vectorWeightEdge: 11
+i :2VectorNode: 7
+i :2VectorNode: 6
+i :2VectorNode: 3
+i :2VectorNode: 2
+i :2VectorNode: 11
+Maior peso 7: 10 Menor peso 7: 3
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 1.33333
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 0.5
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+Gap do node 1 e: 0.333333
+Gap do node 4 e: 1.33333
+Gap do node 14 e: 2.5
+Gap do node 19 e: 0.5
+Gap do node 20 e: 0.5
+Gap do node 16 e: 2
+Gap do node 10 e: 3
+Valor do cont: 0
+SET COR !  Vertice : 1 Cor : 3
+Id da aresta: 4
+Id da aresta: 14
+Id da aresta: 19
+ POSICAONODE : 4
+ Visitado  false
+ Vertice : 1 .getInDegree()3
+ PRINTADO O VERTICE QUE GRAU 1 : 4
+Começo do vectorWeightEdge: 1
+i :3VectorNode: 13
+i :3VectorNode: 9
+i :3VectorNode: 1
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 1
+Valor do gapNode: 10
+Valos do gapFinal: 3.33333
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 1
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 1
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 1
+Valor do gapNode: 8
+Valos do gapFinal: 2
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 2
+Valos do gapFinal: 1
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Gap do node 4 e: 3.33333
+Gap do node 14 e: 5.5
+Gap do node 19 e: 3.5
+Gap do node 20 e: 2
+Gap do node 16 e: 1
+Gap do node 10 e: 0
+Valor do cont: 5
+SET COR !  Vertice : 10 Cor : 0
+Id da aresta: 9
+Id da aresta: 14
+ POSICAONODE : 12
+ Visitado  true
+ Vertice : 10 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 9
+Começo do vectorWeightEdge: 4
+i :0VectorNode: 15
+i :0VectorNode: 12
+i :0VectorNode: 17
+i :0VectorNode: 10
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Gap do node 4 e: 0
+Gap do node 14 e: 0
+Gap do node 19 e: 0
+Gap do node 20 e: 0
+Gap do node 16 e: 0
+Valor do cont: 0
+SET COR !  Vertice : 4 Cor : 1
+Id da aresta: 1
+Id da aresta: 20
+Id da aresta: 18
+ POSICAONODE : 3
+ Visitado  true
+ Vertice : 4 .getInDegree()3
+ PRINTADO O VERTICE QUE GRAU 1 : 1
+Começo do vectorWeightEdge: 4
+i :1VectorNode: 8
+i :1VectorNode: 18
+i :1VectorNode: 0
+i :1VectorNode: 5
+i :1VectorNode: 4
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 7
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 7
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 7
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 7
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Gap do node 14 e: 4.5
+Gap do node 19 e: 0
+Gap do node 20 e: 0
+Gap do node 16 e: 0
+Valor do cont: 1
+SET COR !  Vertice : 19 Cor : 2
+Maior peso 1: 10 Menor peso 1: 3
+Id da aresta: 1
+Id da aresta: 6
+ POSICAONODE : 3
+ Visitado  true
+ Vertice : 19 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 1
+Começo do vectorWeightEdge: 14
+i :2VectorNode: 7
+i :2VectorNode: 6
+i :2VectorNode: 3
+i :2VectorNode: 2
+i :2VectorNode: 11
+i :2VectorNode: 19
+Maior peso 7: 10 Menor peso 7: 3
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 3
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 0.75
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 4
+Valos do gapFinal: 2
+Gap do node 14 e: 3
+Gap do node 20 e: 0.75
+Gap do node 16 e: 2
+Valor do cont: 1
+SET COR !  Vertice : 20 Cor : 3
+Id da aresta: 4
+Id da aresta: 11
+Id da aresta: 13
+Id da aresta: 15
+ POSICAONODE : 4
+ Visitado  true
+ Vertice : 20 .getInDegree()4
+ PRINTADO O VERTICE QUE GRAU 1 : 4
+Começo do vectorWeightEdge: 14
+i :3VectorNode: 13
+i :3VectorNode: 9
+i :3VectorNode: 1
+i :3VectorNode: 20
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 1
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+ Vertice atual: 16
+Peso atual: 3
+Valor do gap atual: 1
+Valor do gapNode: 2
+Valos do gapFinal: 1
+Gap do node 14 e: 5.5
+Gap do node 16 e: 1
+Valor do cont: 1
+SET COR !  Vertice : 16 Cor : 0
+Id da aresta: 9
+Id da aresta: 13
+ POSICAONODE : 12
+ Visitado  true
+ Vertice : 16 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 9
+Começo do vectorWeightEdge: 14
+i :0VectorNode: 15
+i :0VectorNode: 12
+i :0VectorNode: 17
+i :0VectorNode: 10
+i :0VectorNode: 16
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Gap do node 14 e: 0
+Valor do cont: 0
+SET COR !  Vertice : 14 Cor : 1
+Id da aresta: 1
+Id da aresta: 10
+ POSICAONODE : 3
+ Visitado  true
+ Vertice : 14 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 1
+Começo do vectorWeightEdge: 14
+i :1VectorNode: 8
+i :1VectorNode: 18
+i :1VectorNode: 0
+i :1VectorNode: 5
+i :1VectorNode: 4
+i :1VectorNode: 14
+Valor do cont: 0
+Valor do cont: 0
+Arestas desse lixo: 0
+Arestas desse lixo: 12
+Arestas desse lixo: 9
+PORRA: 20
+PORRA: 16
+Id dos nodes: 0 Peso dos nodes: 6 Cores dos nodes: 1
+Id dos nodes: 5 Peso dos nodes: 8 Cores dos nodes: 1
+Id dos nodes: 11 Peso dos nodes: 6 Cores dos nodes: 2
+Id dos nodes: 1 Peso dos nodes: 6 Cores dos nodes: 3
+Id dos nodes: 4 Peso dos nodes: 11 Cores dos nodes: 1
+Id dos nodes: 14 Peso dos nodes: 12 Cores dos nodes: 1
+Id dos nodes: 19 Peso dos nodes: 8 Cores dos nodes: 2
+Id dos nodes: 2 Peso dos nodes: 10 Cores dos nodes: 2
+Id dos nodes: 18 Peso dos nodes: 1 Cores dos nodes: 1
+Id dos nodes: 3 Peso dos nodes: 4 Cores dos nodes: 2
+Id dos nodes: 20 Peso dos nodes: 9 Cores dos nodes: 3
+Id dos nodes: 12 Peso dos nodes: 2 Cores dos nodes: 0
+Id dos nodes: 9 Peso dos nodes: 7 Cores dos nodes: 3
+Id dos nodes: 6 Peso dos nodes: 3 Cores dos nodes: 2
+Id dos nodes: 7 Peso dos nodes: 4 Cores dos nodes: 2
+Id dos nodes: 8 Peso dos nodes: 12 Cores dos nodes: 1
+Id dos nodes: 17 Peso dos nodes: 1 Cores dos nodes: 0
+Id dos nodes: 16 Peso dos nodes: 3 Cores dos nodes: 0
+Id dos nodes: 10 Peso dos nodes: 1 Cores dos nodes: 0
+Id dos nodes: 13 Peso dos nodes: 7 Cores dos nodes: 3
+Id dos nodes: 15 Peso dos nodes: 2 Cores dos nodes: 0
+ vectorNode.at(0). at (0) = 15
+ vectorNode.at(0). at (1) = 12
+ vectorNode.at(0). at (2) = 17
+ vectorNode.at(0). at (3) = 10
+ vectorNode.at(0). at (4) = 16
+
+ vectorNode.at(1). at (0) = 8
+ vectorNode.at(1). at (1) = 18
+ vectorNode.at(1). at (2) = 0
+ vectorNode.at(1). at (3) = 5
+ vectorNode.at(1). at (4) = 4
+ vectorNode.at(1). at (5) = 14
+  ->>>>>>>>> vectorNode->at(i).at(x).getId() cor 1
+I: 0Maior Valor de cada cluster: 3 Menor Valor: 1
+I: 1Maior Valor de cada cluster: 12 Menor Valor: 1
+I: 2Maior Valor de cada cluster: 10 Menor Valor: 3
+I: 3Maior Valor de cada cluster: 9 Menor Valor: 6
+TESTANDO TAMANHO:  4
+ i  = 0 Id 15 Cor : 0
+ i  = 0 Id 12 Cor : 0
+ i  = 0 Id 17 Cor : 0
+ i  = 0 Id 10 Cor : 0
+ i  = 0 Id 16 Cor : 0
+ i  = 1 Id 8 Cor : 1
+ i  = 1 Id 18 Cor : 1
+ i  = 1 Id 0 Cor : 1
+ i  = 1 Id 5 Cor : 1
+ i  = 1 Id 4 Cor : 1
+ i  = 1 Id 14 Cor : 1
+ i  = 2 Id 7 Cor : 2
+ i  = 2 Id 6 Cor : 2
+ i  = 2 Id 3 Cor : 2
+ i  = 2 Id 2 Cor : 2
+ i  = 2 Id 11 Cor : 2
+ i  = 2 Id 19 Cor : 2
+ i  = 3 Id 13 Cor : 3
+ i  = 3 Id 9 Cor : 3
+ i  = 3 Id 1 Cor : 3
+ i  = 3 Id 20 Cor : 3
+TESTANDO TAMANHO2:  4
+Começando o i: 0
+  i : 0
+vetorClusterNodes->at(0).at(0) :  15
+Dando erase: 15
+ COR DO 5 ********* 1
+ COR DO 0 ********* 1
+Testando essa porra: 2
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  15
+Testando essa porra: 2
+TesteTriste vizinho  : 17COR : 0
+ node :   15 COR : 0
+ vizinho  : 17COR : 0
+TesteTriste vizinho  : 20COR : 3
+K: 0 Node sendo excluido: 17
+  vetorClusterNodes->at(k).at(j).getId() :  17
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 3
+TesteTriste vizinho  : 15COR : 0
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  12
+Testando essa porra: 2
+TesteTriste vizinho  : 5COR : 1
+TesteTriste vizinho  : 6COR : 2
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  10
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 3
+TesteTriste vizinho  : 14COR : 1
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  16
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 3
+TesteTriste vizinho  : 13COR : 3
+TESTANDO TAMANHO 3:  4
+K: 0 Maior Valor: 2 Menor valor: 1
+K: 1 Maior Valor: 2 Menor valor: 2
+K: 2 Maior Valor: 1 Menor valor: 1
+K: 3 Maior Valor: 3 Menor valor: 3
+maiorSubCluster vale: 2
+Entrou quantas x
+Entrou quantas x
+Entrou quantas x
+Entrou quantas x
+Gap da posicao escolhida = 1
+Posicao escolhida = 0
+Cores: false
+Cores: true
+Cores: true
+Cores: true
+Size coresPossiveis: 2
+Entrou quantas x 
+Node atual: 12
+Id do vizinho: 5
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:1
+Super teste: 12
+Super teste 2: 1
+Valor atual 1: 2
+Valor atual 2: 2
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+Entrou no 4 uau
+ 3 Valor do gap agora:  0
+ 4 Valor do gap agora:  0
+Id do vizinho: 6
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:2
+Super teste: 10
+Super teste 2: 3
+Valor atual 1: 2
+Valor atual 2: 2
+Entrou 3
+Entrou 6
+Valor atual do gap: 0
+Valor atual do que tá sendo comparado ao gap: 1
+Valor do e: 1
+Testando front: 0
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(1).size(): 1
+Entradas: 1
+coresPossiveis->at(0).front(): 0
+coresPossiveis->at(0).back(): 1
+Rodous quantas x: 
+Valor do menor: 0
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 12
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 12é: 1
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+Valores desse vet dessa cor: 8
+Valores desse vet dessa cor: 18
+Valores desse vet dessa cor: 0
+Valores desse vet dessa cor: 5
+Valores desse vet dessa cor: 4
+Valores desse vet dessa cor: 14
+Valores desse vet dessa cor: 12
+Testando essa porra: 2
+Entrou quantas x 
+Node atual: 10
+Id do vizinho: 9
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:3
+Super teste: 9
+Super teste 2: 6
+Valor atual 1: 1
+Valor atual 2: 1
+Entrou 3
+Entrou 6
+Valor atual do gap: 1000000
+Valor atual do que tá sendo comparado ao gap: 5
+Entrou no 3 uau
+Valor do z que entrou: 0
+Id do vizinho: 14
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:1
+Super teste: 12
+Super teste 2: 1
+Valor atual 1: 1
+Valor atual 2: 1
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+Entrou no 4 uau
+ 3 Valor do gap agora:  0
+ 4 Valor do gap agora:  0
+Valor do e: 2
+Testando front: 0
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(2).size(): 1
+Entradas: 2
+coresPossiveis->at(0).front(): 0
+coresPossiveis->at(0).back(): 1
+Rodous quantas x: 
+Valor do menor: 0
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 10
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 10é: 1
+Uma x
+duas x
+tres x
+contSelecionado: 1
+Chegou a sair
+Valores desse vet dessa cor: 8
+Valores desse vet dessa cor: 18
+Valores desse vet dessa cor: 0
+Valores desse vet dessa cor: 5
+Valores desse vet dessa cor: 4
+Valores desse vet dessa cor: 14
+Valores desse vet dessa cor: 12
+Valores desse vet dessa cor: 10
+Testando essa porra: 2
+Entrou quantas x 
+Node atual: 16
+Id do vizinho: 9
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:3
+Super teste: 9
+Super teste 2: 6
+Valor atual 1: 3
+Valor atual 2: 3
+Entrou 3
+Entrou 6
+Valor atual do gap: 1000000
+Valor atual do que tá sendo comparado ao gap: 3
+Entrou no 3 uau
+Valor do z que entrou: 0
+Id do vizinho: 13
+Bahia corNode: false
+Valor do e: 3
+Testando front: 0
+testando back: 2
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(3).size(): 1
+Entradas: 1
+coresPossiveis->at(0).front(): 3
+coresPossiveis->at(0).back(): 3
+Rodous quantas x: 
+Valor do menor: 3
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 16
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 16é: 3
+Uma x
+duas x
+tres x
+contSelecionado: 0
+entrou 3
+Chegou a sair
+Valores desse vet dessa cor: 13
+Valores desse vet dessa cor: 9
+Valores desse vet dessa cor: 1
+Valores desse vet dessa cor: 20
+Valores desse vet dessa cor: 16
+Testando essa porra: 2
+Depois disso aqui: 
+Vector 1: 8
+Vector 1: 18
+Vector 1: 0
+Vector 1: 5
+Vector 1: 4
+Vector 1: 14
+Vector 1: 12
+Vector 1: 10
+Vector 2: 7
+Vector 2: 6
+Vector 2: 3
+Vector 2: 2
+Vector 2: 11
+Vector 2: 19
+Vector 3: 13
+Vector 3: 9
+Vector 3: 1
+Vector 3: 20
+Vector 3: 16
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Maior por enquanto: 3 Menor por enquanto: 1
+Maior por enquanto: 12 Menor por enquanto: 1
+Maior por enquanto: 10 Menor por enquanto: 3
+Maior por enquanto: 9 Menor por enquanto: 3
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Teste pra isso I: 0Maior peso: 2 Menor peso: 1
+Teste
+Teste 2
+Valor do i: 0
+Entrou
+vetorClusterNodes.size()  4
+vetorClusterNodes->at(0).size()  2
+ Kluster : 0 Valor : 15
+ Kluster : 0 Valor : 17
+Começando o i: 1
+  i : 1
+vetorClusterNodes->at(0).at(0) :  8
+Dando erase: 8
+ COR DO 5 ********* 1
+ COR DO 0 ********* 1
+Testando essa porra: 2
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  8
+Testando essa porra: 2
+TesteTriste vizinho  : 18COR : 1
+ node :   8 COR : 1
+ vizinho  : 18COR : 1
+K: 0 Node sendo excluido: 18
+  vetorClusterNodes->at(k).at(j).getId() :  18
+Testando essa porra: 2
+TesteTriste vizinho  : 2COR : 2
+TesteTriste vizinho  : 4COR : 1
+ node :   18 COR : 1
+ vizinho  : 4COR : 1
+TesteTriste vizinho  : 8COR : 1
+TesteTriste vizinho  : 11COR : 2
+K: 0 Node sendo excluido: 4
+  vetorClusterNodes->at(k).at(j).getId() :  4
+Testando essa porra: 2
+TesteTriste vizinho  : 1COR : 3
+TesteTriste vizinho  : 20COR : 3
+TesteTriste vizinho  : 18COR : 1
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  0
+Testando essa porra: 2
+TesteTriste vizinho  : 5COR : 1
+ node :   0 COR : 1
+ vizinho  : 5COR : 1
+TesteTriste vizinho  : 11COR : 2
+K: 1 Node sendo excluido: 5
+  vetorClusterNodes->at(k).at(j).getId() :  5
+Testando essa porra: 2
+TesteTriste vizinho  : 0COR : 1
+TesteTriste vizinho  : 12COR : 1
+ node :   5 COR : 1
+ vizinho  : 12COR : 1
+TesteTriste vizinho  : 9COR : 3
+K: 1 Node sendo excluido: 12
+  vetorClusterNodes->at(k).at(j).getId() :  12
+Testando essa porra: 2
+TesteTriste vizinho  : 5COR : 1
+TesteTriste vizinho  : 6COR : 2
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  14
+Testando essa porra: 2
+TesteTriste vizinho  : 1COR : 3
+TesteTriste vizinho  : 10COR : 1
+ node :   14 COR : 1
+ vizinho  : 10COR : 1
+K: 2 Node sendo excluido: 10
+  vetorClusterNodes->at(k).at(j).getId() :  10
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 3
+TesteTriste vizinho  : 14COR : 1
+TESTANDO TAMANHO 3:  4
+K: 0 Maior Valor: 12 Menor valor: 1
+K: 1 Maior Valor: 8 Menor valor: 2
+K: 2 Maior Valor: 12 Menor valor: 1
+maiorSubCluster vale: 3
+Entrou quantas x
+Entrou quantas x
+Entrou quantas x
+Gap da posicao escolhida = 6
+Posicao escolhida = 1
+Cores: true
+Cores: false
+Cores: true
+Cores: true
+Size coresPossiveis: 2
+Entrou quantas x 
+Node atual: 8
+Id do vizinho: 18
+Bahia corNode: false
+Entrou quantas x 
+Node atual: 18
+Id do vizinho: 2
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:2
+Super teste: 10
+Super teste 2: 3
+Valor atual 1: 12
+Valor atual 2: 1
+Entrou 3
+Entrou 4
+Valor do gap agora:  1000000
+Entrou no 1 uau
+Valor do z que entrou: 1
+Valor do gap aqui presente: 4
+Id do vizinho: 4
+Bahia corNode: false
+Id do vizinho: 8
+Bahia corNode: false
+Id do vizinho: 11
+Bahia corNode: false
+Entrou quantas x 
+Node atual: 4
+Id do vizinho: 1
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:3
+Super teste: 9
+Super teste 2: 3
+Valor atual 1: 12
+Valor atual 2: 1
+Entrou 3
+Entrou 4
+Id do vizinho: 20
+Bahia corNode: false
+Id do vizinho: 18
+Bahia corNode: false
+Valor do e: 0
+Testando front: 1
+testando back: 0
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(0).size(): 3
+Entradas: 1
+coresPossiveis->at(0).front(): 4
+coresPossiveis->at(0).back(): 2
+Rodous quantas x: 
+Valor do menor: 4
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 8
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 18
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 4
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 8é: 2
+Uma x
+duas x
+tres x
+contSelecionado: 0
+entrou 1
+Maior valor agora: 12 Menor valor agora: 1
+Chegou a sair
+Valores desse vet dessa cor: 7
+Valores desse vet dessa cor: 6
+Valores desse vet dessa cor: 3
+Valores desse vet dessa cor: 2
+Valores desse vet dessa cor: 11
+Valores desse vet dessa cor: 19
+Valores desse vet dessa cor: 8
+Valores desse vet dessa cor: 18
+Valores desse vet dessa cor: 4
+Testando essa porra: 2
+Entrou quantas x 
+Node atual: 14
+Id do vizinho: 1
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:3
+Super teste: 9
+Super teste 2: 3
+Valor atual 1: 12
+Valor atual 2: 1
+Entrou 3
+Entrou 4
+Valor do gap agora:  1000000
+Entrou no 1 uau
+Valor do z que entrou: 0
+Valor do gap aqui presente: 5
+Id do vizinho: 10
+Bahia corNode: false
+Entrou quantas x 
+Node atual: 10
+Id do vizinho: 9
+Bahia corNode: false
+Id do vizinho: 14
+Bahia corNode: false
+Valor do e: 2
+Testando front: 0
+testando back: 0
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(2).size(): 2
+Entradas: 1
+coresPossiveis->at(0).front(): 5
+coresPossiveis->at(0).back(): 3
+Rodous quantas x: 
+Valor do menor: 5
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 14
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 10
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 14é: 3
+Uma x
+duas x
+tres x
+contSelecionado: 0
+entrou 1
+Maior valor agora: 12 Menor valor agora: 1
+Chegou a sair
+Valores desse vet dessa cor: 13
+Valores desse vet dessa cor: 9
+Valores desse vet dessa cor: 1
+Valores desse vet dessa cor: 20
+Valores desse vet dessa cor: 16
+Valores desse vet dessa cor: 14
+Valores desse vet dessa cor: 10
+Testando essa porra: 2
+Depois disso aqui: 
+Vector 2: 7
+Vector 2: 6
+Vector 2: 3
+Vector 2: 2
+Vector 2: 11
+Vector 2: 19
+Vector 2: 8
+Vector 2: 18
+Vector 2: 4
+Vector 3: 13
+Vector 3: 9
+Vector 3: 1
+Vector 3: 20
+Vector 3: 16
+Vector 3: 14
+Vector 3: 10
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Maior por enquanto: 2 Menor por enquanto: 1
+Maior por enquanto: 12 Menor por enquanto: 1
+Maior por enquanto: 12 Menor por enquanto: 1
+Maior por enquanto: 12 Menor por enquanto: 1
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Teste pra isso I: 1Maior peso: 8 Menor peso: 2
+Teste
+Teste 2
+Valor do i: 1
+Começando o i: 2
+  i : 2
+vetorClusterNodes->at(0).at(0) :  7
+Dando erase: 7
+ COR DO 5 ********* 1
+ COR DO 0 ********* 1
+Testando essa porra: 2
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  7
+Testando essa porra: 2
+TesteTriste vizinho  : 6COR : 2
+ node :   7 COR : 2
+ vizinho  : 6COR : 2
+K: 0 Node sendo excluido: 6
+  vetorClusterNodes->at(k).at(j).getId() :  6
+Testando essa porra: 2
+TesteTriste vizinho  : 12COR : 1
+TesteTriste vizinho  : 7COR : 2
+TesteTriste vizinho  : 19COR : 2
+ node :   6 COR : 2
+ vizinho  : 19COR : 2
+K: 0 Node sendo excluido: 19
+  vetorClusterNodes->at(k).at(j).getId() :  19
+Testando essa porra: 2
+TesteTriste vizinho  : 1COR : 3
+TesteTriste vizinho  : 6COR : 2
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  3
+Testando essa porra: 2
+TesteTriste vizinho  : 2COR : 2
+ node :   3 COR : 2
+ vizinho  : 2COR : 2
+K: 1 Node sendo excluido: 2
+  vetorClusterNodes->at(k).at(j).getId() :  2
+Testando essa porra: 2
+TesteTriste vizinho  : 18COR : 2
+ node :   2 COR : 2
+ vizinho  : 18COR : 2
+TesteTriste vizinho  : 3COR : 2
+K: 1 Node sendo excluido: 18
+  vetorClusterNodes->at(k).at(j).getId() :  18
+Testando essa porra: 2
+TesteTriste vizinho  : 2COR : 2
+TesteTriste vizinho  : 4COR : 2
+ node :   18 COR : 2
+ vizinho  : 4COR : 2
+TesteTriste vizinho  : 8COR : 2
+ node :   18 COR : 2
+ vizinho  : 8COR : 2
+TesteTriste vizinho  : 11COR : 2
+ node :   18 COR : 2
+ vizinho  : 11COR : 2
+K: 1 Node sendo excluido: 4
+K: 1 Node sendo excluido: 8
+K: 1 Node sendo excluido: 11
+  vetorClusterNodes->at(k).at(j).getId() :  4
+Testando essa porra: 2
+TesteTriste vizinho  : 1COR : 3
+TesteTriste vizinho  : 20COR : 3
+TesteTriste vizinho  : 18COR : 2
+  vetorClusterNodes->at(k).at(j).getId() :  8
+Testando essa porra: 2
+TesteTriste vizinho  : 18COR : 2
+  vetorClusterNodes->at(k).at(j).getId() :  11
+Testando essa porra: 2
+TesteTriste vizinho  : 0COR : 1
+TesteTriste vizinho  : 20COR : 3
+TesteTriste vizinho  : 18COR : 2
+TESTANDO TAMANHO 3:  4
+K: 0 Maior Valor: 8 Menor valor: 3
+K: 1 Maior Valor: 12 Menor valor: 1
+maiorSubCluster vale: 6
+Entrou quantas x
+Entrou quantas x
+Gap da posicao escolhida = 11
+Posicao escolhida = 1
+Cores: true
+Cores: true
+Cores: false
+Cores: true
+Size coresPossiveis: 2
+Entrou quantas x 
+Node atual: 7
+Id do vizinho: 6
+Bahia corNode: false
+Entrou quantas x 
+Node atual: 6
+Id do vizinho: 12
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:1
+Super teste: 8
+Super teste 2: 2
+Valor atual 1: 8
+Valor atual 2: 3
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 1
+Entrou no 8
+Entrou no 4 uau
+ 3 Valor do gap agora:  0
+ 4 Valor do gap agora:  0
+Id do vizinho: 7
+Bahia corNode: false
+Id do vizinho: 19
+Bahia corNode: false
+Entrou quantas x 
+Node atual: 19
+Id do vizinho: 1
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:3
+Super teste: 12
+Super teste 2: 1
+Valor atual 1: 8
+Valor atual 2: 3
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 2
+Entrou no 8
+ 4 Valor do gap agora:  0
+Id do vizinho: 6
+Bahia corNode: false
+Valor do e: 0
+Testando front: 1
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(0).size(): 3
+Entradas: 1
+coresPossiveis->at(0).front(): 0
+coresPossiveis->at(0).back(): 1
+Rodous quantas x: 
+Valor do menor: 0
+Cor do node: 7é: 1
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+Testando essa porra: 2
+Depois disso aqui: 
+Vector 3: 13
+Vector 3: 9
+Vector 3: 1
+Vector 3: 20
+Vector 3: 16
+Vector 3: 14
+Vector 3: 10
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Maior por enquanto: 2 Menor por enquanto: 1
+Maior por enquanto: 8 Menor por enquanto: 2
+Maior por enquanto: 12 Menor por enquanto: 1
+Maior por enquanto: 12 Menor por enquanto: 1
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Teste pra isso I: 2Maior peso: 12 Menor peso: 1
+Teste
+Teste 2
+Valor do i: 2
+Começando o i: 3
+  i : 3
+vetorClusterNodes->at(0).at(0) :  13
+Dando erase: 13
+ COR DO 5 ********* 1
+ COR DO 0 ********* 1
+Testando essa porra: 2
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  13
+Testando essa porra: 2
+TesteTriste vizinho  : 20COR : 3
+ node :   13 COR : 3
+ vizinho  : 20COR : 3
+TesteTriste vizinho  : 16COR : 3
+ node :   13 COR : 3
+ vizinho  : 16COR : 3
+K: 0 Node sendo excluido: 20
+K: 0 Node sendo excluido: 16
+  vetorClusterNodes->at(k).at(j).getId() :  20
+Testando essa porra: 2
+TesteTriste vizinho  : 4COR : 2
+TesteTriste vizinho  : 11COR : 2
+TesteTriste vizinho  : 13COR : 3
+TesteTriste vizinho  : 15COR : 0
+  vetorClusterNodes->at(k).at(j).getId() :  16
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 3
+ node :   16 COR : 3
+ vizinho  : 9COR : 3
+TesteTriste vizinho  : 13COR : 3
+K: 0 Node sendo excluido: 9
+  vetorClusterNodes->at(k).at(j).getId() :  9
+Testando essa porra: 2
+TesteTriste vizinho  : 5COR : 1
+TesteTriste vizinho  : 17COR : 0
+TesteTriste vizinho  : 16COR : 3
+TesteTriste vizinho  : 10COR : 3
+ node :   9 COR : 3
+ vizinho  : 10COR : 3
+K: 0 Node sendo excluido: 10
+  vetorClusterNodes->at(k).at(j).getId() :  10
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 3
+TesteTriste vizinho  : 14COR : 3
+ node :   10 COR : 3
+ vizinho  : 14COR : 3
+K: 0 Node sendo excluido: 14
+  vetorClusterNodes->at(k).at(j).getId() :  14
+Testando essa porra: 2
+TesteTriste vizinho  : 1COR : 3
+ node :   14 COR : 3
+ vizinho  : 1COR : 3
+TesteTriste vizinho  : 10COR : 3
+K: 0 Node sendo excluido: 1
+  vetorClusterNodes->at(k).at(j).getId() :  1
+Testando essa porra: 2
+TesteTriste vizinho  : 4COR : 2
+TesteTriste vizinho  : 14COR : 3
+TesteTriste vizinho  : 19COR : 1
+TESTANDO TAMANHO 3:  4
+K: 0 Maior Valor: 12 Menor valor: 1
+maiorSubCluster vale: 7
+Entrou quantas x
+Gap da posicao escolhida = 11
+Posicao escolhida = 0
+Cores: true
+Cores: true
+Cores: true
+Cores: false
+Size coresPossiveis: 2
+Depois disso aqui: 
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Maior por enquanto: 2 Menor por enquanto: 1
+Maior por enquanto: 8 Menor por enquanto: 2
+Maior por enquanto: 12 Menor por enquanto: 1
+Maior por enquanto: 12 Menor por enquanto: 1
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Teste pra isso I: 3Maior peso: 12 Menor peso: 1
+Teste
+Teste 2
+Valor do i: 3
+Chegou a sair 
+Chegou aqui 
+Testando gap final: 29
+Cluster é: 0
+Cor do node: 0 Id do node: 17 Peso: 1
+Cor do node: 0 Id do node: 15 Peso: 2
+Maior dessa posicao: 2 Menor dessa posicao: 1
+Gap dessa posicao: 1
+Cluster é: 1
+Cor do node: 1 Id do node: 0 Peso: 6
+Cor do node: 1 Id do node: 5 Peso: 8
+Cor do node: 1 Id do node: 19 Peso: 8
+Cor do node: 1 Id do node: 12 Peso: 2
+Cor do node: 1 Id do node: 6 Peso: 3
+Cor do node: 1 Id do node: 7 Peso: 4
+Maior dessa posicao: 8 Menor dessa posicao: 2
+Gap dessa posicao: 6
+Cluster é: 2
+Cor do node: 2 Id do node: 11 Peso: 6
+Cor do node: 2 Id do node: 4 Peso: 11
+Cor do node: 2 Id do node: 2 Peso: 10
+Cor do node: 2 Id do node: 18 Peso: 1
+Cor do node: 2 Id do node: 3 Peso: 4
+Cor do node: 2 Id do node: 8 Peso: 12
+Maior dessa posicao: 12 Menor dessa posicao: 1
+Gap dessa posicao: 11
+Cluster é: 3
+Cor do node: 3 Id do node: 1 Peso: 6
+Cor do node: 3 Id do node: 14 Peso: 12
+Cor do node: 3 Id do node: 20 Peso: 9
+Cor do node: 3 Id do node: 9 Peso: 7
+Cor do node: 3 Id do node: 16 Peso: 3
+Cor do node: 3 Id do node: 10 Peso: 1
+Cor do node: 3 Id do node: 13 Peso: 7
+Maior dessa posicao: 12 Menor dessa posicao: 1
+Gap dessa posicao: 11
+saiu
+
+ Id : 0 IdNode : 0
+ Id : 5 IdNode : 1
+ Id : 11 IdNode : 2
+ Id : 1 IdNode : 3
+ Id : 4 IdNode : 4
+ Id : 14 IdNode : 5
+ Id : 19 IdNode : 6
+ Id : 2 IdNode : 7
+ Id : 18 IdNode : 8
+ Id : 3 IdNode : 9
+ Id : 20 IdNode : 10
+ Id : 12 IdNode : 11
+ Id : 9 IdNode : 12
+ Id : 6 IdNode : 13
+ Id : 7 IdNode : 14
+ Id : 8 IdNode : 15
+ Id : 17 IdNode : 16
+ Id : 16 IdNode : 17
+ Id : 10 IdNode : 18
+ Id : 13 IdNode : 19
+ Id : 15 IdNode : 20
+Entrou no 3
+Entrou no 3
+Entrou no 3
+Entrou no 3
+Cluster: 0 Id: 16
+Cluster: 1 Id: 17
+Cluster: 2 Id: 9
+Cluster: 3 Id: 0
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+ Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 8
+Valos do gapFinal: 2.66667
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+ Vertice atual: 2
+Peso atual: 10
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+ Vertice atual: 18
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 0.5
+ Vertice atual: 3
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 1
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 1.5
+ Vertice atual: 12
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+ Vertice atual: 6
+Peso atual: 3
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 7
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 1
+ Vertice atual: 8
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 9
+Valos do gapFinal: 9
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 1
+ Vertice atual: 13
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 2
+ Vertice atual: 15
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+Gap do node 5 e: 1.66667
+Gap do node 11 e: 1
+Gap do node 1 e: 1
+Gap do node 4 e: 2.66667
+Gap do node 14 e: 4.5
+Gap do node 19 e: 2.5
+Gap do node 2 e: 3.5
+Gap do node 18 e: 0.5
+Gap do node 3 e: 1
+Gap do node 20 e: 1.5
+Gap do node 12 e: 0.5
+Gap do node 6 e: 0
+Gap do node 7 e: 1
+Gap do node 8 e: 9
+Gap do node 10 e: 1
+Gap do node 13 e: 2
+Gap do node 15 e: 0.5
+Valor do cont: 11
+SET COR !  Vertice : 6 Cor : 0
+Id da aresta: 12
+Id da aresta: 7
+Chegou 1.5.5
+SET COR !! Vertice : 7 Cor : 0
+Id da aresta: 19
+ POSICAONODE : 11
+ Visitado  false
+ Vertice : 6 .getInDegree()3
+ PRINTADO O VERTICE QUE GRAU 1 : 12
+Começo do vectorWeightEdge: 5
+i :0VectorNode: 16
+i :0VectorNode: 6
+i :0VectorNode: 7
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 2.33333
+ Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 10
+Valos do gapFinal: 3.33333
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 11
+Valos do gapFinal: 5.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+ Vertice atual: 2
+Peso atual: 10
+Valor do gap atual: 0
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+ Vertice atual: 18
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 3
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 3
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 8
+Valos do gapFinal: 2
+ Vertice atual: 12
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+ Vertice atual: 8
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 11
+Valos do gapFinal: 11
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 13
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+ Vertice atual: 15
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+Gap do node 5 e: 2.33333
+Gap do node 11 e: 1.66667
+Gap do node 1 e: 1.66667
+Gap do node 4 e: 3.33333
+Gap do node 14 e: 5.5
+Gap do node 19 e: 3.5
+Gap do node 2 e: 4.5
+Gap do node 18 e: 0
+Gap do node 3 e: 3
+Gap do node 20 e: 2
+Gap do node 12 e: 0.5
+Gap do node 8 e: 11
+Gap do node 10 e: 0
+Gap do node 13 e: 3
+Gap do node 15 e: 0.5
+Valor do cont: 7
+SET COR !  Vertice : 18 Cor : 1
+Id da aresta: 2
+Id da aresta: 4
+Id da aresta: 8
+Chegou 1.5.5
+SET COR !! Vertice : 8 Cor : 1
+Id da aresta: 11
+ POSICAONODE : 7
+ Visitado  false
+ Vertice : 18 .getInDegree()4
+ PRINTADO O VERTICE QUE GRAU 1 : 2
+Começo do vectorWeightEdge: 5
+i :1VectorNode: 17
+i :1VectorNode: 18
+i :1VectorNode: 8
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
+ Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 0
+Valor do gapNode: 4
+Valos do gapFinal: 1.33333
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
+ Vertice atual: 2
+Peso atual: 10
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 1.5
+ Vertice atual: 3
+Peso atual: 4
+Valor do gap atual: 0
+Valor do gapNode: 3
+Valos do gapFinal: 3
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 0.5
+ Vertice atual: 12
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
+ Vertice atual: 13
+Peso atual: 7
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 15
+Peso atual: 2
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Gap do node 5 e: 0.333333
+Gap do node 11 e: 0.333333
+Gap do node 1 e: 0.333333
+Gap do node 4 e: 1.33333
+Gap do node 14 e: 2.5
+Gap do node 19 e: 0.5
+Gap do node 2 e: 1.5
+Gap do node 3 e: 3
+Gap do node 20 e: 0.5
+Gap do node 12 e: 2.5
+Gap do node 10 e: 3
+Gap do node 13 e: 0
+Gap do node 15 e: 2.5
+Valor do cont: 11
+SET COR !  Vertice : 13 Cor : 2
+Maior peso 1: 7 Menor peso 1: 7
+Id da aresta: 20
+Id da aresta: 16
+ POSICAONODE : 10
+ Visitado  false
+ Vertice : 13 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 20
+Começo do vectorWeightEdge: 5
+i :2VectorNode: 9
+i :2VectorNode: 13
+Maior peso 7: 7 Menor peso 7: 7
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 0
+Valor do gapNode: 2
+Valos do gapFinal: 0.666667
+ Vertice atual: 11
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 1
 Peso atual: 6
 Valor do gap atual: 0
 Valor do gapNode: 0
@@ -35,6 +2115,11 @@ Peso atual: 11
 Valor do gap atual: 0
 Valor do gapNode: 5
 Valos do gapFinal: 1.66667
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 6
+Valos do gapFinal: 3
  Vertice atual: 19
 Peso atual: 8
 Valor do gap atual: 0
@@ -45,11 +2130,6 @@ Peso atual: 10
 Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 2
- Vertice atual: 18
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 1.25
  Vertice atual: 3
 Peso atual: 4
 Valor do gap atual: 0
@@ -65,70 +2145,30 @@ Peso atual: 2
 Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 2
- Vertice atual: 9
-Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.25
- Vertice atual: 6
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 1
- Vertice atual: 7
-Peso atual: 4
-Valor do gap atual: 0
-Valor do gapNode: 2
-Valos do gapFinal: 2
- Vertice atual: 8
-Peso atual: 12
-Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 6
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 1.5
  Vertice atual: 10
 Peso atual: 1
 Valor do gap atual: 0
 Valor do gapNode: 5
 Valos do gapFinal: 2.5
- Vertice atual: 13
-Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.5
  Vertice atual: 15
 Peso atual: 2
 Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 2
+Gap do node 5 e: 0.666667
 Gap do node 11 e: 0
+Gap do node 1 e: 0
 Gap do node 4 e: 1.66667
+Gap do node 14 e: 3
 Gap do node 19 e: 1
 Gap do node 2 e: 2
-Gap do node 18 e: 1.25
 Gap do node 3 e: 2
 Gap do node 20 e: 0.75
 Gap do node 12 e: 2
-Gap do node 9 e: 0.25
-Gap do node 6 e: 1
-Gap do node 7 e: 2
-Gap do node 8 e: 6
-Gap do node 17 e: 2.5
-Gap do node 16 e: 1.5
 Gap do node 10 e: 2.5
-Gap do node 13 e: 0.5
 Gap do node 15 e: 2
-Valor do cont: 0
-SET COR !  Vertice : 11 Cor : 0
+Valor do cont: 1
+SET COR !  Vertice : 11 Cor : 3
 Id da aresta: 0
 Id da aresta: 20
 Id da aresta: 18
@@ -136,332 +2176,235 @@ Id da aresta: 18
  Visitado  true
  Vertice : 11 .getInDegree()3
  PRINTADO O VERTICE QUE GRAU 1 : 0
-Começo do vectorWeightEdge: 11
-i :0VectorNode: 0
-i :0VectorNode: 11
+Começo do vectorWeightEdge: 5
+i :3VectorNode: 0
+i :3VectorNode: 11
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 1.66667
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 1
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 1
+Valor do gapNode: 8
+Valos do gapFinal: 2.66667
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 1
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+ Vertice atual: 2
+Peso atual: 10
+Valor do gap atual: 1
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+ Vertice atual: 3
+Peso atual: 4
+Valor do gap atual: 1
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 1
+Valor do gapNode: 6
+Valos do gapFinal: 1.5
+ Vertice atual: 12
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 2
+Valos do gapFinal: 1
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 1
+Valor do gapNode: 3
+Valos do gapFinal: 1.5
+ Vertice atual: 15
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 2
+Valos do gapFinal: 1
+Gap do node 5 e: 1.66667
+Gap do node 1 e: 1
+Gap do node 4 e: 2.66667
+Gap do node 14 e: 4.5
+Gap do node 19 e: 2.5
+Gap do node 2 e: 3.5
+Gap do node 3 e: 0
+Gap do node 20 e: 1.5
+Gap do node 12 e: 1
+Gap do node 10 e: 1.5
+Gap do node 15 e: 1
+Valor do cont: 6
+SET COR !  Vertice : 3 Cor : 0
+Id da aresta: 2
+ POSICAONODE : 7
+ Visitado  false
+ Vertice : 3 .getInDegree()1
+ PRINTADO O VERTICE QUE GRAU 1 : 2
+ SET COR !!! Vertice : 2 Cor : 0
+Começo do vectorWeightEdge: 5
+i :0VectorNode: 16
+i :0VectorNode: 6
+i :0VectorNode: 7
+i :0VectorNode: 3
+i :0VectorNode: 2
+ Vertice atual: 5
+Peso atual: 8
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 4
+Peso atual: 11
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 20
+Peso atual: 9
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 12
+Peso atual: 2
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 10
+Peso atual: 1
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+ Vertice atual: 15
+Peso atual: 2
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Gap do node 5 e: 0
+Gap do node 1 e: 0
+Gap do node 4 e: 0
+Gap do node 14 e: 0
+Gap do node 19 e: 0
+Gap do node 20 e: 0
+Gap do node 12 e: 0
+Gap do node 10 e: 0
+Gap do node 15 e: 0
+Valor do cont: 0
+SET COR !  Vertice : 5 Cor : 1
+Id da aresta: 0
+Id da aresta: 12
+Id da aresta: 9
+ POSICAONODE : 0
+ Visitado  true
+ Vertice : 5 .getInDegree()3
+ PRINTADO O VERTICE QUE GRAU 1 : 0
+Começo do vectorWeightEdge: 5
+i :1VectorNode: 17
+i :1VectorNode: 18
+i :1VectorNode: 8
+i :1VectorNode: 5
+ Vertice atual: 1
+Peso atual: 6
+Valor do gap atual: 0
+Valor do gapNode: 1
+Valos do gapFinal: 0.333333
  Vertice atual: 4
 Peso atual: 11
 Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 1
+Valor do gapNode: 4
+Valos do gapFinal: 1.33333
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 0
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
  Vertice atual: 19
 Peso atual: 8
 Valor do gap atual: 0
-Valor do gapNode: 0
-Valos do gapFinal: 0
- Vertice atual: 2
-Peso atual: 10
-Valor do gap atual: 0
-Valor do gapNode: 2
-Valos do gapFinal: 1
- Vertice atual: 18
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 7
-Valos do gapFinal: 1.75
- Vertice atual: 3
-Peso atual: 4
-Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 4
+Valor do gapNode: 1
+Valos do gapFinal: 0.5
  Vertice atual: 20
 Peso atual: 9
 Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.25
+Valor do gapNode: 2
+Valos do gapFinal: 0.5
  Vertice atual: 12
 Peso atual: 2
-Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 9
-Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.25
- Vertice atual: 6
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 1.66667
- Vertice atual: 7
-Peso atual: 4
-Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 4
- Vertice atual: 8
-Peso atual: 12
-Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 4
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 7
-Valos do gapFinal: 3.5
- Vertice atual: 16
-Peso atual: 3
 Valor do gap atual: 0
 Valor do gapNode: 5
 Valos do gapFinal: 2.5
  Vertice atual: 10
 Peso atual: 1
 Valor do gap atual: 0
-Valor do gapNode: 7
-Valos do gapFinal: 3.5
- Vertice atual: 13
-Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.5
- Vertice atual: 15
-Peso atual: 2
-Valor do gap atual: 0
 Valor do gapNode: 6
 Valos do gapFinal: 3
-Gap do node 4 e: 1
-Gap do node 19 e: 0
-Gap do node 2 e: 1
-Gap do node 18 e: 1.75
-Gap do node 3 e: 4
-Gap do node 20 e: 0.25
-Gap do node 12 e: 3
-Gap do node 9 e: 0.25
-Gap do node 6 e: 1.66667
-Gap do node 7 e: 4
-Gap do node 8 e: 4
-Gap do node 17 e: 3.5
-Gap do node 16 e: 2.5
-Gap do node 10 e: 3.5
-Gap do node 13 e: 0.5
-Gap do node 15 e: 3
-Valor do cont: 1
-SET COR !  Vertice : 19 Cor : 1
-Id da aresta: 1
-Id da aresta: 6
- POSICAONODE : 3
- Visitado  true
- Vertice : 19 .getInDegree()2
- PRINTADO O VERTICE QUE GRAU 1 : 1
-Começo do vectorWeightEdge: 4
-i :1VectorNode: 5
-i :1VectorNode: 19
- Vertice atual: 4
-Peso atual: 11
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 1.66667
- Vertice atual: 2
-Peso atual: 10
-Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 2
- Vertice atual: 18
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 1.25
- Vertice atual: 3
-Peso atual: 4
-Valor do gap atual: 0
-Valor do gapNode: 2
-Valos do gapFinal: 2
- Vertice atual: 20
-Peso atual: 9
-Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 0.75
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 2
- Vertice atual: 9
-Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.25
- Vertice atual: 6
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 1
- Vertice atual: 7
-Peso atual: 4
-Valor do gap atual: 0
-Valor do gapNode: 2
-Valos do gapFinal: 2
- Vertice atual: 8
-Peso atual: 12
-Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 6
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 1.5
- Vertice atual: 10
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
- Vertice atual: 13
-Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.5
  Vertice atual: 15
 Peso atual: 2
 Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 2
-Gap do node 4 e: 1.66667
-Gap do node 2 e: 2
-Gap do node 18 e: 1.25
-Gap do node 3 e: 2
-Gap do node 20 e: 0.75
-Gap do node 12 e: 2
-Gap do node 9 e: 0.25
-Gap do node 6 e: 1
-Gap do node 7 e: 2
-Gap do node 8 e: 6
-Gap do node 17 e: 2.5
-Gap do node 16 e: 1.5
-Gap do node 10 e: 2.5
-Gap do node 13 e: 0.5
-Gap do node 15 e: 2
-Valor do cont: 6
-SET COR !  Vertice : 9 Cor : 2
-Maior peso 1: 6 Menor peso 1: 6
-Id da aresta: 5
-Id da aresta: 17
-Id da aresta: 16
-Id da aresta: 10
- POSICAONODE : 1
- Visitado  true
- Vertice : 9 .getInDegree()4
- PRINTADO O VERTICE QUE GRAU 1 : 5
-Começo do vectorWeightEdge: 4
-i :2VectorNode: 1
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
+Gap do node 1 e: 0.333333
+Gap do node 4 e: 1.33333
+Gap do node 14 e: 2.5
+Gap do node 19 e: 0.5
+Gap do node 20 e: 0.5
+Gap do node 12 e: 2.5
+Gap do node 10 e: 3
+Gap do node 15 e: 2.5
+Valor do cont: 0
+SET COR !  Vertice : 1 Cor : 2
+Maior peso 1: 7 Menor peso 1: 7
+Id da aresta: 4
+Id da aresta: 14
+Id da aresta: 19
+ POSICAONODE : 4
+ Visitado  false
+ Vertice : 1 .getInDegree()3
+ PRINTADO O VERTICE QUE GRAU 1 : 4
+Começo do vectorWeightEdge: 1
 i :2VectorNode: 9
+i :2VectorNode: 13
+i :2VectorNode: 1
 Maior peso 7: 7 Menor peso 7: 6
  Vertice atual: 4
 Peso atual: 11
 Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.333333
- Vertice atual: 2
-Peso atual: 10
-Valor do gap atual: 0
-Valor do gapNode: 2
-Valos do gapFinal: 1
- Vertice atual: 18
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 11
-Valos do gapFinal: 2.75
- Vertice atual: 3
-Peso atual: 4
-Valor do gap atual: 0
-Valor do gapNode: 8
-Valos do gapFinal: 8
- Vertice atual: 20
-Peso atual: 9
-Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 0.75
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 0
-Valor do gapNode: 10
-Valos do gapFinal: 5
- Vertice atual: 6
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 9
-Valos do gapFinal: 3
- Vertice atual: 7
-Peso atual: 4
-Valor do gap atual: 0
-Valor do gapNode: 8
-Valos do gapFinal: 8
- Vertice atual: 8
-Peso atual: 12
-Valor do gap atual: 0
-Valor do gapNode: 0
-Valos do gapFinal: 0
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 11
-Valos do gapFinal: 5.5
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 9
-Valos do gapFinal: 4.5
- Vertice atual: 10
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 11
-Valos do gapFinal: 5.5
- Vertice atual: 13
-Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
- Vertice atual: 15
-Peso atual: 2
-Valor do gap atual: 0
-Valor do gapNode: 10
-Valos do gapFinal: 5
-Gap do node 4 e: 0.333333
-Gap do node 2 e: 1
-Gap do node 18 e: 2.75
-Gap do node 3 e: 8
-Gap do node 20 e: 0.75
-Gap do node 12 e: 5
-Gap do node 6 e: 3
-Gap do node 7 e: 8
-Gap do node 8 e: 0
-Gap do node 17 e: 5.5
-Gap do node 16 e: 4.5
-Gap do node 10 e: 5.5
-Gap do node 13 e: 2.5
-Gap do node 15 e: 5
-Valor do cont: 8
-SET COR !  Vertice : 8 Cor : 3
-Id da aresta: 18
- POSICAONODE : 8
- Visitado  false
- Vertice : 8 .getInDegree()1
- PRINTADO O VERTICE QUE GRAU 1 : 18
- SET COR !!! Vertice : 18 Cor : 3
-Começo do vectorWeightEdge: 4
-i :3VectorNode: 14
-i :3VectorNode: 8
-i :3VectorNode: 18
- Vertice atual: 4
-Peso atual: 11
-Valor do gap atual: 0
 Valor do gapNode: 5
 Valos do gapFinal: 1.66667
- Vertice atual: 2
-Peso atual: 10
+ Vertice atual: 14
+Peso atual: 12
 Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 2
- Vertice atual: 3
-Peso atual: 4
+Valor do gapNode: 6
+Valos do gapFinal: 3
+ Vertice atual: 19
+Peso atual: 8
 Valor do gap atual: 0
 Valor do gapNode: 2
-Valos do gapFinal: 2
+Valos do gapFinal: 1
  Vertice atual: 20
 Peso atual: 9
 Valor do gap atual: 0
@@ -472,133 +2415,25 @@ Peso atual: 2
 Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 2
- Vertice atual: 6
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 1
- Vertice atual: 7
-Peso atual: 4
-Valor do gap atual: 0
-Valor do gapNode: 2
-Valos do gapFinal: 2
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 1.5
  Vertice atual: 10
 Peso atual: 1
 Valor do gap atual: 0
 Valor do gapNode: 5
 Valos do gapFinal: 2.5
- Vertice atual: 13
-Peso atual: 7
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.5
  Vertice atual: 15
 Peso atual: 2
 Valor do gap atual: 0
 Valor do gapNode: 4
 Valos do gapFinal: 2
 Gap do node 4 e: 1.66667
-Gap do node 2 e: 2
-Gap do node 3 e: 2
+Gap do node 14 e: 3
+Gap do node 19 e: 1
 Gap do node 20 e: 0.75
 Gap do node 12 e: 2
-Gap do node 6 e: 1
-Gap do node 7 e: 2
-Gap do node 17 e: 2.5
-Gap do node 16 e: 1.5
 Gap do node 10 e: 2.5
-Gap do node 13 e: 0.5
 Gap do node 15 e: 2
-Valor do cont: 10
-SET COR !  Vertice : 13 Cor : 0
-Id da aresta: 20
-Id da aresta: 16
- POSICAONODE : 10
- Visitado  false
- Vertice : 13 .getInDegree()2
- PRINTADO O VERTICE QUE GRAU 1 : 20
-Começo do vectorWeightEdge: 4
-i :0VectorNode: 0
-i :0VectorNode: 11
-i :0VectorNode: 13
- Vertice atual: 4
-Peso atual: 11
-Valor do gap atual: 0
-Valor do gapNode: 3
-Valos do gapFinal: 1
- Vertice atual: 2
-Peso atual: 10
-Valor do gap atual: 0
-Valor do gapNode: 2
-Valos do gapFinal: 1
- Vertice atual: 3
-Peso atual: 4
-Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 4
- Vertice atual: 20
-Peso atual: 9
-Valor do gap atual: 0
-Valor do gapNode: 1
-Valos do gapFinal: 0.25
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 6
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 1.66667
- Vertice atual: 7
-Peso atual: 4
-Valor do gap atual: 0
-Valor do gapNode: 4
-Valos do gapFinal: 4
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 7
-Valos do gapFinal: 3.5
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 0
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
- Vertice atual: 10
-Peso atual: 1
-Valor do gap atual: 0
-Valor do gapNode: 7
-Valos do gapFinal: 3.5
- Vertice atual: 15
-Peso atual: 2
-Valor do gap atual: 0
-Valor do gapNode: 6
-Valos do gapFinal: 3
-Gap do node 4 e: 1
-Gap do node 2 e: 1
-Gap do node 3 e: 4
-Gap do node 20 e: 0.25
-Gap do node 12 e: 3
-Gap do node 6 e: 1.66667
-Gap do node 7 e: 4
-Gap do node 17 e: 3.5
-Gap do node 16 e: 2.5
-Gap do node 10 e: 3.5
-Gap do node 15 e: 3
 Valor do cont: 3
-SET COR !  Vertice : 20 Cor : 1
+SET COR !  Vertice : 20 Cor : 3
 Id da aresta: 4
 Id da aresta: 11
 Id da aresta: 13
@@ -608,114 +2443,72 @@ Id da aresta: 15
  Vertice : 20 .getInDegree()4
  PRINTADO O VERTICE QUE GRAU 1 : 4
 Começo do vectorWeightEdge: 4
-i :1VectorNode: 5
-i :1VectorNode: 19
-i :1VectorNode: 20
+i :3VectorNode: 0
+i :3VectorNode: 11
+i :3VectorNode: 20
  Vertice atual: 4
 Peso atual: 11
-Valor do gap atual: 1
-Valor do gapNode: 5
-Valos do gapFinal: 1.66667
- Vertice atual: 2
-Peso atual: 10
-Valor do gap atual: 1
-Valor do gapNode: 4
-Valos do gapFinal: 2
- Vertice atual: 3
-Peso atual: 4
-Valor do gap atual: 1
-Valor do gapNode: 3
-Valos do gapFinal: 3
+Valor do gap atual: 7
+Valor do gapNode: 8
+Valos do gapFinal: 2.66667
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 7
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
+ Vertice atual: 19
+Peso atual: 8
+Valor do gap atual: 7
+Valor do gapNode: 0
+Valos do gapFinal: 0
  Vertice atual: 12
 Peso atual: 2
-Valor do gap atual: 1
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
- Vertice atual: 6
-Peso atual: 3
-Valor do gap atual: 1
-Valor do gapNode: 4
-Valos do gapFinal: 1.33333
- Vertice atual: 7
-Peso atual: 4
-Valor do gap atual: 1
-Valor do gapNode: 3
-Valos do gapFinal: 3
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 1
-Valor do gapNode: 4
-Valos do gapFinal: 2
+Valor do gap atual: 7
+Valor do gapNode: 8
+Valos do gapFinal: 4
  Vertice atual: 10
 Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
+Valor do gap atual: 7
+Valor do gapNode: 9
+Valos do gapFinal: 4.5
  Vertice atual: 15
 Peso atual: 2
-Valor do gap atual: 1
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
-Gap do node 4 e: 1.66667
-Gap do node 2 e: 2
-Gap do node 3 e: 3
-Gap do node 12 e: 2.5
-Gap do node 6 e: 1.33333
-Gap do node 7 e: 3
-Gap do node 17 e: 3
-Gap do node 16 e: 2
-Gap do node 10 e: 3
-Gap do node 15 e: 2.5
-Valor do cont: 4
-SET COR !  Vertice : 6 Cor : 2
-Maior peso 1: 7 Menor peso 1: 6
-Id da aresta: 12
-Id da aresta: 7
-Chegou 1.5.5
-SET COR !! Vertice : 7 Cor : 2
-Id da aresta: 19
- POSICAONODE : 11
- Visitado  false
- Vertice : 6 .getInDegree()3
- PRINTADO O VERTICE QUE GRAU 1 : 12
+Valor do gap atual: 7
+Valor do gapNode: 8
+Valos do gapFinal: 4
+Gap do node 4 e: 2.66667
+Gap do node 14 e: 4.5
+Gap do node 19 e: 0
+Gap do node 12 e: 4
+Gap do node 10 e: 4.5
+Gap do node 15 e: 4
+Valor do cont: 2
+SET COR !  Vertice : 19 Cor : 0
+Id da aresta: 1
+Id da aresta: 6
+ POSICAONODE : 3
+ Visitado  true
+ Vertice : 19 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 1
 Começo do vectorWeightEdge: 4
-i :2VectorNode: 1
-i :2VectorNode: 9
-i :2VectorNode: 6
-i :2VectorNode: 7
-Maior peso 7: 7 Menor peso 7: 3
+i :0VectorNode: 16
+i :0VectorNode: 6
+i :0VectorNode: 7
+i :0VectorNode: 3
+i :0VectorNode: 2
+i :0VectorNode: 19
  Vertice atual: 4
 Peso atual: 11
 Valor do gap atual: 11
 Valor do gapNode: 0
 Valos do gapFinal: 0
- Vertice atual: 2
-Peso atual: 10
-Valor do gap atual: 11
-Valor do gapNode: 0
-Valos do gapFinal: 0
- Vertice atual: 3
-Peso atual: 4
+ Vertice atual: 14
+Peso atual: 12
 Valor do gap atual: 11
 Valor do gapNode: 0
 Valos do gapFinal: 0
  Vertice atual: 12
 Peso atual: 2
-Valor do gap atual: 11
-Valor do gapNode: 0
-Valos do gapFinal: 0
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 11
-Valor do gapNode: 0
-Valos do gapFinal: 0
- Vertice atual: 16
-Peso atual: 3
 Valor do gap atual: 11
 Valor do gapNode: 0
 Valos do gapFinal: 0
@@ -730,15 +2523,12 @@ Valor do gap atual: 11
 Valor do gapNode: 0
 Valos do gapFinal: 0
 Gap do node 4 e: 0
-Gap do node 2 e: 0
-Gap do node 3 e: 0
+Gap do node 14 e: 0
 Gap do node 12 e: 0
-Gap do node 17 e: 0
-Gap do node 16 e: 0
 Gap do node 10 e: 0
 Gap do node 15 e: 0
 Valor do cont: 0
-SET COR !  Vertice : 4 Cor : 3
+SET COR !  Vertice : 4 Cor : 1
 Id da aresta: 1
 Id da aresta: 20
 Id da aresta: 18
@@ -747,191 +2537,89 @@ Id da aresta: 18
  Vertice : 4 .getInDegree()3
  PRINTADO O VERTICE QUE GRAU 1 : 1
 Começo do vectorWeightEdge: 4
-i :3VectorNode: 14
-i :3VectorNode: 8
-i :3VectorNode: 18
-i :3VectorNode: 4
- Vertice atual: 2
-Peso atual: 10
-Valor do gap atual: 1
-Valor do gapNode: 4
-Valos do gapFinal: 2
- Vertice atual: 3
-Peso atual: 4
-Valor do gap atual: 1
-Valor do gapNode: 3
-Valos do gapFinal: 3
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 1
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 1
-Valor do gapNode: 4
-Valos do gapFinal: 2
- Vertice atual: 10
-Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 15
-Peso atual: 2
-Valor do gap atual: 1
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
-Gap do node 2 e: 2
-Gap do node 3 e: 3
-Gap do node 12 e: 2.5
-Gap do node 17 e: 3
-Gap do node 16 e: 2
-Gap do node 10 e: 3
-Gap do node 15 e: 2.5
-Valor do cont: 0
-SET COR !  Vertice : 2 Cor : 0
-Id da aresta: 18
-Id da aresta: 3
-Chegou 1.5.5
-SET COR !! Vertice : 3 Cor : 0
- POSICAONODE : 8
- Visitado  true
- Vertice : 2 .getInDegree()2
- PRINTADO O VERTICE QUE GRAU 1 : 18
-Começo do vectorWeightEdge: 2
-i :0VectorNode: 0
-i :0VectorNode: 11
-i :0VectorNode: 13
-i :0VectorNode: 2
-i :0VectorNode: 3
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 1
-Valor do gapNode: 7
-Valos do gapFinal: 3.5
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 8
-Valos do gapFinal: 4
- Vertice atual: 16
-Peso atual: 3
-Valor do gap atual: 1
-Valor do gapNode: 6
-Valos do gapFinal: 3
- Vertice atual: 10
-Peso atual: 1
-Valor do gap atual: 1
-Valor do gapNode: 8
-Valos do gapFinal: 4
- Vertice atual: 15
-Peso atual: 2
-Valor do gap atual: 1
-Valor do gapNode: 7
-Valos do gapFinal: 3.5
-Gap do node 12 e: 3.5
-Gap do node 17 e: 4
-Gap do node 16 e: 3
-Gap do node 10 e: 4
-Gap do node 15 e: 3.5
-Valor do cont: 2
-SET COR !  Vertice : 16 Cor : 1
-Id da aresta: 9
-Id da aresta: 13
- POSICAONODE : 12
- Visitado  true
- Vertice : 16 .getInDegree()2
- PRINTADO O VERTICE QUE GRAU 1 : 9
-Começo do vectorWeightEdge: 12
+i :1VectorNode: 17
+i :1VectorNode: 18
+i :1VectorNode: 8
 i :1VectorNode: 5
-i :1VectorNode: 19
-i :1VectorNode: 20
-i :1VectorNode: 16
- Vertice atual: 12
-Peso atual: 2
-Valor do gap atual: 4
-Valor do gapNode: 5
-Valos do gapFinal: 2.5
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 4
+i :1VectorNode: 4
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 1
 Valor do gapNode: 6
 Valos do gapFinal: 3
+ Vertice atual: 12
+Peso atual: 2
+Valor do gap atual: 1
+Valor do gapNode: 5
+Valos do gapFinal: 2.5
  Vertice atual: 10
 Peso atual: 1
-Valor do gap atual: 4
+Valor do gap atual: 1
 Valor do gapNode: 6
 Valos do gapFinal: 3
  Vertice atual: 15
 Peso atual: 2
-Valor do gap atual: 4
+Valor do gap atual: 1
 Valor do gapNode: 5
 Valos do gapFinal: 2.5
+Gap do node 14 e: 3
 Gap do node 12 e: 2.5
-Gap do node 17 e: 3
 Gap do node 10 e: 3
 Gap do node 15 e: 2.5
-Valor do cont: 0
+Valor do cont: 1
 SET COR !  Vertice : 12 Cor : 2
-Maior peso 1: 7 Menor peso 1: 3
+Maior peso 1: 7 Menor peso 1: 6
 Id da aresta: 5
 Id da aresta: 6
  POSICAONODE : 1
  Visitado  true
  Vertice : 12 .getInDegree()2
  PRINTADO O VERTICE QUE GRAU 1 : 5
-Começo do vectorWeightEdge: 12
-i :2VectorNode: 1
+Começo do vectorWeightEdge: 14
 i :2VectorNode: 9
-i :2VectorNode: 6
-i :2VectorNode: 7
+i :2VectorNode: 13
+i :2VectorNode: 1
 i :2VectorNode: 12
 Maior peso 7: 7 Menor peso 7: 2
- Vertice atual: 17
-Peso atual: 1
-Valor do gap atual: 11
-Valor do gapNode: 0
-Valos do gapFinal: 0
+ Vertice atual: 14
+Peso atual: 12
+Valor do gap atual: 3
+Valor do gapNode: 6
+Valos do gapFinal: 3
  Vertice atual: 10
 Peso atual: 1
-Valor do gap atual: 11
-Valor do gapNode: 0
-Valos do gapFinal: 0
+Valor do gap atual: 3
+Valor do gapNode: 8
+Valos do gapFinal: 4
  Vertice atual: 15
 Peso atual: 2
-Valor do gap atual: 11
-Valor do gapNode: 0
-Valos do gapFinal: 0
-Gap do node 17 e: 0
-Gap do node 10 e: 0
-Gap do node 15 e: 0
+Valor do gap atual: 3
+Valor do gapNode: 7
+Valos do gapFinal: 3.5
+Gap do node 14 e: 3
+Gap do node 10 e: 4
+Gap do node 15 e: 3.5
 Valor do cont: 0
-SET COR !  Vertice : 17 Cor : 3
-Id da aresta: 9
-Id da aresta: 15
- POSICAONODE : 12
+SET COR !  Vertice : 14 Cor : 3
+Id da aresta: 1
+Id da aresta: 10
+ POSICAONODE : 3
  Visitado  true
- Vertice : 17 .getInDegree()2
- PRINTADO O VERTICE QUE GRAU 1 : 9
-Começo do vectorWeightEdge: 17
+ Vertice : 14 .getInDegree()2
+ PRINTADO O VERTICE QUE GRAU 1 : 1
+Começo do vectorWeightEdge: 14
+i :3VectorNode: 0
+i :3VectorNode: 11
+i :3VectorNode: 20
 i :3VectorNode: 14
-i :3VectorNode: 8
-i :3VectorNode: 18
-i :3VectorNode: 4
-i :3VectorNode: 17
  Vertice atual: 10
 Peso atual: 1
-Valor do gap atual: 6
+Valor do gap atual: 7
 Valor do gapNode: 9
 Valos do gapFinal: 4.5
  Vertice atual: 15
 Peso atual: 2
-Valor do gap atual: 6
+Valor do gap atual: 7
 Valor do gapNode: 8
 Valos do gapFinal: 4
 Gap do node 10 e: 4.5
@@ -945,18 +2633,19 @@ Id da aresta: 20
  Vertice : 15 .getInDegree()2
  PRINTADO O VERTICE QUE GRAU 1 : 17
 Começo do vectorWeightEdge: 10
-i :0VectorNode: 0
-i :0VectorNode: 11
-i :0VectorNode: 13
-i :0VectorNode: 2
+i :0VectorNode: 16
+i :0VectorNode: 6
+i :0VectorNode: 7
 i :0VectorNode: 3
+i :0VectorNode: 2
+i :0VectorNode: 19
 i :0VectorNode: 15
  Vertice atual: 10
 Peso atual: 1
-Valor do gap atual: 6
-Valor do gapNode: 8
-Valos do gapFinal: 4
-Gap do node 10 e: 4
+Valor do gap atual: 11
+Valor do gapNode: 0
+Valos do gapFinal: 0
+Gap do node 10 e: 0
 Valor do cont: 0
 SET COR !  Vertice : 10 Cor : 1
 Id da aresta: 9
@@ -966,10 +2655,11 @@ Id da aresta: 14
  Vertice : 10 .getInDegree()2
  PRINTADO O VERTICE QUE GRAU 1 : 9
 Começo do vectorWeightEdge: 10
+i :1VectorNode: 17
+i :1VectorNode: 18
+i :1VectorNode: 8
 i :1VectorNode: 5
-i :1VectorNode: 19
-i :1VectorNode: 20
-i :1VectorNode: 16
+i :1VectorNode: 4
 i :1VectorNode: 10
 Valor do cont: 0
 Valor do cont: 0
@@ -978,141 +2668,785 @@ Arestas desse lixo: 12
 Arestas desse lixo: 9
 PORRA: 20
 PORRA: 16
-Id dos nodes: 0 Peso dos nodes: 6 Cores dos nodes: 0
+Id dos nodes: 0 Peso dos nodes: 6 Cores dos nodes: 3
 Id dos nodes: 5 Peso dos nodes: 8 Cores dos nodes: 1
-Id dos nodes: 11 Peso dos nodes: 6 Cores dos nodes: 0
+Id dos nodes: 11 Peso dos nodes: 6 Cores dos nodes: 3
 Id dos nodes: 1 Peso dos nodes: 6 Cores dos nodes: 2
-Id dos nodes: 4 Peso dos nodes: 11 Cores dos nodes: 3
+Id dos nodes: 4 Peso dos nodes: 11 Cores dos nodes: 1
 Id dos nodes: 14 Peso dos nodes: 12 Cores dos nodes: 3
-Id dos nodes: 19 Peso dos nodes: 8 Cores dos nodes: 1
+Id dos nodes: 19 Peso dos nodes: 8 Cores dos nodes: 0
 Id dos nodes: 2 Peso dos nodes: 10 Cores dos nodes: 0
-Id dos nodes: 18 Peso dos nodes: 1 Cores dos nodes: 3
+Id dos nodes: 18 Peso dos nodes: 1 Cores dos nodes: 1
 Id dos nodes: 3 Peso dos nodes: 4 Cores dos nodes: 0
-Id dos nodes: 20 Peso dos nodes: 9 Cores dos nodes: 1
+Id dos nodes: 20 Peso dos nodes: 9 Cores dos nodes: 3
 Id dos nodes: 12 Peso dos nodes: 2 Cores dos nodes: 2
 Id dos nodes: 9 Peso dos nodes: 7 Cores dos nodes: 2
-Id dos nodes: 6 Peso dos nodes: 3 Cores dos nodes: 2
-Id dos nodes: 7 Peso dos nodes: 4 Cores dos nodes: 2
-Id dos nodes: 8 Peso dos nodes: 12 Cores dos nodes: 3
-Id dos nodes: 17 Peso dos nodes: 1 Cores dos nodes: 3
-Id dos nodes: 16 Peso dos nodes: 3 Cores dos nodes: 1
+Id dos nodes: 6 Peso dos nodes: 3 Cores dos nodes: 0
+Id dos nodes: 7 Peso dos nodes: 4 Cores dos nodes: 0
+Id dos nodes: 8 Peso dos nodes: 12 Cores dos nodes: 1
+Id dos nodes: 17 Peso dos nodes: 1 Cores dos nodes: 1
+Id dos nodes: 16 Peso dos nodes: 3 Cores dos nodes: 0
 Id dos nodes: 10 Peso dos nodes: 1 Cores dos nodes: 1
-Id dos nodes: 13 Peso dos nodes: 7 Cores dos nodes: 0
+Id dos nodes: 13 Peso dos nodes: 7 Cores dos nodes: 2
 Id dos nodes: 15 Peso dos nodes: 2 Cores dos nodes: 0
- vectorNode.at(0). at (0) = 0
- vectorNode.at(0). at (1) = 11
- vectorNode.at(0). at (2) = 13
- vectorNode.at(0). at (3) = 2
- vectorNode.at(0). at (4) = 3
- vectorNode.at(0). at (5) = 15
+ vectorNode.at(0). at (0) = 16
+ vectorNode.at(0). at (1) = 6
+ vectorNode.at(0). at (2) = 7
+ vectorNode.at(0). at (3) = 3
+ vectorNode.at(0). at (4) = 2
+ vectorNode.at(0). at (5) = 19
+ vectorNode.at(0). at (6) = 15
 
- vectorNode.at(1). at (0) = 5
- vectorNode.at(1). at (1) = 19
- vectorNode.at(1). at (2) = 20
- vectorNode.at(1). at (3) = 16
- vectorNode.at(1). at (4) = 10
+ vectorNode.at(1). at (0) = 17
+ vectorNode.at(1). at (1) = 18
+ vectorNode.at(1). at (2) = 8
+ vectorNode.at(1). at (3) = 5
+ vectorNode.at(1). at (4) = 4
+ vectorNode.at(1). at (5) = 10
   ->>>>>>>>> vectorNode->at(i).at(x).getId() cor 1
 I: 0Maior Valor de cada cluster: 10 Menor Valor: 2
-I: 1Maior Valor de cada cluster: 9 Menor Valor: 1
+I: 1Maior Valor de cada cluster: 12 Menor Valor: 1
 I: 2Maior Valor de cada cluster: 7 Menor Valor: 2
-I: 3Maior Valor de cada cluster: 12 Menor Valor: 1
+I: 3Maior Valor de cada cluster: 12 Menor Valor: 6
 TESTANDO TAMANHO:  4
- i  = 0 Id 0 Cor : 0
- i  = 0 Id 11 Cor : 0
- i  = 0 Id 13 Cor : 0
- i  = 0 Id 2 Cor : 0
+ i  = 0 Id 16 Cor : 0
+ i  = 0 Id 6 Cor : 0
+ i  = 0 Id 7 Cor : 0
  i  = 0 Id 3 Cor : 0
+ i  = 0 Id 2 Cor : 0
+ i  = 0 Id 19 Cor : 0
  i  = 0 Id 15 Cor : 0
+ i  = 1 Id 17 Cor : 1
+ i  = 1 Id 18 Cor : 1
+ i  = 1 Id 8 Cor : 1
  i  = 1 Id 5 Cor : 1
- i  = 1 Id 19 Cor : 1
- i  = 1 Id 20 Cor : 1
- i  = 1 Id 16 Cor : 1
+ i  = 1 Id 4 Cor : 1
  i  = 1 Id 10 Cor : 1
- i  = 2 Id 1 Cor : 2
  i  = 2 Id 9 Cor : 2
- i  = 2 Id 6 Cor : 2
- i  = 2 Id 7 Cor : 2
+ i  = 2 Id 13 Cor : 2
+ i  = 2 Id 1 Cor : 2
  i  = 2 Id 12 Cor : 2
+ i  = 3 Id 0 Cor : 3
+ i  = 3 Id 11 Cor : 3
+ i  = 3 Id 20 Cor : 3
  i  = 3 Id 14 Cor : 3
- i  = 3 Id 8 Cor : 3
- i  = 3 Id 18 Cor : 3
- i  = 3 Id 4 Cor : 3
- i  = 3 Id 17 Cor : 3
 TESTANDO TAMANHO2:  4
 Começando o i: 0
   i : 0
-vetorClusterNodes->at(0).at(0) :  0
-Dando erase: 0
+vetorClusterNodes->at(0).at(0) :  16
+Dando erase: 16
  COR DO 5 ********* 1
- COR DO 0 ********* 0
+ COR DO 0 ********* 3
 Testando essa porra: 2
 Testando essa porra: 2
-  vetorClusterNodes->at(k).at(j).getId() :  0
+  vetorClusterNodes->at(k).at(j).getId() :  16
 Testando essa porra: 2
-TesteTriste vizinho  : 5COR : 1
-TesteTriste vizinho  : 11COR : 0
- node :   0 COR : 0
- vizinho  : 11COR : 0
-K: 0 Node sendo excluido: 11
-  vetorClusterNodes->at(k).at(j).getId() :  11
-Testando essa porra: 2
-TesteTriste vizinho  : 0COR : 0
-TesteTriste vizinho  : 20COR : 1
-TesteTriste vizinho  : 18COR : 3
+TesteTriste vizinho  : 9COR : 2
+TesteTriste vizinho  : 13COR : 2
  TAMANHAO K 21
 Testando essa porra: 2
-  vetorClusterNodes->at(k).at(j).getId() :  13
+  vetorClusterNodes->at(k).at(j).getId() :  6
 Testando essa porra: 2
-TesteTriste vizinho  : 20COR : 1
-TesteTriste vizinho  : 16COR : 1
+TesteTriste vizinho  : 12COR : 2
+TesteTriste vizinho  : 7COR : 0
+ node :   6 COR : 0
+ vizinho  : 7COR : 0
+TesteTriste vizinho  : 19COR : 0
+ node :   6 COR : 0
+ vizinho  : 19COR : 0
+K: 1 Node sendo excluido: 7
+K: 1 Node sendo excluido: 19
+  vetorClusterNodes->at(k).at(j).getId() :  7
+Testando essa porra: 2
+TesteTriste vizinho  : 6COR : 0
+  vetorClusterNodes->at(k).at(j).getId() :  19
+Testando essa porra: 2
+TesteTriste vizinho  : 1COR : 2
+TesteTriste vizinho  : 6COR : 0
  TAMANHAO K 21
 Testando essa porra: 2
-  vetorClusterNodes->at(k).at(j).getId() :  2
-Testando essa porra: 2
-TesteTriste vizinho  : 18COR : 3
-TesteTriste vizinho  : 3COR : 0
- node :   2 COR : 0
- vizinho  : 3COR : 0
-K: 2 Node sendo excluido: 3
   vetorClusterNodes->at(k).at(j).getId() :  3
 Testando essa porra: 2
 TesteTriste vizinho  : 2COR : 0
+ node :   3 COR : 0
+ vizinho  : 2COR : 0
+K: 2 Node sendo excluido: 2
+  vetorClusterNodes->at(k).at(j).getId() :  2
+Testando essa porra: 2
+TesteTriste vizinho  : 18COR : 1
+TesteTriste vizinho  : 3COR : 0
  TAMANHAO K 21
 Testando essa porra: 2
   vetorClusterNodes->at(k).at(j).getId() :  15
 Testando essa porra: 2
-TesteTriste vizinho  : 17COR : 3
-TesteTriste vizinho  : 20COR : 1
+TesteTriste vizinho  : 17COR : 1
+TesteTriste vizinho  : 20COR : 3
 TESTANDO TAMANHO 3:  4
-K: 0 Maior Valor: 6 Menor valor: 6
-K: 1 Maior Valor: 7 Menor valor: 7
+K: 0 Maior Valor: 3 Menor valor: 3
+K: 1 Maior Valor: 8 Menor valor: 3
 K: 2 Maior Valor: 10 Menor valor: 4
 K: 3 Maior Valor: 2 Menor valor: 2
-maiorSubCluster vale: 2
+maiorSubCluster vale: 3
 Entrou quantas x
 Entrou quantas x
 Entrou quantas x
 Entrou quantas x
-Gap da posicao escolhida = 0
-Posicao escolhida = 0
+Gap da posicao escolhida = 5
+Posicao escolhida = 1
 Cores: false
 Cores: true
 Cores: true
 Cores: true
 Size coresPossiveis: 2
 Entrou quantas x 
+Node atual: 16
+Id do vizinho: 9
+Bahia corNode: true
 Entrou 1: 
 Entrou 2: 
-Cor atual:1
-Super teste: 9
-Super teste 2: 1
-Valor atual 1: 7
-Valor atual 2: 7
+Cor atual:2
+Super teste: 7
+Super teste 2: 2
+Valor atual 1: 3
+Valor atual 2: 3
 Entrou 3
 Entrou 7
 coresPossiveis->size()1
 Valor do z: 0
 Entrou no 8
+Entrou no 4 uau
+ 3 Valor do gap agora:  0
+ 4 Valor do gap agora:  0
+Id do vizinho: 13
+Bahia corNode: false
+Valor do e: 0
+Testando front: 0
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(0).size(): 1
+Entradas: 1
+coresPossiveis->at(0).front(): 0
+coresPossiveis->at(0).back(): 2
+Rodous quantas x: 
+Valor do menor: 0
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 16
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 16é: 2
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+Valores desse vet dessa cor: 9
+Valores desse vet dessa cor: 13
+Valores desse vet dessa cor: 1
+Valores desse vet dessa cor: 12
+Valores desse vet dessa cor: 16
+Testando essa porra: 2
+Entrou quantas x 
+Node atual: 3
+Id do vizinho: 2
+Bahia corNode: false
+Entrou quantas x 
+Node atual: 2
+Id do vizinho: 18
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:1
+Super teste: 12
+Super teste 2: 1
+Valor atual 1: 10
+Valor atual 2: 4
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 1
+Entrou no 8
+Entrou no 4 uau
+ 3 Valor do gap agora:  0
+ 4 Valor do gap agora:  0
+Id do vizinho: 3
+Bahia corNode: false
+Valor do e: 2
+Testando front: 1
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(2).size(): 2
+Entradas: 1
+coresPossiveis->at(0).front(): 0
+coresPossiveis->at(0).back(): 1
+Rodous quantas x: 
+Valor do menor: 0
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 3
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 2
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 3é: 1
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+Valores desse vet dessa cor: 17
+Valores desse vet dessa cor: 18
+Valores desse vet dessa cor: 8
+Valores desse vet dessa cor: 5
+Valores desse vet dessa cor: 4
+Valores desse vet dessa cor: 10
+Valores desse vet dessa cor: 3
+Valores desse vet dessa cor: 2
+Testando essa porra: 2
+Entrou quantas x 
+Node atual: 15
+Id do vizinho: 17
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:1
+Super teste: 12
+Super teste 2: 1
+Valor atual 1: 2
+Valor atual 2: 2
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+Entrou no 4 uau
+ 3 Valor do gap agora:  0
+ 4 Valor do gap agora:  0
+Id do vizinho: 20
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:3
+Super teste: 12
+Super teste 2: 6
+Valor atual 1: 2
+Valor atual 2: 2
+Entrou 3
+Entrou 6
+Valor atual do gap: 0
+Valor atual do que tá sendo comparado ao gap: 4
+Valor do e: 3
+Testando front: 0
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(3).size(): 1
+Entradas: 1
+coresPossiveis->at(0).front(): 0
+coresPossiveis->at(0).back(): 1
+Rodous quantas x: 
+Valor do menor: 0
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 15
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 15é: 1
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+Valores desse vet dessa cor: 17
+Valores desse vet dessa cor: 18
+Valores desse vet dessa cor: 8
+Valores desse vet dessa cor: 5
+Valores desse vet dessa cor: 4
+Valores desse vet dessa cor: 10
+Valores desse vet dessa cor: 3
+Valores desse vet dessa cor: 2
+Valores desse vet dessa cor: 15
+Testando essa porra: 2
+Depois disso aqui: 
+Vector 1: 17
+Vector 1: 18
+Vector 1: 8
+Vector 1: 5
+Vector 1: 4
+Vector 1: 10
+Vector 1: 3
+Vector 1: 2
+Vector 1: 15
+Vector 2: 9
+Vector 2: 13
+Vector 2: 1
+Vector 2: 12
+Vector 2: 16
+Vector 3: 0
+Vector 3: 11
+Vector 3: 20
+Vector 3: 14
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Maior por enquanto: 10 Menor por enquanto: 2
+Maior por enquanto: 12 Menor por enquanto: 1
+Maior por enquanto: 7 Menor por enquanto: 2
+Maior por enquanto: 12 Menor por enquanto: 6
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Teste pra isso I: 0Maior peso: 8 Menor peso: 3
+Teste
+Teste 2
+Valor do i: 0
+Entrou
+vetorClusterNodes.size()  4
+vetorClusterNodes->at(0).size()  1
+ Kluster : 0 Valor : 16
+Começando o i: 1
+  i : 1
+vetorClusterNodes->at(0).at(0) :  17
+Dando erase: 17
+ COR DO 5 ********* 1
+ COR DO 0 ********* 3
+Testando essa porra: 2
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  17
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 2
+TesteTriste vizinho  : 15COR : 1
+ node :   17 COR : 1
+ vizinho  : 15COR : 1
+K: 0 Node sendo excluido: 15
+  vetorClusterNodes->at(k).at(j).getId() :  15
+Testando essa porra: 2
+TesteTriste vizinho  : 17COR : 1
+TesteTriste vizinho  : 20COR : 3
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  18
+Testando essa porra: 2
+TesteTriste vizinho  : 2COR : 1
+ node :   18 COR : 1
+ vizinho  : 2COR : 1
+TesteTriste vizinho  : 4COR : 1
+ node :   18 COR : 1
+ vizinho  : 4COR : 1
+TesteTriste vizinho  : 8COR : 1
+ node :   18 COR : 1
+ vizinho  : 8COR : 1
+TesteTriste vizinho  : 11COR : 3
+K: 1 Node sendo excluido: 2
+K: 1 Node sendo excluido: 4
+K: 1 Node sendo excluido: 8
+  vetorClusterNodes->at(k).at(j).getId() :  2
+Testando essa porra: 2
+TesteTriste vizinho  : 18COR : 1
+TesteTriste vizinho  : 3COR : 1
+ node :   2 COR : 1
+ vizinho  : 3COR : 1
+K: 1 Node sendo excluido: 3
+  vetorClusterNodes->at(k).at(j).getId() :  4
+Testando essa porra: 2
+TesteTriste vizinho  : 1COR : 2
+TesteTriste vizinho  : 20COR : 3
+TesteTriste vizinho  : 18COR : 1
+  vetorClusterNodes->at(k).at(j).getId() :  8
+Testando essa porra: 2
+TesteTriste vizinho  : 18COR : 1
+  vetorClusterNodes->at(k).at(j).getId() :  3
+Testando essa porra: 2
+TesteTriste vizinho  : 2COR : 1
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  5
+Testando essa porra: 2
+TesteTriste vizinho  : 0COR : 3
+TesteTriste vizinho  : 12COR : 2
+TesteTriste vizinho  : 9COR : 2
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  10
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 2
+TesteTriste vizinho  : 14COR : 3
+TESTANDO TAMANHO 3:  4
+K: 0 Maior Valor: 2 Menor valor: 1
+K: 1 Maior Valor: 12 Menor valor: 1
+K: 2 Maior Valor: 8 Menor valor: 8
+K: 3 Maior Valor: 1 Menor valor: 1
+maiorSubCluster vale: 5
+Entrou quantas x
+Entrou quantas x
+Entrou quantas x
+Entrou quantas x
+Gap da posicao escolhida = 11
+Posicao escolhida = 1
+Cores: true
+Cores: false
+Cores: true
+Cores: true
+Size coresPossiveis: 2
+Entrou quantas x 
+Node atual: 17
+Id do vizinho: 9
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:2
+Super teste: 7
+Super teste 2: 2
+Valor atual 1: 2
+Valor atual 2: 1
+Entrou 3
+Entrou 6
+Valor atual do gap: 1000000
+Valor atual do que tá sendo comparado ao gap: 1
+Entrou no 3 uau
+Valor do z que entrou: 0
+Id do vizinho: 15
+Bahia corNode: false
+Entrou quantas x 
+Node atual: 15
+Id do vizinho: 17
+Bahia corNode: false
+Id do vizinho: 20
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:3
+Super teste: 12
+Super teste 2: 6
+Valor atual 1: 2
+Valor atual 2: 1
+Entrou 3
+Entrou 6
+Valor atual do gap: 6
+Valor atual do que tá sendo comparado ao gap: 5
+Valor do e: 0
+Testando front: 0
+testando back: 2
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(0).size(): 2
+Entradas: 1
+coresPossiveis->at(0).front(): 1
+coresPossiveis->at(0).back(): 2
+Rodous quantas x: 
+Valor do menor: 1
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 17
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 15
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 17é: 2
+Uma x
+duas x
+tres x
+contSelecionado: 0
+entrou 3
+Chegou a sair
+Valores desse vet dessa cor: 9
+Valores desse vet dessa cor: 13
+Valores desse vet dessa cor: 1
+Valores desse vet dessa cor: 12
+Valores desse vet dessa cor: 16
+Valores desse vet dessa cor: 17
+Valores desse vet dessa cor: 15
+Testando essa porra: 2
+Entrou quantas x 
+Node atual: 5
+Id do vizinho: 0
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:3
+Super teste: 12
+Super teste 2: 6
+Valor atual 1: 8
+Valor atual 2: 8
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+Entrou no 4 uau
+ 3 Valor do gap agora:  0
+ 4 Valor do gap agora:  0
+Id do vizinho: 12
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:2
+Super teste: 7
+Super teste 2: 1
+Valor atual 1: 8
+Valor atual 2: 8
+Entrou 3
+Tamanho mudou: 4
+Valor aqui no 3: 12
+Node: 12
+Valor: 8
+Maior da list: 7
+Testando: 12
+Cor: 2
+Entrou 5
+Testando valor gap: 7
+Valor do gap agora:  0
+Id do vizinho: 9
+Bahia corNode: false
+Valor do e: 2
+Testando front: 0
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(2).size(): 1
+Entradas: 1
+coresPossiveis->at(0).front(): 0
+coresPossiveis->at(0).back(): 3
+Rodous quantas x: 
+Valor do menor: 0
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 5
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 5é: 3
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+Valores desse vet dessa cor: 0
+Valores desse vet dessa cor: 11
+Valores desse vet dessa cor: 20
+Valores desse vet dessa cor: 14
+Valores desse vet dessa cor: 5
+Testando essa porra: 2
+Entrou quantas x 
+Node atual: 10
+Id do vizinho: 9
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:2
+Super teste: 7
+Super teste 2: 1
+Valor atual 1: 1
+Valor atual 2: 1
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+Entrou no 4 uau
+ 3 Valor do gap agora:  0
+ 4 Valor do gap agora:  0
+Id do vizinho: 14
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:3
+Super teste: 12
+Super teste 2: 6
+Valor atual 1: 1
+Valor atual 2: 1
+Entrou 3
+Entrou 6
+Valor atual do gap: 0
+Valor atual do que tá sendo comparado ao gap: 5
+Valor do e: 3
+Testando front: 0
+testando back: -1
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(3).size(): 1
+Entradas: 1
+coresPossiveis->at(0).front(): 0
+coresPossiveis->at(0).back(): 2
+Rodous quantas x: 
+Valor do menor: 0
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Id que eu quero descobrir: 10
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Cor do node: 10é: 2
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+Valores desse vet dessa cor: 9
+Valores desse vet dessa cor: 13
+Valores desse vet dessa cor: 1
+Valores desse vet dessa cor: 12
+Valores desse vet dessa cor: 16
+Valores desse vet dessa cor: 17
+Valores desse vet dessa cor: 15
+Valores desse vet dessa cor: 10
+Testando essa porra: 2
+Depois disso aqui: 
+Vector 2: 9
+Vector 2: 13
+Vector 2: 1
+Vector 2: 12
+Vector 2: 16
+Vector 2: 17
+Vector 2: 15
+Vector 2: 10
+Vector 3: 0
+Vector 3: 11
+Vector 3: 20
+Vector 3: 14
+Vector 3: 5
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Maior por enquanto: 8 Menor por enquanto: 3
+Maior por enquanto: 12 Menor por enquanto: 1
+Maior por enquanto: 7 Menor por enquanto: 1
+Maior por enquanto: 12 Menor por enquanto: 6
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Teste pra isso I: 1Maior peso: 12 Menor peso: 1
+Teste
+Teste 2
+Valor do i: 1
+Começando o i: 2
+  i : 2
+vetorClusterNodes->at(0).at(0) :  9
+Dando erase: 9
+ COR DO 5 ********* 3
+ COR DO 0 ********* 3
+Testando essa porra: 2
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  9
+Testando essa porra: 2
+TesteTriste vizinho  : 5COR : 3
+TesteTriste vizinho  : 17COR : 2
+ node :   9 COR : 2
+ vizinho  : 17COR : 2
+TesteTriste vizinho  : 16COR : 2
+ node :   9 COR : 2
+ vizinho  : 16COR : 2
+TesteTriste vizinho  : 10COR : 2
+ node :   9 COR : 2
+ vizinho  : 10COR : 2
+K: 0 Node sendo excluido: 17
+K: 0 Node sendo excluido: 16
+K: 0 Node sendo excluido: 10
+  vetorClusterNodes->at(k).at(j).getId() :  17
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 2
+TesteTriste vizinho  : 15COR : 2
+ node :   17 COR : 2
+ vizinho  : 15COR : 2
+K: 0 Node sendo excluido: 15
+  vetorClusterNodes->at(k).at(j).getId() :  16
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 2
+TesteTriste vizinho  : 13COR : 2
+ node :   16 COR : 2
+ vizinho  : 13COR : 2
+K: 0 Node sendo excluido: 13
+  vetorClusterNodes->at(k).at(j).getId() :  10
+Testando essa porra: 2
+TesteTriste vizinho  : 9COR : 2
+TesteTriste vizinho  : 14COR : 3
+  vetorClusterNodes->at(k).at(j).getId() :  15
+Testando essa porra: 2
+TesteTriste vizinho  : 17COR : 2
+TesteTriste vizinho  : 20COR : 3
+  vetorClusterNodes->at(k).at(j).getId() :  13
+Testando essa porra: 2
+TesteTriste vizinho  : 20COR : 3
+TesteTriste vizinho  : 16COR : 2
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  1
+Testando essa porra: 2
+TesteTriste vizinho  : 4COR : 1
+TesteTriste vizinho  : 14COR : 3
+TesteTriste vizinho  : 19COR : 0
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  12
+Testando essa porra: 2
+TesteTriste vizinho  : 5COR : 3
+TesteTriste vizinho  : 6COR : 0
+TESTANDO TAMANHO 3:  4
+K: 0 Maior Valor: 7 Menor valor: 1
+K: 1 Maior Valor: 6 Menor valor: 6
+K: 2 Maior Valor: 2 Menor valor: 2
+maiorSubCluster vale: 6
+Entrou quantas x
+Entrou quantas x
+Entrou quantas x
+Gap da posicao escolhida = 6
+Posicao escolhida = 0
+Cores: true
+Cores: true
+Cores: false
+Cores: true
+Size coresPossiveis: 2
+Entrou quantas x 
+Node atual: 1
+Id do vizinho: 4
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:1
+Super teste: 12
+Super teste 2: 1
+Valor atual 1: 6
+Valor atual 2: 6
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+Entrou no 4 uau
+ 3 Valor do gap agora:  0
+ 4 Valor do gap agora:  0
+Id do vizinho: 14
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:3
+Super teste: 12
+Super teste 2: 6
+Valor atual 1: 6
+Valor atual 2: 6
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+ 4 Valor do gap agora:  0
+Id do vizinho: 19
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:0
+Super teste: 8
+Super teste 2: 3
+Valor atual 1: 6
+Valor atual 2: 6
+Entrou 3
+Entrou 7
+coresPossiveis->size()1
+Valor do z: 0
+Entrou no 8
+ 4 Valor do gap agora:  0
 Valor do e: 1
 Testando front: 0
 testando back: -1
@@ -1124,225 +3458,242 @@ coresPossiveis->at(0).front(): 0
 coresPossiveis->at(0).back(): 1
 Rodous quantas x: 
 Valor do menor: 0
-LLLLLLLLAAAAAAAAA: 20
-LLLLLLLLAAAAAAAAA: 16
-Id que eu quero descobrir: 13
-LLLLLLLLAAAAAAAAA: 20
-LLLLLLLLAAAAAAAAA: 16
-Cor do node: 13é: 1
+Cor do node: 1é: 1
 Uma x
 duas x
 tres x
 contSelecionado: 0
 Chegou a sair
-Valores desse vet dessa cor: 5
-Valores desse vet dessa cor: 19
-Valores desse vet dessa cor: 20
-Valores desse vet dessa cor: 16
-Valores desse vet dessa cor: 10
-Valores desse vet dessa cor: 13
 Testando essa porra: 2
 Entrou quantas x 
+Node atual: 12
+Id do vizinho: 5
+Bahia corNode: true
 Entrou 1: 
 Entrou 2: 
 Cor atual:3
 Super teste: 12
+Super teste 2: 6
+Valor atual 1: 2
+Valor atual 2: 2
+Entrou 3
+Entrou 6
+Valor atual do gap: 1000000
+Valor atual do que tá sendo comparado ao gap: 4
+Entrou no 3 uau
+Valor do z que entrou: 0
+Id do vizinho: 6
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:0
+Super teste: 8
+Super teste 2: 3
+Valor atual 1: 2
+Valor atual 2: 2
+Entrou 3
+Entrou 6
+Valor atual do gap: 10
+Valor atual do que tá sendo comparado ao gap: 1
+Entrou no 3 uau
+Valor do z que entrou: 0
+Valor do e: 2
+Testando front: 0
+testando back: 2
+Tamanho desse vet: 21
+coresPossiveis->size(): 1
+vetorClusterNudes->at(2).size(): 1
+Entradas: 2
+coresPossiveis->at(0).front(): 1
+coresPossiveis->at(0).back(): 0
+Rodous quantas x: 
+Valor do menor: 1
+Cor do node: 12é: 0
+Uma x
+duas x
+tres x
+contSelecionado: 1
+Chegou a sair
+Testando essa porra: 2
+Depois disso aqui: 
+Vector 3: 0
+Vector 3: 11
+Vector 3: 20
+Vector 3: 14
+Vector 3: 5
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Maior por enquanto: 8 Menor por enquanto: 3
+Maior por enquanto: 12 Menor por enquanto: 1
+Maior por enquanto: 7 Menor por enquanto: 1
+Maior por enquanto: 12 Menor por enquanto: 6
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Teste pra isso I: 2Maior peso: 7 Menor peso: 1
+Teste
+Teste 2
+Valor do i: 2
+Começando o i: 3
+  i : 3
+vetorClusterNodes->at(0).at(0) :  0
+Dando erase: 0
+ COR DO 5 ********* 3
+ COR DO 0 ********* 3
+Testando essa porra: 2
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  0
+Testando essa porra: 2
+TesteTriste vizinho  : 5COR : 3
+ node :   0 COR : 3
+ vizinho  : 5COR : 3
+TesteTriste vizinho  : 11COR : 3
+ node :   0 COR : 3
+ vizinho  : 11COR : 3
+K: 0 Node sendo excluido: 5
+K: 0 Node sendo excluido: 11
+  vetorClusterNodes->at(k).at(j).getId() :  5
+Testando essa porra: 2
+TesteTriste vizinho  : 0COR : 3
+TesteTriste vizinho  : 12COR : 0
+TesteTriste vizinho  : 9COR : 2
+  vetorClusterNodes->at(k).at(j).getId() :  11
+Testando essa porra: 2
+TesteTriste vizinho  : 0COR : 3
+TesteTriste vizinho  : 20COR : 3
+ node :   11 COR : 3
+ vizinho  : 20COR : 3
+TesteTriste vizinho  : 18COR : 1
+K: 0 Node sendo excluido: 20
+  vetorClusterNodes->at(k).at(j).getId() :  20
+Testando essa porra: 2
+TesteTriste vizinho  : 4COR : 1
+TesteTriste vizinho  : 11COR : 3
+TesteTriste vizinho  : 13COR : 2
+TesteTriste vizinho  : 15COR : 2
+ TAMANHAO K 21
+Testando essa porra: 2
+  vetorClusterNodes->at(k).at(j).getId() :  14
+Testando essa porra: 2
+TesteTriste vizinho  : 1COR : 1
+TesteTriste vizinho  : 10COR : 2
+TESTANDO TAMANHO 3:  4
+K: 0 Maior Valor: 9 Menor valor: 6
+K: 1 Maior Valor: 12 Menor valor: 12
+maiorSubCluster vale: 4
+Entrou quantas x
+Entrou quantas x
+Gap da posicao escolhida = 3
+Posicao escolhida = 0
+Cores: true
+Cores: true
+Cores: true
+Cores: false
+Size coresPossiveis: 2
+Entrou quantas x 
+Node atual: 14
+Id do vizinho: 1
+Bahia corNode: true
+Entrou 1: 
+Entrou 2: 
+Cor atual:1
+Super teste: 12
 Super teste 2: 1
-Valor atual 1: 10
-Valor atual 2: 4
+Valor atual 1: 12
+Valor atual 2: 12
 Entrou 3
 Entrou 7
 coresPossiveis->size()1
 Valor do z: 0
 Entrou no 8
-Entrou quantas x 
-Valor do e: 2
-Testando front: 0
-testando back: -1
-Tamanho desse vet: 21
-coresPossiveis->size(): 1
-vetorClusterNudes->at(2).size(): 2
-Entradas: 1
-coresPossiveis->at(0).front(): 0
-coresPossiveis->at(0).back(): 3
-Rodous quantas x: 
-Valor do menor: 0
-LLLLLLLLAAAAAAAAA: 20
-LLLLLLLLAAAAAAAAA: 16
-Id que eu quero descobrir: 2
-LLLLLLLLAAAAAAAAA: 20
-LLLLLLLLAAAAAAAAA: 16
-LLLLLLLLAAAAAAAAA: 20
-LLLLLLLLAAAAAAAAA: 16
-Id que eu quero descobrir: 3
-LLLLLLLLAAAAAAAAA: 20
-LLLLLLLLAAAAAAAAA: 16
-Cor do node: 2é: 3
-Uma x
-duas x
-tres x
-contSelecionado: 0
-Chegou a sair
-Valores desse vet dessa cor: 14
-Valores desse vet dessa cor: 8
-Valores desse vet dessa cor: 18
-Valores desse vet dessa cor: 4
-Valores desse vet dessa cor: 17
-Valores desse vet dessa cor: 2
-Valores desse vet dessa cor: 3
-Testando essa porra: 2
-Entrou quantas x 
-Valor do e: 3
-Testando front: 0
-testando back: -1
-Tamanho desse vet: 21
-coresPossiveis->size(): 1
-vetorClusterNudes->at(3).size(): 1
-Entradas: 0
-coresPossiveis->at(0).front(): 0
-coresPossiveis->at(0).back(): 3
-Valor do menor: 0
-LLLLLLLLAAAAAAAAA: 20
-LLLLLLLLAAAAAAAAA: 16
-Id que eu quero descobrir: 15
-LLLLLLLLAAAAAAAAA: 20
-LLLLLLLLAAAAAAAAA: 16
-Cor do node: 15é: 3
-Uma x
-duas x
-tres x
-contSelecionado: 0
-Chegou a sair
-Valores desse vet dessa cor: 14
-Valores desse vet dessa cor: 8
-Valores desse vet dessa cor: 18
-Valores desse vet dessa cor: 4
-Valores desse vet dessa cor: 17
-Valores desse vet dessa cor: 2
-Valores desse vet dessa cor: 3
-Valores desse vet dessa cor: 15
-Testando essa porra: 2
-LLLLLLLLAAAAAAAAA: 20
-LLLLLLLLAAAAAAAAA: 16
-Maior por enquanto: 10 Menor por enquanto: 2
-Maior por enquanto: 9 Menor por enquanto: 1
-Maior por enquanto: 7 Menor por enquanto: 2
-Maior por enquanto: 12 Menor por enquanto: 1
-LLLLLLLLAAAAAAAAA: 20
-LLLLLLLLAAAAAAAAA: 16
-Teste
-Teste 2
-Valor do i: 0
-Entrou
-vetorClusterNodes.size()  4
-vetorClusterNodes->at(0).size()  2
- Kluster : 0 Valor : 0
- Kluster : 0 Valor : 11
-Começando o i: 1
-  i : 1
-vetorClusterNodes->at(0).at(0) :  5
-Dando erase: 5
- COR DO 5 ********* 1
- COR DO 0 ********* 0
-Testando essa porra: 2
-Testando essa porra: 2
-  vetorClusterNodes->at(k).at(j).getId() :  5
-Testando essa porra: 2
-TesteTriste vizinho  : 0COR : 0
-TesteTriste vizinho  : 12COR : 2
-TesteTriste vizinho  : 9COR : 2
- TAMANHAO K 21
-Testando essa porra: 2
-  vetorClusterNodes->at(k).at(j).getId() :  19
-Testando essa porra: 2
-TesteTriste vizinho  : 1COR : 2
-TesteTriste vizinho  : 6COR : 2
- TAMANHAO K 21
-Testando essa porra: 2
-  vetorClusterNodes->at(k).at(j).getId() :  20
-Testando essa porra: 2
-TesteTriste vizinho  : 4COR : 3
-TesteTriste vizinho  : 11COR : 0
-TesteTriste vizinho  : 13COR : 1
- node :   20 COR : 1
- vizinho  : 13COR : 1
-TesteTriste vizinho  : 15COR : 3
-K: 2 Node sendo excluido: 13
-  vetorClusterNodes->at(k).at(j).getId() :  13
-Testando essa porra: 2
-TesteTriste vizinho  : 20COR : 1
-TesteTriste vizinho  : 16COR : 1
- node :   13 COR : 1
- vizinho  : 16COR : 1
-K: 2 Node sendo excluido: 16
-  vetorClusterNodes->at(k).at(j).getId() :  16
-Testando essa porra: 2
-TesteTriste vizinho  : 9COR : 2
-TesteTriste vizinho  : 13COR : 1
- TAMANHAO K 21
-Testando essa porra: 2
-  vetorClusterNodes->at(k).at(j).getId() :  10
-Testando essa porra: 2
-TesteTriste vizinho  : 9COR : 2
-TesteTriste vizinho  : 14COR : 3
-TESTANDO TAMANHO 3:  4
-K: 0 Maior Valor: 8 Menor valor: 8
-K: 1 Maior Valor: 8 Menor valor: 8
-K: 2 Maior Valor: 9 Menor valor: 3
-K: 3 Maior Valor: 1 Menor valor: 1
-maiorSubCluster vale: 3
-Entrou quantas x
-Entrou quantas x
-Entrou quantas x
-Entrou quantas x
-Gap da posicao escolhida = 6
-Posicao escolhida = 2
-Cores: true
-Cores: false
-Cores: true
-Cores: true
-Size coresPossiveis: 2
-Entrou quantas x 
+Entrou no 4 uau
+ 3 Valor do gap agora:  0
+ 4 Valor do gap agora:  0
+Id do vizinho: 10
+Bahia corNode: true
 Entrou 1: 
-Entrou 2: 
-Cor atual:0
-Super teste: 6
-Super teste 2: 6
-Valor atual 1: 8
-Valor atual 2: 8
-Entrou 3
-Tamanho mudou: 4
-Valor aqui no 3: 12
-Node: 0
-Valor: 8
-Maior da list: 6
-Testando: 9
-Cor: 0
-Entrou 5
-Testando valor gap: 2Entrou 1: 
 Entrou 2: 
 Cor atual:2
 Super teste: 7
-Super teste 2: 2
-Valor atual 1: 8
-Valor atual 2: 8
+Super teste 2: 1
+Valor atual 1: 12
+Valor atual 2: 12
 Entrou 3
 Tamanho mudou: 4
 Valor aqui no 3: 12
-Node: 12
-Valor: 8
+Node: 10
+Valor: 12
 Maior da list: 7
-Testando: 9
+Testando: 12
 Cor: 2
 Entrou 5
-Testando valor gap: 1Valor do e: 0
+Testando valor gap: 11
+Valor do gap agora:  0
+Valor do e: 1
 Testando front: 0
-testando back: 1
+testando back: -1
 Tamanho desse vet: 21
 coresPossiveis->size(): 1
-vetorClusterNudes->at(0).size(): 1
-Entradas: 2
-coresPossiveis->at(0).front(): 1000000
-coresPossiveis->at(0).back(): 2
+vetorClusterNudes->at(1).size(): 1
+Entradas: 1
+coresPossiveis->at(0).front(): 0
+coresPossiveis->at(0).back(): 1
 Rodous quantas x: 
-Rodous quantas x: 
+Valor do menor: 0
+Cor do node: 14é: 1
+Uma x
+duas x
+tres x
+contSelecionado: 0
+Chegou a sair
+Testando essa porra: 2
+Depois disso aqui: 
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Maior por enquanto: 8 Menor por enquanto: 3
+Maior por enquanto: 12 Menor por enquanto: 1
+Maior por enquanto: 7 Menor por enquanto: 1
+Maior por enquanto: 12 Menor por enquanto: 6
+LLLLLLLLAAAAAAAAA: 20
+LLLLLLLLAAAAAAAAA: 16
+Teste pra isso I: 3Maior peso: 9 Menor peso: 6
+Teste
+Teste 2
+Valor do i: 3
+Chegou a sair 
+Chegou aqui 
+Testando gap final: 25
+Cluster é: 0
+Cor do node: 0 Id do node: 19 Peso: 8
+Cor do node: 0 Id do node: 12 Peso: 2
+Cor do node: 0 Id do node: 6 Peso: 3
+Cor do node: 0 Id do node: 7 Peso: 4
+Maior dessa posicao: 8 Menor dessa posicao: 3
+Gap dessa posicao: 5
+Cluster é: 1
+Cor do node: 1 Id do node: 1 Peso: 6
+Cor do node: 1 Id do node: 4 Peso: 11
+Cor do node: 1 Id do node: 14 Peso: 12
+Cor do node: 1 Id do node: 2 Peso: 10
+Cor do node: 1 Id do node: 18 Peso: 1
+Cor do node: 1 Id do node: 3 Peso: 4
+Cor do node: 1 Id do node: 8 Peso: 12
+Maior dessa posicao: 12 Menor dessa posicao: 1
+Gap dessa posicao: 11
+Cluster é: 2
+Cor do node: 2 Id do node: 9 Peso: 7
+Cor do node: 2 Id do node: 17 Peso: 1
+Cor do node: 2 Id do node: 16 Peso: 3
+Cor do node: 2 Id do node: 10 Peso: 1
+Cor do node: 2 Id do node: 13 Peso: 7
+Cor do node: 2 Id do node: 15 Peso: 2
+Maior dessa posicao: 7 Menor dessa posicao: 1
+Gap dessa posicao: 6
+Cluster é: 3
+Cor do node: 3 Id do node: 0 Peso: 6
+Cor do node: 3 Id do node: 5 Peso: 8
+Cor do node: 3 Id do node: 11 Peso: 6
+Cor do node: 3 Id do node: 20 Peso: 9
+Maior dessa posicao: 9 Menor dessa posicao: 6
+Gap dessa posicao: 3
+saiu
+
