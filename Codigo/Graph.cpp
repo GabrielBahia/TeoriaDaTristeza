@@ -1398,7 +1398,8 @@ void Graph::Guloso(ofstream &output_file, int p)
             //cout << "Tamanho i: " << i << " " << vectorNode->end()->capacity() << endl;
         }
 
-        //srand(time(0)); // semente aleatoria
+        srand(time(0)); // semente aleatoria
+        //Para fazer aleatorio tem que descomentar a baixo
 
         for(int i=0;i<p;i++) 
         {
@@ -1477,6 +1478,22 @@ void Graph::Guloso(ofstream &output_file, int p)
             getNode(vectorNode->at(q).begin()->getId())->setCor(q);
         }*/
 
+        /*
+        vectorNode.at(0).emplace_back(getNode(19));
+        vectorNode.at(1).emplace_back(getNode(13));
+        vectorNode.at(2).emplace_back(getNode(7));
+        vectorNode.at(2).emplace_back(getNode(6));
+        vectorNode.at(3).emplace_back(getNode(9));
+        visitado[getNode(19)->getIdNode()] = true;
+        visitado[getNode(13)->getIdNode()] = true;
+        visitado[getNode(7)->getIdNode()] = true;
+        visitado[getNode(6)->getIdNode()] = true;
+        visitado[getNode(9)->getIdNode()] = true;
+        vectorNode.at(1).at(0)->setCor(1);
+        vectorNode.at(2).at(0)->setCor(2);
+        vectorNode.at(2).at(1)->setCor(2);
+        vectorNode.at(3).at(0)->setCor(3);
+        */
 
         //Quando estiver escolhendo node aleatorio usa isso aqui ao inves das linhas de cima
         for(int q=0;q<vectorNode.size();q++) {
@@ -1884,18 +1901,20 @@ void Graph::Guloso(ofstream &output_file, int p)
                     */
                         if(inseriu)
                         {
-                            for(int y =1;y<=contAuxVizinhos;y++) {
-                                if(maior < vetorClusterNodes.at(k).at(j+y)->getWeight())
+                            output_file << "Teste rancor" << endl;
+                            for(int y = j/* se não funcionar colocando o y = j, coloca y = 1*/;y<=vetorClusterNodes.at(k).size()-1/*contAuxVizinhos*/;y++) {
+                                if(maior < vetorClusterNodes.at(k).at(/*j*+*/y)->getWeight())
                                 {
-                                    maior = vetorClusterNodes.at(k).at(j+y)->getWeight();
-                                }
-                                else if( menor > vetorClusterNodes.at(k).at(j+y)->getWeight())
+                                    maior = vetorClusterNodes.at(k).at(/*j*+*/y)->getWeight();
+                                } 
+                                else if( menor > vetorClusterNodes.at(k).at(/*j*+*/y)->getWeight())
                                 {
-                                    menor = vetorClusterNodes.at(k).at(j+y)->getWeight();
+                                    menor = vetorClusterNodes.at(k).at(/*j*+*/y)->getWeight();
                                 }
                             }
-                        }
-
+                            output_file << "Teste raiva" << endl;
+                        }   
+                        output_file << "Teste odio" << endl;
                 }
                     
                 //maiorMenorValSubCluster->at(k).front() = maior;
