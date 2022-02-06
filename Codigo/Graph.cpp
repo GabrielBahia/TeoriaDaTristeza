@@ -1729,13 +1729,8 @@ void Graph::Guloso(ofstream &output_file, int p)
 
         } while(!vectorWeightEdge.empty());
        // output_file << " vectorNode->size()  : " << vectorNode->size() << endl;
-        for(Edge *e = getNode(5)->getFirstEdge();e != nullptr; e = e->getNextEdge()) {
-            output_file << "Arestas desse lixo: " << e->getTargetId() << endl;
-        }
 
-        for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-            output_file << "PORRA: " << node->getTargetId() << endl;
-        }
+
         //delete vectorWeightEdge;
         for(Node *node = this->first_node; node!=nullptr; node = node->getNextNode()) {
             output_file << "Id dos nodes: " << node->getId() << " Peso dos nodes: " << node->getWeight() << " Cores dos nodes: " << node->getCor() << endl;
@@ -1817,11 +1812,6 @@ void Graph::Guloso(ofstream &output_file, int p)
 
             //while(!vectorNode->at(i).empty()) {
 
-            output_file << " COR DO 5 ********* " << getNode(5)->getCor() << endl; 
-           
-            output_file << " COR DO 0 ********* " << getNode(0)->getCor() << endl;  
-            output_file << "Testando essa porra: " << getNode(13)->getTotal_Edge() << endl;
-
             for(int k=0;k<contClusterAux;k++) 
             {
                 contadoraSubCluster++;
@@ -1832,7 +1822,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                 //maiorMenorValSubCluster->at(k).at(1) = vetorClusterNodes->at(k).at(0).getWeight();
                 int maior = vetorClusterNodes.at(k).at(0)->getWeight();
                 int menor = vetorClusterNodes.at(k).at(0)->getWeight();
-                output_file << "Testando essa porra: " << getNode(13)->getTotal_Edge() << endl;        
+       
                 for(int j=0;j<vetorClusterNodes.at(k).size();j++) 
                 {
                     Node *node = vetorClusterNodes.at(k).at(j); //
@@ -1842,7 +1832,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                     int *vizinhos = new int[tam];
                     int contAuxVizinhos = 0;
                     bool inseriu = false;
-                    output_file << "Testando essa porra: " << getNode(13)->getTotal_Edge() << endl;
+
                     /*if(node->getId() == 13) {
                         Edge *edge = node->getFirstEdge();
                         for(int r=0;r<node->getTotal_Edge();r++) {
@@ -2088,7 +2078,7 @@ void Graph::Guloso(ofstream &output_file, int p)
                                         }
                                     } else if(maiorMenorValSubCluster.at(e).front() > listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).at(0)) {
                                         output_file << "Tamanho mudou: "  << listMaiorMenorPeso.size() << endl;
-                                        output_file << "Valor aqui no 3: " << listMaiorMenorPeso.at(3).at(0) << endl;
+                                        //output_file << "Valor aqui no 3: " << listMaiorMenorPeso.at(3).at(0) << endl;
                                         output_file << "Node: " << edge->getTargetId() << endl;
                                         output_file << "Valor: " << maiorMenorValSubCluster.at(e).front() << endl;
                                         output_file << "Maior da list: " << listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).front() << endl;
@@ -2193,16 +2183,12 @@ void Graph::Guloso(ofstream &output_file, int p)
                             getNode(vetorClusterNodes.at(e).at(z)->getId())->setCor(corSelecionado);
                             if(corSelecionado > i) {
                                 //vectorNode->at(e).at(z).setCor(corSelecionado);
-                                for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                                    output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
-                                }
+
                                 vetorClusterNodes.at(e).at(z)->setCor(corSelecionado);
                                 vectorNode.at(corSelecionado).emplace_back(getNode(vetorClusterNodes.at(e).at(z)->getId()));
                                 output_file << "Id que eu quero descobrir: " << vetorClusterNodes.at(e).at(z)->getId() << endl;
                                 verificados[vetorClusterNodes.at(e).at(z)->getIdNode()] = false;
-                                for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                                    output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
-                                }
+
                             }
                         }
 
@@ -2246,7 +2232,6 @@ void Graph::Guloso(ofstream &output_file, int p)
                             output_file << "Valores desse vet dessa cor: " << vectorNode.at(corSelecionado).at(z)->getId() << endl;
                         }
 
-                        output_file << "Testando essa porra: " << getNode(13)->getTotal_Edge() << endl;
                         for(int z=0;z<corNode.size();z++) {
                             if(z != i) {
                                 corNode.at(z) = true;
@@ -2260,15 +2245,11 @@ void Graph::Guloso(ofstream &output_file, int p)
                         output_file << "Vector " << f << ": " << vectorNode.at(f).at(h)->getId() << endl;
                     }
                 }
-                for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                    output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
-                }
+
                 for(int h=0;h<listMaiorMenorPeso.size();h++) {
                     output_file << "Maior por enquanto: " << listMaiorMenorPeso.at(h).front() << " Menor por enquanto: " << listMaiorMenorPeso.at(h).back() << endl;
                 }
-                for(Edge *node = getNode(13)->getFirstEdge();node != nullptr;node = node->getNextEdge()) {
-                    output_file << "LLLLLLLLAAAAAAAAA: " << node->getTargetId() << endl;
-                }
+
             //}
             //listMaiorMenorPeso.at(i).front() = maiorMenorValSubCluster.at(0).front();
             //listMaiorMenorPeso.at(i).back() = maiorMenorValSubCluster.at(0).back();
