@@ -177,6 +177,95 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
     return graph;
 }
 
+Graph* leituraInstancia2(ifstream& input_file, int directed, int weightedEdge, int weightedNode, ofstream &output_file){
+
+    Graph *graph;
+    int j=0;
+    int klusters = 0;
+    int ordem;
+    string s;
+    string s2;
+    string s3;
+    int node;
+    float peso;
+    int n1;
+    int n2;
+
+    input_file >> s;
+
+    do
+    {
+        input_file  >> s;
+    }while(s != "#");
+
+    input_file >> klusters;
+    //output_file << " k : " << klusters << endl;
+
+    do
+    {
+        input_file  >> s;
+    }while(s != "#");
+
+    input_file >> ordem;
+    //output_file << " Ordem : " << ordem << endl;
+    graph = new Graph(ordem, 0 , 0 , 1);
+    do
+    {
+        input_file  >> s;
+    }while(s != ":=");
+
+    do
+    {
+        input_file  >> s;
+    }while(s != ":=");
+
+   for(int i=1;i != ordem+1;i++)
+    { 
+        input_file >> node;
+        input_file >> peso;
+        //output_file << " Node " << node << " peso " << peso << endl;
+        graph->insertNode(node, peso);        
+    }
+
+    do
+    {
+        input_file >> s;
+    } while (s != ":=");
+   
+    do
+    {
+        input_file >> s;
+        if(s != ";")
+        {
+            s2 = " ";
+            s3 = " ";
+            j = 1;
+            while(s[j] != ',')
+            {
+                s2 = s2 + s[j];
+                j++;
+            }
+            j++;
+            while(s[j] != ')')
+            {
+                s3 = s3 + s[j];
+                j++;         
+            } 
+            //cout << " Arestas  " << s << endl;
+            n1 = stoi(s2);
+            n2 = stoi(s3);
+            graph->insertEdge(n1,n2,0);
+            //output_file << " Node 1 : " << n1 << " Node 2 : " << n2 << endl;
+        }
+
+    } while (s !=  ";");
+
+    //graph = new Graph(ordem, directed, weightedEdge, weightedNode);
+    return graph;
+}
+
+
+
 int menu(){
 
     int selecao;
@@ -301,7 +390,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
 
         case 9:{
-            graph->Guloso(output_file, 4);
+            graph->Guloso(output_file, 80);
             //graph->teste(output_file);
             output_file << "saiu" << endl;
             break;
@@ -368,7 +457,7 @@ int main(int argc, char const *argv[]) {
     Graph* graph;
 
     if(input_file.is_open()){
-        graph = leituraInstancia(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), output_file);
+        graph = leituraInstancia2(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), output_file);
 
     }else
         cout << "Unable to open " << argv[1];
