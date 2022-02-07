@@ -76,7 +76,7 @@ class Graph{
 
         //Methods Segunda Etapa
         void Guloso(ofstream &output_file, int p);
-
+        void GulosoRandomizado(ofstream &output_file, int p, float alfa, int numIter);
 
         //Funções Auxiliares Segunda Etapa
         vector<Node*> criaVectorTeste();

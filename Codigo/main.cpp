@@ -272,15 +272,16 @@ int menu(){
 
     cout << "MENU" << endl;
     cout << "----" << endl;
-    cout << "[1] Subgrafo induzido pelo fecho transitivo direto "<< endl;
+    /*cout << "[1] Subgrafo induzido pelo fecho transitivo direto "<< endl;
     cout << "[2] Subgrafo induzido pelo fecho transitivo indireto "<< endl;
     cout << "[3] Caminho Minimo entre dois vertices - Dijkstra" << endl;
     cout << "[4] Caminho Minimo entre dois vertices - Floyd" << endl;
     cout << "[5] Arvore Geradora Minima de Prim" << endl;
     cout << "[6] Arvore Geradora Minima de Kruskal" << endl;
     cout << "[7] Arvore dada pela ordem de caminhamento em largura" << endl;
-    cout << "[8] Imprimir ordenacao topologica" << endl;
-    cout << "[9] Algoritmo guloso" << endl;
+    cout << "[8] Imprimir ordenacao topologica" << endl;*/
+    cout << "[1] Algoritmo guloso" << endl;
+    cout << "[2] Algoritmo guloso randomizado" << endl;
     cout << "[0] Sair" << endl;
 
     cin >> selecao;
@@ -299,21 +300,21 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             break;
         }
 
-
-           /* Subgrafo induzido pelo fecho transitivo direto */
+        /*
+           // Subgrafo induzido pelo fecho transitivo direto //
         case 1:{
            //graph->printGraph(output_file);
             int x;
             cout << "Digite o id o noh a ser pesquisado: ";
             cin >> x;
             graph->fechoTransitivoDireto(output_file, x);
-           /* graph->printGraph(output_file); 
-            graph->printEdge(output_file);*/
+           // graph->printGraph(output_file); 
+            //graph->printEdge(output_file);//
             break;
         }
 
 
-            /* Subgrafo induzido pelo fecho transitivo indireto */
+            // Subgrafo induzido pelo fecho transitivo indireto //
         case 2:{
 
             int x;
@@ -323,7 +324,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             break;
         }
 
-            /* Caminho Minimo entre dois vertices - Dijkstra */
+            // Caminho Minimo entre dois vertices - Dijkstra //
         case 3:{
 
             cout<<"Digite o vertice de origem:"<< endl;
@@ -337,7 +338,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             break;
         }
 
-            /* Caminho Minimo entre dois vertices - Floyd */
+            // Caminho Minimo entre dois vertices - Floyd //
         case 4:{
 
             cout<<"Digite o vertice de origem:"<< endl;
@@ -350,7 +351,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             break;
         }
 
-            /* Arvore Geradora Minima de Prim */
+            // Arvore Geradora Minima de Prim //
         case 5:{
             Graph *grafoAux = graph->arvGMin_Prim(output_file);
             if(grafoAux == nullptr) {
@@ -361,7 +362,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             break;
         }
 
-            /* Arvore Geradora Minima de Kruskal */
+            // Arvore Geradora Minima de Kruskal //
         case 6:{
             Graph *grafoAux2 = graph->arvGMin_Kruskal(output_file);
             if(grafoAux2 == nullptr) {
@@ -381,16 +382,25 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             graph->arv_Buscalargura(output_file,x);
             break;
         }
-           /* Imprimir ordenacao topologica */
+           // Imprimir ordenacao topologica 
         case 8:{
 
             graph->ord_Topologica(output_file);
          
             break;
+        }*/
+
+        case 1:{
+            for(int i=0;i<15;i++) {
+                graph->Guloso(output_file, 6);
+                //graph->teste(output_file);
+                output_file << "saiu" << endl;
+            }
+            break;
         }
 
-        case 9:{
-            graph->Guloso(output_file, 80);
+        case 2:{
+            graph->GulosoRandomizado(output_file, 80, 0.5, 5);
             //graph->teste(output_file);
             output_file << "saiu" << endl;
             break;
