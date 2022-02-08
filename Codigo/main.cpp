@@ -9,9 +9,14 @@
 #include <chrono>
 #include "Graph.h"
 #include "Node.h"
-
-
+#include <thread>
+//#include <TIME.H>
+#include <time.h>
+//#include <dos.h>
+#include <Windows.h>
 using namespace std;
+//using this_thread::sleep_for;
+//using namespace chrono_literals;
 
 Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weightedNode){
 
@@ -282,6 +287,7 @@ int menu(){
     cout << "[8] Imprimir ordenacao topologica" << endl;*/
     cout << "[1] Algoritmo guloso" << endl;
     cout << "[2] Algoritmo guloso randomizado" << endl;
+    cout << "[3] Algoritmo guloso randomizado reativo" << endl;
     cout << "[0] Sair" << endl;
 
     cin >> selecao;
@@ -391,18 +397,51 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }*/
 
         case 1:{
-            for(int i=0;i<15;i++) {
-                graph->Guloso(output_file, 6);
+            //for(int i=0;i<10;i++) {
+                graph->Guloso(output_file, 5);
                 //graph->teste(output_file);
-                output_file << "saiu" << endl;
-            }
+                //sleep_for(1000ms);
+            //}
+            output_file << "saiu" << endl;
             break;
         }
 
         case 2:{
-            graph->GulosoRandomizado(output_file, 80, 0.5, 5);
+            graph->GulosoRandomizado(output_file, 6, 0.1, 5);
             //graph->teste(output_file);
             output_file << "saiu" << endl;
+            break;
+        }
+
+        case 3:{
+            //cout << "Digite a quantidade de alfas: ";
+            int qtdAlfas = 3;
+            //cin >> qtdAlfas;
+            //cout << endl;
+            float *vetAlfas = new float[qtdAlfas];
+            vetAlfas[0] = 0.1;
+            vetAlfas[1] = 0.3;
+            vetAlfas[2] = 0.5;
+            /*for(int i=0;i<qtdAlfas;i++)
+            {
+                cout << "Digite o valor do " << i << "o alfa: ";
+                cin >> vetAlfas[i];
+                cout << endl;
+            }*/
+            int total, itBloco;
+            /*
+            cout << "Digite o número de interacoes total: ";
+            cin >> total;
+            cout << endl;
+            cout << "Digite o numero de iteracoes de cada bloco: ";
+            cin >> itBloco;
+            */
+            total = 30;
+            itBloco = 5;
+            graph->GulosoRandomizadoReativo(output_file, 6, vetAlfas, total, itBloco, qtdAlfas);
+            //graph->teste(output_file);
+            output_file << "saiu" << endl;
+            //delete vetAlfas;
             break;
         }
 

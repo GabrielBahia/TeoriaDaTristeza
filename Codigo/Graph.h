@@ -77,8 +77,11 @@ class Graph{
         //Methods Segunda Etapa
         void Guloso(ofstream &output_file, int p);
         void GulosoRandomizado(ofstream &output_file, int p, float alfa, int numIter);
+        void GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, int numIter, int blocoIter, int m);
 
         //Funções Auxiliares Segunda Etapa
+        void atualizaProbabilidades(ofstream &output_file, float *vetProbAlfa, float *qAlfa, float melhorGap, float *medias, int m);
+        int escolheAlfa(ofstream &output_file, float *vetProbAlfa, int m);
         vector<Node*> criaVectorTeste();
         vector<Node> *criaVector();
         vector<float> *criaVetorRank(int p);
