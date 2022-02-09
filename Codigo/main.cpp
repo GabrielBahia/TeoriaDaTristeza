@@ -407,7 +407,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
 
         case 2:{
-            graph->GulosoRandomizado(output_file, 6, 0.1, 5);
+            graph->GulosoRandomizado(output_file, 5, 0.1, 1000);
             //graph->teste(output_file);
             output_file << "saiu" << endl;
             break;
@@ -436,8 +436,8 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             cout << "Digite o numero de iteracoes de cada bloco: ";
             cin >> itBloco;
             */
-            total = 30;
-            itBloco = 5;
+            total = 200;
+            itBloco = 10;
             graph->GulosoRandomizadoReativo(output_file, 6, vetAlfas, total, itBloco, qtdAlfas);
             //graph->teste(output_file);
             output_file << "saiu" << endl;
@@ -477,7 +477,6 @@ int mainMenu(ofstream& output_file, Graph* graph){
 
 
 int main(int argc, char const *argv[]) {
-
     //Verifica��o se todos os par�metros do programa foram entrados
     if (argc != 6) {
 
@@ -485,6 +484,9 @@ int main(int argc, char const *argv[]) {
         return 1;
 
     }
+
+    unsigned seed = time(NULL);
+    srand(seed);
 
     string program_name(argv[0]);
     string input_file_name(argv[1]);
