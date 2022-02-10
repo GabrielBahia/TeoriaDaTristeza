@@ -2609,12 +2609,12 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
         somaGap = 0;
         output_file << "e = " << e << " ---------------------: " << endl;
         if(e != 0){
-            for(int x=0;x<m;x++)
+            /*for(int x=0;x<m;x++)
             {
                 output_file << "Probabilidades " << x << " : " << vetProbAlfa[x] << endl;
-            }
+            }*/
             indiceAlfa = escolheAlfa(output_file, vetProbAlfa, m);
-            output_file << "Alfa escolhido: " << alfa[indiceAlfa] << endl;
+            //output_file << "Alfa escolhido: " << alfa[indiceAlfa] << endl;
         }
         if(e % blocoIter == 0 && e != 0)
         {
@@ -2638,61 +2638,61 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
 
                 //srand(time(0)); // semente aleatoria
                 //Sleep(1000);
-                for(int i=0;i<p;i++) // montando os cluster iniciais 
-                {
-                    Node *nodeAux;
-                    bool vizinho = false;
-                    do {
-                        int x = 1 + (rand() % this->order-1); // escolhendo número aleatorio
-                        nodeAux = this->getNodeId(x); // pegando node referente a esse número
-                        // adicionei agr pra baixo
-                        vizinho = false;
-                        if(i > 0) // não deixar nodes vizinhos juntos
+            for(int i=0;i<p;i++) // montando os cluster iniciais  
+            {
+                Node *nodeAux; 
+                bool vizinho = false;
+                do {
+                    int x = 1 + (rand() % this->order-1); // escolhendo número aleatorio
+                    nodeAux = this->getNodeId(x); // pegando node referente a esse número
+                    vizinho = false;
+                    if(i > 0) // não deixar nodes vizinhos juntos
+                    {
+                        if(!visitado[nodeAux->getIdNode()])
                         {
-                            if(!visitado[nodeAux->getIdNode()])
+                            for(Edge *edgeAux = nodeAux->getFirstEdge(); edgeAux!=nullptr ; edgeAux = edgeAux->getNextEdge())
                             {
-                                for(Edge *edgeAux = nodeAux->getFirstEdge(); edgeAux!=nullptr ; edgeAux = edgeAux->getNextEdge())
+                                for(int g=0;g<i;g++)
                                 {
-                                    for(int g=0;g<i;g++)
+                                    for(int f=0;f<vectorNode.at(g).size();f++)
                                     {
-                                        for(int f=0;f<vectorNode.at(g).size();f++)
+                                        if(edgeAux->getTargetId() == vectorNode.at(g).at(f)->getId())
                                         {
-                                            if(edgeAux->getTargetId() == vectorNode.at(g).at(f)->getId())
-                                            {
-                                                vizinho = true;
-                                            }
+                                            vizinho = true;
                                         }
                                     }
                                 }
                             }
                         }
-                        // adicionei agora pra cima
-                    } while(visitado[nodeAux->getIdNode()]); // se o node já tiver sido colocado ele troca
-                    visitado[nodeAux->getIdNode()] = true; // marcando como visitado
+                    }
+                    
+                } while(visitado[nodeAux->getIdNode()] || vizinho); // se o node já tiver sido colocado ele troca
+                visitado[nodeAux->getIdNode()] = true; // marcando como visitado
 
-                    for(Edge *edgeAux = nodeAux->getFirstEdge(); edgeAux != nullptr; edgeAux = edgeAux->getNextEdge())
+                for(Edge *edgeAux = nodeAux->getFirstEdge(); edgeAux != nullptr; edgeAux = edgeAux->getNextEdge())
+                {
+                    if(getNode(edgeAux->getTargetId())->getInDegree() == 1) // verificando se a aresta ao nó escolhido só tem o nó escolhido como vizinho
                     {
-                        if(getNode(edgeAux->getTargetId())->getInDegree() == 1) // verificando se a aresta ao nó escolhido só tem o nó escolhido como vizinho
-                        {
-                            vectorNode.at(i).emplace_back(getNode(edgeAux->getTargetId())); // Coloca o vizinho de grau 1 na lista
-                            visitado[edgeAux->getTargetIdNode()] = true;  // Coloca o node vizinho como já utilizado
-                            visitado[nodeAux->getIdNode()] = true; // coloca o node escolhido como já utilizado
-                        }    
+                        vectorNode.at(i).emplace_back(getNode(edgeAux->getTargetId())); // Coloca o vizinho de grau 1 na lista
+                        visitado[edgeAux->getTargetIdNode()] = true;  // Coloca o node vizinho como já utilizado
+                        visitado[nodeAux->getIdNode()] = true; // coloca o node escolhido como já utilizado
 
-                    }
+                    }    
 
-                    if(nodeAux->getInDegree() == 1) { // se o nó escolhido tem grau de entrada 1 já pega o vizinho dele junto
-                        vectorNode.at(i).emplace_back(nodeAux);  // caso o node só tenha uma aresta a gente vai inserir o único vizinho direto na lista que o vizinho tá
-                        vectorNode.at(i).emplace_back(getNode(nodeAux->getFirstEdge()->getTargetId())); // único vizinho direto já pode pegar direto no getFirstEdge()
-                        visitado[nodeAux->getIdNode()] = true;  // Coloca o node como já utilizado
-                        visitado[nodeAux->getFirstEdge()->getTargetIdNode()] = true; // coloca o vizinho do node como já utilizado
-
-                    } else {
-                        vectorNode.at(i).emplace_back(nodeAux); // inserindo esse node na lista da posição i do vector
-                        visitado[nodeAux->getIdNode()] = true;   // Coloca o vértice como já utilizado
-
-                    }
                 }
+
+                if(nodeAux->getInDegree() == 1) { // se o nó escolhido tem grau de entrada 1 já pega o vizinho dele junto
+                    vectorNode.at(i).emplace_back(nodeAux);  // caso o node só tenha uma aresta a gente vai inserir o único vizinho direto na lista que o vizinho tá
+                    vectorNode.at(i).emplace_back(getNode(nodeAux->getFirstEdge()->getTargetId())); // único vizinho direto já pode pegar direto no getFirstEdge()
+                    visitado[nodeAux->getIdNode()] = true;  // Coloca o node como já utilizado
+                    visitado[nodeAux->getFirstEdge()->getTargetIdNode()] = true; // coloca o vizinho do node como já utilizado
+
+                } else {
+                    vectorNode.at(i).emplace_back(nodeAux); // inserindo esse node na lista da posição i do vector
+                    visitado[nodeAux->getIdNode()] = true;   // Coloca o vértice como já utilizado
+
+                }
+            }
 
                 for(int q=0;q<vectorNode.size();q++) {
                     for(int l=0;l<vectorNode.at(q).size();l++) {
@@ -2809,7 +2809,7 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                                     }    
                                 }
                             }
-                            if(i == 0)
+                            /*if(i == 0)
                             {
                                 for(int n=0;n<vectorWeightEdge.size();n++)
                                 {
@@ -2817,9 +2817,9 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                                     output_file << "listRank.at(0).at(" << n << "): " << listRank.at(i).at(n) << endl; 
                                     output_file << "idNodesAux[" << n << "]: " << idNodesAux[n] << endl;
                                 }
-                            }
+                            }*/
 
-                            output_file << "alfa[indiceAlfa]: " << alfa[indiceAlfa] << endl;
+                            //output_file << "alfa[indiceAlfa]: " << alfa[indiceAlfa] << endl;
                             indiceR = (rand() % (listRank.at(i).size()-1)*(alfa[indiceAlfa])); // escolhendo número aleatorio
                             contPosicao = idNodesAux[indiceR];
                         }
@@ -2936,9 +2936,9 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                     vetorClusterNodes.reserve(this->order);
                     for(int j=0;j<this->order;j++) {
 
-                        vetorClusterNodes.emplace_back(criaVectorTeste());
-                        vetorClusterNodes.at(i).reserve(this->order); // adicionei agora
                         vector<int> *rank = new vector<int>;
+                        vetorClusterNodes.emplace_back(criaVectorTeste());
+                        //vetorClusterNodes.at(i).reserve(this->order); // adicionei agora
                         maiorMenorValSubCluster.emplace_back(*rank);
                         maiorMenorValSubCluster.at(j).reserve(2);
 
@@ -3193,14 +3193,14 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                     menorOuMaior.clear();
                 }
 
-                output_file << "Chegou a sair " << endl;
+                //output_file << "Chegou a sair " << endl;
 
                 int gapTotal = 0;
                 for(int h=0;h<listMaiorMenorPeso.size();h++) {
                     gapTotal += listMaiorMenorPeso.at(h).at(0) - listMaiorMenorPeso.at(h).at(1);
                 }
 
-                output_file << "Testando gap final: " << gapTotal << endl;
+                //output_file << "Testando gap final: " << gapTotal << endl;
                 
                 delete visitado;
                 /*for(int u=0;u<p;u++) {
@@ -3233,10 +3233,10 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                 }
                 output_file << "Gap total: " << gapTotal << endl;
                 //output_file << "Posicao memoria: " << &gapFinais[0] << endl;
-                for(int d = 0;d<=e;d++) 
+                /*for(int d = 0;d<=e;d++) 
                 {
                     output_file << "Posicao " << d << " Gap: " << gapFinais[d] << endl;
-                }
+                }*/
                 listMaiorMenorPeso.clear();
             } else {
                 output_file << "O grafo não tem peso nas arestas" << endl;
@@ -3249,7 +3249,7 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
     for(int i = 0;i<numIter;i++) 
     {
         soma += gapFinais[i];
-        output_file << "Posicao " << i << " Gap: " << gapFinais[i] << endl;
+        //output_file << "Posicao " << i << " Gap: " << gapFinais[i] << endl;
     }
     soma = soma/numIter;
     output_file << "Valor da media: " << soma << endl;
