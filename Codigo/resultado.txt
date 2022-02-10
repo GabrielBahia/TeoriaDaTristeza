@@ -1,0 +1,13 @@
+semente: 25931
+Posicao 0 Gap: 391
+Valor da media: 391
+Menor gap é: 391
+funcSleep() elapsed time is 41.998 milliseconds
+saiu
+
+Chegou a sair 
+Testando gap final: 428
+Chegou a sair 
+Testando gap final: 353
+Chegou a sair 
+Testando gap final: 264

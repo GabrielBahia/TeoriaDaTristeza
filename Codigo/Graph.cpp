@@ -1382,16 +1382,17 @@ void Graph::Guloso(ofstream &output_file, int p)
         {
 
             vector<vector<Node*>> vectorNode; // vetor de vetores de node
-        
+            vectorNode.reserve(p);
             for(int i=0;i<p;i++) {
                 vectorNode.push_back(criaVectorTeste()); // criando os vetores de node;
+                vectorNode.at(i).reserve(this->order); 
             }
 
             //unsigned seed = time(0);
             //srand(seed);
             //float semente = rand();
             output_file << "semente: " << rand() <<endl;
-            Sleep(1000);
+            //Sleep(1000);
             //srand( (unsigned)time(NULL) );
             //srand(time(0)); // semente aleatoria
 
@@ -1460,66 +1461,6 @@ void Graph::Guloso(ofstream &output_file, int p)
                 }
             }
 
-            //Aleatorio é daqui pra cima
-
-            //Randomizado Padrão
-            /*for(int i=0;i<p;i++) {
-                bool entrou = false;
-                int maior = -1;
-                int id;
-                for(Node *node = this->first_node;node != nullptr; node = node->getNextNode()) 
-                {
-                    if(i > 0) {
-                        for(int x = 0; x < i;x++) {
-                            for(int t = 0;t < vectorNode.at(x).size(); t++) {
-                                if(vectorNode.at(x).at(t)->getId() == node->getId()) {
-                                    entrou = true;
-                                }
-                            }    
-                        }
-                        if(!entrou) {
-                            if(node->getTotal_Edge() > maior)
-                            {
-                                maior = node->getTotal_Edge();
-                                id = node->getId();
-                            }
-                        }
-                    } else {
-                        if(node->getTotal_Edge() > maior)
-                        {
-                            maior = node->getTotal_Edge();
-                            id = node->getId();
-                        }
-                    }
-                    entrou = false;
-                }
-                cout << "Chegou" << endl;
-                vectorNode.at(i).emplace_back(getNode(id));
-                output_file << "Valor do id: " << id << endl;
-                cout << "Chegou 1.5 " << endl;
-                output_file << "Valor do getIdNode: " << getNode(id)->getIdNode() << endl;
-                visitado[getNode(id)->getIdNode()] = true;
-                cout << "Chegou 2 " << endl;
-                for(Edge *edge = getNode(id)->getFirstEdge(); edge!=nullptr; edge = edge->getNextEdge()) 
-                {
-                    cout << "Chegou 5 " << endl;
-                    if(getNode(edge->getTargetId())->getTotal_Edge() == 1) 
-                    {
-                        vectorNode.at(i).emplace_back(getNode(edge->getTargetId()));
-                        visitado[getNode(edge->getTargetId())->getIdNode()] = true;
-                    }
-                    cout << "Chegou 6 " << endl;
-                }
-                cout << "Chegou 7" << endl;
-            }
-
-            for(int f=0;f<vectorNode.size();f++) {
-                for(int u=0;u<vectorNode.at(f).size();u++) {
-                    output_file << "Valores do cluster " << f << ": " << vectorNode.at(f).at(u)->getId() << " Total_edge: " << vectorNode.at(f).at(u)->getTotal_Edge() << endl; 
-                }
-            }
-            */
-            //Fim do randomizado
             vector<Node*> vectorWeightEdge;// = new vector<Node>(); // vetor para guardar os pesos e arestas de cada node
             vector<vector<float>> listRank; //= new vector<vector<float>>; // vector de ranqueamento dos nodes
 
@@ -2042,14 +1983,12 @@ void Graph::Guloso(ofstream &output_file, int p)
 
 void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numIter)
 {
+    auto start = std::chrono::high_resolution_clock::now();
     int *gapFinais = new int[numIter];
     int menorGap = 0;
-    int tam = this->order;
     for(int e = 0;e<numIter;e++) {
 
         bool *visitado = new bool[this->order];  // vetor para verificar os vértices já utilizados
-
-        
 
         for(int i=0;i<this->order;i++)
         {
@@ -2110,7 +2049,6 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
         
             vector<Node*> vectorWeightEdge; // nodes que ainda não foram inseridos em nenhum cluster
             vector<vector<float>> listRank;// vector de ranqueamento dos nodes
-            vector<int>idNodes; // vetor para guardar os ids dos nodes
             int contadora = 0;
             listRank.reserve(p); // reservando espaço para o total de clusters nesse vector 
             for(int i=0;i<p;i++) {
@@ -2197,27 +2135,12 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                     }
                     int indiceR = 0;
                     if(listRank.at(i).size() > 1) {
-                        //output_file << "List rank: " << listRank.at(i).size() << endl;
                         listRank.shrink_to_fit();
                         sort(listRank.at(i).begin(), listRank.at(i).end());
-                        //Parte original é a de cima
                         float auxRazao;
                         int auxId;
                         int q, c;
-                        /*for (q=2; q<vectorWeightEdge.size(); q++){
-                            xRazao = idRazao[q];
-                            xId = idNodesAux[q];
-                            c=q-1;
-                            idRazao[0] = xRazao;
-                            idNodesAux[0] = xId; 
-                            while (xRazao < idRazao[c]){
-                                idRazao[c+1] = idRazao[c];
-                                idNodesAux[c+1] = idNodesAux[c];
-                                c--;
-                            }
-                            idRazao[c+1] = xRazao;
-                            idNodesAux[c+1] = xId;
-                        }*/
+                        
                         //Ordenando a lista ranqueada 
                         for(int q=0; q<listRank.at(i).size(); q++ ){
                             for(int c=q+1; c<listRank.at(i).size(); c++ ){
@@ -2231,30 +2154,12 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                                 }    
                             }
                         }
-                        /*if(i == 0)
-                        {
-                            for(int q = 0; q<vectorWeightEdge.size();q++)
-                            {
-                                output_file << "ListRank " << q << ": " << listRank.at(i).at(q) << endl;
-                                output_file << "idRazao[" << q << "]: " << idRazao[q] << endl;
-                                output_file << "idNodesAux[" << q << "]: " << idNodesAux[q] << endl;  
-                            }
-                        }*/
                         for(int h=0;h<listRank.at(i).size();h++)
                         {
                             //output_file << "ListRank " << i << ": " << listRank.at(i).at(h) << endl;
                         }
-                        indiceR = (rand() % (listRank.at(i).size()-1)*0.3); // escolhendo número aleatorio
-                        //output_file << "Valores do x: " << indiceR << endl;
-                        //Parte original é a de cima
-                        /*for(int q=0;q<listRank.at(i).size();q++)
-                        {
-                            if(listRank.at(i).at(indiceR) == idRazao[q])
-                            {
-                                contPosicao = idNodesAux[q];
-                                break;
-                            }
-                        }*/
+                        indiceR = (rand() % (listRank.at(i).size()-1)*alfa); // escolhendo número aleatorio
+                        
                         contPosicao = idNodesAux[indiceR];
                     }
                     //contPosicao = indiceR;
@@ -2678,16 +2583,14 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
     soma = soma/numIter;
     output_file << "Valor da media: " << soma << endl;
     output_file << "Menor gap é: " << menorGap << endl;
-    
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> float_ms = end - start;
+    output_file << "funcSleep() elapsed time is " << float_ms.count() << " milliseconds" << std::endl;
 }
 
 void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, int numIter, int blocoIter, int m)
 {
-    //int *gapFinaisUltimo = new int[blocoIter];
-    //int gapFinaisUltimo[m] // ;
-    /*float *medias = new float[m];
-    float *vetProbAlfa = new float[m];
-    float *qAlfa = new float[m];*/
+    auto start = std::chrono::high_resolution_clock::now();
     int menorGap = INT_MAX; // melhor gap entre todos os alfas;
     float *medias = new float[m]; // media dos gaps encontrados para cada alfa;
     float *vetProbAlfa = new float[m]; // probabilidade cada alfa(começa em 1 para todos)
@@ -2726,20 +2629,44 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
 
             if(this->weighted_node) // só pode grafo com node com peso
             {
-                vector<vector<Node*>> vectorNode; //Note space between "> >" // vetor de vetores de node
-            
+                vector<vector<Node*>> vectorNode;  // vetor de vetores de node
+                vectorNode.reserve(p);
                 for(int i=0;i<p;i++) {
                     vectorNode.push_back(criaVectorTeste()); // criando os vetores de node;
+                    vectorNode.at(i).reserve(this->order);
                 }
 
                 //srand(time(0)); // semente aleatoria
-                Sleep(1000);
-                for(int i=0;i<p;i++) 
+                //Sleep(1000);
+                for(int i=0;i<p;i++) // montando os cluster iniciais 
                 {
                     Node *nodeAux;
+                    bool vizinho = false;
                     do {
                         int x = 1 + (rand() % this->order-1); // escolhendo número aleatorio
                         nodeAux = this->getNodeId(x); // pegando node referente a esse número
+                        // adicionei agr pra baixo
+                        vizinho = false;
+                        if(i > 0) // não deixar nodes vizinhos juntos
+                        {
+                            if(!visitado[nodeAux->getIdNode()])
+                            {
+                                for(Edge *edgeAux = nodeAux->getFirstEdge(); edgeAux!=nullptr ; edgeAux = edgeAux->getNextEdge())
+                                {
+                                    for(int g=0;g<i;g++)
+                                    {
+                                        for(int f=0;f<vectorNode.at(g).size();f++)
+                                        {
+                                            if(edgeAux->getTargetId() == vectorNode.at(g).at(f)->getId())
+                                            {
+                                                vizinho = true;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // adicionei agora pra cima
                     } while(visitado[nodeAux->getIdNode()]); // se o node já tiver sido colocado ele troca
                     visitado[nodeAux->getIdNode()] = true; // marcando como visitado
 
@@ -2767,8 +2694,6 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                     }
                 }
 
-
-                //Quando estiver escolhendo node aleatorio usa isso aqui ao inves das linhas de cima
                 for(int q=0;q<vectorNode.size();q++) {
                     for(int l=0;l<vectorNode.at(q).size();l++) {
                         vectorNode.at(q).at(l)->setCor(q);
@@ -2778,13 +2703,14 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                 }
             
                 vector<Node*> vectorWeightEdge;// = new vector<Node>();
+                vectorWeightEdge.reserve(this->order-p);
                 vector<vector<float>> listRank; //= new vector<vector<float>>; // vector de ranqueamento dos nodes
-
+                int contadora = 0;
                 listRank.reserve(p); // reservando espaço para o total de clusters nesse vector 
                 for(int i=0;i<p;i++) {
                     vector<float> *rank = new vector<float>;
                     listRank.push_back(*rank);
-
+                    listRank.at(i).reserve(this->order-p);
                 }
 
                 for(Node *node = this->first_node;node != nullptr;node = node->getNextNode())
@@ -2809,6 +2735,9 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                 do {
                     //cout << " ENTROUU 11" << endl;
                     for(int i=0;i<p;i++) {
+                        contadora = 0;
+                        int *idNodesAux = new int[vectorWeightEdge.size()];  
+                        float *idRazao = new float[vectorWeightEdge.size()];
                         float menorVal;   
                         int contPosicao = 0;
                         float gap = 0;
@@ -2847,6 +2776,8 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                             gapFinal = gapNode / vectorWeightEdge.at(j)->getTotal_Edge();
 
                             listRank.at(i).emplace_back(gapFinal);
+                            idNodesAux[contadora] = vectorWeightEdge.at(j)->getId();
+                            idRazao[contadora] = gapFinal;
                             /*if(j == 0) {
                                 menorVal = gapFinal;
                             } else {
@@ -2855,15 +2786,51 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                                     contPosicao = j; // armazena a posição com menor gap;
                                 }
                             }*/
+                            contadora++;
                         }
                         int indiceR = 0;
                         if(listRank.at(i).size() > 1) {
-                            //output_file << "List rank: " << listRank.at(i).size() << endl;
+                            listRank.shrink_to_fit();
+                            sort(listRank.at(i).begin(), listRank.at(i).end());
+                            float auxRazao;
+                            int auxId;
+                            int q, c;
+
+                            //Ordenando a lista ranqueada 
+                            for(int q=0; q<listRank.at(i).size(); q++ ){
+                                for(int c=q+1; c<listRank.at(i).size(); c++ ){
+                                    if( idRazao[q] > idRazao[c] ){
+                                        auxRazao = idRazao[c];
+                                        idRazao[c] = idRazao[q];
+                                        idRazao[q] = auxRazao;
+                                        auxId = idNodesAux[c];
+                                        idNodesAux[c] = idNodesAux[q];
+                                        idNodesAux[q] = auxId;
+                                    }    
+                                }
+                            }
+                            if(i == 0)
+                            {
+                                for(int n=0;n<vectorWeightEdge.size();n++)
+                                {
+                                    output_file << "idRazao[" << n << "]: " << idRazao[n] << endl;
+                                    output_file << "listRank.at(0).at(" << n << "): " << listRank.at(i).at(n) << endl; 
+                                    output_file << "idNodesAux[" << n << "]: " << idNodesAux[n] << endl;
+                                }
+                            }
+
                             output_file << "alfa[indiceAlfa]: " << alfa[indiceAlfa] << endl;
                             indiceR = (rand() % (listRank.at(i).size()-1)*(alfa[indiceAlfa])); // escolhendo número aleatorio
-                            //output_file << "Valores do indice: " << indiceR << endl;
+                            contPosicao = idNodesAux[indiceR];
                         }
-                        contPosicao = indiceR;
+                        //contPosicao = indiceR;
+                        for(int q=0;q<vectorWeightEdge.size();q++)
+                        {
+                            if(contPosicao == vectorWeightEdge.at(q)->getId())
+                            {
+                                contPosicao = q;
+                            }
+                        }
 
                         if((vectorWeightEdge.size() > 0) && !visitado[vectorWeightEdge.at(contPosicao)->getIdNode()])
                         {
@@ -2941,15 +2908,19 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                             
 
                             vectorWeightEdge.erase(n);
-                        
+                            vectorWeightEdge.shrink_to_fit();
                             listRank.at(i).clear();
                             listRank.reserve(listRank.capacity()-1);
                             
                         }
+                    
+                        delete idNodesAux;  
+                        delete idRazao;
+
                     }
 
                 } while(!vectorWeightEdge.empty());
-            
+                listRank.clear();
                 for(int i =0;i<p;i++)
                 {
 
@@ -2959,15 +2930,15 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                     for(int j =0;j<this->order;j++) {
                         verificados[j] = false;
                     }
-                    vector<vector<int>> maiorMenorValSubCluster; //= new vector<vector<int>>;
+                    vector<vector<int>> maiorMenorValSubCluster; 
                     maiorMenorValSubCluster.reserve(this->order);
-                    vector<vector<Node*>> vetorClusterNodes; //= new vector<vector<Node>>();
+                    vector<vector<Node*>> vetorClusterNodes;
                     vetorClusterNodes.reserve(this->order);
                     for(int j=0;j<this->order;j++) {
 
-                        vector<int> *rank = new vector<int>;
                         vetorClusterNodes.emplace_back(criaVectorTeste());
-
+                        vetorClusterNodes.at(i).reserve(this->order); // adicionei agora
+                        vector<int> *rank = new vector<int>;
                         maiorMenorValSubCluster.emplace_back(*rank);
                         maiorMenorValSubCluster.at(j).reserve(2);
 
@@ -3071,14 +3042,6 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                                 }
                             }
                         }
-                    }
-
-                    vector<vector<int>> arestas;
-                    arestas.reserve(vetorClusterNodes.size()); // no i = 0 tá reservando tamanho 4
-                    for(int e=0;e<vetorClusterNodes.size();e++) {  // e < 4
-                        vector<int> *rank = new vector<int>;
-                        arestas.push_back(*rank);
-                        arestas.at(e).reserve(vetorClusterNodes.at(e).size()); // reservando tamanhos 2 1 2 1
                     }
 
                     vector<bool> corNode; //= new vector<bool>;
@@ -3226,7 +3189,8 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                         
                     listMaiorMenorPeso.at(i).front() = maiorMenorValSubCluster.at(posicaoMaiorSubCluster).front();
                     listMaiorMenorPeso.at(i).back() = maiorMenorValSubCluster.at(posicaoMaiorSubCluster).back();
-                    
+                    coresPossiveis.clear();
+                    menorOuMaior.clear();
                 }
 
                 output_file << "Chegou a sair " << endl;
@@ -3273,19 +3237,30 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                 {
                     output_file << "Posicao " << d << " Gap: " << gapFinais[d] << endl;
                 }
+                listMaiorMenorPeso.clear();
             } else {
                 output_file << "O grafo não tem peso nas arestas" << endl;
             }
-
             delete visitado;
             medias[indiceAlfa] = somaGap/blocoIter;
 
     }
+    int soma = 0;
+    for(int i = 0;i<numIter;i++) 
+    {
+        soma += gapFinais[i];
+        output_file << "Posicao " << i << " Gap: " << gapFinais[i] << endl;
+    }
+    soma = soma/numIter;
+    output_file << "Valor da media: " << soma << endl;
     output_file << "Menor gap: " << menorGap << endl;
     delete medias;
     delete vetProbAlfa;
     delete qAlfa;
     delete gapFinais;
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> float_ms = end - start;
+    output_file << "funcSleep() elapsed time is " << float_ms.count() << " milliseconds" << std::endl;
     //guloso
     //arroz
     /*for(int i = 0;i<numIter;i++) 
@@ -3300,27 +3275,27 @@ void Graph::atualizaProbabilidades(ofstream &output_file, float *vetProbAlfa, fl
 {
     //qAlfa;
     float somas = 0;
-    output_file << "Melhor gap: " << melhorGap << endl;
-    for(int i=0;i<m;i++)
+    //output_file << "Melhor gap: " << melhorGap << endl;
+    /*for(int i=0;i<m;i++)
     {
         output_file << "Medias: " << i << ": " << medias[i] << endl;
-    }
+    }*/
 
     for(int i=0;i<m;i++)
     {
-        qAlfa[i] = ((melhorGap/medias[i]));
-        output_file << "qAlfa: " << qAlfa[i] << endl;
+        qAlfa[i] = pow((melhorGap/medias[i]), 100);
+        //output_file << "qAlfa: " << qAlfa[i] << endl;
         somas += qAlfa[i];
     }
     for(int i=0;i<m;i++)
     {
         vetProbAlfa[i] = qAlfa[i]/somas;
-        output_file << "somas: " << somas << endl;
+        //output_file << "somas: " << somas << endl;
     }
-    for(int i=0;i<m;i++)
+    /*for(int i=0;i<m;i++)
     {
         output_file << "Probilidade escolhida: " << vetProbAlfa[i] << endl;
-    }
+    }*/
 
 }
 
@@ -3336,20 +3311,20 @@ int Graph::escolheAlfa(ofstream &output_file, float *vetProbAlfa, int m)
     //0.75, 0.10, 0.15;
     //0.75, 0.85, 1;
     float val = FLOAT_MIN + (float)(rand()) / ((float)(RAND_MAX/(FLOAT_MAX - FLOAT_MIN)));
-    output_file << "Valor do val: " << val << endl;
+    //output_file << "Valor do val: " << val << endl;
     int indice = 0;
     for(int i=0;i<m;i++)
     {
-        output_file << "Vet[" << i << "]: " << vet[i] << endl;
+        //output_file << "Vet[" << i << "]: " << vet[i] << endl;
         if(vet[i] >= val)
         {
-            output_file << "Vet de prob: " << vet[i] << endl;
+            //output_file << "Vet de prob: " << vet[i] << endl;
             indice = i;
             break;
         }
     }
     delete vet;
-    output_file << "Indice retornado: " << indice << endl;
+    //output_file << "Indice retornado: " << indice << endl;
     return indice;
 }
 

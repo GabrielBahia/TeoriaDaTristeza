@@ -415,13 +415,20 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
         case 3:{
             //cout << "Digite a quantidade de alfas: ";
-            int qtdAlfas = 3;
+            int qtdAlfas = 10;
             //cin >> qtdAlfas;
             //cout << endl;
             float *vetAlfas = new float[qtdAlfas];
-            vetAlfas[0] = 0.1;
-            vetAlfas[1] = 0.3;
-            vetAlfas[2] = 0.5;
+            vetAlfas[0] = 0.05;
+            vetAlfas[1] = 0.10;
+            vetAlfas[2] = 0.15;
+            vetAlfas[3] = 0.20;
+            vetAlfas[4] = 0.25;
+            vetAlfas[5] = 0.30;
+            vetAlfas[6] = 0.35;
+            vetAlfas[7] = 0.40;
+            vetAlfas[8] = 0.45;
+            vetAlfas[9] = 0.50;
             /*for(int i=0;i<qtdAlfas;i++)
             {
                 cout << "Digite o valor do " << i << "o alfa: ";
@@ -436,8 +443,8 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             cout << "Digite o numero de iteracoes de cada bloco: ";
             cin >> itBloco;
             */
-            total = 200;
-            itBloco = 10;
+            total = 4000;
+            itBloco = 30;
             graph->GulosoRandomizadoReativo(output_file, 6, vetAlfas, total, itBloco, qtdAlfas);
             //graph->teste(output_file);
             output_file << "saiu" << endl;
