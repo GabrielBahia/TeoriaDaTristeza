@@ -398,7 +398,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
         case 1:{
             //for(int i=0;i<10;i++) {
-                graph->Guloso(output_file, 5);
+                graph->Guloso(output_file, 80);
                 //graph->teste(output_file);
                 //sleep_for(1000ms);
             //}
