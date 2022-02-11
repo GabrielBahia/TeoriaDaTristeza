@@ -13,7 +13,7 @@
 //#include <TIME.H>
 #include <time.h>
 //#include <dos.h>
-#include <Windows.h>
+//#include <Windows.h>
 using namespace std;
 //using this_thread::sleep_for;
 //using namespace chrono_literals;
@@ -407,7 +407,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
 
         case 2:{
-            graph->GulosoRandomizado(output_file, 5, 0.1, 10);
+            graph->GulosoRandomizado(output_file, 5, 0.1, 1000);
             //graph->teste(output_file);
             output_file << "saiu" << endl;
             break;
@@ -443,7 +443,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             cout << "Digite o numero de iteracoes de cada bloco: ";
             cin >> itBloco;
             */
-            total = 60;
+            total = 2000;
             itBloco = 30;
             graph->GulosoRandomizadoReativo(output_file, 6, vetAlfas, total, itBloco, qtdAlfas);
             //graph->teste(output_file);
