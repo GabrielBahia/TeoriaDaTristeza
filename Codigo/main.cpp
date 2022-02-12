@@ -397,17 +397,21 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }*/
 
         case 1:{
-            //for(int i=0;i<10;i++) {
+            for(int i=0;i<15;i++) {
+                output_file << "Iteração: " << i << endl;
                 graph->Guloso(output_file, 5, 1000);
                 //graph->teste(output_file);
                 //sleep_for(1000ms);
-            //}
+            }
             output_file << "saiu" << endl;
             break;
         }
 
         case 2:{
-            graph->GulosoRandomizado(output_file, 5, 0.1, 1000);
+            for(int i=0;i<30;i++)
+            {
+                graph->GulosoRandomizado(output_file, 5, 0.1, 1000);
+            }
             //graph->teste(output_file);
             output_file << "saiu" << endl;
             break;

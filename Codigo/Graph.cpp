@@ -285,7 +285,7 @@ void Graph::Guloso(ofstream &output_file, int p, int numIter)
 
             for(int i=0;i<p;i++) // montando os cluster iniciais  
             {
-                output_file << "i: " << i << endl;
+                //output_file << "i: " << i << endl;
                 Node *nodeAux; 
                 bool vizinho = false;
                 do {
@@ -645,7 +645,7 @@ void Graph::Guloso(ofstream &output_file, int p, int numIter)
                 vector<vector<int>> coresPossiveis; // 1° com a cor e a 2° com o gap, vai ajudar a reajustar os subcluster 
                 coresPossiveis.reserve(1);
 
-                for(int x=0;x<contSubCluster;x++) {
+                for(int x=0;x<1;x++) {
                     vector<int> *rank = new vector<int>;
                     coresPossiveis.push_back(*rank);
                     coresPossiveis.at(x).reserve(2); // 2 posições, 1° com a cor e a 2° com o gap
@@ -656,7 +656,7 @@ void Graph::Guloso(ofstream &output_file, int p, int numIter)
             
                 vector<vector<int>> menorOuMaior; // auxilia para mudar o valor final de cada cluster 
                 menorOuMaior.reserve(1);
-                for(int e=0;e<this->order;e++) {
+                for(int e=0;e<1;e++) {
                     vector<int> *rank = new vector<int>;
                     menorOuMaior.push_back(*rank);
                     menorOuMaior.at(e).reserve(2);
@@ -750,11 +750,7 @@ void Graph::Guloso(ofstream &output_file, int p, int numIter)
                         }
 
                         int contSelecionado = 0;
-                        for(int z = 0;z<contEntradas;z++) {
-                            if(menorOuMaior.at(z).front() == contPosicaoSubCluster) {
-                                contSelecionado = z;
-                            } 
-                        }
+
                         //verificando se o conjunto de node do subcluster altera de alguma forma o gap do novo cluster que eles vão ser inseridos
                         if(menorOuMaior.at(contSelecionado).back() == 0) {
 
@@ -768,9 +764,8 @@ void Graph::Guloso(ofstream &output_file, int p, int numIter)
                             listMaiorMenorPeso.at(corSelecionado).at(1) = maiorMenorValSubCluster.at(e).at(1);
                         }
 
-                        for(int z=0;z<contEntradas;z++) {
-                            menorOuMaior.at(z).clear();
-                        }
+                        menorOuMaior.at(0).clear();
+
                         contEntradas = 0;
 
 
@@ -1261,7 +1256,7 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                 vector<vector<int>> coresPossiveis; // 1° com a cor e a 2° com o gap, vai ajudar a reajustar os subcluster 
                 coresPossiveis.reserve(1);
 
-                for(int x=0;x<contSubCluster;x++) {
+                for(int x=0;x<1;x++) {
                     vector<int> *rank = new vector<int>;
                     coresPossiveis.push_back(*rank);
                     coresPossiveis.at(x).reserve(2); // 2 posições, 1° com a cor e a 2° com o gap
@@ -1271,7 +1266,7 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
 
                 vector<vector<int>> menorOuMaior; // auxilia para mudar o valor final de cada cluster
                 menorOuMaior.reserve(1);
-                for(int e=0;e<this->order;e++) {
+                for(int e=0;e<1;e++) {
                     vector<int> *rank = new vector<int>;
                     menorOuMaior.push_back(*rank);
                     menorOuMaior.at(e).reserve(2);
@@ -1303,7 +1298,7 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                                             gap += listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).back() - maiorMenorValSubCluster.at(e).back(); 
                                             coresPossiveis.at(0).at(0) = gap;
                                             coresPossiveis.at(0).at(1) = getNode(edge->getTargetId())->getCor();
-                                            contEntradas++;
+
                                         }
                                     } else if(maiorMenorValSubCluster.at(e).front() > listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).at(0)) {
                                         if(gap > maiorMenorValSubCluster.at(e).front() - listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).at(0)) {
@@ -1312,7 +1307,7 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                                             menorOuMaior.at(0).front() = z;
                                             menorOuMaior.at(0).back() = 1;
                                             gap = maiorMenorValSubCluster.at(e).front() - listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).at(1);
-                                            contEntradas++;
+
                                         }
                                     } else if(maiorMenorValSubCluster.at(e).back() < listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).back()) {
                                         if(gap > listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).front() - maiorMenorValSubCluster.at(e).back()) {
@@ -1320,7 +1315,7 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                                             coresPossiveis.at(0).at(1) = getNode(edge->getTargetId())->getCor();
                                             menorOuMaior.at(0).front() = z;
                                             menorOuMaior.at(0).back() = 2;
-                                            contEntradas++;
+
                                             gap = listMaiorMenorPeso.at(getNode(edge->getTargetId())->getCor()).front() - maiorMenorValSubCluster.at(e).back();
                                         }
                                     } else {
@@ -1356,11 +1351,7 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                         }
 
                         int contSelecionado = 0;
-                        for(int z = 0;z<contEntradas;z++) {
-                            if(menorOuMaior.at(z).front() == contPosicaoSubCluster) {
-                                contSelecionado = z;
-                            } 
-                        }
+
                         //verificando se o conjunto de node do subcluster altera de alguma forma o gap do novo cluster que eles vão ser inseridos
                         if(menorOuMaior.at(contSelecionado).back() == 0) {
                             listMaiorMenorPeso.at(corSelecionado).at(0) = maiorMenorValSubCluster.at(e).at(0);
@@ -1373,9 +1364,8 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                             listMaiorMenorPeso.at(corSelecionado).at(1) = maiorMenorValSubCluster.at(e).at(1);
                         }
 
-                        for(int z=0;z<contEntradas;z++) {
-                            menorOuMaior.at(z).clear();
-                        }
+                        menorOuMaior.at(0).clear();
+
                         contEntradas = 0;
 
                         for(int z=0;z<corNode.size();z++) {
