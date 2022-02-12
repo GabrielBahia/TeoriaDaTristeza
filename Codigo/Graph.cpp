@@ -1918,7 +1918,7 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                     coresPossiveis.reserve(1);
 
                     coresPossiveis.reserve(this->order);
-                    for(int x=0;x<contSubCluster;x++) {
+                    for(int x=0;x<1;x++) {
                         vector<int> *rank = new vector<int>;
                         coresPossiveis.push_back(*rank);
                         coresPossiveis.at(x).reserve(2); // 2 posições, 1° com a cor e a 2° com o gap
@@ -1928,7 +1928,7 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
 
                     vector<vector<int>> menorOuMaior; // auxilia para mudar o valor final de cada cluster 
                     menorOuMaior.reserve(1);
-                    for(int e=0;e<this->order;e++) {
+                    for(int e=0;e<1;e++) {
                         vector<int> *rank = new vector<int>;
                         menorOuMaior.push_back(*rank);
                         menorOuMaior.at(e).reserve(2);
@@ -1997,14 +1997,7 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                             int menor = coresPossiveis.at(0).front(); // pegando o primeiro gap
                             int corSelecionado = coresPossiveis.at(0).back(); // pegando a primeira cor selecionada
                             int contPosicaoSubCluster = 0;
-                            for(int z=0;z<1;z++) {
-                                if(menor > coresPossiveis.at(z).front()) {// pegando o menor valor de gap presente
-                                    menor = coresPossiveis.at(z).front(); // salvando esse valor de gap como o menor
-                                    corSelecionado = coresPossiveis.at(z).back(); // salvando a cor desse gap
-                                    contPosicaoSubCluster = z; // salvando essa posição escolhida com o menor gap
 
-                                }
-                            }
                             for(int z=0;z<vetorClusterNodes.at(e).size();z++) {
                                 //getNode(vetorClusterNodes.at(e).at(z)->getId())->setCor(corSelecionado);
                                 if(corSelecionado > i) {
@@ -2017,11 +2010,7 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                             }
 
                             int contSelecionado = 0;
-                            for(int z = 0;z<contEntradas;z++) {
-                                if(menorOuMaior.at(z).front() == contPosicaoSubCluster) {
-                                    contSelecionado = z;
-                                } 
-                            }
+
                 
                             if(menorOuMaior.at(contSelecionado).back() == 0) {
                                 listMaiorMenorPeso.at(corSelecionado).at(0) = maiorMenorValSubCluster.at(e).at(0);
@@ -2034,9 +2023,7 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                                 listMaiorMenorPeso.at(corSelecionado).at(1) = maiorMenorValSubCluster.at(e).at(1);
                             }
 
-                            for(int z=0;z<contEntradas;z++) {
-                                menorOuMaior.at(z).clear();
-                            }
+                            menorOuMaior.at(0).clear();
                             contEntradas = 0;
 
                             for(int z=0;z<corNode.size();z++) {
@@ -2089,7 +2076,7 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
                             }
                         }
                 }
-                output_file << "Gap total: " << gapTotal << endl;
+                //output_file << "Gap total: " << gapTotal << endl;
                 //output_file << "Posicao memoria: " << &gapFinais[0] << endl;
                 /*for(int d = 0;d<=e;d++) 
                 {
@@ -2114,11 +2101,11 @@ void Graph::GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, 
     output_file << "Menor gap: " << menorGap << endl;
     //output_file << "Melhor alfa: " << melhorAlfa << endl;
     int maior = qtdAlfa[0];
-    output_file << "Alfa[0] foi selecionado: " << qtdAlfa[0] << endl;
+    //output_file << "Alfa[0] foi selecionado: " << qtdAlfa[0] << endl;
     int idDoMaior = 0;
     for(int i=1;i<m;i++)
     {   
-        output_file << "Alfa[" << i << "] foi selecionado: " << qtdAlfa[i] << endl;
+        //output_file << "Alfa[" << i << "] foi selecionado: " << qtdAlfa[i] << endl;
         if(qtdAlfa[i] > maior)
         {
             maior = qtdAlfa[i];
