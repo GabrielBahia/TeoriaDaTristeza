@@ -250,10 +250,10 @@ Node *Graph::getNodeId(int id)
     return nullptr; // else it returns nullptr;
 }
 
-void Graph::Guloso(ofstream &output_file, int p)
+void Graph::Guloso(ofstream &output_file, int p, int numIter)
 {
     auto start = std::chrono::high_resolution_clock::now();
-    int valRep = 1;
+    int valRep = numIter;
     int *vetIter = new int[valRep];
     int menorGap = 0;
     for(int e=0;e<valRep;e++) {

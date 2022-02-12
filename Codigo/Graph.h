@@ -49,33 +49,8 @@ class Graph{
         Node* getNode(int id); // getting a node of the graph(node);
         Node* getNodeId(int id); // pegando o equivalente de cada node no indice de um vetor;
 
-        //Methods 
-        void fechoTransitivoDireto(ofstream &output_file, int id); // fecho transitivo direto; int id é o node inicial
-        void fechoTransitivoIndireto(ofstream &output_file, int id); // fecho transitivo indireto; int id é o node inicial
-        void caminhoMin_djkstra(ofstream &output_file,int idSource, int idTarget); // dijkstra
-        void caminhoMin_floyd(ofstream &output_file, int idSource, int idTarget); // floyd;
-        Graph* arvGMin_Prim(ofstream &output_file); // algoritmo de Prim
-        Graph* arvGMin_Kruskal(ofstream &output_file); // algoritmo de kuskal
-        void arv_Buscalargura(ofstream& output_filen, int id); // busca em largura;
-        void ord_Topologica(ofstream &output_file); // ordenação topologica 
-        
-        
-        //função auxiliar
-        bool deephFirstSearch(int id, int start); // busca em profundidade; � chamada pela fecho transitivo indireta
-        void auxDeepthFirstSearch(bool verify[], Node *v);
-        int auxCaminhoMin_djkstra(int dest,int orig);
-        void existeCaminho(bool *verifica,int idSource,int idTarget);
-        int **constroiMat_floyd(int tam, int **dist); 
-        Graph *getVertexInduced(int *listIdNodes, int tam);
-        void getWeithlessEdge(int *nohAresta);
-        bool verificaSubarvore(int v1, int v2, Graph *subGrafo);
-        int getWeightFromEdgeNodeCombo(int idNoh, int idAresta, Graph *subGrafo);
-        void printGraph(ofstream &output_file);
-        bool graphTemCiclo();
-
-
         //Methods Segunda Etapa
-        void Guloso(ofstream &output_file, int p);
+        void Guloso(ofstream &output_file, int p, int numIter);
         void GulosoRandomizado(ofstream &output_file, int p, float alfa, int numIter);
         void GulosoRandomizadoReativo(ofstream &output_file, int p, float *alfa, int numIter, int blocoIter, int m);
 
