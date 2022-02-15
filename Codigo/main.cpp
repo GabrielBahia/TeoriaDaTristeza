@@ -397,21 +397,22 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }*/
 
         case 1:{
-            for(int i=0;i<15;i++) {
-                output_file << "Iteração: " << i << endl;
-                graph->Guloso(output_file, 5, 1000);
+
+                output_file << "Iteração : " << endl;
+                graph->Guloso(output_file, 6, 1);
                 //graph->teste(output_file);
                 //sleep_for(1000ms);
-            }
+            
             output_file << "saiu" << endl;
             break;
         }
 
         case 2:{
-            for(int i=0;i<30;i++)
-            {
-                graph->GulosoRandomizado(output_file, 5, 0.1, 1000);
-            }
+            //for(int i=0;i<30;i++)
+            //{
+                output_file << "Alterou" << endl;
+                graph->GulosoRandomizado(output_file, 80, 0.1, 1);
+            //}
             //graph->teste(output_file);
             output_file << "saiu" << endl;
             break;
@@ -511,6 +512,7 @@ int main(int argc, char const *argv[]) {
     //Abrindo arquivo de entrada
     ifstream input_file;
     ofstream output_file;
+
     input_file.open(argv[1], ios::in);
     output_file.open(argv[2], ios::out | ios::trunc);
 
