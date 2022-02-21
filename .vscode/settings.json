@@ -18,6 +18,7 @@
         "xlocnum": "cpp",
         "xloctime": "cpp",
         "xutility": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "new": "cpp"
     }
 }

@@ -48,6 +48,7 @@ class Graph{
         bool searchNode(int id); // searching for a node in the graph(boolean);
         Node* getNode(int id); // getting a node of the graph(node);
         Node* getNodeId(int id); // pegando o equivalente de cada node no indice de um vetor;
+        void deleteGraph();
 
         //Methods Segunda Etapa
         void Guloso(ofstream &output_file, int p, int numIter);
@@ -57,6 +58,7 @@ class Graph{
         //Funções Auxiliares Segunda Etapa
         void atualizaProbabilidades(ofstream &output_file, float *vetProbAlfa, float *qAlfa, float melhorGap, float *medias, int m);
         int escolheAlfa(ofstream &output_file, float *vetProbAlfa, int m);
+        void selection_sort(float *v1,int *v2,int tam);
         vector<Node*> criaVectorTeste();
         vector<Node> *criaVector();
         vector<float> *criaVetorRank(int p);

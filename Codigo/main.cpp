@@ -302,115 +302,42 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
            //Sair
         case 0:{
-
+            graph->deleteGraph();
+            delete graph;
             break;
         }
-
-        /*
-           // Subgrafo induzido pelo fecho transitivo direto //
-        case 1:{
-           //graph->printGraph(output_file);
-            int x;
-            cout << "Digite o id o noh a ser pesquisado: ";
-            cin >> x;
-            graph->fechoTransitivoDireto(output_file, x);
-           // graph->printGraph(output_file); 
-            //graph->printEdge(output_file);//
-            break;
-        }
-
-
-            // Subgrafo induzido pelo fecho transitivo indireto //
-        case 2:{
-
-            int x;
-            cout << "Digite o id o noh a ser pesquisado: ";
-            cin >> x;
-            graph->fechoTransitivoIndireto(output_file,x);
-            break;
-        }
-
-            // Caminho Minimo entre dois vertices - Dijkstra //
-        case 3:{
-
-            cout<<"Digite o vertice de origem:"<< endl;
-            int origem;
-            cin>>origem;
-            cout<<"Digite o vertice de destino:"<<endl;
-            int destino;
-            cin>> destino;
-            graph->caminhoMin_djkstra(output_file,origem ,destino);
-
-            break;
-        }
-
-            // Caminho Minimo entre dois vertices - Floyd //
-        case 4:{
-
-            cout<<"Digite o vertice de origem:"<< endl;
-            int origem;
-            cin>>origem;
-            cout<<"Digite o vertice de destino:"<<endl;
-            int destino;
-            cin>> destino;
-            graph->caminhoMin_floyd(output_file,origem,destino);
-            break;
-        }
-
-            // Arvore Geradora Minima de Prim //
-        case 5:{
-            Graph *grafoAux = graph->arvGMin_Prim(output_file);
-            if(grafoAux == nullptr) {
-                cout << "Não é possivel realizar o agm_Prim para grafos direcionados";
-            } else {
-                grafoAux->printGraph(output_file);
-            }
-            break;
-        }
-
-            // Arvore Geradora Minima de Kruskal //
-        case 6:{
-            Graph *grafoAux2 = graph->arvGMin_Kruskal(output_file);
-            if(grafoAux2 == nullptr) {
-                cout << "Não é possivel realizar o agm_Prim para grafos direcionados";
-            } else {
-                grafoAux2->printGraph(output_file);
-            }
-
-            break;
-        }
-            //Arvore dada pela ordem de caminhamento em largura
-        case 7:{ 
-
-            cout<<"Digite o id do vertice:"<< endl;
-            int x;
-            cin >>x;
-            graph->arv_Buscalargura(output_file,x);
-            break;
-        }
-           // Imprimir ordenacao topologica 
-        case 8:{
-
-            graph->ord_Topologica(output_file);
-         
-            break;
-        }*/
 
         case 1:{
-            for(int i=0;i<15;i++) {
-                output_file << "Iteração: " << i << endl;
-                graph->Guloso(output_file, 5, 1000);
-                //graph->teste(output_file);
-                //sleep_for(1000ms);
-            }
+            output_file << "Rodando o Guloso ------------" << endl;
+            int cluster, rep;
+            cout << "Digite o numero de clusters: ";
+            cin >> cluster;
+            cout << "Digite o numero de repetições: ";
+            cin >> rep;
+            graph->Guloso(output_file, cluster, rep);
+            output_file << endl;
+
             output_file << "saiu" << endl;
             break;
         }
 
         case 2:{
-            for(int i=0;i<30;i++)
+            output_file << "Rodando o Guloso Randomizado -------------" << endl;
+            int cluster,total, rep;
+            float alfa;
+            cout << "Digite quantas vezes deseja executar o código: ";
+            cin >> total;
+            cout << "Digite o numero de clusters: ";
+            cin >> cluster;
+            cout << "Digite o numero de repetições: ";
+            cin >> rep;
+            cout << "Digite o alfa: ";
+            cin >> alfa;
+            for(int i=0;i<total;i++)
             {
-                graph->GulosoRandomizado(output_file, 5, 0.1, 1000);
+                output_file << "Iteração: " << i << endl;
+                graph->GulosoRandomizado(output_file, cluster, alfa, rep);
+                output_file << endl;
             }
             //graph->teste(output_file);
             output_file << "saiu" << endl;
@@ -418,10 +345,8 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
 
         case 3:{
-            //cout << "Digite a quantidade de alfas: ";
+            output_file << "Rodando o Guloso Randomizado Reativo -----------" << endl;
             int qtdAlfas = 10;
-            //cin >> qtdAlfas;
-            //cout << endl;
             float *vetAlfas = new float[qtdAlfas];
             vetAlfas[0] = 0.05;
             vetAlfas[1] = 0.10;
@@ -433,23 +358,21 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             vetAlfas[7] = 0.40;
             vetAlfas[8] = 0.45;
             vetAlfas[9] = 0.50;
-            /*for(int i=0;i<qtdAlfas;i++)
-            {
-                cout << "Digite o valor do " << i << "o alfa: ";
-                cin >> vetAlfas[i];
-                cout << endl;
-            }*/
-            int total, itBloco;
-            /*
-            cout << "Digite o número de interacoes total: ";
+            int total, itBloco, cluster;
+            float alfa;
+            cout << "Digite o numero de clusters: ";
+            cin >> cluster;
+            cout << "Digite o número de interacoes principal: ";
             cin >> total;
-            cout << endl;
-            cout << "Digite o numero de iteracoes de cada bloco: ";
+            cout << "Digite o número de interacoes secundaria: ";
             cin >> itBloco;
-            */
-            total = 4000;
-            itBloco = 40;
-            graph->GulosoRandomizadoReativo(output_file, 5, vetAlfas, total, itBloco, qtdAlfas);
+
+            for(int i=0;i<1;i++)
+            {
+                output_file << "Iteração: " << i << endl;
+                graph->GulosoRandomizadoReativo(output_file, cluster, vetAlfas, total, itBloco, qtdAlfas);
+                output_file << endl;
+            }
             //graph->teste(output_file);
             output_file << "saiu" << endl;
             //delete vetAlfas;
