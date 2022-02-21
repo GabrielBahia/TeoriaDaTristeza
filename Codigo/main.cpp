@@ -434,6 +434,7 @@ int main(int argc, char const *argv[]) {
     //Abrindo arquivo de entrada
     ifstream input_file;
     ofstream output_file;
+
     input_file.open(argv[1], ios::in);
     output_file.open(argv[2], ios::out | ios::trunc);
 

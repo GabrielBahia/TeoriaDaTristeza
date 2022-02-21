@@ -1,0 +1,60 @@
+Rodando o Guloso ------------
+Valor da media: 293
+Menor gap é: 103
+Tempo de compilação:  12545.2 milliseconds
+
+saiu
+
+Rodando o Guloso Randomizado -------------
+Iteração: 0
+Valor da media: 306
+Menor gap é: 129
+Tempo de compilação 1271.61seconds: 
+
+Iteração: 1
+Valor da media: 308
+Menor gap é: 155
+Tempo de compilação 1341.94seconds: 
+
+Iteração: 2
+Valor da media: 304
+Menor gap é: 117
+Tempo de compilação 1383.93seconds: 
+
+Iteração: 3
+Valor da media: 304
+Menor gap é: 123
+Tempo de compilação 1283.34seconds: 
+
+Iteração: 4
+Valor da media: 302
+Menor gap é: 126
+Tempo de compilação 1275.52seconds: 
+
+Iteração: 5
+Valor da media: 299
+Menor gap é: 124
+Tempo de compilação 1362.45seconds: 
+
+Iteração: 6
+Valor da media: 316
+Menor gap é: 131
+Tempo de compilação 1433.74seconds: 
+
+Iteração: 7
+Valor da media: 311
+Menor gap é: 111
+Tempo de compilação 1428.86seconds: 
+
+Iteração: 8
+Valor da media: 301
+Menor gap é: 124
+Tempo de compilação 1332.17seconds: 
+
+Iteração: 9
+Valor da media: 309
+Menor gap é: 137
+Tempo de compilação 1516.76seconds: 
+
+saiu
+

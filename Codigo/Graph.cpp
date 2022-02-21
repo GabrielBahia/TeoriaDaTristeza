@@ -886,7 +886,9 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
             vector<vector<Node*>> vectorNode; //Note space between "> >" // vetor de vetores de node
             vectorNode.reserve(p); // reservando tamanho para o vector = número de clusters passado
             for(int i=0;i<p;i++) {
-                vectorNode.push_back(criaVectorTeste()); // criando os vetores de node;
+                vector<Node*> vectorNodes;
+                //vectorNode.push_back(criaVectorTeste()); // criando os vetores de node;
+                vectorNode.push_back(vectorNodes);
                 vectorNode.at(i).reserve(this->order); 
             }
 
@@ -961,8 +963,9 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
             int contadora = 0;
             listRank.reserve(p); // reservando espaço para o total de clusters nesse vector 
             for(int i=0;i<p;i++) {
-                vector<float> *rank = new vector<float>;
-                listRank.push_back(*rank);
+                //vector<float> *rank = new vector<float>;
+                vector<float> rank;
+                listRank.push_back(rank);
                 listRank.at(i).reserve(this->order-p);
             }
 
@@ -979,8 +982,9 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
             listMaiorMenorPeso.reserve(p);
 
             for(int i=0;i<p;i++) {
-                vector<int> *rank = new vector<int>;
-                listMaiorMenorPeso.emplace_back(*rank);
+                //vector<int> *rank = new vector<int>;
+                vector<int> rank;
+                listMaiorMenorPeso.emplace_back(rank);
                 listMaiorMenorPeso.at(i).reserve(2); // para cada cluster existem 2 posicoes, uma com o maior e outra com o menor peso de cada cluster
                 listMaiorMenorPeso.at(i).insert(listMaiorMenorPeso.at(i).begin(),-1);
                 listMaiorMenorPeso.at(i).insert(listMaiorMenorPeso.at(i).end(),1000000);
@@ -1028,6 +1032,7 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                         gapFinal = gapNode / vectorWeightEdge.at(j)->getTotal_Edge(); // seleção final busca selecionar o menor gapFinal que é o gapNode/ número de arestas de cada node
 
                         listRank.at(i).emplace_back(gapFinal); // lista de ranqueamento de vértices
+                        
                         idNodesAux[contadora] = vectorWeightEdge.at(j)->getId();
                         idRazao[contadora] = gapFinal;
                         contadora++;
@@ -1174,9 +1179,12 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                 vector<vector<Node*>> vetorClusterNodes; // cada subcluster sera armazenado aqui
                 vetorClusterNodes.reserve(this->order);
                 for(int j=0;j<this->order;j++) {
-                    vector<int> *rank = new vector<int>;
-                    vetorClusterNodes.emplace_back(criaVectorTeste());
-                    maiorMenorValSubCluster.emplace_back(*rank);
+                    //vector<int> *rank = new vector<int>;
+                    vector<int> rank;
+                    vector<Node*> vectorNodes;
+                    //vetorClusterNodes.emplace_back(criaVectorTeste());
+                    vetorClusterNodes.emplace_back(vectorNodes);
+                    maiorMenorValSubCluster.emplace_back(rank);
                     maiorMenorValSubCluster.at(j).reserve(2);
 
                 }
@@ -1298,8 +1306,9 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                 coresPossiveis.reserve(1);
 
                 for(int x=0;x<1;x++) {
-                    vector<int> *rank = new vector<int>;
-                    coresPossiveis.push_back(*rank);
+                    //vector<int> *rank = new vector<int>;
+                    vector<int> rank;
+                    coresPossiveis.push_back(rank);
                     coresPossiveis.at(x).reserve(2); // 2 posições, 1° com a cor e a 2° com o gap
                     coresPossiveis.at(x).insert(coresPossiveis.at(x).begin(), 1000000);
                     coresPossiveis.at(x).insert(coresPossiveis.at(x).end(), x);
@@ -1308,8 +1317,9 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
                 vector<vector<int>> menorOuMaior; // auxilia para mudar o valor final de cada cluster
                 menorOuMaior.reserve(1);
                 for(int e=0;e<1;e++) {
-                    vector<int> *rank = new vector<int>;
-                    menorOuMaior.push_back(*rank);
+                    //vector<int> *rank = new vector<int>;
+                    vector<int> rank;
+                    menorOuMaior.push_back(rank);
                     menorOuMaior.at(e).reserve(2);
                 }
 
@@ -1432,7 +1442,6 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
             for(int h=0;h<listMaiorMenorPeso.size();h++) {
                 gapTotal += listMaiorMenorPeso.at(h).at(0) - listMaiorMenorPeso.at(h).at(1);
             }
-             
             delete visitado;
             
             gapFinais[e] = gapTotal;
@@ -1456,6 +1465,7 @@ void Graph::GulosoRandomizado(ofstream &output_file, int p, float alfa, int numI
         soma += gapFinais[i];
         //output_file << "Posicao " << i << " Gap: " << gapFinais[i] << endl;
     }
+    delete gapFinais;
     soma = soma/numIter;
     delete gapFinais;
     output_file << "Valor da media: " << soma << endl;
